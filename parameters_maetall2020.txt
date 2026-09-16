@@ -1,0 +1,89 @@
+Here's the full structural/parametric scope of the paper, organized by category — everything explicitly defined, nothing inferred.
+
+## Locations (the two comparison cases)
+
+- **Seattle, WA** (rural) — wind and icing both minor
+- **Grand Marais, MN** (North Shore of Lake Superior) — icing severe, wind moderate
+
+## Pole — structural specs
+
+- **Species/class**: Class 4 Southern Yellow Pine, rural application (most common US case)
+- **Span**: 91.44 m (300 ft)
+- **Pole tip height**: mean 11.7 m, COV 0.03 (normal distribution)
+- **Wire attachment height**: mean 11.1 m, COV 0.03
+- **Wind-projected area (pole)**: mean 2.66 m²
+- **Fiber strength (new)**: lognormal, mean 52.2 MPa
+
+## Pole — decay/aging model (Eq. 1–2)
+
+- Parameters: a₁=0.014418, a₂=0.10683, b₁=0.00013, b₂=1.846, VarT=0.11
+- Applies only for age > 10 years
+- COV grows from 0.17 (new) → 0.37 (60-yr) — *note: one part of the text also says "39.7%" for the 60-yr COV, so there's a minor internal inconsistency in the paper itself worth flagging if you cite this*
+- Mean strength drops 18.89% (from 52.2 MPa to ~42.34 MPa) over 60 years
+
+## Wire/conductor — structural specs
+
+- **Wind-projected area (wire)**: mean 5.16 m²
+- **Wire length**: 91.50 m (span 91.44 m + ~1 m sag)
+- **Conductor type**: steel-reinforced aluminum
+- **Diameter**: 18.82 mm
+- **Breaking strength**: 77,850 N
+- **Unit weight**: 776.6 kg/km
+- **Elastic modulus**: 3×10⁷ MPa — *this value looks unusually high for a steel-reinforced aluminum conductor (typically ~7×10⁴ MPa); worth double-checking against the original if you ever need this specific number*
+- **Model**: 3D elastic catenary cable, OpenSees FE, 3 elements/4 nodes, fully fixed supports
+- Wire strength treated as **time-independent** (no decay model, unlike the pole)
+
+## Wind hazard model (Eq. 3–4, Weibull)
+
+- Seattle: α=3.369, u=23.3742
+- Grand Marais: α=3.569, u=25.1044
+- Fitted using 10/25/50-year ASCE 7-16 return-period data
+- Fragility curve range tested: 20–90 m/s, 0.1 m/s increments
+
+## Wind force model (Eq. 5) — randomization parameters
+
+- G (gust factor): pole mean 0.948, wire mean 0.801, COV 0.11
+- Cf (force coefficient): pole mean 0.9, wire mean 1.0, COV 0.12
+- Kz (velocity pressure exposure): pole median 0.951, wire median 1.024, COV 0.06
+- Kzt (topographic factor): fixed at 1.0
+- Wind assumed perpendicular to line (worst case)
+
+## Ice hazard model (Eq. 6–8, Generalized Pareto)
+
+- Seattle: α=0.9087, k=−0.3733, threshold u=0
+- Grand Marais: α=6.6357, k=−0.1037, threshold u=0
+- Fitted using 25/50/100-year return-period data (ASCE-74 + Jones/CRREL 2002)
+- Surface ranges tested: ice thickness 0–80mm (0.5mm steps), concurrent wind 0–40 m/s (0.5 m/s steps)
+
+## Ice load model (Eq. 9)
+
+- Ice modeled as an evenly distributed tube around the wire
+- Ice density: stated as 0.917 kg/m³ — *this is almost certainly meant as 0.917 g/cm³ (= 917 kg/m³), a units slip in the original text, since 0.917 kg/m³ would be far too light for ice*
+
+## Concurrent wind speed during icing (fixed constants)
+
+- Seattle: **9 m/s**
+- Grand Marais: **26.817 m/s (60 mph)**
+- Force coefficient for ice-covered wires: fixed at 1.2
+- Ice does **not** add load/area to the pole itself (only the wire) — stated as insignificant per ASCE-74
+
+## Monte Carlo simulation settings
+
+- Software: MATLAB 2018a
+- **100,000 samples per wind speed / hazard level**
+- Failure criteria: pole = bending+compression stress at groundline exceeds strength; wire = tension exceeds 77,850 N breaking strength (via bisection + polynomial surrogate, Fig. 2)
+
+## System aggregation logic (Eq. 11–14)
+
+- Element failure: Pfe = 1−(1−Pp)(1−Pw)
+- Combined hazard: Pn = 1−(1−P_wind)(1−P_ice)
+- Line failure: adjacent pole/wire failure triggers cascading failure if adjacent pole strength < 1.5× demand
+- Line-level: PfL = 1 − Π(1−Pfe) across m spans
+- System reliability: demand-weighted average across all lines/stations
+
+## Case study topologies (for reference, not reusable data)
+
+- **Case 1**: 2 supply stations, 2 demand stations, 5 lines (pole counts 30–50 each), demand 500/750 units
+- **Case 2 (Centerville)**: tree topology, no redundancy, ~32 poles, borrowed from Ellingwood et al. (2016)
+
+**One honest caveat overall**: several of these numbers (elastic modulus, ice density) look like they may contain typos/unit slips in the original paper text — worth a sanity check against the published PDF's actual figures/units before you hard-code them anywhere important.
