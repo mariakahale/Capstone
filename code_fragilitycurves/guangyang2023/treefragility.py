@@ -1,3 +1,4 @@
+#abandoned for now, requires more information regarding probability of fault with tree falling.
 def tree_damage_probability(ice_thickness_cm: float) -> float:
     """
     Per-tree probability of ice-storm damage to a hazard tree.
