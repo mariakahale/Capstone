@@ -1,10 +1,4 @@
 file,label,x_axis,winner,lognormal_sse,logistic_sse,lognormal_params,logistic_params
-windvfailure/class2pole.csv,Class 2 - Pole,Wind speed (m/s),lognormal,0.0010584220943880302,0.013210186641128724,[37.03866855  0.2262517 ],[37.04322995  4.408572  ]
-windvfailure/class2wire.csv,Class 2 - Wire,Wind speed (m/s),logistic,0.02043590975438126,0.003303645859867517,[52.5953839   0.97075625],[44.5868981 14.5125687]
-windvfailure/class4pole.csv,Class 4 - Pole,Wind speed (m/s),lognormal,0.0027537213767049166,0.033746459915106726,[29.3050551  0.2697086],[29.71624498  4.53684035]
-windvfailure/class4wire.csv,Class 4 - Wire,Wind speed (m/s),logistic,0.005311264341067452,0.0013119343289321032,[101.33871431   1.58574581],[59.08689815 22.45279483]
-windvfailure/class5pole.csv,Class 5 - Pole,Wind speed (m/s),lognormal,0.008188777646481613,0.05304776977437933,[25.61755294  0.28906381],[26.06799819  4.365728  ]
-windvfailure/class5wire.csv,Class 5 - Wire,Wind speed (m/s),logistic,0.010467569803261965,0.0026625093988549933,[95.35420482  1.51218906],[57.88009822 21.50138861]
 icethicknessvfailure/class2pole.csv,Class 2 - Pole,Ice thickness (cm),lognormal,0.0002831491289376038,0.0025770342816657356,[4.61819057 0.39659436],[4.23458897 0.63976139]
 icethicknessvfailure/class2wire.csv,Class 2 - Wire,Ice thickness (cm),lognormal,0.0008136127019993675,0.007267525040030206,[4.67854519 0.60388521],[4.15880049 0.89225967]
 icethicknessvfailure/class4pole.csv,Class 4 - Pole,Ice thickness (cm),lognormal,0.000527587369466654,0.031203155564810292,[3.01589105 0.49103673],[3.0582359  0.73167684]

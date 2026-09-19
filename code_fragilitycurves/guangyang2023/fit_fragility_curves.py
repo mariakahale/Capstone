@@ -28,7 +28,10 @@ from pathlib import Path
 # Resolve all input and output paths relative to this script, not the folder
 # from which Python happens to be launched.
 SCRIPT_DIR = Path(__file__).resolve().parent
-OUTPUT_DIR = SCRIPT_DIR.parent / "guangyang2023"/"fragility_fit_plots"
+OUTPUT_DIRS = {
+    "wind": SCRIPT_DIR / "fragilityfit_wind",
+    "ice": SCRIPT_DIR / "fragilityfit_ice",
+}
 # ---------------------------------------------------------------------
 # 1. CONFIGURE YOUR FILES HERE
 # ---------------------------------------------------------------------
@@ -38,23 +41,21 @@ OUTPUT_DIR = SCRIPT_DIR.parent / "guangyang2023"/"fragility_fit_plots"
 
 CSV_FILES = [
     # --- Wind speed sweep (Fig 5a), ice thickness fixed at 3.2 cm ---
-    dict(path="windvfailure/class2pole.csv",  label="Class 2 - Pole",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
-    dict(path="windvfailure/class2wire.csv",  label="Class 2 - Wire",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
-    dict(path="windvfailure/class4pole.csv",  label="Class 4 - Pole",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
-    dict(path="windvfailure/class4wire.csv",  label="Class 4 - Wire",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
-    dict(path="windvfailure/class5pole.csv",  label="Class 5 - Pole",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
-    dict(path="windvfailure/class5wire.csv",  label="Class 5 - Wire",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
+    dict(path="windvfailure/class2pole.csv",  group="wind", label="Class 2 - Pole",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
+    dict(path="windvfailure/class2wire.csv",  group="wind", label="Class 2 - Wire",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
+    dict(path="windvfailure/class4pole.csv",  group="wind", label="Class 4 - Pole",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
+    dict(path="windvfailure/class4wire.csv",  group="wind", label="Class 4 - Wire",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
+    dict(path="windvfailure/class5pole.csv",  group="wind", label="Class 5 - Pole",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
+    dict(path="windvfailure/class5wire.csv",  group="wind", label="Class 5 - Wire",  x_name="Wind speed (m/s)", valid_range=(12.5, 40)),
 
     # --- Ice thickness sweep (Fig 5b), wind speed fixed at 30 m/s ---
-    dict(path="icethicknessvfailure/class2pole.csv",   label="Class 2 - Pole",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
-    dict(path="icethicknessvfailure/class2wire.csv",   label="Class 2 - Wire",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
-    dict(path="icethicknessvfailure/class4pole.csv",   label="Class 4 - Pole",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
-    dict(path="icethicknessvfailure/class4wire.csv",   label="Class 4 - Wire",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
-    dict(path="icethicknessvfailure/class5pole.csv",   label="Class 5 - Pole",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
-    dict(path="icethicknessvfailure/class5wire.csv",   label="Class 5 - Wire",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
+    dict(path="icethicknessvfailure/class2pole.csv",   group="ice", label="Class 2 - Pole",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
+    dict(path="icethicknessvfailure/class2wire.csv",   group="ice", label="Class 2 - Wire",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
+    dict(path="icethicknessvfailure/class4pole.csv",   group="ice", label="Class 4 - Pole",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
+    dict(path="icethicknessvfailure/class4wire.csv",   group="ice", label="Class 4 - Wire",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
+    dict(path="icethicknessvfailure/class5pole.csv",   group="ice", label="Class 5 - Pole",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
+    dict(path="icethicknessvfailure/class5wire.csv",   group="ice", label="Class 5 - Wire",  x_name="Ice thickness (cm)", valid_range=(0.635, 3.81)),
 ]
-
-# OUTPUT_DIR = "guangyang2023/fragility_fit_plots"
 
 
 # ---------------------------------------------------------------------
@@ -169,8 +170,9 @@ def plot_fit(x_data, y_data, results, label, x_name, valid_range, outpath):
 # ---------------------------------------------------------------------
 
 def main():
-    OUTPUT_DIR.mkdir(exist_ok=True)
-    summary_rows = []
+    for output_dir in OUTPUT_DIRS.values():
+        output_dir.mkdir(exist_ok=True)
+    summary_rows = {group: [] for group in OUTPUT_DIRS}
 
     for entry in CSV_FILES:
         path = SCRIPT_DIR / entry["path"]
@@ -192,15 +194,13 @@ def main():
         label = f"{entry['label']} vs {entry['x_name']}"
         results, winner = fit_and_compare(x_data, y_data, label)
 
-        outpath = os.path.join(
-            OUTPUT_DIR,
-            path.stem + "_fit.png"
-        )
+        output_dir = OUTPUT_DIRS[entry["group"]]
+        outpath = output_dir / f"{path.stem}_fit.png"
         plot_fit(x_data, y_data, results, label, entry["x_name"],
                   entry["valid_range"], outpath)
         print(f"  Plot saved to: {outpath}")
 
-        summary_rows.append(dict(
+        summary_rows[entry["group"]].append(dict(
             file=path.relative_to(SCRIPT_DIR),
             label=entry["label"],
             x_axis=entry["x_name"],
@@ -212,17 +212,18 @@ def main():
         ))
 
     # Final summary table
-    print("\n\n========== SUMMARY ==========")
-    summary_df = pd.DataFrame(summary_rows)
-    if not summary_df.empty:
-        print(summary_df[["label", "x_axis", "winner",
-                            "lognormal_sse", "logistic_sse"]]
-              .to_string(index=False))
-        summary_df.to_csv(OUTPUT_DIR / "fit_summary.csv", index=False)
-        print(f"\nFull summary (with fitted params) saved to: "
-              f"{OUTPUT_DIR / 'fit_summary.csv'}")
-    else:
-        print("No files were processed. Check your CSV_FILES paths.")
+    for group, rows in summary_rows.items():
+        print(f"\n\n========== {group.upper()} SUMMARY ==========")
+        summary_df = pd.DataFrame(rows)
+        if not summary_df.empty:
+            print(summary_df[["label", "x_axis", "winner",
+                              "lognormal_sse", "logistic_sse"]]
+                  .to_string(index=False))
+            summary_path = OUTPUT_DIRS[group] / "fit_summary.csv"
+            summary_df.to_csv(summary_path, index=False)
+            print(f"\nFull summary (with fitted params) saved to: {summary_path}")
+        else:
+            print("No files were processed. Check your CSV_FILES paths.")
 
 
 if __name__ == "__main__":
