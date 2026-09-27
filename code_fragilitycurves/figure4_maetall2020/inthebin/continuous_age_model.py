@@ -101,12 +101,20 @@ def fragility_at_age(v, age_years, theta_new, beta_new):
 # 3. REPLACE WITH YOUR DIGITIZED POINTS
 # =================================================================
 
-_DIGITIZED_DATA_DIR = Path(__file__).resolve().parent / "csv_source_files_digitizingfig4"
+_DIGITIZED_DATA_DIR = (
+    Path(__file__).resolve().parent.parent / "csv_source_files_digitizingfig4"
+)
 
 _new_data = np.loadtxt(_DIGITIZED_DATA_DIR / "red.csv", delimiter=",")
 digitized_new = {
     "wind_speed": _new_data[:, 0],
     "probability": _new_data[:, 1],
+}
+
+_thirty_year_data = np.loadtxt(_DIGITIZED_DATA_DIR / "black.csv", delimiter=",")
+digitized_30yr = {
+    "wind_speed": _thirty_year_data[:, 0],
+    "probability": _thirty_year_data[:, 1],
 }
 
 _sixty_year_data = np.loadtxt(_DIGITIZED_DATA_DIR / "blue.csv", delimiter=",")
@@ -127,6 +135,14 @@ if __name__ == "__main__":
     )
     print(f"Anchored at t=0: theta_new={theta_new:.3f} m/s, beta_new={beta_new:.4f}")
 
+    theta_30_fit_direct, beta_30_fit_direct = fit_fragility(
+        digitized_30yr["wind_speed"], digitized_30yr["probability"]
+    )
+    print(f"\nYOUR digitized 30-yr curve parameters: theta={theta_30_fit_direct:.3f}, beta={beta_30_fit_direct:.4f}")
+
+    theta_60_fit_direct, beta_60_fit_direct = fit_fragility(
+        digitized_60yr["wind_speed"], digitized_60yr["probability"]
+    )
     # Validate: does the CONTINUOUS model at t=60 match your DIGITIZED
     # 60-year curve, even though t=60 was never used to fit anything?
     theta_60_fit_direct, beta_60_fit_direct = fit_fragility(
