@@ -1,0 +1,3 @@
+parameter,value,units,description
+alpha,3.162563855314734,dimensionless,Weibull shape parameter
+u,16.725150402101807,m/s,Weibull scale parameter

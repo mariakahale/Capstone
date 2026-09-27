@@ -53,7 +53,16 @@ Return period:
 """
 
 import numpy as np
+import pandas as pd
+from pathlib import Path
 from scipy.optimize import curve_fit
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+TORONTO_WIND_PARAMETERS_CSV = SCRIPT_DIR / "toronto_wind_parameters.csv"
+TORONTO_WIND_XY_CSV = SCRIPT_DIR / "toronto_wind_xy_coordinates.csv"
+TORONTO_ICE_PARAMETERS_CSV = SCRIPT_DIR / "toronto_ice_gpd_parameters.csv"
+TORONTO_ICE_XY_CSV = SCRIPT_DIR / "toronto_ice_xy_coordinates.csv"
 
 
 # ============================================================================
@@ -274,6 +283,101 @@ def fitted_ice_thickness_mm(T):
         u=0.0,
         lam=1.0,
     )
+
+
+def save_toronto_wind_outputs(
+    parameters_path=TORONTO_WIND_PARAMETERS_CSV,
+    xy_path=TORONTO_WIND_XY_CSV,
+):
+    """Save fitted Weibull parameters and the wind-fit XY coordinates.
+
+    The XY file records the nine source coordinates used to estimate the
+    Weibull distribution. It also includes each coordinate's fitted value
+    and residual so the fit can be reproduced or checked directly.
+    """
+    parameters_path = Path(parameters_path)
+    xy_path = Path(xy_path)
+
+    pd.DataFrame([
+        {
+            "parameter": "alpha",
+            "value": TORONTO_WIND_ALPHA,
+            "units": "dimensionless",
+            "description": "Weibull shape parameter",
+        },
+        {
+            "parameter": "u",
+            "value": TORONTO_WIND_U,
+            "units": "m/s",
+            "description": "Weibull scale parameter",
+        },
+    ]).to_csv(parameters_path, index=False)
+
+    fitted_wind = fitted_wind_speed_ms(TORONTO_RETURN_PERIODS_YEARS)
+    pd.DataFrame({
+        "x_return_period_years": TORONTO_RETURN_PERIODS_YEARS,
+        "y_observed_wind_speed_m_per_s": TORONTO_WIND_SPEED_MS,
+        "y_fitted_wind_speed_m_per_s": fitted_wind,
+        "residual_observed_minus_fitted_m_per_s": (
+            TORONTO_WIND_SPEED_MS - fitted_wind
+        ),
+    }).to_csv(xy_path, index=False)
+
+    print(f"Saved Toronto wind Weibull parameters to: {parameters_path}")
+    print(f"Saved Toronto wind XY coordinates to: {xy_path}")
+
+
+def save_toronto_ice_outputs(
+    parameters_path=TORONTO_ICE_PARAMETERS_CSV,
+    xy_path=TORONTO_ICE_XY_CSV,
+):
+    """Save fitted GPD parameters and the ice-fit XY coordinates.
+
+    The XY file records the nine source coordinates used for the GPD fit,
+    along with the fitted ice thickness and residual at each return period.
+    """
+    parameters_path = Path(parameters_path)
+    xy_path = Path(xy_path)
+
+    pd.DataFrame([
+        {
+            "parameter": "alpha",
+            "value": TORONTO_ICE_ALPHA,
+            "units": "mm",
+            "description": "GPD scale parameter",
+        },
+        {
+            "parameter": "k",
+            "value": TORONTO_ICE_K,
+            "units": "dimensionless",
+            "description": "GPD shape parameter",
+        },
+        {
+            "parameter": "u",
+            "value": 0.0,
+            "units": "mm",
+            "description": "GPD threshold/location parameter (fixed)",
+        },
+        {
+            "parameter": "lambda",
+            "value": 1.0,
+            "units": "1/year",
+            "description": "GPD event rate (fixed)",
+        },
+    ]).to_csv(parameters_path, index=False)
+
+    fitted_ice = fitted_ice_thickness_mm(TORONTO_RETURN_PERIODS_YEARS)
+    pd.DataFrame({
+        "x_return_period_years": TORONTO_RETURN_PERIODS_YEARS,
+        "y_observed_ice_thickness_mm": TORONTO_ICE_THICKNESS_MM,
+        "y_fitted_ice_thickness_mm": fitted_ice,
+        "residual_observed_minus_fitted_mm": (
+            TORONTO_ICE_THICKNESS_MM - fitted_ice
+        ),
+    }).to_csv(xy_path, index=False)
+
+    print(f"Saved Toronto ice GPD parameters to: {parameters_path}")
+    print(f"Saved Toronto ice XY coordinates to: {xy_path}")
 
 
 # ============================================================================
@@ -520,6 +624,8 @@ def plot_toronto_hazard_curves(
 # ============================================================================
 
 if __name__ == "__main__":
+    save_toronto_wind_outputs()
+    save_toronto_ice_outputs()
     print_validation_table()
     print_standard_return_period_summary()
     plot_toronto_hazard_curves()

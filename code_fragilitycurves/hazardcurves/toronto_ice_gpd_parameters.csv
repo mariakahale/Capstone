@@ -1,0 +1,5 @@
+parameter,value,units,description
+alpha,6.02791254877527,mm,GPD scale parameter
+k,0.12203898435431425,dimensionless,GPD shape parameter
+u,0.0,mm,GPD threshold/location parameter (fixed)
+lambda,1.0,1/year,GPD event rate (fixed)

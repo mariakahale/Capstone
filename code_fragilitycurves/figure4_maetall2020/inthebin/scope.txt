@@ -1,0 +1,4 @@
+1) - age "interpolation", and the new proposed way to model how the fragility curves warp as a result of reduced strength from longer age:
+Ma et al. provide the age-dependent deterioration model that modifies the mean and variance of pole capacity. Our approach uses those age-dependent capacity statistics to transform an existing fragility curve, rather than rerunning the full structural Monte Carlo simulation used by Ma et al.
+
+

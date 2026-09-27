@@ -38,6 +38,7 @@ COLOUR ASSIGNMENT FROM YOUR DIGITIZATION
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 from scipy.optimize import curve_fit
 from scipy.stats import norm
@@ -48,9 +49,14 @@ from scipy.integrate import trapezoid
 # 1. FILE LOCATIONS
 # =================================================================
 
-NEW_FILE = "figure4/red.csv"
-THIRTY_FILE = "figure4/black.csv"
-SIXTY_FILE = "figure4/blue.csv"
+SCRIPT_DIR = Path(__file__).resolve().parent
+FIGURE4_DATA_DIR = SCRIPT_DIR / "figure4_maetall2020"
+
+NEW_FILE = FIGURE4_DATA_DIR / "red.csv"
+THIRTY_FILE = FIGURE4_DATA_DIR / "black.csv"
+SIXTY_FILE = FIGURE4_DATA_DIR / "blue.csv"
+PLOT_DATA_FILE = SCRIPT_DIR / "figure4_plot_data.csv"
+FIGURE_FILE = SCRIPT_DIR / "figure4_recreated.png"
 
 
 # =================================================================
@@ -212,8 +218,17 @@ for label, data in CURVES.items():
 plt.figure(figsize=(9, 6))
 
 wind_range = np.linspace(20, 90, 500)
+plot_data = []
 
 for label, data in CURVES.items():
+
+    # Save the exact digitized points used for the scatter plot.
+    plot_data.append(pd.DataFrame({
+        "curve": label,
+        "series": "digitized",
+        "wind_speed_m_per_s": data["wind_speed"],
+        "failure_probability": data["probability"],
+    }))
 
     # Plot digitized data
     plt.scatter(
@@ -227,17 +242,27 @@ for label, data in CURVES.items():
     # Plot fitted lognormal representation
     theta = FIT_RESULTS[label]["theta"]
     beta = FIT_RESULTS[label]["beta"]
+    fitted_probability = lognormal_fragility(wind_range, theta, beta)
+
+    # Save the exact fitted values used for the line in the figure.
+    plot_data.append(pd.DataFrame({
+        "curve": label,
+        "series": "lognormal_fit",
+        "wind_speed_m_per_s": wind_range,
+        "failure_probability": fitted_probability,
+    }))
 
     plt.plot(
         wind_range,
-        lognormal_fragility(
-            wind_range,
-            theta,
-            beta
-        ),
+        fitted_probability,
         linewidth=2,
         label=f"{label} — lognormal fit"
     )
+
+# This CSV contains every point used to recreate Figure 4: the digitized
+# scatter data and the 500-point fitted line for each pole age.
+pd.concat(plot_data, ignore_index=True).to_csv(PLOT_DATA_FILE, index=False)
+print(f"\nFigure 4 plot data saved to: {PLOT_DATA_FILE}")
 
 
 plt.xlabel("Extreme wind speed (m/s)")
@@ -250,7 +275,7 @@ plt.legend()
 
 plt.tight_layout()
 plt.savefig(
-    "figure4_recreated.png",
+    FIGURE_FILE,
     dpi=300,
     bbox_inches="tight"
 )

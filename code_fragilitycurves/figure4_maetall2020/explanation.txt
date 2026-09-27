@@ -1,0 +1,2 @@
+here, there is a new file called continuous_age_model.py, which aims to provide an explanation for the poles with continuous ages betweennnnn the discrete new, 30yr, 60yr poles that ma et all 2020 chose to plot.
+there is an explanation in scope.txt, point 1.

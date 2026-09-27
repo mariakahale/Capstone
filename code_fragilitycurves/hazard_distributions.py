@@ -29,7 +29,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 
-from toronto_weather_data2 import TORONTO_PARAMETERS
+from code_fragilitycurves.hazardcurves.toronto_weather_data2 import TORONTO_PARAMETERS
 
 
 # =================================================================
