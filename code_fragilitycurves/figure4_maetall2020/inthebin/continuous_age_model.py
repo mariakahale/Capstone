@@ -166,9 +166,11 @@ if __name__ == "__main__":
 
     # Overlay your actual digitized points for visual sanity-check
     ax.scatter(digitized_new["wind_speed"], digitized_new["probability"],
-               c="black", marker="x", s=10, label="digitized: new pole", zorder=5)
+               c="black", marker="x", s=5, label="digitized: new pole", zorder=5)
+    ax.scatter(digitized_30yr["wind_speed"], digitized_30yr["probability"],
+               c="red", marker="x", s=5, label="digitized: 30-yr pole", zorder=5)
     ax.scatter(digitized_60yr["wind_speed"], digitized_60yr["probability"],
-               c="red", marker="x", s=10, label="digitized: 60-yr pole", zorder=5)
+               c="blue", marker="x", s=5, label="digitized: 60-yr pole", zorder=5)
 
     ax.set_xlabel("Wind speed (m/s)")
     ax.set_ylabel("Probability of failure")
