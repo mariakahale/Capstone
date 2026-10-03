@@ -8,8 +8,12 @@ instead of only new / 30-yr / 60-yr poles.
 Units are SI unless noted. Requires numpy and matplotlib.
 """
 
+from pathlib import Path
+
 import numpy as np
 import matplotlib.pyplot as plt
+
+OUT_DIR = Path(__file__).resolve().parent     # save outputs next to this script
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -125,7 +129,7 @@ ax.set_xlabel("Extreme wind speed (m/s)")
 ax.set_ylabel("Probability of failure")
 ax.legend(loc="upper left", fontsize=9)
 fig.tight_layout()
-fig.savefig("reconstructed_figure4_5yr.png", dpi=300)
+fig.savefig(OUT_DIR / "reconstructed_figure4_5yr.png", dpi=300)
 
 # ---------------------------------------------------------------------------
 # Export CSV: one column per age
@@ -134,7 +138,7 @@ names = list(curves.keys())
 header = "WindSpeed_mps," + ",".join(n.replace(" ", "_").replace("(", "").replace(")", "")
                                      for n in names)
 data = np.column_stack([V] + [curves[n] for n in names])
-np.savetxt("figure4_fragility_curves_5yr.csv", data, delimiter=",",
+np.savetxt(OUT_DIR / "figure4_fragility_curves_5yr.csv", data, delimiter=",",
            header=header, comments="", fmt="%.6f")
 
 if __name__ == "__main__":
