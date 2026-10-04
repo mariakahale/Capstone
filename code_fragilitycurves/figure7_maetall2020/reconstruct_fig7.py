@@ -29,6 +29,12 @@ from toronto_weather_data2 import lookup_toronto_ice_gpd_parameters
 
 TORONTO_ICE_ALPHA, TORONTO_ICE_K = lookup_toronto_ice_gpd_parameters()
 
+# Toronto concurrent wind (3-s gust, m/s) from Sheng et al. (2023) Table 4
+sys.path.insert(0, str(OUT_DIR / "concurrentwindspeed"))
+from concurrentwindspeed import concurrent_gust
+
+TORONTO_V_CONC = concurrent_gust()   # defaults: T = 50 yr, delta_t = 7 days
+
 # =============================================================================
 # 0. CONFIGURATION  <-- edit this block
 # =============================================================================
@@ -46,9 +52,9 @@ SITES = {
     # assumed for Seattle).
     "Seattle":      dict(alpha=0.9087, k=-0.3733, u=0.0, v_conc=9.0),
     "Grand Marais": dict(alpha=6.6357, k=-0.1037, u=0.0, v_conc=26.817),
-    # Toronto: alpha/k from toronto_weather_data2.py (same Eq. 6 convention).
-    # >>> v_conc still needs to be filled in <<<
-    "Toronto":      dict(alpha=TORONTO_ICE_ALPHA, k=TORONTO_ICE_K, u=0.0, v_conc=None),
+    # Toronto: alpha/k from toronto_weather_data2.py (same Eq. 6 convention),
+    # v_conc from concurrentwindspeed.py.
+    "Toronto":      dict(alpha=TORONTO_ICE_ALPHA, k=TORONTO_ICE_K, u=0.0, v_conc=TORONTO_V_CONC),
 }
 
 # Values the paper reports, used for the validation printout
