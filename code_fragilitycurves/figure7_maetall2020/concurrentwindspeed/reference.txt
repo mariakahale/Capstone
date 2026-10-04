@@ -1,0 +1,3 @@
+From this paper: [2] "Estimating and Mapping Extreme Ice Accretion Hazard and Load Due to Freezing Rain at Canadian Sites" to get the concurrent wind speed information for Toronto
+
+Also, uses [3] (Durst 1960, as reproduced in ASCE 7-16 Commentary Fig. C26.5-1), which is the 1.52 factor to convert hourly mean wind speed to 3s gust.

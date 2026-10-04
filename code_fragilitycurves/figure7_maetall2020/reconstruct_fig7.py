@@ -14,6 +14,7 @@ What it does
 Equation numbers in comments refer to the paper.
 """
 
+import sys
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -21,6 +22,12 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 OUT_DIR = Path(__file__).resolve().parent     # save outputs next to this script
+
+# Toronto GPD ice parameters come from the hazard-curve fit in the subfolder
+sys.path.insert(0, str(OUT_DIR / "hazardcurves_torontoweatherdata_weibull"))
+from toronto_weather_data2 import lookup_toronto_ice_gpd_parameters
+
+TORONTO_ICE_ALPHA, TORONTO_ICE_K = lookup_toronto_ice_gpd_parameters()
 
 # =============================================================================
 # 0. CONFIGURATION  <-- edit this block
@@ -39,8 +46,9 @@ SITES = {
     # assumed for Seattle).
     "Seattle":      dict(alpha=0.9087, k=-0.3733, u=0.0, v_conc=9.0),
     "Grand Marais": dict(alpha=6.6357, k=-0.1037, u=0.0, v_conc=26.817),
-    # >>> Fill in your Toronto values <<<
-    "Toronto":      dict(alpha=None, k=None, u=0.0, v_conc=None),
+    # Toronto: alpha/k from toronto_weather_data2.py (same Eq. 6 convention).
+    # >>> v_conc still needs to be filled in <<<
+    "Toronto":      dict(alpha=TORONTO_ICE_ALPHA, k=TORONTO_ICE_K, u=0.0, v_conc=None),
 }
 
 # Values the paper reports, used for the validation printout

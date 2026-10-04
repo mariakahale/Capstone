@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./code_fragilitycurves/figure7_maetall2020/hazardcurves_torontoweatherdata_weibull"
+    ]
+}
