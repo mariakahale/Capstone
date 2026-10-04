@@ -1,0 +1,2 @@
+in this folder is the hazard curve code for ice thickness.
+refers to this paper: "Combined wind and ice loads from historical extreme wind and ice data"

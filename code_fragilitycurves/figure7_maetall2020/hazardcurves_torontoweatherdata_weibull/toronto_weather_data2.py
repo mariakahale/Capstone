@@ -8,6 +8,8 @@ SOURCE
 ------
 Krishnasamy, S. & Kulendran, S. (1998), "A procedure for calculating
 wind-on-ice loads", Atmospheric Research, 46, 123-129.
+"Combined wind and ice loads from historical
+extreme wind and ice data"
 
 The Toronto International Airport values below are entered directly from
 the Toronto weather-data paper.
@@ -254,6 +256,27 @@ TORONTO_PARAMETERS = {
         "factor": TORONTO_WIND_ON_ICE_FACTOR,
     },
 }
+
+
+def lookup_toronto_ice_gpd_parameters():
+    """
+    Return the fitted Toronto GPD ice parameters (alpha, k).
+
+    Usage:
+        from toronto_weather_data2 import lookup_toronto_ice_gpd_parameters
+        alpha, k = lookup_toronto_ice_gpd_parameters()
+
+    Returns
+    -------
+    alpha : float
+        GPD scale parameter in mm.
+    k : float
+        GPD shape parameter (dimensionless).
+
+    The fixed values u = 0 mm and lambda = 1/year are not returned; they
+    are in TORONTO_PARAMETERS["ice"] if needed.
+    """
+    return TORONTO_ICE_ALPHA, TORONTO_ICE_K
 
 
 # ============================================================================
