@@ -1,0 +1,65 @@
+NOTE: Wire stiffness (EA) calibration in wire_fragility_by_span.py
+Status: OPEN, to raise with the paper's author or keep as a stated limitation
+======================================================================
+
+WHAT EA IS
+EA = elastic modulus (E, in Pa) x conductor cross-sectional area (A, in m^2), in newtons.
+It sets how much the wire stretches under tension: stretch = T x length / EA.
+More stretch -> more sag -> lower tension for the same load -> the wire can carry more
+before breaking. So EA directly sets the wire's breaking load (the radius of the Fig. 2
+failure circle).
+
+THE CONDUCTOR (confirmed from Ma's own source)
+Short (2005), Electric Power Distribution Equipment and Systems, Table 2.3:
+336.4 kcmil ACSR 30/7 ("Oriole"): 0.741 in diameter, 17,300 lb breaking strength,
+526 lb/1000 ft. This matches Ma et al. exactly.
+Area (derived from the table, not printed in it; Short notes that kcmil counts aluminum only):
+  aluminum = 336.4 kcmil x 0.5067 mm^2/kcmil = 170.5 mm^2
+  steel    = 7/30 of that (30/7 strands, equal strand diameter) = 39.8 mm^2
+  total    = 210.3 mm^2
+
+THE PROBLEM
+Ma et al. (2020) give E = 3e7 MPa (= 30,000 GPa). That is not a physical value for any
+conductor material. Short Table 2.1 lists: steel core wire 29e6 psi (~200 GPa),
+1350 aluminum 10e6 psi (~69 GPa). A rule-of-mixtures estimate for this ACSR gives ~94 GPa;
+the usual design (final) modulus is ~78-81 GPa (Hou et al. 2023 use 81 GPa).
+Likely origin: 3e7 is roughly the steel modulus in PSI (29-30e6 psi), mislabelled as MPa.
+But even reading it as 3e7 psi does not reproduce Ma's Fig. 2.
+
+What each assumption gives for the 91.44 m span, A = 210.3 mm^2 (Fig. 2 radius = 117.3 N/m):
+
+  Assumption                        EA (N)    Breaking load   Ice at failure (no wind)
+  Ma's printed E (3e7 MPa)          6.3e9     107.6 N/m       50.8 mm
+  3e7 psi (steel, units slip?)      4.4e7     204.8 N/m       74.6 mm
+  Rule of mixtures (~94 GPa)        2.0e7     279.1 N/m       89.1 mm
+  Typical ACSR (78 GPa)             1.6e7     301.6 N/m       93.0 mm
+  Calibrated (used in script)       5.6e8     117.3 N/m       53.6 mm
+
+None of the physical assumptions reproduces Fig. 2.
+
+WHAT THE SCRIPT DOES
+EA is calibrated so the 91.44 m wire breaks at 117.3 N/m, i.e. it reproduces Ma's Fig. 2
+(their OpenSees output). The same EA is used for every span, since EA is a property of the
+wire, not the span. With A = 210 mm^2 this EA implies E ~ 2,670 GPa, which is also not
+physical. It is an effective stiffness that absorbs unexplained differences in Ma's model
+(the E value, mesh, how wire length/sag were set up). It is not a measured property.
+
+Related inconsistency: Fig. 2 implies ~53.6 mm of ice at failure with no wind; Ma's text
+says ~57.5 mm. The script follows Fig. 2. Use calibrate_EA(cond, r_fail_zero_wind=0.0575)
+to follow the text instead.
+
+WHY IT MATTERS
+With a realistic stiffness, the wire breaks at ~2.4-2.6x Ma's load, so Ma's wire fragility
+(and ours) may be conservative (wires shown as weaker than they are).
+
+OPTIONS
+1. Keep calibrated EA. Reproduces Ma; state it as "effective axial stiffness calibrated to
+   Ma et al. Fig. 2."
+2. Use Ma's printed E with A = 210 mm^2. Traceable to the paper's inputs; ~8% below Fig. 2.
+3. Use realistic ACSR E (cite Short Table 2.1 / Hou et al. 2023). Physically correct;
+   no longer matches Ma.
+Switch with Conductor(EA=...).
+
+TO RESOLVE
+Ask the author for the OpenSees input file (.tcl) behind Fig. 2. It contains the E, A,
+wire length and mesh actually used, which would settle this directly.
