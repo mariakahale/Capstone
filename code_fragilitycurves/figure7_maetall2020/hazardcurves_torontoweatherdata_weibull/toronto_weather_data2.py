@@ -47,6 +47,31 @@ Wind:
     source = km/h
     model = m/s
 
+WIND AVERAGING TIME -- VERSION 1 vs VERSION 2
+--------------------------------------------
+Krishnasamy & Kulendran (1998) do not state the averaging time of their wind
+speeds. They are treated here as HOURLY MEAN speeds at 10 m, because:
+  - they are AES weather-station annual extremes, and the paper's loads are
+    for a conductor at 33 ft (= 10 m), the standard reference height;
+  - the 50-yr value (92.05 km/h = 25.6 m/s) is close to the 50-yr hourly-mean
+    Toronto wind in Sheng et al. (2023) Table 4 (27.6 m/s);
+  - read as 3-s gusts, Toronto's 50-yr wind would be ~30% below Ma et al.'s
+    ASCE 7 sites (Seattle 35.0, Grand Marais 36.8 m/s), which is implausible.
+
+Ma et al. (2020) Fig. 4 and Fig. 7 use 3-SECOND GUST speeds (ASCE 7 basis).
+So the wind hazard must be converted before it is integrated against Fig. 4.
+
+  VERSION 1 (original functions, unchanged): hourly-mean speeds, as published.
+  VERSION 2 (functions ending in _v2): 3-s gust speeds = hourly mean x 1.52.
+
+The 1.52 factor is the Durst (1960) gust factor, as reproduced in the ASCE 7-16
+Commentary, Fig. C26.5-1: the ratio of the 3-s gust to the hourly-mean wind
+speed in open terrain at 10 m. It is the same factor used in
+concurrentwindspeed.py (DURST_3S).
+
+Use VERSION 2 for anything integrated against Ma et al.'s fragility curves.
+The ice fit is identical in both versions (ice thickness has no averaging time).
+
 Ice:
     mm
 
@@ -95,6 +120,15 @@ TORONTO_WIND_SPEED_MS = TORONTO_WIND_SPEED_KMH / 3.6
 # Toronto-specific wind-on-ice factor reported by the source paper.
 # Keep this separate from the concurrent-wind hazard distribution.
 TORONTO_WIND_ON_ICE_FACTOR = 0.55
+
+# ---- VERSION 2: convert hourly-mean speeds to 3-s gusts --------------------
+# Durst (1960) / ASCE 7-16 Commentary Fig. C26.5-1: 3-s gust / hourly mean
+# = 1.52 in open terrain at 10 m. Same factor as concurrentwindspeed.py.
+HOURLY_TO_3S_GUST = 1.52
+TORONTO_WIND_SPEED_MS_V2 = TORONTO_WIND_SPEED_MS * HOURLY_TO_3S_GUST
+
+TORONTO_WIND_PARAMETERS_CSV_V2 = SCRIPT_DIR / "toronto_wind_parameters_v2_3s_gust.csv"
+TORONTO_WIND_XY_CSV_V2 = SCRIPT_DIR / "toronto_wind_xy_coordinates_v2_3s_gust.csv"
 
 
 # ============================================================================
@@ -643,12 +677,296 @@ def plot_toronto_hazard_curves(
 
 
 # ============================================================================
-# 9. MAIN
+# 9. VERSION 2 -- WIND AS 3-SECOND GUSTS (hourly mean x 1.52)
+# ============================================================================
+# Everything in this section mirrors the version 1 function of the same name,
+# but uses TORONTO_WIND_SPEED_MS_V2 (3-s gusts). The ice functions are not
+# duplicated because the ice fit does not change.
+#
+# Note: multiplying every wind speed by a constant leaves the Weibull shape
+# (alpha) unchanged and multiplies the scale (u) by the same constant, so
+# expect alpha_v2 = alpha and u_v2 = 1.52 * u. Refitting confirms this.
+
+def fit_toronto_weibull_v2():
+    """Version 2 of fit_toronto_weibull(): fit the 3-s gust speeds."""
+
+    def model(T, alpha, u):
+        return weibull_speed_for_return_period(T, alpha, u)
+
+    (alpha, u), covariance = curve_fit(
+        model,
+        TORONTO_RETURN_PERIODS_YEARS,
+        TORONTO_WIND_SPEED_MS_V2,
+        p0=[3.0, 38.0],
+        bounds=([1e-8, 1e-8], [np.inf, np.inf]),
+        maxfev=10000,
+    )
+
+    return float(alpha), float(u), covariance
+
+
+TORONTO_WIND_ALPHA_V2, TORONTO_WIND_U_V2, TORONTO_WIND_COVARIANCE_V2 = (
+    fit_toronto_weibull_v2()
+)
+
+# Version 2 parameter dictionary: gust wind, same ice.
+TORONTO_PARAMETERS_V2 = {
+    "wind": {
+        "alpha": TORONTO_WIND_ALPHA_V2,
+        "u": TORONTO_WIND_U_V2,
+        "averaging": "3-s gust (hourly mean x 1.52)",
+    },
+    "ice": TORONTO_PARAMETERS["ice"],
+    "wind_on_ice": TORONTO_PARAMETERS["wind_on_ice"],
+}
+
+
+def lookup_toronto_wind_weibull_parameters():
+    """Version 1 Weibull (alpha, u): hourly-mean wind, as published."""
+    return TORONTO_WIND_ALPHA, TORONTO_WIND_U
+
+
+def lookup_toronto_wind_weibull_parameters_v2():
+    """Version 2 Weibull (alpha, u): 3-s gust wind. Use this with Ma et al.'s
+    Fig. 4 / Fig. 7 fragility curves.
+
+    Usage:
+        from toronto_weather_data2 import lookup_toronto_wind_weibull_parameters_v2
+        alpha, u = lookup_toronto_wind_weibull_parameters_v2()
+    """
+    return TORONTO_WIND_ALPHA_V2, TORONTO_WIND_U_V2
+
+
+def fitted_wind_speed_ms_v2(T):
+    """Return the Toronto fitted Weibull 3-s gust speed in m/s."""
+    return weibull_speed_for_return_period(
+        T,
+        TORONTO_WIND_ALPHA_V2,
+        TORONTO_WIND_U_V2,
+    )
+
+
+def fitted_wind_speed_kmh_v2(T):
+    """Return the Toronto fitted Weibull 3-s gust speed in km/h."""
+    return fitted_wind_speed_ms_v2(T) * 3.6
+
+
+def save_toronto_wind_outputs_v2(
+    parameters_path=TORONTO_WIND_PARAMETERS_CSV_V2,
+    xy_path=TORONTO_WIND_XY_CSV_V2,
+):
+    """Version 2 of save_toronto_wind_outputs(): 3-s gust Weibull parameters
+    and XY coordinates. Also records the hourly-mean source value."""
+    parameters_path = Path(parameters_path)
+    xy_path = Path(xy_path)
+
+    pd.DataFrame([
+        {
+            "parameter": "alpha",
+            "value": TORONTO_WIND_ALPHA_V2,
+            "units": "dimensionless",
+            "description": "Weibull shape parameter (3-s gust)",
+        },
+        {
+            "parameter": "u",
+            "value": TORONTO_WIND_U_V2,
+            "units": "m/s",
+            "description": "Weibull scale parameter (3-s gust)",
+        },
+        {
+            "parameter": "hourly_to_3s_gust",
+            "value": HOURLY_TO_3S_GUST,
+            "units": "dimensionless",
+            "description": "Durst (1960) / ASCE 7-16 Commentary Fig. C26.5-1",
+        },
+    ]).to_csv(parameters_path, index=False)
+
+    fitted_wind = fitted_wind_speed_ms_v2(TORONTO_RETURN_PERIODS_YEARS)
+    pd.DataFrame({
+        "x_return_period_years": TORONTO_RETURN_PERIODS_YEARS,
+        "source_hourly_mean_wind_speed_m_per_s": TORONTO_WIND_SPEED_MS,
+        "y_observed_3s_gust_m_per_s": TORONTO_WIND_SPEED_MS_V2,
+        "y_fitted_3s_gust_m_per_s": fitted_wind,
+        "residual_observed_minus_fitted_m_per_s": (
+            TORONTO_WIND_SPEED_MS_V2 - fitted_wind
+        ),
+    }).to_csv(xy_path, index=False)
+
+    print(f"Saved Toronto wind Weibull parameters (v2, 3-s gust) to: {parameters_path}")
+    print(f"Saved Toronto wind XY coordinates (v2, 3-s gust) to: {xy_path}")
+
+
+def print_validation_table_v2():
+    """Version 2 of print_validation_table(): wind fit on 3-s gusts."""
+    wind_fit = fitted_wind_speed_ms_v2(TORONTO_RETURN_PERIODS_YEARS)
+    res = TORONTO_WIND_SPEED_MS_V2 - wind_fit
+    rmse = np.sqrt(np.mean(res ** 2))
+    r2 = 1.0 - np.sum(res ** 2) / np.sum(
+        (TORONTO_WIND_SPEED_MS_V2 - np.mean(TORONTO_WIND_SPEED_MS_V2)) ** 2
+    )
+
+    print("\n" + "=" * 72)
+    print("TORONTO HAZARD DISTRIBUTION -- VERSION 2 (wind as 3-s gust)")
+    print("=" * 72)
+    print(f"\nHourly mean -> 3-s gust factor = {HOURLY_TO_3S_GUST}")
+    print("\nWEIBULL WIND FIT (3-s gust)")
+    print(f"  alpha = {TORONTO_WIND_ALPHA_V2:.6f}   (v1: {TORONTO_WIND_ALPHA:.6f})")
+    print(f"  u     = {TORONTO_WIND_U_V2:.6f} m/s (v1: {TORONTO_WIND_U:.6f} m/s)")
+    print(f"  RMSE  = {rmse:.6f} m/s")
+    print(f"  R^2   = {r2:.6f}")
+    print("\nGPD ICE FIT: unchanged from version 1")
+
+    print("\nSOURCE DATA VS FIT")
+    print("-" * 72)
+    print(f"{'T (yr)':>8} | {'Hourly src':>10} | {'Gust src':>10} | {'Gust fit':>10}")
+    print("-" * 72)
+    for T, h, g, f in zip(TORONTO_RETURN_PERIODS_YEARS, TORONTO_WIND_SPEED_MS,
+                          TORONTO_WIND_SPEED_MS_V2, wind_fit):
+        print(f"{T:8.0f} | {h:10.3f} | {g:10.3f} | {f:10.3f}")
+
+
+def print_standard_return_period_summary_v2():
+    """Version 2 of print_standard_return_period_summary()."""
+    return_periods = np.array(
+        [10, 25, 50, 100, 200, 500, 1000, 1700],
+        dtype=float,
+    )
+
+    print("\n" + "=" * 72)
+    print("TORONTO FITTED HAZARD CURVE -- VERSION 2 (wind as 3-s gust)")
+    print("=" * 72)
+    print("Values at 1000 and 1700 years are extrapolations beyond the")
+    print("500-year maximum return period in the Toronto source data.\n")
+
+    print(
+        f"{'T (yr)':>8} | "
+        f"{'Gust (m/s)':>12} | "
+        f"{'Gust (km/h)':>13} | "
+        f"{'Hourly (m/s)':>13} | "
+        f"{'Ice (mm)':>10}"
+    )
+    print("-" * 72)
+
+    for T in return_periods:
+        print(
+            f"{T:8.0f} | "
+            f"{fitted_wind_speed_ms_v2(T):12.3f} | "
+            f"{fitted_wind_speed_kmh_v2(T):13.2f} | "
+            f"{fitted_wind_speed_ms(T):13.3f} | "
+            f"{fitted_ice_thickness_mm(T):10.3f}"
+        )
+
+
+def plot_toronto_hazard_curves_v2(
+    save_path="toronto_hazard_curves_v2_3s_gust.png",
+    show_extrapolation=True,
+):
+    """Version 2 of plot_toronto_hazard_curves().
+
+    Wind panel: the 3-s gust data and fit (v2), with the hourly-mean data and
+    fit (v1) shown faintly for comparison. Ice panel: same as version 1.
+    """
+
+    import matplotlib.pyplot as plt
+
+    T_supported = np.linspace(10, 500, 500)
+    T_extrapolated = np.linspace(500, 1700, 300)
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
+
+    # ------------------------------------------------------------------
+    # WIND
+    # ------------------------------------------------------------------
+    axes[0].scatter(
+        TORONTO_RETURN_PERIODS_YEARS,
+        TORONTO_WIND_SPEED_MS,
+        color="grey",
+        alpha=0.5,
+        label="Source data, hourly mean (v1)",
+        zorder=3,
+    )
+    axes[0].plot(
+        T_supported,
+        fitted_wind_speed_ms(T_supported),
+        color="grey",
+        alpha=0.5,
+        label="Weibull fit, hourly mean (v1)",
+    )
+
+    axes[0].scatter(
+        TORONTO_RETURN_PERIODS_YEARS,
+        TORONTO_WIND_SPEED_MS_V2,
+        label=f"Source data x {HOURLY_TO_3S_GUST} = 3-s gust (v2)",
+        zorder=3,
+    )
+    axes[0].plot(
+        T_supported,
+        fitted_wind_speed_ms_v2(T_supported),
+        label="Weibull fit, 3-s gust (10–500 yr)",
+    )
+
+    if show_extrapolation:
+        axes[0].plot(
+            T_extrapolated,
+            fitted_wind_speed_ms_v2(T_extrapolated),
+            linestyle="--",
+            label="Weibull extrapolation (>500 yr)",
+        )
+
+    axes[0].set_xlabel("Return period (years)")
+    axes[0].set_ylabel("Extreme wind speed (m/s)")
+    axes[0].set_title("Toronto Wind Hazard (v2: 3-s gust)")
+    axes[0].legend()
+    axes[0].grid(alpha=0.25)
+
+    # ------------------------------------------------------------------
+    # ICE (unchanged)
+    # ------------------------------------------------------------------
+    axes[1].scatter(
+        TORONTO_RETURN_PERIODS_YEARS,
+        TORONTO_ICE_THICKNESS_MM,
+        label="Toronto source data",
+        zorder=3,
+    )
+    axes[1].plot(
+        T_supported,
+        fitted_ice_thickness_mm(T_supported),
+        label="GPD fit (10–500 yr)",
+    )
+    if show_extrapolation:
+        axes[1].plot(
+            T_extrapolated,
+            fitted_ice_thickness_mm(T_extrapolated),
+            linestyle="--",
+            label="GPD extrapolation (>500 yr)",
+        )
+    axes[1].set_xlabel("Return period (years)")
+    axes[1].set_ylabel("Extreme ice thickness (mm)")
+    axes[1].set_title("Toronto Ice Hazard (unchanged)")
+    axes[1].legend()
+    axes[1].grid(alpha=0.25)
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=200, bbox_inches="tight")
+    plt.show()
+
+    print(f"\nSaved plot to: {save_path}")
+
+
+# ============================================================================
+# 10. MAIN
 # ============================================================================
 
 if __name__ == "__main__":
+    # Version 1: hourly-mean wind, as published
     save_toronto_wind_outputs()
     save_toronto_ice_outputs()
     print_validation_table()
     print_standard_return_period_summary()
     plot_toronto_hazard_curves()
+
+    # Version 2: wind as 3-s gust (use this with Ma et al.'s fragility curves)
+    save_toronto_wind_outputs_v2()
+    print_validation_table_v2()
+    print_standard_return_period_summary_v2()
+    plot_toronto_hazard_curves_v2()

@@ -1,0 +1,4 @@
+parameter,value,units,description
+alpha,3.1625638716445468,dimensionless,Weibull shape parameter (3-s gust)
+u,25.42222867106606,m/s,Weibull scale parameter (3-s gust)
+hourly_to_3s_gust,1.52,dimensionless,Durst (1960) / ASCE 7-16 Commentary Fig. C26.5-1
