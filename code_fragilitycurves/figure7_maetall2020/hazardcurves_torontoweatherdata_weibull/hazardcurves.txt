@@ -1,2 +1,7 @@
 in this folder is the hazard curve code for ice thickness.
 refers to this paper: "Combined wind and ice loads from historical extreme wind and ice data"
+
+ASSUMPTION: the data is measured for a conductor 33ft above ground, from "Combined wind and ice loads from historical extreme wind and ice data"
+just for reference, ma et all 2020 assumes that: "The heights of tip and wires are modeled with a mean height of 11.7 m (38.39 ft) and 11.1 m (36.42 ft) with a coefficient of variation of 0.03 (Salman and Li 2016). "
+
+the 1.52 factor is the same as is used in concurrentwindspeed, which is the conversion factor to go from hourly means to 3s gust (Durst)
