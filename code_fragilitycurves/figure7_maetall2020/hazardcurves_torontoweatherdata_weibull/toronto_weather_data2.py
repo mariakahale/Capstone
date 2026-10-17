@@ -117,10 +117,6 @@ TORONTO_WIND_SPEED_KMH = np.array(
 # Convert source wind speeds to SI units for the hazard model.
 TORONTO_WIND_SPEED_MS = TORONTO_WIND_SPEED_KMH / 3.6
 
-# Toronto-specific wind-on-ice factor reported by the source paper.
-# Keep this separate from the concurrent-wind hazard distribution.
-TORONTO_WIND_ON_ICE_FACTOR = 0.55
-
 # ---- VERSION 2: convert hourly-mean speeds to 3-s gusts --------------------
 # Durst (1960) / ASCE 7-16 Commentary Fig. C26.5-1: 3-s gust / hourly mean
 # = 1.52 in open terrain at 10 m. Same factor as concurrentwindspeed.py.

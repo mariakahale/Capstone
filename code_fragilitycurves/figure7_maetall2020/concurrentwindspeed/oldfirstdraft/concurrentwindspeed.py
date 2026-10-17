@@ -49,5 +49,3 @@ Vec_50_newD = Y_50 / (1 + 2 * A_m50 / D) ** 0.5
 conversion_factor = 1.52 #this is to convert hourly mean into 3s gust speed, as used in ma et all 2020
 Vec_50_3s = Vec_50_newD * conversion_factor
 
-
-#note: Krishnasamy and Kulendran (1998) recommend a concurrent wind of 0.55 of the 50-year extreme wind for Toronto. Sheng et al. (2023) report the equivalent ratio as R_EC/A-50 = V_EC-50 / V_A-50; for Toronto this gives 21/27.6 ≈ 0.76 (calculated from their Table 4).

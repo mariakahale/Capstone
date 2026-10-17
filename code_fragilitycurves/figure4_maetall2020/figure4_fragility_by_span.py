@@ -10,7 +10,9 @@ WHY SPAN MATTERS FOR A POLE
   figure4_fragility.py, both fixed there at Ma's 91.44 m:
       Aw ~ N(5.16 m^2, ...)  wind area of the wires on the pole (3 x 0.01882 m x 91.44 m)
       #note: the "3" is the number of wires on the pole, not the number of spans attached
+      #0.01882 m = 18.82mm diameter wire, 91.44 m = 300 ft span
       Gi = 7766 * 0.09144    wire gravity load on the pole (per wire)
+      #776.6 kg/km
   Here both are scaled by  L_trib / 91.44,  where
       L_trib = (left span + right span) / 2      (end pole: one span / 2).
   Everything else (pole, strength, decay, wind randomization) is identical to
