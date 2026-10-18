@@ -30,7 +30,8 @@ Wind speed is a 3-SECOND GUST (m/s), same as Ma et al. and figure4_fragility_loo
 Ages: tabulated every 5 years (0, 5, ..., 60), the same ages as the Fig. 7 pole lookup.
 An age is rounded UP to the next 5-yr bin (32 yr -> 35 yr); no blending.
 Rounding up is conservative because older poles are weaker.
-(Note: the original figure4_fragility_lookup.py still blends ages; this file does not.)
+figure4_fragility_lookup.py imports age_bin() from this file, so both lookups
+round ages the same way.
 
 Where the numbers come from:
     figure4_fragility_by_span.py -> figure4_fragility_curves_by_span.npz.
@@ -81,10 +82,14 @@ def span_bin(tributary_m):
     return float(_SPANS[np.searchsorted(_SPANS, tributary_m - 1e-9)])
 
 
-def age_bin(age_years):
+def age_bin(age_years, ages=None):
     """Round age UP to the next tabulated age (conservative: older poles are weaker).
-    No blending between ages -- same binning idea as the span bins."""
-    ages = _AGES
+    No blending between ages -- same binning idea as the span bins.
+
+    ages : sorted array of tabulated ages. Defaults to this file's ages (from the
+           NPZ). figure4_fragility_lookup.py passes its own ages (from the CSV) so
+           both lookups use this one rounding rule."""
+    ages = _AGES if ages is None else np.asarray(ages)
     if not (0 <= age_years <= ages[-1]):
         raise ValueError(f"age_years={age_years} is outside {ages[0]}-{ages[-1]} yr.")
     return int(ages[np.searchsorted(ages, age_years - 1e-9)])

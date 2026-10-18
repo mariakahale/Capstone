@@ -31,19 +31,26 @@ Where the numbers come from:
     read straight off it with linear interpolation between the 0.1 m/s points.
 
 Ages between the 5-yr curves (e.g. 32 years):
-    Linearly interpolated between the two neighbouring curves (30 and 35 yr).
-    This is a blend of the tabulated curves, not a new simulation.
+    Rounded UP to the next 5-yr curve (32 yr -> 35 yr). No blending.
+    Rounding up is conservative because older poles are weaker.
+    The rounding is done by age_bin() in figure4_fragility_by_span_lookup.py,
+    so this file and the span lookup always use the same rule.
 
 The CSV is loaded ONCE, automatically, the first time this file is imported
 (see `_load_curves()` at the bottom).
 """
 
+import sys
 import warnings
 import numpy as np
 import pandas as pd
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+
+# Shared age-rounding rule (same function the span lookup uses)
+sys.path.insert(0, str(SCRIPT_DIR))
+from figure4_fragility_by_span_lookup import age_bin  # noqa: E402
 CSV_PATH = SCRIPT_DIR / "figure4_fragility_curves_5yr.csv"
 
 _WIND = None        # wind speeds (m/s), shape (n_speeds,)
@@ -108,25 +115,11 @@ def lookup_wind_fragility_pole(wind_speed, age_years):
     """Returns P(failure) for a wood pole of the given age at the given wind speed.
 
     wind_speed : float or array, m/s (tabulated range 20-90 m/s)
-    age_years  : float, 0-60 years. Multiples of 5 use the simulated curve
-                 directly; other ages interpolate between the two nearest curves.
+    age_years  : float, 0-60 years. Rounded UP to the next 5-yr curve
+                 (32 yr -> 35 yr) by age_bin() from figure4_fragility_by_span_lookup.py.
     """
-    lo, hi = _AGES[0], _AGES[-1]
-    if not (lo <= age_years <= hi):
-        raise ValueError(
-            f"age_years={age_years} is outside the available range ({lo}-{hi} yr)."
-        )
-
-    # Find the bracketing 5-yr curves and blend them
-    i = np.searchsorted(_AGES, age_years)
-    if _AGES[min(i, len(_AGES) - 1)] == age_years:
-        curve = _AGE_CURVES[i]
-    else:
-        a0, a1 = _AGES[i - 1], _AGES[i]
-        w = (age_years - a0) / (a1 - a0)
-        curve = (1 - w) * _AGE_CURVES[i - 1] + w * _AGE_CURVES[i]
-
-    return _interp_wind(curve, wind_speed)
+    j = int(np.where(_AGES == age_bin(age_years, _AGES))[0][0])
+    return _interp_wind(_AGE_CURVES[j], wind_speed)
 
 
 def lookup_wind_fragility_pole_new_archived(wind_speed):
@@ -161,7 +154,7 @@ if __name__ == "__main__":
             print(f"{age:>2}-yr pole @ {v} m/s wind: "
                   f"P(fail) = {lookup_wind_fragility_pole(v, age):.4f}")
     print()
-    print(f"32-yr pole @ 50 m/s wind (interpolated): "
+    print(f"32-yr pole @ 50 m/s wind (rounded up to {age_bin(32, _AGES)} yr): "
           f"P(fail) = {lookup_wind_fragility_pole(50, 32):.4f}")
     print(f"New (archived) pole @ 50 m/s wind: "
           f"P(fail) = {lookup_wind_fragility_pole_new_archived(50):.4f}")
