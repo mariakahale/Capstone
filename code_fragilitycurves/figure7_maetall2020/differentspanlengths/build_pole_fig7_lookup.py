@@ -43,7 +43,7 @@ OUT_PATH = HERE / "pole_fig7_surfaces_by_span.npz"
 BASE_SPAN = r7.SPAN                                # 91.44 m
 SPAN_BINS = np.unique(np.append(np.arange(10, 150.01, 5.0), BASE_SPAN))
 AGES = np.arange(0, 61, 5)                         # 0, 5, ..., 60 yr (same as Fig. 4)
-ICE_GRID = np.arange(0, 100.01, 0.5)               # mm (Ma: 0-80)
+ICE_GRID = np.arange(0, 150.01, 0.5)               # mm (Ma: 0-80; same 0-150 as the wire lookup)
 WIND_GRID = r7.V_GRID                              # m/s, 0-40 in 0.5 (Ma's grid)
 
 

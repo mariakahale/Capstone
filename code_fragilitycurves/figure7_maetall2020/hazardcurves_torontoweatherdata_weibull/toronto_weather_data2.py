@@ -282,9 +282,6 @@ TORONTO_PARAMETERS = {
         "u": 0.0,
         "lam": 1.0,
     },
-    "wind_on_ice": {
-        "factor": TORONTO_WIND_ON_ICE_FACTOR,
-    },
 }
 
 
@@ -509,8 +506,6 @@ def print_validation_table():
     print(f"  RMSE  = {errors['ice']['rmse']:.6f} mm")
     print(f"  R^2   = {errors['ice']['r2']:.6f}")
 
-    print("\nTORONTO WIND-ON-ICE FACTOR")
-    print(f"  factor = {TORONTO_WIND_ON_ICE_FACTOR:.2f}")
 
     print("\nSOURCE DATA VS FIT")
     print("-" * 72)
@@ -713,7 +708,6 @@ TORONTO_PARAMETERS_V2 = {
         "averaging": "3-s gust (hourly mean x 1.52)",
     },
     "ice": TORONTO_PARAMETERS["ice"],
-    "wind_on_ice": TORONTO_PARAMETERS["wind_on_ice"],
 }
 
 
