@@ -319,7 +319,7 @@ def main():
           f"zero-capacity wind {FIG2_X_ROOT:.1f} N/m\n")
 
     surfaces = [pole_surface(s, age) for age in AGES] + [wire_surface(s)]
-    np.savez("fig7_surfaces.npz", r_mm=R_GRID, v_ms=V_GRID,
+    np.savez(OUT_DIR / "fig7_surfaces.npz", r_mm=R_GRID, v_ms=V_GRID,
              pole_0=surfaces[0], pole_30=surfaces[1], pole_60=surfaces[2],
              wire=surfaces[3])
     plot_fig7(surfaces)
