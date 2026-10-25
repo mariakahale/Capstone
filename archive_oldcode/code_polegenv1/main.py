@@ -2,18 +2,18 @@ import os
 
 from pathlib import Path
 
-from config import FEEDER_NAME, MASTER_PATH, PRIMARY_KV_LL, POLE_SPACING_M
+from archive_oldcode.code_polegen.config import FEEDER_NAME, MASTER_PATH, PRIMARY_KV_LL, POLE_SPACING_M
 
-from grid.feeder import load_feeder, extract_lines
+from archive_oldcode.code_polegen.grid.feeder import load_feeder, extract_lines
 
-from grid.visualization import plot_pole_network
+from archive_oldcode.code_polegen.grid.visualization import plot_pole_network
 
-from grid.pole_generator import (
+from archive_oldcode.code_polegen.grid.pole_generator import (
     generate_poles_and_spans,
     validate_pole_model
 )
 
-from grid.line_classifier import (
+from archive_oldcode.code_polegen.grid.line_classifier import (
     get_primary_lines,
     remove_non_conductors,
     get_overhead_lines,

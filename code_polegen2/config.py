@@ -1,7 +1,6 @@
 from pathlib import Path
 
-BASE_DIR = Path("/Users/laibasabooh/Desktop/Capstone_Pole Gen 2/p1uhs0_1247--p1udt1878").resolve().parent
-
+BASE_DIR = Path(__file__).resolve().parent
 FEEDER_NAME = "1878"
 
 FEEDER_DIR = BASE_DIR / "p1uhs0_1247--p1udt1878"
