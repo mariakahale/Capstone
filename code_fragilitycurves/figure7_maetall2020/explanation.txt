@@ -1,3 +1,5 @@
 concurrent wind speed: this file is used for the fixed wind speed for the ice storm, as is used in the ma et all paper.
 
 toronto_weather_data2 is used for the weibull distribution, which is used in the figure 7, which shows the probability of each ice thickness and wind speed of occuring.
+
+the range for wind speed is 0-40 m/s, and the range for ice accretion is 0-150mm.
