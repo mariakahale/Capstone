@@ -1,0 +1,84 @@
+New Line.sb11_p48rhs1_25_534 Units=km Length=0.001511744 bus1=sb11_p48rhs1_25_bus_11_12.1.2.3 bus2=p48rdt20127-p48rhs1_25x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_Code_3_1
+
+New Line.sb11_p48rhs1_25_531 Units=km Length=0.001511744 bus1=sb11_p48rhs1_25_bus_11_9.1.2.3 bus2=p48rdt14018-p48rhs1_25x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_Code_3_1
+
+New Line.sb11_p48rhs1_25_533 Units=km Length=0.001511744 bus1=sb11_p48rhs1_25_bus_11_11.1.2.3 bus2=p48rdt3777-p48rhs1_25x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_Code_3_2
+
+New Line.sb11_p48rhs1_25_529 Units=km Length=0.001511744 bus1=sb11_p48rhs1_25_bus_11_7.1.2.3 bus2=p48rdt22224-p48rhs1_25x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_Code_3_1
+
+New Line.sb11_p48rhs1_25_530 Units=km Length=0.001511744 bus1=sb11_p48rhs1_25_bus_11_8.1.2.3 bus2=p48rdt5734-p48rhs1_25x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_Code_3
+
+New Line.sb11_p48rhs1_25_532 Units=km Length=0.001511744 bus1=sb11_p48rhs1_25_bus_11_10.1.2.3 bus2=p48rdt16011-p48rhs1_25x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_Code_3_1
+
+New Line.sb11_p48rhs1_25_544 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_20.1.2.3 bus2=sb11_p48rhs1_25_bus_11_3.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_518 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_23.1.2.3 bus2=sb11_p48rhs1_25_node_11_29.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_13KV_3
+
+New Line.sb11_p48rhs1_25_539 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_16.1.2.3 bus2=sb11_p48rhs1_25_node_11_14.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_69KV_3_1
+
+New Line.sb11_p48rhs1_25_503 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_1.1.2.3 bus2=sb11_p48rhs1_25_bus_11_2.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_69KV_3_1
+
+New Line.sb11_p48rhs1_25_523 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_8.1.2.3 bus2=sb11_p48rhs1_25_bus_11_5.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_546 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_22.1.2.3 bus2=sb11_p48rhs1_25_bus_11_4.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3_1
+
+New Line.sb11_p48rhs1_25_513 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_26.1.2.3 bus2=sb11_p48rhs1_25_bus_11_8.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_521 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_28.1.2.3 bus2=sb11_p48rhs1_25_bus_11_10.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3_1
+
+New Line.sb11_p48rhs1_25_540 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_14.1.2.3 bus2=sb11_p48rhs1_25_bus_11_2.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_69KV_3_1
+
+New Line.sb11_p48rhs1_25_511 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_25.1.2.3 bus2=sb11_p48rhs1_25_bus_11_7.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_542 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_17.1.2.3 bus2=sb11_p48rhs1_25_bus_11_3.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_25KV_3_1
+
+New Line.sb11_p48rhs1_25_517 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_30.1.2.3 bus2=sb11_p48rhs1_25_bus_11_12.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_509 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_3.1.2.3 bus2=sb11_p48rhs1_25_bus_11_4.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_13KV_3
+
+New Line.sb11_p48rhs1_25_515 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_27.1.2.3 bus2=sb11_p48rhs1_25_bus_11_9.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_526 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_11.1.2.3 bus2=sb11_p48rhs1_25_bus_11_6.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_524 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_9.1.2.3 bus2=sb11_p48rhs1_25_bus_11_5.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_519 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_29.1.2.3 bus2=sb11_p48rhs1_25_bus_11_11.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_535 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_8.1.2.3 bus2=p48rhs1_69.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_69KV_3_1
+
+New Line.sb11_p48rhs1_25_502 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_9.1.2.3 bus2=sb11_p48rhs1_25_bus_11_1.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_69KV_3_1
+
+New Line.sb11_p48rhs1_25_522 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_7.1.2.3 bus2=sb11_p48rhs1_25_bus_11_5.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_545 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_21.1.2.3 bus2=sb11_p48rhs1_25_bus_11_3.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_537 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_15.1.2.3 bus2=sb11_p48rhs1_25_node_11_13.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_69KV_3_1
+
+New Line.sb11_p48rhs1_25_538 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_13.1.2.3 bus2=sb11_p48rhs1_25_bus_11_1.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_69KV_3_1
+
+New Line.sb11_p48rhs1_25_520 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_22.1.2.3 bus2=sb11_p48rhs1_25_node_11_28.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_13KV_3_1
+
+New Line.sb11_p48rhs1_25_547 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_23.1.2.3 bus2=sb11_p48rhs1_25_bus_11_4.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_512 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_20.1.2.3 bus2=sb11_p48rhs1_25_node_11_26.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_13KV_3
+
+New Line.sb11_p48rhs1_25_541 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_18.1.2.3 bus2=sb11_p48rhs1_25_bus_11_4.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_25KV_3_1
+
+New Line.sb11_p48rhs1_25_510 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_19.1.2.3 bus2=sb11_p48rhs1_25_node_11_25.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_13KV_3
+
+New Line.sb11_p48rhs1_25_543 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_19.1.2.3 bus2=sb11_p48rhs1_25_bus_11_3.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_516 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_24.1.2.3 bus2=sb11_p48rhs1_25_node_11_30.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_13KV_3
+
+New Line.sb11_p48rhs1_25_548 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_24.1.2.3 bus2=sb11_p48rhs1_25_bus_11_4.1.2.3 switch=y enabled=y phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_514 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_21.1.2.3 bus2=sb11_p48rhs1_25_node_11_27.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_13KV_3
+
+New Line.sb11_p48rhs1_25_528 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_5.1.2.3 bus2=sb11_p48rhs1_25_bus_11_6.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_527 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_10.1.2.3 bus2=sb11_p48rhs1_25_bus_11_6.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
+New Line.sb11_p48rhs1_25_501 Units=km Length=0.001 bus1=sb11_p48rhs1_25_node_11_8.1.2.3 bus2=sb11_p48rhs1_25_node_11_9.1.2.3 switch=y enabled=y phases=3 Linecode=BREAKER_69KV_3_1
+
+New Line.sb11_p48rhs1_25_525 Units=km Length=0.001 bus1=sb11_p48rhs1_25_bus_11_12.1.2.3 bus2=sb11_p48rhs1_25_bus_11_6.1.2.3 switch=y enabled=n phases=3 Linecode=DISCONNECT_SWITCH_25KV_3
+
