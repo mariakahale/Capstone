@@ -1,0 +1,4 @@
+New Transformer.sb11_p48rhs1_25_trans_507 phases=3 windings=2 wdg=1 conn=delta Kv=69.0 kva=80000.0 %R=0.39801487608399566 bus=sb11_p48rhs1_25_node_11_15 wdg=2 conn=wye Kv=25.0 kva=80000.0 %R=0.39801487608399566 bus=sb11_p48rhs1_25_node_11_17 XHL=7.960297521679916
+
+New Transformer.sb11_p48rhs1_25_trans_508 phases=3 windings=2 wdg=1 conn=delta Kv=69.0 kva=80000.0 %R=0.39801487608399566 bus=sb11_p48rhs1_25_node_11_16 wdg=2 conn=wye Kv=25.0 kva=80000.0 %R=0.39801487608399566 bus=sb11_p48rhs1_25_node_11_18 XHL=7.960297521679916
+

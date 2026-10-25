@@ -1,0 +1,278 @@
+New Loadshape.res_kw_4691_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_4691_pu.csv) qmult = (file=../../../../../profiles/res_kvar_4691_pu.csv)
+
+New Loadshape.res_kw_1103_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_1103_pu.csv) qmult = (file=../../../../../profiles/res_kvar_1103_pu.csv)
+
+New Loadshape.res_kw_25330_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_25330_pu.csv) qmult = (file=../../../../../profiles/res_kvar_25330_pu.csv)
+
+New Loadshape.res_kw_9613_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_9613_pu.csv) qmult = (file=../../../../../profiles/res_kvar_9613_pu.csv)
+
+New Loadshape.res_kw_3379_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_3379_pu.csv) qmult = (file=../../../../../profiles/res_kvar_3379_pu.csv)
+
+New Loadshape.res_kw_11202_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_11202_pu.csv) qmult = (file=../../../../../profiles/res_kvar_11202_pu.csv)
+
+New Loadshape.res_kw_36642_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_36642_pu.csv) qmult = (file=../../../../../profiles/res_kvar_36642_pu.csv)
+
+New Loadshape.res_kw_30133_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_30133_pu.csv) qmult = (file=../../../../../profiles/res_kvar_30133_pu.csv)
+
+New Loadshape.res_kw_17978_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_17978_pu.csv) qmult = (file=../../../../../profiles/res_kvar_17978_pu.csv)
+
+New Loadshape.res_kw_19378_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_19378_pu.csv) qmult = (file=../../../../../profiles/res_kvar_19378_pu.csv)
+
+New Loadshape.res_kw_12679_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_12679_pu.csv) qmult = (file=../../../../../profiles/res_kvar_12679_pu.csv)
+
+New Loadshape.res_kw_9726_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_9726_pu.csv) qmult = (file=../../../../../profiles/res_kvar_9726_pu.csv)
+
+New Loadshape.res_kw_11268_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_11268_pu.csv) qmult = (file=../../../../../profiles/res_kvar_11268_pu.csv)
+
+New Loadshape.res_kw_4997_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_4997_pu.csv) qmult = (file=../../../../../profiles/res_kvar_4997_pu.csv)
+
+New Loadshape.res_kw_4467_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_4467_pu.csv) qmult = (file=../../../../../profiles/res_kvar_4467_pu.csv)
+
+New Loadshape.res_kw_4239_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_4239_pu.csv) qmult = (file=../../../../../profiles/res_kvar_4239_pu.csv)
+
+New Loadshape.res_kw_6317_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_6317_pu.csv) qmult = (file=../../../../../profiles/res_kvar_6317_pu.csv)
+
+New Loadshape.res_kw_29077_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_29077_pu.csv) qmult = (file=../../../../../profiles/res_kvar_29077_pu.csv)
+
+New Loadshape.res_kw_33222_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_33222_pu.csv) qmult = (file=../../../../../profiles/res_kvar_33222_pu.csv)
+
+New Loadshape.res_kw_44276_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_44276_pu.csv) qmult = (file=../../../../../profiles/res_kvar_44276_pu.csv)
+
+New Loadshape.res_kw_10107_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_10107_pu.csv) qmult = (file=../../../../../profiles/res_kvar_10107_pu.csv)
+
+New Loadshape.res_kw_11924_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_11924_pu.csv) qmult = (file=../../../../../profiles/res_kvar_11924_pu.csv)
+
+New Loadshape.res_kw_7793_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_7793_pu.csv) qmult = (file=../../../../../profiles/res_kvar_7793_pu.csv)
+
+New Loadshape.res_kw_17576_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_17576_pu.csv) qmult = (file=../../../../../profiles/res_kvar_17576_pu.csv)
+
+New Loadshape.res_kw_33214_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_33214_pu.csv) qmult = (file=../../../../../profiles/res_kvar_33214_pu.csv)
+
+New Loadshape.res_kw_7175_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_7175_pu.csv) qmult = (file=../../../../../profiles/res_kvar_7175_pu.csv)
+
+New Loadshape.res_kw_18424_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_18424_pu.csv) qmult = (file=../../../../../profiles/res_kvar_18424_pu.csv)
+
+New Loadshape.res_kw_4561_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_4561_pu.csv) qmult = (file=../../../../../profiles/res_kvar_4561_pu.csv)
+
+New Loadshape.res_kw_24677_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_24677_pu.csv) qmult = (file=../../../../../profiles/res_kvar_24677_pu.csv)
+
+New Loadshape.res_kw_39288_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_39288_pu.csv) qmult = (file=../../../../../profiles/res_kvar_39288_pu.csv)
+
+New Loadshape.res_kw_44554_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_44554_pu.csv) qmult = (file=../../../../../profiles/res_kvar_44554_pu.csv)
+
+New Loadshape.res_kw_42353_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_42353_pu.csv) qmult = (file=../../../../../profiles/res_kvar_42353_pu.csv)
+
+New Loadshape.res_kw_35448_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_35448_pu.csv) qmult = (file=../../../../../profiles/res_kvar_35448_pu.csv)
+
+New Loadshape.res_kw_31852_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_31852_pu.csv) qmult = (file=../../../../../profiles/res_kvar_31852_pu.csv)
+
+New Loadshape.res_kw_35230_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_35230_pu.csv) qmult = (file=../../../../../profiles/res_kvar_35230_pu.csv)
+
+New Loadshape.res_kw_17304_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_17304_pu.csv) qmult = (file=../../../../../profiles/res_kvar_17304_pu.csv)
+
+New Loadshape.res_kw_19169_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_19169_pu.csv) qmult = (file=../../../../../profiles/res_kvar_19169_pu.csv)
+
+New Loadshape.res_kw_7158_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_7158_pu.csv) qmult = (file=../../../../../profiles/res_kvar_7158_pu.csv)
+
+New Loadshape.res_kw_25584_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_25584_pu.csv) qmult = (file=../../../../../profiles/res_kvar_25584_pu.csv)
+
+New Loadshape.res_kw_34408_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_34408_pu.csv) qmult = (file=../../../../../profiles/res_kvar_34408_pu.csv)
+
+New Loadshape.res_kw_39242_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_39242_pu.csv) qmult = (file=../../../../../profiles/res_kvar_39242_pu.csv)
+
+New Loadshape.res_kw_20677_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_20677_pu.csv) qmult = (file=../../../../../profiles/res_kvar_20677_pu.csv)
+
+New Loadshape.res_kw_15223_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_15223_pu.csv) qmult = (file=../../../../../profiles/res_kvar_15223_pu.csv)
+
+New Loadshape.res_kw_15426_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_15426_pu.csv) qmult = (file=../../../../../profiles/res_kvar_15426_pu.csv)
+
+New Loadshape.res_kw_28011_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_28011_pu.csv) qmult = (file=../../../../../profiles/res_kvar_28011_pu.csv)
+
+New Loadshape.res_kw_34925_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_34925_pu.csv) qmult = (file=../../../../../profiles/res_kvar_34925_pu.csv)
+
+New Loadshape.res_kw_2060_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_2060_pu.csv) qmult = (file=../../../../../profiles/res_kvar_2060_pu.csv)
+
+New Loadshape.res_kw_11030_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_11030_pu.csv) qmult = (file=../../../../../profiles/res_kvar_11030_pu.csv)
+
+New Loadshape.res_kw_12589_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_12589_pu.csv) qmult = (file=../../../../../profiles/res_kvar_12589_pu.csv)
+
+New Loadshape.res_kw_17448_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_17448_pu.csv) qmult = (file=../../../../../profiles/res_kvar_17448_pu.csv)
+
+New Loadshape.res_kw_3768_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_3768_pu.csv) qmult = (file=../../../../../profiles/res_kvar_3768_pu.csv)
+
+New Loadshape.res_kw_13070_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_13070_pu.csv) qmult = (file=../../../../../profiles/res_kvar_13070_pu.csv)
+
+New Loadshape.res_kw_5996_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_5996_pu.csv) qmult = (file=../../../../../profiles/res_kvar_5996_pu.csv)
+
+New Loadshape.res_kw_36519_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_36519_pu.csv) qmult = (file=../../../../../profiles/res_kvar_36519_pu.csv)
+
+New Loadshape.res_kw_13247_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_13247_pu.csv) qmult = (file=../../../../../profiles/res_kvar_13247_pu.csv)
+
+New Loadshape.res_kw_16030_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_16030_pu.csv) qmult = (file=../../../../../profiles/res_kvar_16030_pu.csv)
+
+New Loadshape.res_kw_42141_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_42141_pu.csv) qmult = (file=../../../../../profiles/res_kvar_42141_pu.csv)
+
+New Loadshape.res_kw_25134_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_25134_pu.csv) qmult = (file=../../../../../profiles/res_kvar_25134_pu.csv)
+
+New Loadshape.res_kw_4959_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_4959_pu.csv) qmult = (file=../../../../../profiles/res_kvar_4959_pu.csv)
+
+New Loadshape.res_kw_44188_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_44188_pu.csv) qmult = (file=../../../../../profiles/res_kvar_44188_pu.csv)
+
+New Loadshape.res_kw_42743_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/res_kw_42743_pu.csv) qmult = (file=../../../../../profiles/res_kvar_42743_pu.csv)
+
+New Loadshape.com_kw_43878_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43878_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43878_pu.csv)
+
+New Loadshape.com_kw_59_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_59_pu.csv) qmult = (file=../../../../../profiles/com_kvar_59_pu.csv)
+
+New Loadshape.com_kw_72_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_72_pu.csv) qmult = (file=../../../../../profiles/com_kvar_72_pu.csv)
+
+New Loadshape.com_kw_32984_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32984_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32984_pu.csv)
+
+New Loadshape.com_kw_35142_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35142_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35142_pu.csv)
+
+New Loadshape.com_kw_36075_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36075_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36075_pu.csv)
+
+New Loadshape.com_kw_35147_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35147_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35147_pu.csv)
+
+New Loadshape.com_kw_794_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_794_pu.csv) qmult = (file=../../../../../profiles/com_kvar_794_pu.csv)
+
+New Loadshape.com_kw_32989_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32989_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32989_pu.csv)
+
+New Loadshape.com_kw_36107_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36107_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36107_pu.csv)
+
+New Loadshape.com_kw_50_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_50_pu.csv) qmult = (file=../../../../../profiles/com_kvar_50_pu.csv)
+
+New Loadshape.com_kw_36027_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36027_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36027_pu.csv)
+
+New Loadshape.com_kw_70_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_70_pu.csv) qmult = (file=../../../../../profiles/com_kvar_70_pu.csv)
+
+New Loadshape.com_kw_35980_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35980_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35980_pu.csv)
+
+New Loadshape.com_kw_33007_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_33007_pu.csv) qmult = (file=../../../../../profiles/com_kvar_33007_pu.csv)
+
+New Loadshape.com_kw_36077_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36077_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36077_pu.csv)
+
+New Loadshape.com_kw_43871_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43871_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43871_pu.csv)
+
+New Loadshape.com_kw_35137_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35137_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35137_pu.csv)
+
+New Loadshape.com_kw_41176_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_41176_pu.csv) qmult = (file=../../../../../profiles/com_kvar_41176_pu.csv)
+
+New Loadshape.com_kw_32959_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32959_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32959_pu.csv)
+
+New Loadshape.com_kw_35974_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35974_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35974_pu.csv)
+
+New Loadshape.com_kw_20050_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_20050_pu.csv) qmult = (file=../../../../../profiles/com_kvar_20050_pu.csv)
+
+New Loadshape.com_kw_19250_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_19250_pu.csv) qmult = (file=../../../../../profiles/com_kvar_19250_pu.csv)
+
+New Loadshape.com_kw_43879_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43879_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43879_pu.csv)
+
+New Loadshape.com_kw_43929_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43929_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43929_pu.csv)
+
+New Loadshape.com_kw_36014_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36014_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36014_pu.csv)
+
+New Loadshape.com_kw_43927_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43927_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43927_pu.csv)
+
+New Loadshape.com_kw_43866_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43866_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43866_pu.csv)
+
+New Loadshape.com_kw_36143_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36143_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36143_pu.csv)
+
+New Loadshape.com_kw_36035_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36035_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36035_pu.csv)
+
+New Loadshape.com_kw_36026_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36026_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36026_pu.csv)
+
+New Loadshape.com_kw_33006_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_33006_pu.csv) qmult = (file=../../../../../profiles/com_kvar_33006_pu.csv)
+
+New Loadshape.com_kw_32997_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32997_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32997_pu.csv)
+
+New Loadshape.com_kw_53_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_53_pu.csv) qmult = (file=../../../../../profiles/com_kvar_53_pu.csv)
+
+New Loadshape.com_kw_36133_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36133_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36133_pu.csv)
+
+New Loadshape.com_kw_35981_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35981_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35981_pu.csv)
+
+New Loadshape.com_kw_32976_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32976_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32976_pu.csv)
+
+New Loadshape.com_kw_29694_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_29694_pu.csv) qmult = (file=../../../../../profiles/com_kvar_29694_pu.csv)
+
+New Loadshape.com_kw_32996_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32996_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32996_pu.csv)
+
+New Loadshape.com_kw_44_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_44_pu.csv) qmult = (file=../../../../../profiles/com_kvar_44_pu.csv)
+
+New Loadshape.com_kw_32992_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32992_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32992_pu.csv)
+
+New Loadshape.com_kw_43919_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43919_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43919_pu.csv)
+
+New Loadshape.com_kw_19251_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_19251_pu.csv) qmult = (file=../../../../../profiles/com_kvar_19251_pu.csv)
+
+New Loadshape.com_kw_33005_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_33005_pu.csv) qmult = (file=../../../../../profiles/com_kvar_33005_pu.csv)
+
+New Loadshape.com_kw_35130_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35130_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35130_pu.csv)
+
+New Loadshape.com_kw_36024_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36024_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36024_pu.csv)
+
+New Loadshape.com_kw_36124_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36124_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36124_pu.csv)
+
+New Loadshape.com_kw_36089_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36089_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36089_pu.csv)
+
+New Loadshape.com_kw_66_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_66_pu.csv) qmult = (file=../../../../../profiles/com_kvar_66_pu.csv)
+
+New Loadshape.com_kw_36004_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36004_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36004_pu.csv)
+
+New Loadshape.com_kw_35145_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35145_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35145_pu.csv)
+
+New Loadshape.com_kw_36167_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36167_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36167_pu.csv)
+
+New Loadshape.com_kw_43864_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43864_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43864_pu.csv)
+
+New Loadshape.com_kw_32994_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32994_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32994_pu.csv)
+
+New Loadshape.com_kw_36078_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36078_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36078_pu.csv)
+
+New Loadshape.com_kw_36034_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36034_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36034_pu.csv)
+
+New Loadshape.com_kw_36087_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36087_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36087_pu.csv)
+
+New Loadshape.com_kw_33010_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_33010_pu.csv) qmult = (file=../../../../../profiles/com_kvar_33010_pu.csv)
+
+New Loadshape.com_kw_36142_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36142_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36142_pu.csv)
+
+New Loadshape.com_kw_36009_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36009_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36009_pu.csv)
+
+New Loadshape.com_kw_43868_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43868_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43868_pu.csv)
+
+New Loadshape.com_kw_36121_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36121_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36121_pu.csv)
+
+New Loadshape.com_kw_64_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_64_pu.csv) qmult = (file=../../../../../profiles/com_kvar_64_pu.csv)
+
+New Loadshape.com_kw_36060_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36060_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36060_pu.csv)
+
+New Loadshape.com_kw_43943_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_43943_pu.csv) qmult = (file=../../../../../profiles/com_kvar_43943_pu.csv)
+
+New Loadshape.com_kw_32986_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32986_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32986_pu.csv)
+
+New Loadshape.com_kw_36000_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36000_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36000_pu.csv)
+
+New Loadshape.com_kw_61_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_61_pu.csv) qmult = (file=../../../../../profiles/com_kvar_61_pu.csv)
+
+New Loadshape.com_kw_32964_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32964_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32964_pu.csv)
+
+New Loadshape.com_kw_32974_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32974_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32974_pu.csv)
+
+New Loadshape.com_kw_73_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_73_pu.csv) qmult = (file=../../../../../profiles/com_kvar_73_pu.csv)
+
+New Loadshape.com_kw_20045_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_20045_pu.csv) qmult = (file=../../../../../profiles/com_kvar_20045_pu.csv)
+
+New Loadshape.com_kw_36108_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36108_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36108_pu.csv)
+
+New Loadshape.com_kw_32973_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_32973_pu.csv) qmult = (file=../../../../../profiles/com_kvar_32973_pu.csv)
+
+New Loadshape.com_kw_35132_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35132_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35132_pu.csv)
+
+New Loadshape.com_kw_35983_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35983_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35983_pu.csv)
+
+New Loadshape.com_kw_36106_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_36106_pu.csv) qmult = (file=../../../../../profiles/com_kvar_36106_pu.csv)
+
+New Loadshape.com_kw_35993_pu npts= 35040 interval=0.25 mult = (file=../../../../../profiles/com_kw_35993_pu.csv) qmult = (file=../../../../../profiles/com_kvar_35993_pu.csv)
+

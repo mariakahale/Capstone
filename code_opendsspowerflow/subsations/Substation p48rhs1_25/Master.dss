@@ -1,0 +1,56 @@
+Clear
+
+New Circuit.substation_p48rhs1_69 bus1=p48rhs1_69 pu=1.0 basekV=69.0 R1=1e-05 X1=1e-05 R0=1e-05 X0=1e-05
+
+Redirect LineCodes.dss
+Redirect p48rhs1_25--p48rdt14018/LineCodes.dss
+Redirect p48rhs1_25--p48rdt16011/LineCodes.dss
+Redirect p48rhs1_25--p48rdt20127/LineCodes.dss
+Redirect p48rhs1_25--p48rdt22224/LineCodes.dss
+Redirect p48rhs1_25--p48rdt3777/LineCodes.dss
+Redirect p48rhs1_25--p48rdt5734/LineCodes.dss
+Redirect Lines.dss
+Redirect p48rhs1_25--p48rdt14018/Lines.dss
+Redirect p48rhs1_25--p48rdt16011/Lines.dss
+Redirect p48rhs1_25--p48rdt20127/Lines.dss
+Redirect p48rhs1_25--p48rdt22224/Lines.dss
+Redirect p48rhs1_25--p48rdt3777/Lines.dss
+Redirect p48rhs1_25--p48rdt5734/Lines.dss
+Redirect Transformers.dss
+Redirect p48rhs1_25--p48rdt14018/Transformers.dss
+Redirect p48rhs1_25--p48rdt16011/Transformers.dss
+Redirect p48rhs1_25--p48rdt20127/Transformers.dss
+Redirect p48rhs1_25--p48rdt22224/Transformers.dss
+Redirect p48rhs1_25--p48rdt3777/Transformers.dss
+Redirect p48rhs1_25--p48rdt5734/Transformers.dss
+Redirect Regulators.dss
+Redirect p48rhs1_25--p48rdt14018/Regulators.dss
+Redirect p48rhs1_25--p48rdt16011/Regulators.dss
+Redirect p48rhs1_25--p48rdt20127/Regulators.dss
+Redirect p48rhs1_25--p48rdt22224/Regulators.dss
+Redirect p48rhs1_25--p48rdt3777/Regulators.dss
+Redirect p48rhs1_25--p48rdt5734/Regulators.dss
+Redirect LoadShapes.dss
+Redirect p48rhs1_25--p48rdt14018/Loads.dss
+Redirect p48rhs1_25--p48rdt16011/Loads.dss
+Redirect p48rhs1_25--p48rdt20127/Loads.dss
+Redirect p48rhs1_25--p48rdt22224/Loads.dss
+Redirect p48rhs1_25--p48rdt3777/Loads.dss
+Redirect p48rhs1_25--p48rdt5734/Loads.dss
+new monitor.m1 element=Line.sb11_p48rhs1_25_535 mode=0
+new monitor.m2 element=Line.sb11_p48rhs1_25_535 mode=1
+new energymeter.m3 Line.sb11_p48rhs1_25_535
+
+Set Voltagebases=[0.12, 0.208, 0.48, 14.434, 25.0, 69.0]
+
+Calcvoltagebases
+
+Buscoords Buscoords.dss
+set maxcontroliter=50
+
+Solve mode=yearly stepsize=15m number=35040
+Export monitors m1
+Plot monitor object= m1 channels=(7 9 11 )
+Export monitors m2
+Plot monitor object= m2 channels=(1 3 5 )
+Plot Profile Phases=All

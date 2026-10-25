@@ -1,0 +1,48 @@
+New Loadshape.com_kw_812-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_812-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_812-Far-West_pu.csv)
+
+New Loadshape.com_kw_847-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_847-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_847-Far-West_pu.csv)
+
+New Loadshape.com_kw_880-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_880-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_880-Far-West_pu.csv)
+
+New Loadshape.com_kw_941-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_941-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_941-Far-West_pu.csv)
+
+New Loadshape.com_kw_958-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_958-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_958-Far-West_pu.csv)
+
+New Loadshape.com_kw_23773-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23773-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23773-Far-West_pu.csv)
+
+New Loadshape.com_kw_23791-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23791-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23791-Far-West_pu.csv)
+
+New Loadshape.com_kw_842-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_842-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_842-Far-West_pu.csv)
+
+New Loadshape.com_kw_873-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_873-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_873-Far-West_pu.csv)
+
+New Loadshape.com_kw_23799-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23799-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23799-Far-West_pu.csv)
+
+New Loadshape.com_kw_907-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_907-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_907-Far-West_pu.csv)
+
+New Loadshape.com_kw_23746-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23746-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23746-Far-West_pu.csv)
+
+New Loadshape.com_kw_23797-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23797-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23797-Far-West_pu.csv)
+
+New Loadshape.com_kw_23687-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23687-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23687-Far-West_pu.csv)
+
+New Loadshape.com_kw_23689-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23689-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23689-Far-West_pu.csv)
+
+New Loadshape.com_kw_30162-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_30162-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_30162-Far-West_pu.csv)
+
+New Loadshape.com_kw_928-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_928-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_928-Far-West_pu.csv)
+
+New Loadshape.com_kw_8186-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_8186-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_8186-Far-West_pu.csv)
+
+New Loadshape.com_kw_23709-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23709-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23709-Far-West_pu.csv)
+
+New Loadshape.com_kw_19999-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_19999-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_19999-Far-West_pu.csv)
+
+New Loadshape.com_kw_19381-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_19381-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_19381-Far-West_pu.csv)
+
+New Loadshape.com_kw_30169-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_30169-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_30169-Far-West_pu.csv)
+
+New Loadshape.com_kw_23806-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_23806-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_23806-Far-West_pu.csv)
+
+New Loadshape.com_kw_825-Far-West_pu npts= 35040 interval=0.25 mult = (file=../../../../../../profiles/com_kw_825-Far-West_pu.csv) qmult = (file=../../../../../../profiles/com_kvar_825-Far-West_pu.csv)
+
