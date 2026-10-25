@@ -1,0 +1,1380 @@
+New Line.l(r:p48rdt36lv-p48rlv38) Units=km Length=0.00631013 bus1=p48rdt36lv.1.2 bus2=p48rlv38.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt36lv-p48rlv15517) Units=km Length=0.012566200000000001 bus1=p48rdt36lv.1.2 bus2=p48rlv15517.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_4
+
+New Line.l(r:p48rdt52lv-p48rlv54) Units=km Length=0.0626723 bus1=p48rdt52lv.1.2 bus2=p48rlv54.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt97lv-p48rlv100) Units=km Length=0.001 bus1=p48rdt97lv.1.2 bus2=p48rlv100.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_3
+
+New Line.l(r:p48rdt458lv-p48rlv465) Units=km Length=0.0122251 bus1=p48rdt458lv.1.2 bus2=p48rlv465.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt464lv-p48rlv471) Units=km Length=0.0114465 bus1=p48rdt464lv.1.2 bus2=p48rlv471.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt464lv-p48rlv10504) Units=km Length=0.0114465 bus1=p48rdt464lv.1.2 bus2=p48rlv10504.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt864lv-p48rlv889) Units=km Length=0.0164829 bus1=p48rdt864lv.1.2 bus2=p48rlv889.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_8
+
+New Line.l(r:p48rdt866lv-p48rlv891) Units=km Length=0.0316987 bus1=p48rdt866lv.1.2 bus2=p48rlv891.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt867lv-p48rlv892) Units=km Length=0.0384226 bus1=p48rdt867lv.1.2 bus2=p48rlv892.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt867lv-p48rlv28845) Units=km Length=0.0418894 bus1=p48rdt867lv.1.2 bus2=p48rlv28845.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdt868lv-p48rlv893) Units=km Length=0.0448515 bus1=p48rdt868lv.1.2 bus2=p48rlv893.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt868lv-p48rlv19267) Units=km Length=0.0200352 bus1=p48rdt868lv.1.2 bus2=p48rlv19267.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt868lv-p48rlv23875) Units=km Length=0.045479 bus1=p48rdt868lv.1.2 bus2=p48rlv23875.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt868lv-p48rlv28404) Units=km Length=0.0185881 bus1=p48rdt868lv.1.2 bus2=p48rlv28404.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt908lv-p48rlv33942) Units=km Length=0.024913 bus1=p48rdt908lv.1.2 bus2=p48rlv33942.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm2711-p48rlv934) Units=km Length=0.0183116 bus1=p48rdm2711.1.2 bus2=p48rlv934.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm2711-p48rdt908lv) Units=km Length=0.0199122 bus1=p48rdt908lv.1.2 bus2=p48rdm2711.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm2712-p48rlv10948) Units=km Length=0.0416782 bus1=p48rdm2712.1.2 bus2=p48rlv10948.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm2712-p48rdt908lv) Units=km Length=0.019922 bus1=p48rdt908lv.1.2 bus2=p48rdm2712.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm3749-p48rlv1315) Units=km Length=0.0152396 bus1=p48rdm3749.1.2 bus2=p48rlv1315.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdm3749-p48rdt1270lv) Units=km Length=0.0367299 bus1=p48rdt1270lv.1.2 bus2=p48rdm3749.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdm3750-p48rlv26366) Units=km Length=0.0172795 bus1=p48rdm3750.1.2 bus2=p48rlv26366.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdm3750-p48rdt1270lv) Units=km Length=0.0193362 bus1=p48rdt1270lv.1.2 bus2=p48rdm3750.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt1274lv-p48rlv1319) Units=km Length=0.0467645 bus1=p48rdt1274lv.1.2 bus2=p48rlv1319.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt1993lv-p48rlv2102) Units=km Length=0.0151233 bus1=p48rdt1993lv.1.2 bus2=p48rlv2102.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm6860-p48rlv2511) Units=km Length=0.0140624 bus1=p48rdm6860.1.2 bus2=p48rlv2511.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm6860-p48rdt2354lv) Units=km Length=0.05438910000000001 bus1=p48rdt2354lv.1.2 bus2=p48rdm6860.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdm6861-p48rlv3775) Units=km Length=0.0116765 bus1=p48rdm6861.1.2 bus2=p48rlv3775.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm6861-p48rdt2354lv) Units=km Length=0.0195533 bus1=p48rdt2354lv.1.2 bus2=p48rdm6861.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt2393lv-p48rlv2553) Units=km Length=0.0266237 bus1=p48rdt2393lv.1.2 bus2=p48rlv2553.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt2708lv-p48rlv21797) Units=km Length=0.053248 bus1=p48rdt2708lv.1.2 bus2=p48rlv21797.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdm7801-p48rlv2916) Units=km Length=0.0466457 bus1=p48rdm7801.1.2 bus2=p48rlv2916.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm7801-p48rdt2708lv) Units=km Length=0.0184204 bus1=p48rdt2708lv.1.2 bus2=p48rdm7801.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm7880-p48rlv2957) Units=km Length=0.0927807 bus1=p48rdm7880.1.2 bus2=p48rlv2957.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm7880-p48rdt2745lv) Units=km Length=0.0188556 bus1=p48rdt2745lv.1.2 bus2=p48rdm7880.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm7881-p48rlv39433) Units=km Length=0.079135 bus1=p48rdm7881.1.2 bus2=p48rlv39433.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm7881-p48rdt2745lv) Units=km Length=0.0188534 bus1=p48rdt2745lv.1.2 bus2=p48rdm7881.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm8809-p48rlv3353) Units=km Length=0.011593900000000002 bus1=p48rdm8809.1.2 bus2=p48rlv3353.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm8809-p48rdt3075lv) Units=km Length=0.0386724 bus1=p48rdt3075lv.1.2 bus2=p48rdm8809.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdm8810-p48rlv31417) Units=km Length=0.0186751 bus1=p48rdm8810.1.2 bus2=p48rlv31417.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm8810-p48rdt3075lv) Units=km Length=0.0386724 bus1=p48rdt3075lv.1.2 bus2=p48rdm8810.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt3077lv-p48rlv3355) Units=km Length=0.0757514 bus1=p48rdt3077lv.1.2 bus2=p48rlv3355.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt3436lv-p48rlv3778) Units=km Length=0.0388193 bus1=p48rdt3436lv.1.2 bus2=p48rlv3778.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt3777lv-p48rlv4174) Units=km Length=0.00612817 bus1=p48rdt3777lv.1.2 bus2=p48rlv4174.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdt3777lv-p48rlv29689) Units=km Length=0.0104231 bus1=p48rdt3777lv.1.2 bus2=p48rlv29689.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdt4114lv-p48rlv4604) Units=km Length=0.001 bus1=p48rdt4114lv.1.2 bus2=p48rlv4604.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_4
+
+New Line.l(r:p48rdt4115lv-p48rlv4605) Units=km Length=0.001 bus1=p48rdt4115lv.1.2 bus2=p48rlv4605.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt4116lv-p48rlv4606) Units=km Length=0.0243515 bus1=p48rdt4116lv.1.2 bus2=p48rlv4606.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm11528-p48rlv33113) Units=km Length=0.0294116 bus1=p48rdm11528.1.2 bus2=p48rlv33113.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm11528-p48rdt4116lv) Units=km Length=0.0180956 bus1=p48rdt4116lv.1.2 bus2=p48rdm11528.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm11529-p48rlv41091) Units=km Length=0.0253718 bus1=p48rdm11529.1.2 bus2=p48rlv41091.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm11529-p48rdt4116lv) Units=km Length=0.0181053 bus1=p48rdt4116lv.1.2 bus2=p48rdm11529.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt4117lv-p48rlv4607) Units=km Length=0.0547079 bus1=p48rdt4117lv.1.2 bus2=p48rlv4607.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt4455lv-p48rlv5017) Units=km Length=0.0710309 bus1=p48rdt4455lv.1.2 bus2=p48rlv5017.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt4483lv-p48rlv5048) Units=km Length=0.0860252 bus1=p48rdt4483lv.1.2 bus2=p48rlv5048.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt4801lv-p48rlv5464) Units=km Length=0.0177003 bus1=p48rdt4801lv.1.2 bus2=p48rlv5464.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt5111lv-p48rlv5858) Units=km Length=0.0234972 bus1=p48rdt5111lv.1.2 bus2=p48rlv5858.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdm14784-p48rlv6286) Units=km Length=0.016212700000000003 bus1=p48rdm14784.1.2 bus2=p48rlv6286.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm14784-p48rdt5438lv) Units=km Length=0.0193362 bus1=p48rdt5438lv.1.2 bus2=p48rdm14784.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm14785-p48rlv8356) Units=km Length=0.013632 bus1=p48rdm14785.1.2 bus2=p48rlv8356.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm14785-p48rdt5438lv) Units=km Length=0.0359835 bus1=p48rdt5438lv.1.2 bus2=p48rdm14785.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt5762lv-p48rlv6715) Units=km Length=0.0515741 bus1=p48rdt5762lv.1.2 bus2=p48rlv6715.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt5762lv-p48rlv30977) Units=km Length=0.0515741 bus1=p48rdt5762lv.1.2 bus2=p48rlv30977.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm15573-p48rlv6716) Units=km Length=0.031725 bus1=p48rdm15573.1.2 bus2=p48rlv6716.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm15573-p48rdt5763lv) Units=km Length=0.0393369 bus1=p48rdt5763lv.1.2 bus2=p48rdm15573.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm15574-p48rlv23004) Units=km Length=0.04147490000000001 bus1=p48rdm15574.1.2 bus2=p48rlv23004.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdm15574-p48rlv32694) Units=km Length=0.0204308 bus1=p48rdm15574.1.2 bus2=p48rlv32694.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm15574-p48rdt5763lv) Units=km Length=0.0196697 bus1=p48rdt5763lv.1.2 bus2=p48rdm15574.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_4
+
+New Line.l(r:p48rdt6091lv-p48rlv30551) Units=km Length=0.136134 bus1=p48rdt6091lv.1.2 bus2=p48rlv30551.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdm16349-p48rlv7147) Units=km Length=0.0793866 bus1=p48rdm16349.1.2 bus2=p48rlv7147.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm16349-p48rlv27195) Units=km Length=0.0641971 bus1=p48rdm16349.1.2 bus2=p48rlv27195.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm16349-p48rdt6091lv) Units=km Length=0.0163598 bus1=p48rdt6091lv.1.2 bus2=p48rdm16349.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_12
+
+New Line.l(r:p48rdt6092lv-p48rlv7149) Units=km Length=0.0318807 bus1=p48rdt6092lv.1.2 bus2=p48rlv7149.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt6093lv-p48rlv7150) Units=km Length=0.085419 bus1=p48rdt6093lv.1.2 bus2=p48rlv7150.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt6362lv-p48rlv7525) Units=km Length=0.0516939 bus1=p48rdt6362lv.1.2 bus2=p48rlv7525.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt6362lv-p48rlv27976) Units=km Length=0.0602765 bus1=p48rdt6362lv.1.2 bus2=p48rlv27976.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt6365lv-p48rlv7528) Units=km Length=0.001 bus1=p48rdt6365lv.1.2 bus2=p48rlv7528.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt6949lv-p48rlv8360) Units=km Length=0.00992909 bus1=p48rdt6949lv.1.2 bus2=p48rlv8360.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt6949lv-p48rlv42325) Units=km Length=0.00992909 bus1=p48rdt6949lv.1.2 bus2=p48rlv42325.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt7223lv-p48rlv8777) Units=km Length=0.0394882 bus1=p48rdt7223lv.1.2 bus2=p48rlv8777.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdt7260lv-p48rlv8831) Units=km Length=0.0616452 bus1=p48rdt7260lv.1.2 bus2=p48rlv8831.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdt7533lv-p48rlv9241) Units=km Length=0.0162474 bus1=p48rdt7533lv.1.2 bus2=p48rlv9241.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt7535lv-p48rlv33902) Units=km Length=0.0180675 bus1=p48rdt7535lv.1.2 bus2=p48rlv33902.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm19617-p48rlv9249) Units=km Length=0.011337 bus1=p48rdm19617.1.2 bus2=p48rlv9249.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm19617-p48rdt7535lv) Units=km Length=0.0314072 bus1=p48rdt7535lv.1.2 bus2=p48rdm19617.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt7540lv-p48rlv9256) Units=km Length=0.001 bus1=p48rdt7540lv.1.2 bus2=p48rlv9256.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_14
+
+New Line.l(r:p48rdt7804lv-p48rlv9639) Units=km Length=0.001 bus1=p48rdt7804lv.1.2 bus2=p48rlv9639.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_1
+
+New Line.l(r:p48rdt7806lv-p48rlv9641) Units=km Length=0.0712769 bus1=p48rdt7806lv.1.2 bus2=p48rlv9641.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt7806lv-p48rlv36894) Units=km Length=0.0412384 bus1=p48rdt7806lv.1.2 bus2=p48rlv36894.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm20207-p48rlv10505) Units=km Length=0.0719579 bus1=p48rdm20207.1.2 bus2=p48rlv10505.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm20207-p48rdt7806lv) Units=km Length=0.0199413 bus1=p48rdt7806lv.1.2 bus2=p48rdm20207.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt8357lv-p48rlv18012) Units=km Length=0.0163762 bus1=p48rdt8357lv.1.2 bus2=p48rlv18012.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdm21360-p48rlv10499) Units=km Length=0.016594400000000002 bus1=p48rdm21360.1.2 bus2=p48rlv10499.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdm21360-p48rdt8357lv) Units=km Length=0.03751000000000001 bus1=p48rdt8357lv.1.2 bus2=p48rdm21360.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt8360lv-p48rlv10503) Units=km Length=0.0277108 bus1=p48rdt8360lv.1.2 bus2=p48rlv10503.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt8360lv-p48rlv41929) Units=km Length=0.0277108 bus1=p48rdt8360lv.1.2 bus2=p48rlv41929.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt8604lv-p48rlv10902) Units=km Length=0.0131337 bus1=p48rdt8604lv.1.2 bus2=p48rlv10902.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt8606lv-p48rlv10905) Units=km Length=0.0423332 bus1=p48rdt8606lv.1.2 bus2=p48rlv10905.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt8859lv-p48rlv11318) Units=km Length=0.0699564 bus1=p48rdt8859lv.1.2 bus2=p48rlv11318.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt9143lv-p48rlv11752) Units=km Length=0.001 bus1=p48rdt9143lv.1.2 bus2=p48rlv11752.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_3
+
+New Line.l(r:p48rdt9916lv-p48rlv34315) Units=km Length=0.0345002 bus1=p48rdt9916lv.1.2 bus2=p48rlv34315.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdm24491-p48rlv13029) Units=km Length=0.0351613 bus1=p48rdm24491.1.2 bus2=p48rlv13029.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdm24491-p48rdt9916lv) Units=km Length=0.0189744 bus1=p48rdt9916lv.1.2 bus2=p48rdm24491.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_3
+
+New Line.l(r:p48rdt9917lv-p48rlv13030) Units=km Length=0.0123698 bus1=p48rdt9917lv.1.2 bus2=p48rlv13030.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt9918lv-p48rlv13031) Units=km Length=0.0826386 bus1=p48rdt9918lv.1.2 bus2=p48rlv13031.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt9919lv-p48rlv13032) Units=km Length=0.025511 bus1=p48rdt9919lv.1.2 bus2=p48rlv13032.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt10161lv-p48rlv13425) Units=km Length=0.0716005 bus1=p48rdt10161lv.1.2 bus2=p48rlv13425.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt10408lv-p48rlv29697) Units=km Length=0.00656805 bus1=p48rdt10408lv.1.2 bus2=p48rlv29697.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_15
+
+New Line.l(r:p48rdm25460-p48rlv13847) Units=km Length=0.0327477 bus1=p48rdm25460.1.2 bus2=p48rlv13847.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm25460-p48rdt10408lv) Units=km Length=0.0185978 bus1=p48rdt10408lv.1.2 bus2=p48rdm25460.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt10410lv-p48rlv13849) Units=km Length=0.001 bus1=p48rdt10410lv.1.2 bus2=p48rlv13849.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_3
+
+New Line.l(r:p48rdt10925lv-p48rlv14672) Units=km Length=0.001 bus1=p48rdt10925lv.1.2 bus2=p48rlv14672.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_6
+
+New Line.l(r:p48rdt11162lv-p48rlv15093) Units=km Length=0.0536771 bus1=p48rdt11162lv.1.2 bus2=p48rlv15093.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt11165lv-p48rlv15097) Units=km Length=0.0433745 bus1=p48rdt11165lv.1.2 bus2=p48rlv15097.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdm26822-p48rlv15099) Units=km Length=0.0341321 bus1=p48rdm26822.1.2 bus2=p48rlv15099.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm26822-p48rdt11167lv) Units=km Length=0.033638 bus1=p48rdt11167lv.1.2 bus2=p48rdm26822.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm26823-p48rlv32695) Units=km Length=0.04292610000000001 bus1=p48rdm26823.1.2 bus2=p48rlv32695.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm26823-p48rlv34317) Units=km Length=0.0445718 bus1=p48rdm26823.1.2 bus2=p48rlv34317.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm26823-p48rdt11167lv) Units=km Length=0.0187782 bus1=p48rdt11167lv.1.2 bus2=p48rdm26823.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt11409lv-p48rlv15532) Units=km Length=0.0321513 bus1=p48rdt11409lv.1.2 bus2=p48rlv15532.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt11410lv-p48rlv15533) Units=km Length=0.02551 bus1=p48rdt11410lv.1.2 bus2=p48rlv15533.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt11632lv-p48rlv15942) Units=km Length=0.0171314 bus1=p48rdt11632lv.1.2 bus2=p48rlv15942.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt11633lv-p48rlv15944) Units=km Length=0.0163133 bus1=p48rdt11633lv.1.2 bus2=p48rlv15944.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt11633lv-p48rlv21389) Units=km Length=0.014701200000000001 bus1=p48rdt11633lv.1.2 bus2=p48rlv21389.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt11635lv-p48rlv15946) Units=km Length=0.001 bus1=p48rdt11635lv.1.2 bus2=p48rlv15946.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_14
+
+New Line.l(r:p48rdt11856lv-p48rlv16370) Units=km Length=0.08505660000000001 bus1=p48rdt11856lv.1.2 bus2=p48rlv16370.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt11856lv-p48rlv40641) Units=km Length=0.0587983 bus1=p48rdt11856lv.1.2 bus2=p48rlv40641.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt11857lv-p48rlv16371) Units=km Length=0.0554152 bus1=p48rdt11857lv.1.2 bus2=p48rlv16371.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt12108lv-p48rlv16815) Units=km Length=0.001 bus1=p48rdt12108lv.1.2 bus2=p48rlv16815.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt12110lv-p48rlv43192) Units=km Length=0.028115 bus1=p48rdt12110lv.1.2 bus2=p48rlv43192.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm28464-p48rlv16817) Units=km Length=0.0647431 bus1=p48rdm28464.1.2 bus2=p48rlv16817.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm28464-p48rlv42746) Units=km Length=0.094016 bus1=p48rdm28464.1.2 bus2=p48rlv42746.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm28464-p48rdt12110lv) Units=km Length=0.0181139 bus1=p48rdt12110lv.1.2 bus2=p48rdm28464.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdm28465-p48rlv19662) Units=km Length=0.0647566 bus1=p48rdm28465.1.2 bus2=p48rlv19662.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm28465-p48rdt12110lv) Units=km Length=0.0181258 bus1=p48rdt12110lv.1.2 bus2=p48rdm28465.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt12302lv-p48rlv17211) Units=km Length=0.001 bus1=p48rdt12302lv.1.2 bus2=p48rlv17211.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_4
+
+New Line.l(r:p48rdt12303lv-p48rlv17212) Units=km Length=0.091913 bus1=p48rdt12303lv.1.2 bus2=p48rlv17212.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt12522lv-p48rlv17613) Units=km Length=0.001 bus1=p48rdt12522lv.1.2 bus2=p48rlv17613.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdm29171-p48rlv17614) Units=km Length=0.00815678 bus1=p48rdm29171.1.2 bus2=p48rlv17614.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm29171-p48rdt12523lv) Units=km Length=0.0196697 bus1=p48rdt12523lv.1.2 bus2=p48rdm29171.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm29172-p48rlv25571) Units=km Length=0.0259468 bus1=p48rdm29172.1.2 bus2=p48rlv25571.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm29172-p48rdt12523lv) Units=km Length=0.0196697 bus1=p48rdt12523lv.1.2 bus2=p48rdm29172.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt12524lv-p48rlv17615) Units=km Length=0.030742700000000005 bus1=p48rdt12524lv.1.2 bus2=p48rlv17615.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt12759lv-p48rlv18015) Units=km Length=0.008590740000000001 bus1=p48rdt12759lv.1.2 bus2=p48rlv18015.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt12759lv-p48rlv41088) Units=km Length=0.008590740000000001 bus1=p48rdt12759lv.1.2 bus2=p48rlv41088.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt12760lv-p48rlv18016) Units=km Length=0.0749235 bus1=p48rdt12760lv.1.2 bus2=p48rlv18016.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt12761lv-p48rlv18017) Units=km Length=0.0317441 bus1=p48rdt12761lv.1.2 bus2=p48rlv18017.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm29569-p48rlv36064) Units=km Length=0.0662445 bus1=p48rdm29569.1.2 bus2=p48rlv36064.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm29569-p48rdt12761lv) Units=km Length=0.0196697 bus1=p48rdt12761lv.1.2 bus2=p48rdm29569.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt12968lv-p48rlv18455) Units=km Length=0.0995583 bus1=p48rdt12968lv.1.2 bus2=p48rlv18455.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt12970lv-p48rlv18457) Units=km Length=0.0219407 bus1=p48rdt12970lv.1.2 bus2=p48rlv18457.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt12991lv-p48rlv18492) Units=km Length=0.035675 bus1=p48rdt12991lv.1.2 bus2=p48rlv18492.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt12991lv-p48rlv36084) Units=km Length=0.04129 bus1=p48rdt12991lv.1.2 bus2=p48rlv36084.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt13169lv-p48rlv18855) Units=km Length=0.0148354 bus1=p48rdt13169lv.1.2 bus2=p48rlv18855.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt13169lv-p48rlv26768) Units=km Length=0.0180156 bus1=p48rdt13169lv.1.2 bus2=p48rlv26768.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_9
+
+New Line.l(r:p48rdt13171lv-p48rlv18857) Units=km Length=0.0499967 bus1=p48rdt13171lv.1.2 bus2=p48rlv18857.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt13172lv-p48rlv18858) Units=km Length=0.001 bus1=p48rdt13172lv.1.2 bus2=p48rlv18858.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_3
+
+New Line.l(r:p48rdt13376lv-p48rlv19266) Units=km Length=0.0405253 bus1=p48rdt13376lv.1.2 bus2=p48rlv19266.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt14023lv-p48rlv20536) Units=km Length=0.088767 bus1=p48rdt14023lv.1.2 bus2=p48rlv20536.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt14025lv-p48rlv20538) Units=km Length=0.0506933 bus1=p48rdt14025lv.1.2 bus2=p48rlv20538.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt14026lv-p48rlv20539) Units=km Length=0.001 bus1=p48rdt14026lv.1.2 bus2=p48rlv20539.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt14028lv-p48rlv20541) Units=km Length=0.0484951 bus1=p48rdt14028lv.1.2 bus2=p48rlv20541.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt14468lv-p48rlv21399) Units=km Length=0.001 bus1=p48rdt14468lv.1.2 bus2=p48rlv21399.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_2
+
+New Line.l(r:p48rdm32211-p48rlv21400) Units=km Length=0.0686643 bus1=p48rdm32211.1.2 bus2=p48rlv21400.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm32211-p48rdt14469lv) Units=km Length=0.0187154 bus1=p48rdt14469lv.1.2 bus2=p48rdm32211.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm32212-p48rlv38181) Units=km Length=0.0663639 bus1=p48rdm32212.1.2 bus2=p48rlv38181.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdm32212-p48rdt14469lv) Units=km Length=0.0187034 bus1=p48rdt14469lv.1.2 bus2=p48rdm32212.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt14650lv-p48rlv31420) Units=km Length=0.0163419 bus1=p48rdt14650lv.1.2 bus2=p48rlv31420.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm32477-p48rlv21793) Units=km Length=0.0177242 bus1=p48rdm32477.1.2 bus2=p48rlv21793.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm32477-p48rdt14650lv) Units=km Length=0.0199698 bus1=p48rdt14650lv.1.2 bus2=p48rdm32477.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm32478-p48rlv28401) Units=km Length=0.0175458 bus1=p48rdm32478.1.2 bus2=p48rlv28401.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm32478-p48rlv41086) Units=km Length=0.0157289 bus1=p48rdm32478.1.2 bus2=p48rlv41086.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm32478-p48rdt14650lv) Units=km Length=0.0199698 bus1=p48rdt14650lv.1.2 bus2=p48rdm32478.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_10
+
+New Line.l(r:p48rdt14652lv-p48rlv21796) Units=km Length=0.001 bus1=p48rdt14652lv.1.2 bus2=p48rlv21796.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_1
+
+New Line.l(r:p48rdt14653lv-p48rlv21798) Units=km Length=0.0175412 bus1=p48rdt14653lv.1.2 bus2=p48rlv21798.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt14841lv-p48rlv22168) Units=km Length=0.0108571 bus1=p48rdt14841lv.1.2 bus2=p48rlv22168.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdm32776-p48rlv26769) Units=km Length=0.0111032 bus1=p48rdm32776.1.2 bus2=p48rlv26769.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdm32776-p48rdt14841lv) Units=km Length=0.0170963 bus1=p48rdt14841lv.1.2 bus2=p48rdm32776.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt15039lv-p48rlv22575) Units=km Length=0.0371345 bus1=p48rdt15039lv.1.2 bus2=p48rlv22575.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt15042lv-p48rlv22578) Units=km Length=0.0481977 bus1=p48rdt15042lv.1.2 bus2=p48rlv22578.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_13
+
+New Line.l(r:p48rdt15042lv-p48rlv34794) Units=km Length=0.0481977 bus1=p48rdt15042lv.1.2 bus2=p48rlv34794.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt15058lv-p48rlv22608) Units=km Length=0.0396719 bus1=p48rdt15058lv.1.2 bus2=p48rlv22608.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt15633lv-p48rlv23871) Units=km Length=0.0538001 bus1=p48rdt15633lv.1.2 bus2=p48rlv23871.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm33911-p48rlv42324) Units=km Length=0.0349162 bus1=p48rdm33911.1.2 bus2=p48rlv42324.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm33911-p48rdt15633lv) Units=km Length=0.0174944 bus1=p48rdt15633lv.1.2 bus2=p48rdm33911.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt15634lv-p48rlv23872) Units=km Length=0.001 bus1=p48rdt15634lv.1.2 bus2=p48rlv23872.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt15635lv-p48rlv23873) Units=km Length=0.0267982 bus1=p48rdt15635lv.1.2 bus2=p48rlv23873.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt15635lv-p48rlv27196) Units=km Length=0.0663306 bus1=p48rdt15635lv.1.2 bus2=p48rlv27196.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt15636lv-p48rlv23874) Units=km Length=0.0110418 bus1=p48rdt15636lv.1.2 bus2=p48rlv23874.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt15830lv-p48rlv24320) Units=km Length=0.0273408 bus1=p48rdt15830lv.1.2 bus2=p48rlv24320.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm34195-p48rlv31423) Units=km Length=0.0492085 bus1=p48rdm34195.1.2 bus2=p48rlv31423.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdm34195-p48rdt15830lv) Units=km Length=0.019524100000000003 bus1=p48rdt15830lv.1.2 bus2=p48rdm34195.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_1
+
+New Line.l(r:p48rdt15843lv-p48rlv24346) Units=km Length=0.0941067 bus1=p48rdt15843lv.1.2 bus2=p48rlv24346.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt16208lv-p48rlv39384) Units=km Length=0.0309913 bus1=p48rdt16208lv.1.2 bus2=p48rlv39384.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdm34737-p48rlv25159) Units=km Length=0.06609340000000001 bus1=p48rdm34737.1.2 bus2=p48rlv25159.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm34737-p48rdt16208lv) Units=km Length=0.0184828 bus1=p48rdt16208lv.1.2 bus2=p48rdm34737.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt16209lv-p48rlv25160) Units=km Length=0.0587709 bus1=p48rdt16209lv.1.2 bus2=p48rlv25160.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt16388lv-p48rlv25570) Units=km Length=0.0465805 bus1=p48rdt16388lv.1.2 bus2=p48rlv25570.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt16388lv-p48rlv41930) Units=km Length=0.0534054 bus1=p48rdt16388lv.1.2 bus2=p48rlv41930.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt16389lv-p48rlv25572) Units=km Length=0.001 bus1=p48rdt16389lv.1.2 bus2=p48rlv25572.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_2
+
+New Line.l(r:p48rdt16573lv-p48rlv25983) Units=km Length=0.0343697 bus1=p48rdt16573lv.1.2 bus2=p48rlv25983.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdt16587lv-p48rlv26015) Units=km Length=0.0485952 bus1=p48rdt16587lv.1.2 bus2=p48rlv26015.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt16739lv-p48rlv26370) Units=km Length=0.001 bus1=p48rdt16739lv.1.2 bus2=p48rlv26370.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_14
+
+New Line.l(r:p48rdt16915lv-p48rlv26770) Units=km Length=0.0120223 bus1=p48rdt16915lv.1.2 bus2=p48rlv26770.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_13
+
+New Line.l(r:p48rdt16917lv-p48rlv31422) Units=km Length=0.0256653 bus1=p48rdt16917lv.1.2 bus2=p48rlv31422.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm35706-p48rlv26775) Units=km Length=0.0625852 bus1=p48rdm35706.1.2 bus2=p48rlv26775.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm35706-p48rdt16917lv) Units=km Length=0.0183688 bus1=p48rdt16917lv.1.2 bus2=p48rdm35706.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm35708-p48rlv38974) Units=km Length=0.0345981 bus1=p48rdm35708.1.2 bus2=p48rlv38974.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm35708-p48rdt16917lv) Units=km Length=0.0183764 bus1=p48rdt16917lv.1.2 bus2=p48rdm35708.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt16918lv-p48rlv26776) Units=km Length=0.0976231 bus1=p48rdt16918lv.1.2 bus2=p48rlv26776.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt17111lv-p48rlv27197) Units=km Length=0.0276546 bus1=p48rdt17111lv.1.2 bus2=p48rlv27197.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt17274lv-p48rlv27560) Units=km Length=0.0250742 bus1=p48rdt17274lv.1.2 bus2=p48rlv27560.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt17276lv-p48rlv27566) Units=km Length=0.049915 bus1=p48rdt17276lv.1.2 bus2=p48rlv27566.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_12
+
+New Line.l(r:p48rdt17439lv-p48rlv27978) Units=km Length=0.001 bus1=p48rdt17439lv.1.2 bus2=p48rlv27978.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt17642lv-p48rlv28403) Units=km Length=0.001 bus1=p48rdt17642lv.1.2 bus2=p48rlv28403.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt17656lv-p48rlv28441) Units=km Length=0.0390644 bus1=p48rdt17656lv.1.2 bus2=p48rlv28441.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt17812lv-p48rlv28847) Units=km Length=0.0139777 bus1=p48rdt17812lv.1.2 bus2=p48rlv28847.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt17812lv-p48rlv38182) Units=km Length=0.020178600000000005 bus1=p48rdt17812lv.1.2 bus2=p48rlv38182.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt17813lv-p48rlv28848) Units=km Length=0.0472048 bus1=p48rdt17813lv.1.2 bus2=p48rlv28848.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt17814lv-p48rlv28849) Units=km Length=0.0130411 bus1=p48rdt17814lv.1.2 bus2=p48rlv28849.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm36910-p48rlv40642) Units=km Length=0.013904 bus1=p48rdm36910.1.2 bus2=p48rlv40642.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm36910-p48rdt17814lv) Units=km Length=0.0193177 bus1=p48rdt17814lv.1.2 bus2=p48rdm36910.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt17967lv-p48rlv29239) Units=km Length=0.0839257 bus1=p48rdt17967lv.1.2 bus2=p48rlv29239.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt18160lv-p48rlv29701) Units=km Length=0.001 bus1=p48rdt18160lv.1.2 bus2=p48rlv29701.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt18318lv-p48rlv30102) Units=km Length=0.00922859 bus1=p48rdt18318lv.1.2 bus2=p48rlv30102.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt18482lv-p48rlv30552) Units=km Length=0.0207985 bus1=p48rdt18482lv.1.2 bus2=p48rlv30552.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdt18653lv-p48rlv30974) Units=km Length=0.001 bus1=p48rdt18653lv.1.2 bus2=p48rlv30974.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_4
+
+New Line.l(r:p48rdt18655lv-p48rlv30978) Units=km Length=0.0290201 bus1=p48rdt18655lv.1.2 bus2=p48rlv30978.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt19011lv-p48rlv31851) Units=km Length=0.0200057 bus1=p48rdt19011lv.1.2 bus2=p48rlv31851.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt19168lv-p48rlv32274) Units=km Length=0.00943638 bus1=p48rdt19168lv.1.2 bus2=p48rlv32274.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdt19333lv-p48rlv32693) Units=km Length=0.001 bus1=p48rdt19333lv.1.2 bus2=p48rlv32693.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt19647lv-p48rlv33511) Units=km Length=0.001 bus1=p48rdt19647lv.1.2 bus2=p48rlv33511.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt19648lv-p48rlv33512) Units=km Length=0.001 bus1=p48rdt19648lv.1.2 bus2=p48rlv33512.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_14
+
+New Line.l(r:p48rdm39292-p48rlv33906) Units=km Length=0.0315824 bus1=p48rdm39292.1.2 bus2=p48rlv33906.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm39292-p48rdt19778lv) Units=km Length=0.0187159 bus1=p48rdt19778lv.1.2 bus2=p48rdm39292.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm39293-p48rlv42326) Units=km Length=0.0186587 bus1=p48rdm39293.1.2 bus2=p48rlv42326.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdm39293-p48rdt19778lv) Units=km Length=0.0187137 bus1=p48rdt19778lv.1.2 bus2=p48rdm39293.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt19796lv-p48rlv33939) Units=km Length=0.0991082 bus1=p48rdt19796lv.1.2 bus2=p48rlv33939.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt19951lv-p48rlv34316) Units=km Length=0.0573663 bus1=p48rdt19951lv.1.2 bus2=p48rlv34316.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_5
+
+New Line.l(r:p48rdt20303lv-p48rlv35255) Units=km Length=0.001 bus1=p48rdt20303lv.1.2 bus2=p48rlv35255.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt20602lv-p48rlv36061) Units=km Length=0.023941 bus1=p48rdt20602lv.1.2 bus2=p48rlv36061.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdt20613lv-p48rlv36082) Units=km Length=0.0399174 bus1=p48rdt20613lv.1.2 bus2=p48rlv36082.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt20742lv-p48rlv36472) Units=km Length=0.0425462 bus1=p48rdt20742lv.1.2 bus2=p48rlv36472.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdt21047lv-p48rlv37311) Units=km Length=0.0399078 bus1=p48rdt21047lv.1.2 bus2=p48rlv37311.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt21048lv-p48rlv37312) Units=km Length=0.0883972 bus1=p48rdt21048lv.1.2 bus2=p48rlv37312.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt21201lv-p48rlv37758) Units=km Length=0.0364748 bus1=p48rdt21201lv.1.2 bus2=p48rlv37758.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_1
+
+New Line.l(r:p48rdt21202lv-p48rlv37759) Units=km Length=0.0649995 bus1=p48rdt21202lv.1.2 bus2=p48rlv37759.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt21509lv-p48rlv38973) Units=km Length=0.022734100000000004 bus1=p48rdt21509lv.1.2 bus2=p48rlv38973.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_5
+
+New Line.l(r:p48rdm41225-p48rlv38585) Units=km Length=0.0379508 bus1=p48rdm41225.1.2 bus2=p48rlv38585.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdm41225-p48rdt21509lv) Units=km Length=0.0187217 bus1=p48rdt21509lv.1.2 bus2=p48rdm41225.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2
+
+New Line.l(r:p48rdt21510lv-p48rlv38586) Units=km Length=0.001 bus1=p48rdt21510lv.1.2 bus2=p48rlv38586.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2
+
+New Line.l(r:p48rdt21666lv-p48rlv38975) Units=km Length=0.0407668 bus1=p48rdt21666lv.1.2 bus2=p48rlv38975.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt22075lv-p48rlv40210) Units=km Length=0.0491922 bus1=p48rdt22075lv.1.2 bus2=p48rlv40210.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_6
+
+New Line.l(r:p48rdt22227lv-p48rlv40640) Units=km Length=0.001 bus1=p48rdt22227lv.1.2 bus2=p48rlv40640.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4_Periwinkle_2_2
+
+New Line.l(r:p48rdt22376lv-p48rlv41083) Units=km Length=0.0166741 bus1=p48rdt22376lv.1.2 bus2=p48rlv41083.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_2
+
+New Line.l(r:p48rdt22529lv-p48rlv41514) Units=km Length=0.037392 bus1=p48rdt22529lv.1.2 bus2=p48rlv41514.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt22662lv-p48rlv41931) Units=km Length=0.0197711 bus1=p48rdt22662lv.1.2 bus2=p48rlv41931.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_1
+
+New Line.l(r:p48rdt22936lv-p48rlv42745) Units=km Length=0.0558184 bus1=p48rdt22936lv.1.2 bus2=p48rlv42745.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_2
+
+New Line.l(r:p48rdt23084lv-p48rlv43174) Units=km Length=0.0162019 bus1=p48rdt23084lv.1.2 bus2=p48rlv43174.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_2/0_Rucina_2_6
+
+New Line.l(r:p48rdt23091lv-p48rlv43190) Units=km Length=0.0634771 bus1=p48rdt23091lv.1.2 bus2=p48rlv43190.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2
+
+New Line.l(r:p48rdt23092lv-p48rlv43191) Units=km Length=0.041309 bus1=p48rdt23092lv.1.2 bus2=p48rlv43191.1.2 switch=n enabled=y phases=2 Linecode=1P_OH_AL_4/0_Zuzara_2_4
+
+New Line.l(r:p48rdt36-p48rdt3777) Units=km Length=0.05681200000000001 bus1=p48rdt36-p48rdt3777x.3 bus2=p48rdt36.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14841-p48rdt16915) Units=km Length=0.0342046 bus1=p48rdt14841.3 bus2=p48rdt16915.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt13169-p48rdt14841) Units=km Length=0.03420240000000001 bus1=p48rdt13169-p48rdt14841x.3 bus2=p48rdt14841.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt4114-p48rdt7804) Units=km Length=0.0524532 bus1=p48rdt4114.3 bus2=p48rdt7804.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt3436-p48rdt4114) Units=km Length=0.22809600000000002 bus1=p48rdt3436-p48rdt4114x.3 bus2=p48rdt4114.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10408-p48rdt11635) Units=km Length=0.712933 bus1=p48rdt10408-p48rdt11635x.2 bus2=p48rdt11635.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12759-p48rdt6091) Units=km Length=0.19941500000000004 bus1=p48rdt12759-p48rdt6091x.1 bus2=p48rdt12759.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10161-p48rdt11409) Units=km Length=0.0198427 bus1=p48rdt11409.2 bus2=p48rdt10161.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11409-p48rdt16738) Units=km Length=0.12433300000000003 bus1=p48rdt11409-p48rdt16738x.2 bus2=p48rdt11409-p48rdt16738x_b1_1.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt20613-p48rdt4483) Units=km Length=0.633116 bus1=p48rdt4483.3 bus2=p48rdt20613.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16587-p48rdt4483) Units=km Length=0.119115 bus1=p48rdt16587-p48rdt4483x.3 bus2=p48rdt16587-p48rdt4483x_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt15058-p48rdt19796) Units=km Length=0.0371845 bus1=p48rdt15058.1 bus2=p48rdt19796.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12991-p48rdt15058) Units=km Length=0.13526100000000002 bus1=p48rdt12991.1 bus2=p48rdt12991_b1_1.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12991-p48rdt15843) Units=km Length=0.09565340000000001 bus1=p48rdt15843.1 bus2=p48rdt15843_b1_1.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt15843-p48rdt16587) Units=km Length=0.0569779 bus1=p48rdt15843-p48rdt16587x.1 bus2=p48rdt15843.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17111-p48rdt9917) Units=km Length=0.176466 bus1=p48rdt17111-p48rdt9917x.3 bus2=p48rdt17111-p48rdt9917x_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16209-p48rdt868) Units=km Length=0.130533 bus1=p48rdt16209-p48rdt868x.1 bus2=p48rdt868.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16739-p48rdt7540) Units=km Length=0.0643521 bus1=p48rdt16739-p48rdt7540x.3 bus2=p48rdt7540.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10925-p48rmv28) Units=km Length=0.0894373 bus1=p48rdt10925-p48rmv28x.1 bus2=p48rdt10925-p48rmv28x_b1_1.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt21510-p48rmv28) Units=km Length=0.16431800000000002 bus1=p48rdt21510-p48rmv28x.3 bus2=p48rdt21510-p48rmv28x_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt22936-p48rdt7806) Units=km Length=0.645118 bus1=p48rdt22936-p48rdt7806x.2 bus2=p48rdt7806.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt22936-p48rdt9918) Units=km Length=0.42679200000000006 bus1=p48rdt22936-p48rdt9918x.1 bus2=p48rdt9918.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10410-p48rdt22936) Units=km Length=0.137208 bus1=p48rdt10410-p48rdt22936x.1 bus2=p48rdt10410.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt20303-p48rdt97) Units=km Length=0.0510828 bus1=p48rdt20303.2 bus2=p48rdt97.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17656-p48rdt7260) Units=km Length=0.08870480000000001 bus1=p48rdt17656.2 bus2=p48rdt17656_b1_1.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17656-p48rdt2745) Units=km Length=0.0565647 bus1=p48rdt2745.2 bus2=p48rdt17656.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt20303-p48rdt2745) Units=km Length=0.41566700000000006 bus1=p48rdt20303.2 bus2=p48rdt2745.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt20303-p48rdt5111) Units=km Length=0.33301600000000003 bus1=p48rdt20303-p48rdt5111x.2 bus2=p48rdt20303-p48rdt5111x_b1_1.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt2393-p48rdt908) Units=km Length=0.19168700000000002 bus1=p48rdt908.3 bus2=p48rdt908_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt6398-p48rdt908) Units=km Length=0.305 bus1=p48rdt6398-p48rdt908x.3 bus2=p48rdt908.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12303-p48rdt6365) Units=km Length=0.15458 bus1=p48rdt12303.1 bus2=p48rdt6365.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12303-p48rdt4117) Units=km Length=0.0186756 bus1=p48rdt4117.1 bus2=p48rdt12303.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17276-p48rdt4117) Units=km Length=0.180028 bus1=p48rdt17276.1 bus2=p48rdt4117.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17276-p48rdt17814) Units=km Length=0.13525600000000002 bus1=p48rdt17276-p48rdt17814x.1 bus2=p48rdt17276.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14653-p48rdt17813) Units=km Length=0.209715 bus1=p48rdt14653-p48rdt17813x.2 bus2=p48rdt17813.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12302-p48rdt22529) Units=km Length=0.173039 bus1=p48rdt12302-p48rdt22529x.2 bus2=p48rdt12302.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12108-p48rlv12164u) Units=km Length=0.13218300000000002 bus1=p48rdt12108-p48rlv12164ux.3 bus2=p48rdt12108-p48rlv12164ux_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt21201-p48rdt21202) Units=km Length=0.14216 bus1=p48rdt21201-p48rdt21202x.2 bus2=p48rdt21201.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14026-p48rdt16389) Units=km Length=0.1335 bus1=p48rdt14026-p48rdt16389x.2 bus2=p48rdt14026-p48rdt16389x_b1_1.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11410-p48rdt15042) Units=km Length=0.158615 bus1=p48rdt11410.3 bus2=p48rdt15042.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11410-p48rdt16208) Units=km Length=0.799974 bus1=p48rdt16208.3 bus2=p48rdt11410.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16208-p48rdt16389) Units=km Length=0.13843300000000003 bus1=p48rdt16208-p48rdt16389x.3 bus2=p48rdt16208-p48rdt16389x_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt18482-p48rdt18655) Units=km Length=0.146785 bus1=p48rdt18482-p48rdt18655x.2 bus2=p48rdt18655.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt23092-p48rdt6092) Units=km Length=0.447566 bus1=p48rdt23092-p48rdt6092x.3 bus2=p48rdt23092.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11165-p48rmv10) Units=km Length=0.306829 bus1=p48rdt11165-p48rmv10x.1 bus2=p48rdt11165.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt23091-p48rdt9143) Units=km Length=0.513414 bus1=p48rdt23091.3 bus2=p48rdt9143.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12761-p48rdt23091) Units=km Length=0.12291300000000001 bus1=p48rdt12761-p48rdt23091x.3 bus2=p48rdt12761-p48rdt23091x_b1_1.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14469-p48rdt6949) Units=km Length=0.567862 bus1=p48rdt14469-p48rdt6949x.2 bus2=p48rdt6949.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt22227-p48rlv15096u) Units=km Length=0.216233 bus1=p48rdt22227-p48rlv15096ux.1 bus2=p48rdt22227.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16573-p48rdt7223) Units=km Length=0.132795 bus1=p48rdt16573.2 bus2=p48rdt7223.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16573-p48rdt9916) Units=km Length=0.0379465 bus1=p48rdt16573-p48rdt9916x.2 bus2=p48rdt16573.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14468-p48rdt3076) Units=km Length=0.179875 bus1=p48rdt14468-p48rdt3076x.2 bus2=p48rdt14468.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17439-p48rdt19647) Units=km Length=0.554656 bus1=p48rdt17439-p48rdt19647x.1 bus2=p48rdt17439.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt4115-p48rdt464)_s0 Units=km Length=0.261253 bus1=p48rdt4115-p48rdt464xx.1 bus2=p48rdt4115-p48rdt464x.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt4115-p48rdt464)_s1 Units=km Length=0.0443609 bus1=p48rdt4115-p48rdt464x.1 bus2=p48rdt4115.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt19333-p48rdt464)_s0 Units=km Length=0.752623 bus1=p48rdt19333-p48rdt464xx.1 bus2=p48rdt19333-p48rdt464x.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt19333-p48rdt464)_s1 Units=km Length=0.0345252 bus1=p48rdt19333-p48rdt464x.1 bus2=p48rdt19333.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11855-p48rdt17642) Units=km Length=0.12326 bus1=p48rdt11855-p48rdt17642x.3 bus2=p48rdt17642.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10684-p48rdt867)_s0 Units=km Length=0.177317 bus1=p48rdt10684-p48rdt867x.1 bus2=p48rdt10684-p48rdt867xx.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10684-p48rdt867)_s1 Units=km Length=0.0796946 bus1=p48rdt10684-p48rdt867xx.1 bus2=p48rdt867.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10684-p48rdt15634)_s0 Units=km Length=0.211124 bus1=p48rdt10684-p48rdt15634x.3 bus2=p48rdt10684-p48rdt15634xx.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10684-p48rdt15634)_s1 Units=km Length=0.0858413 bus1=p48rdt10684-p48rdt15634xx.3 bus2=p48rdt15634.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt18160-p48rlv28846u) Units=km Length=0.12248 bus1=p48rdt18160-p48rlv28846ux.1 bus2=p48rdt18160.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16388-p48rdt19951) Units=km Length=0.0540964 bus1=p48rdt19951.1 bus2=p48rdt16388.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14469-p48rdt19951) Units=km Length=0.09354320000000002 bus1=p48rdt14469-p48rdt19951x.1 bus2=p48rdt19951.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12968-p48rdt15633) Units=km Length=0.001 bus1=p48rdt12968-p48rdt15633x.2 bus2=p48rdt15633.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt15039-p48rdt6362) Units=km Length=0.113646 bus1=p48rdt15039.1.2.3 bus2=p48rdt6362.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt15039-p48rdt3436) Units=km Length=0.201887 bus1=p48rdt3436.1.2.3 bus2=p48rdt15039.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt13376-p48rdt3436) Units=km Length=0.194447 bus1=p48rdt13376.1.2.3 bus2=p48rdt3436.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt13376-p48rdt866) Units=km Length=0.0339936 bus1=p48rdt866.1.2.3 bus2=p48rdt13376.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt18653-p48rdt866) Units=km Length=0.474718 bus1=p48rdt18653.1.2.3 bus2=p48rdt866.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt13169-p48rdt18653) Units=km Length=0.752935 bus1=p48rdt13169.1.2.3 bus2=p48rdt18653.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt13169-p48rdt1993) Units=km Length=0.03751000000000001 bus1=p48rdt1993.1.2.3 bus2=p48rdt13169.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt1993-p48rdt8357) Units=km Length=0.07502000000000002 bus1=p48rdt8357.1.2.3 bus2=p48rdt1993.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt458-p48rdt8357) Units=km Length=0.0202872 bus1=p48rdt458.1.2.3 bus2=p48rdt8357.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt458-p48rdt8604) Units=km Length=0.0503215 bus1=p48rdt8604.1.2.3 bus2=p48rdt458.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt1270-p48rdt8604) Units=km Length=0.21471 bus1=p48rdt1270.1.2.3 bus2=p48rdt8604.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt11632-p48rdt17274) Units=km Length=0.0580367 bus1=p48rdt17274.1 bus2=p48rdt11632.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt1270-p48rdt17274) Units=km Length=0.127476 bus1=p48rdt1270-p48rdt17274x.1 bus2=p48rdt17274.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt1270-p48rdt22376) Units=km Length=0.0386724 bus1=p48rdt22376.1.2.3 bus2=p48rdt1270.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt22376-p48rdt3075) Units=km Length=0.0580086 bus1=p48rdt3075.1.2.3 bus2=p48rdt22376-p48rdt3075x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt3075-p48rdt864) Units=km Length=0.0580086 bus1=p48rdt864.1.2.3 bus2=p48rdt3075.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt5438-p48rdt864) Units=km Length=0.0580184 bus1=p48rdt5438.1.2.3 bus2=p48rdt864.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt19168-p48rdt5438) Units=km Length=0.0362681 bus1=p48rdt19168.1.2.3 bus2=p48rdt5438.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt2354-p48rdt7535) Units=km Length=0.0862063 bus1=p48rdt7535.1 bus2=p48rdt2354.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14650-p48rdt7535) Units=km Length=0.05989980000000001 bus1=p48rdt14650.1 bus2=p48rdt7535.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14650-p48rdt4801) Units=km Length=0.059907300000000004 bus1=p48rdt4801.1 bus2=p48rdt14650.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt4801-p48rdt7533) Units=km Length=0.0399299 bus1=p48rdt7533.1 bus2=p48rdt4801.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt19168-p48rdt7533) Units=km Length=0.0568716 bus1=p48rdt19168-p48rdt7533x.1 bus2=p48rdt7533.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11633-p48rdt23084) Units=km Length=0.0361547 bus1=p48rdt23084.3 bus2=p48rdt11633.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt19168-p48rdt23084) Units=km Length=0.039794500000000003 bus1=p48rdt19168-p48rdt23084x.3 bus2=p48rdt23084.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt19168-p48rdt3777) Units=km Length=0.0528019 bus1=p48rdt3777.1.2.3 bus2=p48rdt19168.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt3777-p48rhs1_25) Units=km Length=0.183097 bus1=p48rdt3777-p48rhs1_25x.1.2.3 bus2=p48rdt3777.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3
+
+New Line.l(r:p48rdt3075-p48rdt6088) Units=km Length=0.001 bus1=p48rdt3075.1.2.3 bus2=p48rdt6088.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt10408-p48rdt6091) Units=km Length=0.711708 bus1=p48rdt6091.1.2.3 bus2=p48rdt10408.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16587-p48rdt9917) Units=km Length=0.2572050000000001 bus1=p48rdt9917.1.2.3 bus2=p48rdt9917_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt4116-p48rdt9917) Units=km Length=0.349963 bus1=p48rdt4116.1.2.3 bus2=p48rdt4116_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12109-p48rdt16918) Units=km Length=0.30505100000000007 bus1=p48rdt16918.1.2.3 bus2=p48rdt12109.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16390-p48rdt6364) Units=km Length=0.08222590000000002 bus1=p48rdt6364.1.2.3 bus2=p48rdt6364_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt5111-p48rmv4) Units=km Length=0.29624300000000003 bus1=p48rmv4.1.2.3 bus2=p48rmv4_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19648-p48rdt6398)_s0 Units=km Length=0.30515600000000004 bus1=p48rdt19648.1.2.3 bus2=p48rdt19648-p48rdt6398x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19648-p48rdt6398)_s1 Units=km Length=0.328562 bus1=p48rdt19648-p48rdt6398x.1.2.3 bus2=p48rdt6398.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11167-p48rdt19648)_s0 Units=km Length=0.285642 bus1=p48rdt11167.1.2.3 bus2=p48rdt11167-p48rdt19648x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11167-p48rdt19648)_s1 Units=km Length=1.46772 bus1=p48rdt11167-p48rdt19648x.1.2.3 bus2=p48rdt19648.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11167-p48rdt9919) Units=km Length=0.093919 bus1=p48rdt9919.1.2.3 bus2=p48rdt11167.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12524-p48rdt9919) Units=km Length=0.30441300000000004 bus1=p48rdt12524.1.2.3 bus2=p48rdt9919.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12524-p48rdt21666) Units=km Length=0.22287800000000005 bus1=p48rdt21666.1.2.3 bus2=p48rdt21666_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14028-p48rdt21666) Units=km Length=0.03598880000000001 bus1=p48rdt14028.1.2.3 bus2=p48rdt21666.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14028-p48rmv4) Units=km Length=0.529981 bus1=p48rmv4.1.2.3 bus2=p48rdt14028.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22662-p48rmv4) Units=km Length=0.11314800000000001 bus1=p48rdt22662.1.2.3 bus2=p48rdt22662_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22662-p48rdt22936) Units=km Length=0.0976502 bus1=p48rdt22936.1.2.3 bus2=p48rdt22936_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22936-p48rdt6364) Units=km Length=0.510478 bus1=p48rdt6364.1.2.3 bus2=p48rdt22936.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt20131-p48rdt6364) Units=km Length=0.0544112 bus1=p48rdt20131.1.2.3 bus2=p48rdt6364.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rdt20131) Units=km Length=0.137869 bus1=p48rdt16918.1.2.3 bus2=p48rdt16918_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rdt4455) Units=km Length=0.105827 bus1=p48rdt4455.1.2.3 bus2=p48rdt4455_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17814-p48rdt4455) Units=km Length=0.0966416 bus1=p48rdt17814.1.2.3 bus2=p48rdt4455.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12110-p48rdt17814) Units=km Length=0.10995 bus1=p48rdt12110.1.2.3 bus2=p48rdt17814.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12110-p48rdt14653) Units=km Length=0.0853502 bus1=p48rdt14653.1.2.3 bus2=p48rdt14653_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14653-p48rdt15830) Units=km Length=0.5500860000000001 bus1=p48rdt15830.1.2.3 bus2=p48rdt14653.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt15830-p48rdt22075) Units=km Length=0.287979 bus1=p48rdt22075.1.2.3 bus2=p48rdt15830.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt22075) Units=km Length=0.250873 bus1=p48rdt16739.1.2.3 bus2=p48rdt16739_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14027-p48rdt17275) Units=km Length=0.198291 bus1=p48rdt17275.1.2.3 bus2=p48rdt14027.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17275-p48rdt3077) Units=km Length=0.115172 bus1=p48rdt3077.1.2.3 bus2=p48rdt17275.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt15636-p48rdt3077) Units=km Length=0.281981 bus1=p48rdt15636.1.2.3 bus2=p48rdt3077.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt15636-p48rdt22529) Units=km Length=0.199042 bus1=p48rdt22529.1.2.3 bus2=p48rdt15636.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt15637-p48rdt6093) Units=km Length=0.619536 bus1=p48rdt6093.1.2.3 bus2=p48rdt15637.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17440-p48rdt22530) Units=km Length=0.759388 bus1=p48rdt22530.1.2.3 bus2=p48rdt17440.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22530-p48rdt6093) Units=km Length=0.15354200000000004 bus1=p48rdt6093.1.2.3 bus2=p48rdt6093_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt6093-p48rlv12164u) Units=km Length=0.177603 bus1=p48rlv12164u.1.2.3 bus2=p48rlv12164u_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16917-p48rlv12164u) Units=km Length=0.729621 bus1=p48rdt16917.1.2.3 bus2=p48rlv12164u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16917-p48rdt21200) Units=km Length=0.102814 bus1=p48rdt21200.1.2.3 bus2=p48rdt16917.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21200-p48rdt22529) Units=km Length=0.17494500000000002 bus1=p48rdt22529.1.2.3 bus2=p48rdt22529_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt22529) Units=km Length=0.33850800000000003 bus1=p48rdt16739.1.2.3 bus2=p48rdt16739_b1_2.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt21202) Units=km Length=0.580958 bus1=p48rdt21202.1.2.3 bus2=p48rdt16739.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21202-p48rdt2708) Units=km Length=0.148466 bus1=p48rdt2708.1.2.3 bus2=p48rdt21202.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16209-p48rdt2708) Units=km Length=0.46922500000000006 bus1=p48rdt16209.1.2.3 bus2=p48rdt2708.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16209-p48rdt4116) Units=km Length=0.178487 bus1=p48rdt4116.1.2.3 bus2=p48rdt4116_b1_2.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16389-p48rdt7539) Units=km Length=0.24413200000000004 bus1=p48rdt7539.1.2.3 bus2=p48rdt7539_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21509-p48rdt7539) Units=km Length=0.537096 bus1=p48rdt21509.1.2.3 bus2=p48rdt7539.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11166-p48rdt21509) Units=km Length=0.420151 bus1=p48rdt21509.1.2.3 bus2=p48rdt11166.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17812-p48rdt21509) Units=km Length=0.24472200000000002 bus1=p48rdt17812.1.2.3 bus2=p48rdt21509.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt13171-p48rdt17812) Units=km Length=0.48847 bus1=p48rdt13171.1.2.3 bus2=p48rdt17812.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt13171-p48rdt13172) Units=km Length=0.673066 bus1=p48rdt13172.1.2.3 bus2=p48rdt13171.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt13172-p48rdt18482) Units=km Length=0.501509 bus1=p48rdt18482.1.2.3 bus2=p48rdt13172.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt18482-p48rdt4116) Units=km Length=0.171329 bus1=p48rdt4116.1.2.3 bus2=p48rdt4116_b1_3.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19011-p48rdt4116) Units=km Length=0.0180956 bus1=p48rdt19011.1.2.3 bus2=p48rdt4116.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11857-p48rdt19011) Units=km Length=0.349977 bus1=p48rdt11857.1.2.3 bus2=p48rdt19011.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11857-p48rdt18318) Units=km Length=0.07155680000000002 bus1=p48rdt18318.1.2.3 bus2=p48rdt11857.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt18318-p48rdt6092) Units=km Length=0.51858 bus1=p48rdt6092.1.2.3 bus2=p48rdt18318.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt6092) Units=km Length=0.22488300000000003 bus1=p48rdt14025.1.2.3 bus2=p48rdt14025_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt16738) Units=km Length=0.10420100000000002 bus1=p48rdt16738.1.2.3 bus2=p48rdt16738_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16738-p48rdt20602) Units=km Length=0.770526 bus1=p48rdt20602.1.2.3 bus2=p48rdt16738.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17967-p48rdt20602) Units=km Length=0.0369404 bus1=p48rdt17967.1.2.3 bus2=p48rdt20602.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17967-p48rdt6091) Units=km Length=0.10011900000000001 bus1=p48rdt6091.1.2.3 bus2=p48rdt6091_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt6091-p48rdt6362) Units=km Length=0.435864 bus1=p48rdt6362.1.2.3 bus2=p48rdt6091.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12969-p48rdt14024) Units=km Length=0.197878 bus1=p48rdt12969.1.2.3 bus2=p48rdt14024.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12969-p48rdt15436) Units=km Length=0.17809 bus1=p48rdt15436.1.2.3 bus2=p48rdt12969.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11856-p48rdt15436) Units=km Length=0.5411590000000001 bus1=p48rdt11856.1.2.3 bus2=p48rdt15436.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11856-p48rdt19778) Units=km Length=0.0748689 bus1=p48rdt19778.1.2.3 bus2=p48rdt11856.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19778-p48rlv2915u) Units=km Length=0.26985 bus1=p48rlv2915u.1.2.3 bus2=p48rdt19778.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23090-p48rlv2915u) Units=km Length=0.132352 bus1=p48rlv2915u.1.2.3 bus2=p48rlv2915u_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12970-p48rlv2915u) Units=km Length=0.337294 bus1=p48rdt12970.1.2.3 bus2=p48rlv2915u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12970-p48rdt465) Units=km Length=0.222699 bus1=p48rdt465.1.2.3 bus2=p48rdt12970.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt465-p48rdt8859) Units=km Length=0.225919 bus1=p48rdt8859.1.2.3 bus2=p48rdt465.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt20603-p48rdt8859) Units=km Length=0.001 bus1=p48rdt8859.1.2.3 bus2=p48rdt20603.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt8859-p48rmv10) Units=km Length=0.09327560000000001 bus1=p48rmv10.1.2.3 bus2=p48rmv10_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12761-p48rmv10) Units=km Length=0.110465 bus1=p48rdt12761.1.2.3 bus2=p48rdt12761_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12761-p48rdt5763) Units=km Length=0.255677 bus1=p48rdt5763.1.2.3 bus2=p48rdt12761.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12523-p48rdt5763) Units=km Length=0.0983338 bus1=p48rdt12523.1.2.3 bus2=p48rdt5763.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12522-p48rdt12523) Units=km Length=0.136158 bus1=p48rdt12522.1.2.3 bus2=p48rdt12522_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23089-p48rdt9916) Units=km Length=0.511026 bus1=p48rdt23089.1.2.3 bus2=p48rdt9916.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14023-p48rdt3076) Units=km Length=0.0959392 bus1=p48rdt14023.1.2.3 bus2=p48rdt3076.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14023-p48rlv2106u)_s0 Units=km Length=0.351149 bus1=p48rlv2106u.1.2.3 bus2=p48rdt14023-p48rlv2106ux.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14023-p48rlv2106u)_s1 Units=km Length=0.00420237 bus1=p48rdt14023-p48rlv2106ux.1.2.3 bus2=p48rdt14023.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19647-p48rlv2106u) Units=km Length=0.387864 bus1=p48rlv2106u.1.2.3 bus2=p48rdt19647.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt464-p48rlv2106u) Units=km Length=0.231879 bus1=p48rdt464.1.2.3 bus2=p48rlv2106u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt464-p48rdt5762) Units=km Length=0.4074070000000001 bus1=p48rdt5762.1.2.3 bus2=p48rdt464.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16387-p48rdt5762)_s0 Units=km Length=0.232003 bus1=p48rdt5762.1.2.3 bus2=p48rdt16387-p48rdt5762x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16387-p48rdt5762)_s1 Units=km Length=0.0529917 bus1=p48rdt16387-p48rdt5762x.1.2.3 bus2=p48rdt16387.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt5762-p48rdt8360) Units=km Length=0.514461 bus1=p48rdt8360.1.2.3 bus2=p48rdt5762.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11408-p48rdt8360) Units=km Length=0.630596 bus1=p48rdt11408.1.2.3 bus2=p48rdt8360.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt10409-p48rdt20742) Units=km Length=0.0710025 bus1=p48rdt20742.1.2.3 bus2=p48rdt10409.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11855-p48rdt20742) Units=km Length=0.0907086 bus1=p48rdt11855.1.2.3 bus2=p48rdt20742.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11855-p48rdt2358) Units=km Length=0.362695 bus1=p48rdt2358.1.2.3 bus2=p48rdt11855.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt2358-p48rmv2)_s0 Units=km Length=0.22514100000000004 bus1=p48rmv2.1.2.3 bus2=p48rdt2358-p48rmv2x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt2358-p48rmv2)_s1 Units=km Length=0.00194954 bus1=p48rdt2358-p48rmv2x.1.2.3 bus2=p48rdt2358.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt10684-p48rmv2) Units=km Length=0.279467 bus1=p48rdt10684.1.2.3 bus2=p48rmv2.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt10684-p48rdt11408) Units=km Length=0.307916 bus1=p48rdt11408.1.2.3 bus2=p48rdt10684.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11408-p48rdt23089)_s0 Units=km Length=0.12722 bus1=p48rdt23089.1.2.3 bus2=p48rdt11408-p48rdt23089x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11408-p48rdt23089)_s1 Units=km Length=0.019983 bus1=p48rdt11408-p48rdt23089x.1.2.3 bus2=p48rdt11408.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23089-p48rlv15096u) Units=km Length=0.11509199999999999 bus1=p48rlv15096u.1.2.3 bus2=p48rlv15096u_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rlv15096u-p48rlv28846u) Units=km Length=0.788883 bus1=p48rlv28846u.1.2.3 bus2=p48rlv15096u-p48rlv28846ux.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21047-p48rlv28846u) Units=km Length=0.09671750000000001 bus1=p48rdt21047.1.2.3 bus2=p48rdt21047_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12760-p48rdt21047) Units=km Length=0.0391117 bus1=p48rdt12760.1.2.3 bus2=p48rdt21047.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12760-p48rdt15635) Units=km Length=0.27378600000000003 bus1=p48rdt15635.1.2.3 bus2=p48rdt12760.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14469-p48rdt15635) Units=km Length=0.222158 bus1=p48rdt14469.1.2.3 bus2=p48rdt15635.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14469-p48rdt21048) Units=km Length=0.66517 bus1=p48rdt21048.1.2.3 bus2=p48rdt14469.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21048-p48rlv9254u) Units=km Length=0.69847 bus1=p48rlv9254u.1.2.3 bus2=p48rdt21048.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt52-p48rdt8606) Units=km Length=0.764693 bus1=p48rdt52.1.2.3 bus2=p48rdt8606.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11162-p48rdt52) Units=km Length=0.0558748 bus1=p48rdt11162.1.2.3 bus2=p48rdt52.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt11162-p48rdt1274) Units=km Length=0.338472 bus1=p48rdt1274.1.2.3 bus2=p48rdt11162.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt1274-p48rdt12968) Units=km Length=0.0543182 bus1=p48rdt12968.1.2.3 bus2=p48rdt1274.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12968-p48rdt6362) Units=km Length=0.658228 bus1=p48rdt6362.1.2.3 bus2=p48rdt12968.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt6088lv-p48rlv7144) Units=km Length=0.0310585 bus1=p48rdt6088lv.1.2.3 bus2=p48rlv7144.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3_2
+
+New Line.l(r:p48rdt16738lv-p48rlv26369) Units=km Length=0.0255977 bus1=p48rdt16738lv.1.2.3 bus2=p48rlv26369.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_350kcmil_3_1
+
+New Line.l(r:p48rdt16918-p48rmv28) Units=km Length=0.27954199999999996 bus1=p48rdt16918.1.2.3 bus2=p48rdt16918_b1_2.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12109lv-p48rlv16816) Units=km Length=0.001 bus1=p48rdt12109lv.1.2.3 bus2=p48rlv16816.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt20131lv-p48rlv34795) Units=km Length=0.00270897 bus1=p48rdt20131lv.1.2.3 bus2=p48rlv34795.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt6364lv-p48rlv7527) Units=km Length=0.00662254 bus1=p48rdt6364lv.1.2.3 bus2=p48rlv7527.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt16390lv-p48rlv25573) Units=km Length=0.0667438 bus1=p48rdt16390lv.1.2.3 bus2=p48rlv25573.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3_2
+
+New Line.l(r:p48rdt6398lv-p48rlv7565) Units=km Length=0.0202798 bus1=p48rdt6398lv.1.2.3 bus2=p48rlv7565.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_350kcmil_3_1
+
+New Line.l(r:p48rdt17275lv-p48rlv27565) Units=km Length=0.00796244 bus1=p48rdt17275lv.1.2.3 bus2=p48rlv27565.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt14027lv-p48rlv20540) Units=km Length=0.0101548 bus1=p48rdt14027lv.1.2.3 bus2=p48rlv20540.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt21200lv-p48rlv37757) Units=km Length=0.0544845 bus1=p48rdt21200lv.1.2.3 bus2=p48rlv37757.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_350kcmil_3_1
+
+New Line.l(r:p48rdt15637lv-p48rlv23876) Units=km Length=0.001 bus1=p48rdt15637lv.1.2.3 bus2=p48rlv23876.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3_3
+
+New Line.l(r:p48rdt22530lv-p48rlv41515) Units=km Length=0.0599022 bus1=p48rdt22530lv.1.2.3 bus2=p48rlv41515.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt17440lv-p48rlv27979) Units=km Length=0.001 bus1=p48rdt17440lv.1.2.3 bus2=p48rlv27979.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt7539lv-p48rlv9255) Units=km Length=0.001 bus1=p48rdt7539lv.1.2.3 bus2=p48rlv9255.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt11166lv-p48rlv15098) Units=km Length=0.0183582 bus1=p48rdt11166lv.1.2.3 bus2=p48rlv15098.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt465lv-p48rlv472) Units=km Length=0.0197807 bus1=p48rdt465lv.1.2.3 bus2=p48rlv472.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt465-p48rlv1320u) Units=km Length=0.128047 bus1=p48rdt465.1.2.3 bus2=p48rlv1320u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt15436lv-p48rlv23437) Units=km Length=0.059603 bus1=p48rdt15436lv.1.2.3 bus2=p48rlv23437.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt12969lv-p48rlv18456) Units=km Length=0.0412555 bus1=p48rdt12969lv.1.2.3 bus2=p48rlv18456.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3_1
+
+New Line.l(r:p48rdt14024lv-p48rlv20537) Units=km Length=0.0412801 bus1=p48rdt14024lv.1.2.3 bus2=p48rlv20537.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt23090lv-p48rlv43189) Units=km Length=0.0757759 bus1=p48rdt23090lv.1.2.3 bus2=p48rlv43189.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt20603lv-p48rlv36063) Units=km Length=0.0229319 bus1=p48rdt20603lv.1.2.3 bus2=p48rlv36063.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt23089lv-p48rlv43188) Units=km Length=0.0812556 bus1=p48rdt23089lv.1.2.3 bus2=p48rlv43188.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt11408lv-p48rlv15531) Units=km Length=0.001 bus1=p48rdt11408lv.1.2.3 bus2=p48rlv15531.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_350kcmil_3_1
+
+New Line.l(r:p48rdt3076lv-p48rlv3354) Units=km Length=0.0691543 bus1=p48rdt3076lv.1.2.3 bus2=p48rlv3354.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt3076-p48rmv31) Units=km Length=0.199588 bus1=p48rdt3076.1.2.3 bus2=p48rmv31.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19647-p48rmv36)_s0 Units=km Length=0.282219 bus1=p48rdt19647.1.2.3 bus2=p48rdt19647-p48rmv36x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt19647-p48rmv36)_s1 Units=km Length=0.0286659 bus1=p48rdt19647-p48rmv36x.1.2.3 bus2=p48rmv36.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16387lv-p48rlv25569) Units=km Length=0.08892830000000002 bus1=p48rdt16387lv.1.2.3 bus2=p48rlv25569.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt10684lv-p48rlv14283) Units=km Length=0.001 bus1=p48rdt10684lv.1.2.3 bus2=p48rlv14283.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt2358lv-p48rlv2515) Units=km Length=0.0911737 bus1=p48rdt2358lv.1.2.3 bus2=p48rlv2515.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3
+
+New Line.l(r:p48rdt11855lv-p48rlv16369) Units=km Length=0.07116290000000002 bus1=p48rdt11855lv.1.2.3 bus2=p48rlv16369.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3_1
+
+New Line.l(r:p48rdt10409lv-p48rlv13848) Units=km Length=0.0874284 bus1=p48rdt10409lv.1.2.3 bus2=p48rlv13848.1.2.3 switch=n enabled=y phases=3 Linecode=3P_UG_AL_750kcmil_3_4
+
+New Line.l(r:p48rdt19647-p48rlv36062u) Units=km Length=0.748347 bus1=p48rdt19647-p48rlv36062ux.1.2.3 bus2=p48rdt19647.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt14025-p48rdt9397) Units=km Length=0.0890557 bus1=p48rdt14025-p48rdt9397x.1.2.3 bus2=p48rdt14025-p48rdt9397x_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt12522-p48rdt8606)p48rd1 Units=km Length=0.21284699999999998 bus1=p48rdt8606.1.2.3 bus2=p48rdt8606_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_477kcmil_Cosmos_3_3
+
+New Line.l(r:p48rdt14652-p48rlv9254u)p48rd1 Units=km Length=0.26218199999999997 bus1=p48rdt14652.1.2.3 bus2=p48rdt14652_b1_1.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt14652-p48rlv9254u)p48rd1p48rd1 Units=km Length=0.26218199999999997 bus1=p48rdt14652.1.2.3 bus2=p48rdt14652_b1_2.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt12522-p48rdt14652)p48rd1 Units=km Length=0.175632 bus1=p48rdt12522.1.2.3 bus2=p48rdt12522_b1_2.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3_3
+
+New Line.elbswitch(r:p48rdt14025-p48rdt9397)p48r_17551 Units=km Length=0.001 bus1=p48rdt14025.1.2.3 bus2=p48rdt14025-p48rdt9397x.1.2.3 switch=y enabled=n phases=3 Linecode=elbswitch_3
+
+New Line.fuse(r:p48rdt11165-p48rmv10)p48r_17654 Units=km Length=0.001 bus1=p48rmv10.1 bus2=p48rdt11165-p48rmv10x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt11165-p48rmv10)p48r_17654 monitoredobj=Line.fuse(r:p48rdt11165-p48rmv10)p48r_17654 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt10925-p48rmv28)p48r_17657 Units=km Length=0.001 bus1=p48rmv28.1 bus2=p48rdt10925-p48rmv28x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt10925-p48rmv28)p48r_17657 monitoredobj=Line.fuse(r:p48rdt10925-p48rmv28)p48r_17657 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt21510-p48rmv28)p48r_17658 Units=km Length=0.001 bus1=p48rmv28.3 bus2=p48rdt21510-p48rmv28x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt21510-p48rmv28)p48r_17658 monitoredobj=Line.fuse(r:p48rdt21510-p48rmv28)p48r_17658 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt12108-p48rlv12164u)p48r_17691 Units=km Length=0.001 bus1=p48rlv12164u.3 bus2=p48rdt12108-p48rlv12164ux.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt12108-p48rlv12164u)p48r_17691 monitoredobj=Line.fuse(r:p48rdt12108-p48rlv12164u)p48r_17691 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt22227-p48rlv15096u)p48r_17695 Units=km Length=0.001 bus1=p48rlv15096u.1 bus2=p48rdt22227-p48rlv15096ux.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt22227-p48rlv15096u)p48r_17695 monitoredobj=Line.fuse(r:p48rdt22227-p48rlv15096u)p48r_17695 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt18160-p48rlv28846u)p48r_17727 Units=km Length=0.001 bus1=p48rlv28846u.1 bus2=p48rdt18160-p48rlv28846ux.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt18160-p48rlv28846u)p48r_17727 monitoredobj=Line.fuse(r:p48rdt18160-p48rlv28846u)p48r_17727 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt4115-p48rdt464)p48r_17864 Units=km Length=0.001 bus1=p48rdt464.1 bus2=p48rdt4115-p48rdt464xx.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt4115-p48rdt464)p48r_17864 monitoredobj=Line.fuse(r:p48rdt4115-p48rdt464)p48r_17864 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt19333-p48rdt464)p48r_17865 Units=km Length=0.001 bus1=p48rdt464.1 bus2=p48rdt19333-p48rdt464xx.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt19333-p48rdt464)p48r_17865 monitoredobj=Line.fuse(r:p48rdt19333-p48rdt464)p48r_17865 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt1270-p48rdt17274)p48r_18056 Units=km Length=0.001 bus1=p48rdt1270.1 bus2=p48rdt1270-p48rdt17274x.1 switch=n enabled=y phases=1 Linecode=fuse_1_4
+
+New Fuse.Fuse_fuse(r:p48rdt1270-p48rdt17274)p48r_18056 monitoredobj=Line.fuse(r:p48rdt1270-p48rdt17274)p48r_18056 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt14468-p48rdt3076)p48r_18455 Units=km Length=0.001 bus1=p48rdt3076.2 bus2=p48rdt14468-p48rdt3076x.2 switch=n enabled=y phases=1 Linecode=fuse_1_1
+
+New Fuse.Fuse_fuse(r:p48rdt14468-p48rdt3076)p48r_18455 monitoredobj=Line.fuse(r:p48rdt14468-p48rdt3076)p48r_18455 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt3436-p48rdt4114)p48r_18561 Units=km Length=0.001 bus1=p48rdt3436.3 bus2=p48rdt3436-p48rdt4114x.3 switch=n enabled=y phases=1 Linecode=fuse_1_4
+
+New Fuse.Fuse_fuse(r:p48rdt3436-p48rdt4114)p48r_18561 monitoredobj=Line.fuse(r:p48rdt3436-p48rdt4114)p48r_18561 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt36-p48rdt3777)p48r_18628 Units=km Length=0.001 bus1=p48rdt3777.3 bus2=p48rdt36-p48rdt3777x.3 switch=n enabled=y phases=1 Linecode=fuse_1_4
+
+New Fuse.Fuse_fuse(r:p48rdt36-p48rdt3777)p48r_18628 monitoredobj=Line.fuse(r:p48rdt36-p48rdt3777)p48r_18628 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt20303-p48rdt5111)p48r_18932 Units=km Length=0.001 bus1=p48rdt5111.2 bus2=p48rdt20303-p48rdt5111x.2 switch=n enabled=y phases=1 Linecode=fuse_1_2
+
+New Fuse.Fuse_fuse(r:p48rdt20303-p48rdt5111)p48r_18932 monitoredobj=Line.fuse(r:p48rdt20303-p48rdt5111)p48r_18932 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt12759-p48rdt6091)p48r_19153 Units=km Length=0.001 bus1=p48rdt6091.1 bus2=p48rdt12759-p48rdt6091x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt12759-p48rdt6091)p48r_19153 monitoredobj=Line.fuse(r:p48rdt12759-p48rdt6091)p48r_19153 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt23092-p48rdt6092)p48r_19154 Units=km Length=0.001 bus1=p48rdt6092.3 bus2=p48rdt23092-p48rdt6092x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt23092-p48rdt6092)p48r_19154 monitoredobj=Line.fuse(r:p48rdt23092-p48rdt6092)p48r_19154 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt6398-p48rdt908)p48r_19232 Units=km Length=0.001 bus1=p48rdt6398.3 bus2=p48rdt6398-p48rdt908x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt6398-p48rdt908)p48r_19232 monitoredobj=Line.fuse(r:p48rdt6398-p48rdt908)p48r_19232 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt16573-p48rdt9916)p48r_20027 Units=km Length=0.001 bus1=p48rdt9916.2 bus2=p48rdt16573-p48rdt9916x.2 switch=n enabled=y phases=1 Linecode=fuse_1_2
+
+New Fuse.Fuse_fuse(r:p48rdt16573-p48rdt9916)p48r_20027 monitoredobj=Line.fuse(r:p48rdt16573-p48rdt9916)p48r_20027 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt17111-p48rdt9917)p48r_20028 Units=km Length=0.001 bus1=p48rdt9917.3 bus2=p48rdt17111-p48rdt9917x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt17111-p48rdt9917)p48r_20028 monitoredobj=Line.fuse(r:p48rdt17111-p48rdt9917)p48r_20028 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt10408-p48rdt11635)p48r_20129 Units=km Length=0.001 bus1=p48rdt10408.2 bus2=p48rdt10408-p48rdt11635x.2 switch=n enabled=y phases=1 Linecode=fuse_1_2
+
+New Fuse.Fuse_fuse(r:p48rdt10408-p48rdt11635)p48r_20129 monitoredobj=Line.fuse(r:p48rdt10408-p48rdt11635)p48r_20129 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt10684-p48rdt867)p48r_20187 Units=km Length=0.001 bus1=p48rdt10684.1 bus2=p48rdt10684-p48rdt867x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt10684-p48rdt867)p48r_20187 monitoredobj=Line.fuse(r:p48rdt10684-p48rdt867)p48r_20187 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt10684-p48rdt15634)p48r_20188 Units=km Length=0.001 bus1=p48rdt10684.3 bus2=p48rdt10684-p48rdt15634x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt10684-p48rdt15634)p48r_20188 monitoredobj=Line.fuse(r:p48rdt10684-p48rdt15634)p48r_20188 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt11855-p48rdt17642)p48r_20440 Units=km Length=0.001 bus1=p48rdt11855.3 bus2=p48rdt11855-p48rdt17642x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt11855-p48rdt17642)p48r_20440 monitoredobj=Line.fuse(r:p48rdt11855-p48rdt17642)p48r_20440 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt12761-p48rdt23091)p48r_20624 Units=km Length=0.001 bus1=p48rdt12761.3 bus2=p48rdt12761-p48rdt23091x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt12761-p48rdt23091)p48r_20624 monitoredobj=Line.fuse(r:p48rdt12761-p48rdt23091)p48r_20624 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt12968-p48rdt15633)p48r_20673 Units=km Length=0.001 bus1=p48rdt12968.2 bus2=p48rdt12968-p48rdt15633x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt12968-p48rdt15633)p48r_20673 monitoredobj=Line.fuse(r:p48rdt12968-p48rdt15633)p48r_20673 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt13169-p48rdt14841)p48r_20721 Units=km Length=0.001 bus1=p48rdt13169.3 bus2=p48rdt13169-p48rdt14841x.3 switch=n enabled=y phases=1 Linecode=fuse_1_4
+
+New Fuse.Fuse_fuse(r:p48rdt13169-p48rdt14841)p48r_20721 monitoredobj=Line.fuse(r:p48rdt13169-p48rdt14841)p48r_20721 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt14469-p48rdt6949)p48r_20965 Units=km Length=0.001 bus1=p48rdt14469.2 bus2=p48rdt14469-p48rdt6949x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt14469-p48rdt6949)p48r_20965 monitoredobj=Line.fuse(r:p48rdt14469-p48rdt6949)p48r_20965 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt14469-p48rdt19951)p48r_20966 Units=km Length=0.001 bus1=p48rdt14469.1 bus2=p48rdt14469-p48rdt19951x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt14469-p48rdt19951)p48r_20966 monitoredobj=Line.fuse(r:p48rdt14469-p48rdt19951)p48r_20966 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt14653-p48rdt17813)p48r_21004 Units=km Length=0.001 bus1=p48rdt14653.2 bus2=p48rdt14653-p48rdt17813x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt14653-p48rdt17813)p48r_21004 monitoredobj=Line.fuse(r:p48rdt14653-p48rdt17813)p48r_21004 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt16209-p48rdt868)p48r_21356 Units=km Length=0.001 bus1=p48rdt16209.1 bus2=p48rdt16209-p48rdt868x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt16209-p48rdt868)p48r_21356 monitoredobj=Line.fuse(r:p48rdt16209-p48rdt868)p48r_21356 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt14026-p48rdt16389)p48r_21389 Units=km Length=0.001 bus1=p48rdt16389.2 bus2=p48rdt14026-p48rdt16389x.2 switch=n enabled=y phases=1 Linecode=fuse_1_1
+
+New Fuse.Fuse_fuse(r:p48rdt14026-p48rdt16389)p48r_21389 monitoredobj=Line.fuse(r:p48rdt14026-p48rdt16389)p48r_21389 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt16208-p48rdt16389)p48r_21390 Units=km Length=0.001 bus1=p48rdt16389.3 bus2=p48rdt16208-p48rdt16389x.3 switch=n enabled=y phases=1 Linecode=fuse_1_1
+
+New Fuse.Fuse_fuse(r:p48rdt16208-p48rdt16389)p48r_21390 monitoredobj=Line.fuse(r:p48rdt16208-p48rdt16389)p48r_21390 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt16587-p48rdt4483)p48r_21443 Units=km Length=0.001 bus1=p48rdt16587.3 bus2=p48rdt16587-p48rdt4483x.3 switch=n enabled=y phases=1 Linecode=fuse_1_2
+
+New Fuse.Fuse_fuse(r:p48rdt16587-p48rdt4483)p48r_21443 monitoredobj=Line.fuse(r:p48rdt16587-p48rdt4483)p48r_21443 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt15843-p48rdt16587)p48r_21444 Units=km Length=0.001 bus1=p48rdt16587.1 bus2=p48rdt15843-p48rdt16587x.1 switch=n enabled=y phases=1 Linecode=fuse_1_2
+
+New Fuse.Fuse_fuse(r:p48rdt15843-p48rdt16587)p48r_21444 monitoredobj=Line.fuse(r:p48rdt15843-p48rdt16587)p48r_21444 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt11409-p48rdt16738)p48r_21471 Units=km Length=0.001 bus1=p48rdt16738.2 bus2=p48rdt11409-p48rdt16738x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt11409-p48rdt16738)p48r_21471 monitoredobj=Line.fuse(r:p48rdt11409-p48rdt16738)p48r_21471 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt16739-p48rdt7540)p48r_21472 Units=km Length=0.001 bus1=p48rdt16739.3 bus2=p48rdt16739-p48rdt7540x.3 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt16739-p48rdt7540)p48r_21472 monitoredobj=Line.fuse(r:p48rdt16739-p48rdt7540)p48r_21472 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt17276-p48rdt17814)p48r_21676 Units=km Length=0.001 bus1=p48rdt17814.1 bus2=p48rdt17276-p48rdt17814x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt17276-p48rdt17814)p48r_21676 monitoredobj=Line.fuse(r:p48rdt17276-p48rdt17814)p48r_21676 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt18482-p48rdt18655)p48r_21794 Units=km Length=0.001 bus1=p48rdt18482.2 bus2=p48rdt18482-p48rdt18655x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt18482-p48rdt18655)p48r_21794 monitoredobj=Line.fuse(r:p48rdt18482-p48rdt18655)p48r_21794 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt19168-p48rdt7533)p48r_21925 Units=km Length=0.001 bus1=p48rdt19168.1 bus2=p48rdt19168-p48rdt7533x.1 switch=n enabled=y phases=1 Linecode=fuse_1_4
+
+New Fuse.Fuse_fuse(r:p48rdt19168-p48rdt7533)p48r_21925 monitoredobj=Line.fuse(r:p48rdt19168-p48rdt7533)p48r_21925 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt19168-p48rdt23084)p48r_21926 Units=km Length=0.001 bus1=p48rdt19168.3 bus2=p48rdt19168-p48rdt23084x.3 switch=n enabled=y phases=1 Linecode=fuse_1_4
+
+New Fuse.Fuse_fuse(r:p48rdt19168-p48rdt23084)p48r_21926 monitoredobj=Line.fuse(r:p48rdt19168-p48rdt23084)p48r_21926 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt17439-p48rdt19647)p48r_22027 Units=km Length=0.001 bus1=p48rdt19647.1 bus2=p48rdt17439-p48rdt19647x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt17439-p48rdt19647)p48r_22027 monitoredobj=Line.fuse(r:p48rdt17439-p48rdt19647)p48r_22027 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt21201-p48rdt21202)p48r_22359 Units=km Length=0.001 bus1=p48rdt21202.2 bus2=p48rdt21201-p48rdt21202x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt21201-p48rdt21202)p48r_22359 monitoredobj=Line.fuse(r:p48rdt21201-p48rdt21202)p48r_22359 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt12302-p48rdt22529)p48r_22633 Units=km Length=0.001 bus1=p48rdt22529.2 bus2=p48rdt12302-p48rdt22529x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt12302-p48rdt22529)p48r_22633 monitoredobj=Line.fuse(r:p48rdt12302-p48rdt22529)p48r_22633 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt22936-p48rdt7806)p48r_22718 Units=km Length=0.001 bus1=p48rdt22936.2 bus2=p48rdt22936-p48rdt7806x.2 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt22936-p48rdt7806)p48r_22718 monitoredobj=Line.fuse(r:p48rdt22936-p48rdt7806)p48r_22718 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt22936-p48rdt9918)p48r_22719 Units=km Length=0.001 bus1=p48rdt22936.1 bus2=p48rdt22936-p48rdt9918x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt22936-p48rdt9918)p48r_22719 monitoredobj=Line.fuse(r:p48rdt22936-p48rdt9918)p48r_22719 enabled=y ratedcurrent=170.0
+
+New Line.fuse(r:p48rdt10410-p48rdt22936)p48r_22720 Units=km Length=0.001 bus1=p48rdt22936.1 bus2=p48rdt10410-p48rdt22936x.1 switch=n enabled=y phases=1 Linecode=fuse_1
+
+New Fuse.Fuse_fuse(r:p48rdt10410-p48rdt22936)p48r_22720 monitoredobj=Line.fuse(r:p48rdt10410-p48rdt22936)p48r_22720 enabled=y ratedcurrent=170.0
+
+New Line.l(r:p48rdt11409-p48rdt16738)_disconnect Units=km Length=0.001 bus1=p48rdt11409-p48rdt16738x_b1_1.2 bus2=p48rdt11409-p48rdt16738x_b2_1.2 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt11409-p48rdt16738)_cont Units=km Length=1.1279970000000001 bus1=p48rdt11409-p48rdt16738x_b2_1.2 bus2=p48rdt11409.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16587-p48rdt4483)_disconnect Units=km Length=0.001 bus1=p48rdt16587-p48rdt4483x_b1_1.3 bus2=p48rdt16587-p48rdt4483x_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16587-p48rdt4483)_cont Units=km Length=1.081035 bus1=p48rdt16587-p48rdt4483x_b2_1.3 bus2=p48rdt4483.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12991-p48rdt15058)_disconnect Units=km Length=0.001 bus1=p48rdt12991_b1_1.1 bus2=p48rdt12991_b2_1.1 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12991-p48rdt15058)_cont Units=km Length=1.2263490000000001 bus1=p48rdt12991_b2_1.1 bus2=p48rdt15058.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12991-p48rdt15843)_disconnect Units=km Length=0.001 bus1=p48rdt15843_b1_1.1 bus2=p48rdt15843_b2_1.1 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12991-p48rdt15843)_cont Units=km Length=0.8698806 bus1=p48rdt15843_b2_1.1 bus2=p48rdt12991.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17111-p48rdt9917)_disconnect Units=km Length=0.001 bus1=p48rdt17111-p48rdt9917x_b1_1.3 bus2=p48rdt17111-p48rdt9917x_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17111-p48rdt9917)_cont Units=km Length=1.597194 bus1=p48rdt17111-p48rdt9917x_b2_1.3 bus2=p48rdt17111.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10925-p48rmv28)_disconnect Units=km Length=0.001 bus1=p48rdt10925-p48rmv28x_b1_1.1 bus2=p48rdt10925-p48rmv28x_b2_1.1 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt10925-p48rmv28)_cont Units=km Length=0.8139357 bus1=p48rdt10925-p48rmv28x_b2_1.1 bus2=p48rdt10925.1 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt21510-p48rmv28)_disconnect Units=km Length=0.001 bus1=p48rdt21510-p48rmv28x_b1_1.3 bus2=p48rdt21510-p48rmv28x_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt21510-p48rmv28)_cont Units=km Length=1.487862 bus1=p48rdt21510-p48rmv28x_b2_1.3 bus2=p48rdt21510.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17656-p48rdt7260)_disconnect Units=km Length=0.001 bus1=p48rdt17656_b1_1.2 bus2=p48rdt17656_b2_1.2 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt17656-p48rdt7260)_cont Units=km Length=0.8073432 bus1=p48rdt17656_b2_1.2 bus2=p48rdt7260.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt20303-p48rdt5111)_disconnect Units=km Length=0.001 bus1=p48rdt20303-p48rdt5111x_b1_1.2 bus2=p48rdt20303-p48rdt5111x_b2_1.2 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt20303-p48rdt5111)_cont Units=km Length=3.006144 bus1=p48rdt20303-p48rdt5111x_b2_1.2 bus2=p48rdt20303.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt2393-p48rdt908)_disconnect Units=km Length=0.001 bus1=p48rdt908_b1_1.3 bus2=p48rdt908_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt2393-p48rdt908)_cont Units=km Length=1.7341830000000003 bus1=p48rdt908_b2_1.3 bus2=p48rdt2393.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12108-p48rlv12164u)_disconnect Units=km Length=0.001 bus1=p48rdt12108-p48rlv12164ux_b1_1.3 bus2=p48rdt12108-p48rlv12164ux_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12108-p48rlv12164u)_cont Units=km Length=1.1986470000000002 bus1=p48rdt12108-p48rlv12164ux_b2_1.3 bus2=p48rdt12108.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14026-p48rdt16389)_disconnect Units=km Length=0.001 bus1=p48rdt14026-p48rdt16389x_b1_1.2 bus2=p48rdt14026-p48rdt16389x_b2_1.2 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt14026-p48rdt16389)_cont Units=km Length=1.2105000000000001 bus1=p48rdt14026-p48rdt16389x_b2_1.2 bus2=p48rdt14026.2 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16208-p48rdt16389)_disconnect Units=km Length=0.001 bus1=p48rdt16208-p48rdt16389x_b1_1.3 bus2=p48rdt16208-p48rdt16389x_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16208-p48rdt16389)_cont Units=km Length=1.2548970000000002 bus1=p48rdt16208-p48rdt16389x_b2_1.3 bus2=p48rdt16208.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12761-p48rdt23091)_disconnect Units=km Length=0.001 bus1=p48rdt12761-p48rdt23091x_b1_1.3 bus2=p48rdt12761-p48rdt23091x_b2_1.3 switch=y enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt12761-p48rdt23091)_cont Units=km Length=1.1152170000000001 bus1=p48rdt12761-p48rdt23091x_b2_1.3 bus2=p48rdt23091.3 switch=n enabled=y phases=1 Linecode=1P_OH_AL_AAC_#2_Iris_1
+
+New Line.l(r:p48rdt16587-p48rdt9917)_disconnect Units=km Length=0.001 bus1=p48rdt9917_b1_1.1.2.3 bus2=p48rdt9917_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16587-p48rdt9917)_cont Units=km Length=2.3238450000000004 bus1=p48rdt9917_b2_1.1.2.3 bus2=p48rdt16587.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt4116-p48rdt9917)_disconnect Units=km Length=0.001 bus1=p48rdt4116_b1_1.1.2.3 bus2=p48rdt4116_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt4116-p48rdt9917)_cont Units=km Length=3.1586670000000003 bus1=p48rdt4116_b2_1.1.2.3 bus2=p48rdt9917.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16390-p48rdt6364)_disconnect Units=km Length=0.001 bus1=p48rdt6364_b1_1.1.2.3 bus2=p48rdt6364_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16390-p48rdt6364)_cont Units=km Length=0.7490331 bus1=p48rdt6364_b2_1.1.2.3 bus2=p48rdt16390.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt5111-p48rmv4)_disconnect Units=km Length=0.001 bus1=p48rmv4_b1_1.1.2.3 bus2=p48rmv4_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt5111-p48rmv4)_cont Units=km Length=2.675187 bus1=p48rmv4_b2_1.1.2.3 bus2=p48rdt5111.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12524-p48rdt21666)_disconnect Units=km Length=0.001 bus1=p48rdt21666_b1_1.1.2.3 bus2=p48rdt21666_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12524-p48rdt21666)_cont Units=km Length=2.014902 bus1=p48rdt21666_b2_1.1.2.3 bus2=p48rdt12524.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22662-p48rmv4)_disconnect Units=km Length=0.001 bus1=p48rdt22662_b1_1.1.2.3 bus2=p48rdt22662_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22662-p48rmv4)_cont Units=km Length=1.0273320000000001 bus1=p48rdt22662_b2_1.1.2.3 bus2=p48rmv4.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22662-p48rdt22936)_disconnect Units=km Length=0.001 bus1=p48rdt22936_b1_1.1.2.3 bus2=p48rdt22936_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22662-p48rdt22936)_cont Units=km Length=0.8878518000000001 bus1=p48rdt22936_b2_1.1.2.3 bus2=p48rdt22662.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rdt20131)_disconnect Units=km Length=0.001 bus1=p48rdt16918_b1_1.1.2.3 bus2=p48rdt16918_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rdt20131)_cont Units=km Length=1.249821 bus1=p48rdt16918_b2_1.1.2.3 bus2=p48rdt20131.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rdt4455)_disconnect Units=km Length=0.001 bus1=p48rdt4455_b1_1.1.2.3 bus2=p48rdt4455_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rdt4455)_cont Units=km Length=0.961443 bus1=p48rdt4455_b2_1.1.2.3 bus2=p48rdt16918.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12110-p48rdt14653)_disconnect Units=km Length=0.001 bus1=p48rdt14653_b1_1.1.2.3 bus2=p48rdt14653_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12110-p48rdt14653)_cont Units=km Length=0.7771518 bus1=p48rdt14653_b2_1.1.2.3 bus2=p48rdt12110.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt22075)_disconnect Units=km Length=0.001 bus1=p48rdt16739_b1_1.1.2.3 bus2=p48rdt16739_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt22075)_cont Units=km Length=2.266857 bus1=p48rdt16739_b2_1.1.2.3 bus2=p48rdt22075.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22530-p48rdt6093)_disconnect Units=km Length=0.001 bus1=p48rdt6093_b1_1.1.2.3 bus2=p48rdt6093_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt22530-p48rdt6093)_cont Units=km Length=1.3908780000000003 bus1=p48rdt6093_b2_1.1.2.3 bus2=p48rdt22530.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt6093-p48rlv12164u)_disconnect Units=km Length=0.001 bus1=p48rlv12164u_b1_1.1.2.3 bus2=p48rlv12164u_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt6093-p48rlv12164u)_cont Units=km Length=1.607427 bus1=p48rlv12164u_b2_1.1.2.3 bus2=p48rdt6093.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21200-p48rdt22529)_disconnect Units=km Length=0.001 bus1=p48rdt22529_b1_1.1.2.3 bus2=p48rdt22529_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21200-p48rdt22529)_cont Units=km Length=1.5835050000000002 bus1=p48rdt22529_b2_1.1.2.3 bus2=p48rdt21200.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt22529)_disconnect Units=km Length=0.001 bus1=p48rdt16739_b1_2.1.2.3 bus2=p48rdt16739_b2_2.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16739-p48rdt22529)_cont Units=km Length=3.055572 bus1=p48rdt16739_b2_2.1.2.3 bus2=p48rdt22529.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16209-p48rdt4116)_disconnect Units=km Length=0.001 bus1=p48rdt4116_b1_2.1.2.3 bus2=p48rdt4116_b2_2.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16209-p48rdt4116)_cont Units=km Length=1.615383 bus1=p48rdt4116_b2_2.1.2.3 bus2=p48rdt16209-p48rdt4116x.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16389-p48rdt7539)_disconnect Units=km Length=0.001 bus1=p48rdt7539_b1_1.1.2.3 bus2=p48rdt7539_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16389-p48rdt7539)_cont Units=km Length=2.206188 bus1=p48rdt7539_b2_1.1.2.3 bus2=p48rdt16389.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt18482-p48rdt4116)_disconnect Units=km Length=0.001 bus1=p48rdt4116_b1_3.1.2.3 bus2=p48rdt4116_b2_3.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt18482-p48rdt4116)_cont Units=km Length=1.550961 bus1=p48rdt4116_b2_3.1.2.3 bus2=p48rdt18482.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt6092)_disconnect Units=km Length=0.001 bus1=p48rdt14025_b1_1.1.2.3 bus2=p48rdt14025_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt6092)_cont Units=km Length=2.032947 bus1=p48rdt14025_b2_1.1.2.3 bus2=p48rdt6092.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt16738)_disconnect Units=km Length=0.001 bus1=p48rdt16738_b1_1.1.2.3 bus2=p48rdt16738_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt16738)_cont Units=km Length=0.946809 bus1=p48rdt16738_b2_1.1.2.3 bus2=p48rdt14025.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17967-p48rdt6091)_disconnect Units=km Length=0.001 bus1=p48rdt6091_b1_1.1.2.3 bus2=p48rdt6091_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt17967-p48rdt6091)_cont Units=km Length=0.9100710000000001 bus1=p48rdt6091_b2_1.1.2.3 bus2=p48rdt17967.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23090-p48rlv2915u)_disconnect Units=km Length=0.001 bus1=p48rlv2915u_b1_1.1.2.3 bus2=p48rlv2915u_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23090-p48rlv2915u)_cont Units=km Length=1.2001680000000001 bus1=p48rlv2915u_b2_1.1.2.3 bus2=p48rdt23090.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt8859-p48rmv10)_disconnect Units=km Length=0.001 bus1=p48rmv10_b1_1.1.2.3 bus2=p48rmv10_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt8859-p48rmv10)_cont Units=km Length=0.8484804000000001 bus1=p48rmv10_b2_1.1.2.3 bus2=p48rdt8859.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12761-p48rmv10)_disconnect Units=km Length=0.001 bus1=p48rdt12761_b1_1.1.2.3 bus2=p48rdt12761_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12761-p48rmv10)_cont Units=km Length=1.003185 bus1=p48rdt12761_b2_1.1.2.3 bus2=p48rmv10.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12522-p48rdt12523)_disconnect Units=km Length=0.001 bus1=p48rdt12522_b1_1.1.2.3 bus2=p48rdt12522_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt12522-p48rdt12523)_cont Units=km Length=1.2344220000000001 bus1=p48rdt12522_b2_1.1.2.3 bus2=p48rdt12523.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23089-p48rlv15096u)_disconnect Units=km Length=0.001 bus1=p48rlv15096u_b1_1.1.2.3 bus2=p48rlv15096u_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt23089-p48rlv15096u)_cont Units=km Length=1.044828 bus1=p48rlv15096u_b2_1.1.2.3 bus2=p48rdt23089.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21047-p48rlv28846u)_disconnect Units=km Length=0.001 bus1=p48rdt21047_b1_1.1.2.3 bus2=p48rdt21047_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt21047-p48rlv28846u)_cont Units=km Length=0.8794575000000001 bus1=p48rdt21047_b2_1.1.2.3 bus2=p48rlv28846u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rmv28)_disconnect Units=km Length=0.001 bus1=p48rdt16918_b1_2.1.2.3 bus2=p48rdt16918_b2_2.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt16918-p48rmv28)_cont Units=km Length=2.5248779999999997 bus1=p48rdt16918_b2_2.1.2.3 bus2=p48rmv28.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_4/0_Oxlip_3
+
+New Line.l(r:p48rdt14025-p48rdt9397)_disconnect Units=km Length=0.001 bus1=p48rdt14025-p48rdt9397x_b1_1.1.2.3 bus2=p48rdt14025-p48rdt9397x_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt14025-p48rdt9397)_cont Units=km Length=0.8105013 bus1=p48rdt14025-p48rdt9397x_b2_1.1.2.3 bus2=p48rdt9397.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt12522-p48rdt8606)p48rd1_disconnect Units=km Length=0.001 bus1=p48rdt8606_b1_1.1.2.3 bus2=p48rdt8606_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_477kcmil_Cosmos_3_3
+
+New Line.l(r:p48rdt12522-p48rdt8606)p48rd1_cont Units=km Length=1.9246229999999998 bus1=p48rdt8606_b2_1.1.2.3 bus2=p48rdt12522.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_477kcmil_Cosmos_3_3
+
+New Line.l(r:p48rdt14652-p48rlv9254u)p48rd1_disconnect Units=km Length=0.001 bus1=p48rdt14652_b1_1.1.2.3 bus2=p48rdt14652_b2_1.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt14652-p48rlv9254u)p48rd1_cont Units=km Length=2.368638 bus1=p48rdt14652_b2_1.1.2.3 bus2=p48rlv9254u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt14652-p48rlv9254u)p48rd1p48rd1_disconnect Units=km Length=0.001 bus1=p48rdt14652_b1_2.1.2.3 bus2=p48rdt14652_b2_2.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt14652-p48rlv9254u)p48rd1p48rd1_cont Units=km Length=2.368638 bus1=p48rdt14652_b2_2.1.2.3 bus2=p48rlv9254u.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_ACSR_1033kcmil_Curlew_3
+
+New Line.l(r:p48rdt12522-p48rdt14652)p48rd1_disconnect Units=km Length=0.001 bus1=p48rdt12522_b1_2.1.2.3 bus2=p48rdt12522_b2_2.1.2.3 switch=y enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3_3
+
+New Line.l(r:p48rdt12522-p48rdt14652)p48rd1_cont Units=km Length=1.589688 bus1=p48rdt12522_b2_2.1.2.3 bus2=p48rdt14652.1.2.3 switch=n enabled=y phases=3 Linecode=3P_OH_AL_AAC_336kcmil_Tulip_3_3
+

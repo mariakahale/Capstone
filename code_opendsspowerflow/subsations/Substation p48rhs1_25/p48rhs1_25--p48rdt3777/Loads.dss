@@ -1,0 +1,960 @@
+New Load.load_p48rlv38_1 conn=wye bus1=p48rlv38.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38_2 conn=wye bus1=p48rlv38.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv54_1 conn=wye bus1=p48rlv54.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv54_2 conn=wye bus1=p48rlv54.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv100_1 conn=wye bus1=p48rlv100.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv100_2 conn=wye bus1=p48rlv100.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv465_1 conn=wye bus1=p48rlv465.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv465_2 conn=wye bus1=p48rlv465.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv471_1 conn=wye bus1=p48rlv471.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv471_2 conn=wye bus1=p48rlv471.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv472 conn=wye bus1=p48rlv472.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=409.4498804524719 kvar=31.053568046555817 Phases=3 yearly=com_kw_941-Far-West_pu
+
+New Load.load_p48rlv889_1 conn=wye bus1=p48rlv889.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv889_2 conn=wye bus1=p48rlv889.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv891_1 conn=wye bus1=p48rlv891.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv891_2 conn=wye bus1=p48rlv891.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv892_1 conn=wye bus1=p48rlv892.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv892_2 conn=wye bus1=p48rlv892.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv893_1 conn=wye bus1=p48rlv893.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv893_2 conn=wye bus1=p48rlv893.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv934_1 conn=wye bus1=p48rlv934.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv934_2 conn=wye bus1=p48rlv934.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv1315_1 conn=wye bus1=p48rlv1315.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv1315_2 conn=wye bus1=p48rlv1315.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv1319_1 conn=wye bus1=p48rlv1319.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv1319_2 conn=wye bus1=p48rlv1319.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv1320 conn=wye bus1=p48rlv1320u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv2102_1 conn=wye bus1=p48rlv2102.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv2102_2 conn=wye bus1=p48rlv2102.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rmv2 conn=wye bus1=p48rmv2.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv2106 conn=wye bus1=p48rlv2106u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv2511_1 conn=wye bus1=p48rlv2511.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2511_2 conn=wye bus1=p48rlv2511.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2515 conn=wye bus1=p48rlv2515.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=539.6618044089491 kvar=30.46108230799685 Phases=3 yearly=com_kw_23791-Far-West_pu
+
+New Load.load_p48rmv4 conn=wye bus1=p48rmv4.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv2553_1 conn=wye bus1=p48rlv2553.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2553_2 conn=wye bus1=p48rlv2553.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2915 conn=wye bus1=p48rlv2915u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=154.0070233555845 kvar=7.360044458012081 Phases=3 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv2916_1 conn=wye bus1=p48rlv2916.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2916_2 conn=wye bus1=p48rlv2916.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2957_1 conn=wye bus1=p48rlv2957.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv2957_2 conn=wye bus1=p48rlv2957.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv3353_1 conn=wye bus1=p48rlv3353.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv3353_2 conn=wye bus1=p48rlv3353.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv3354 conn=wye bus1=p48rlv3354.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=383.3840180656248 kvar=17.711218069819815 Phases=3 yearly=com_kw_873-Far-West_pu
+
+New Load.load_p48rlv3355_1 conn=wye bus1=p48rlv3355.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv3355_2 conn=wye bus1=p48rlv3355.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv3775_1 conn=wye bus1=p48rlv3775.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv3775_2 conn=wye bus1=p48rlv3775.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv3778_1 conn=wye bus1=p48rlv3778.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv3778_2 conn=wye bus1=p48rlv3778.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv4174_1 conn=wye bus1=p48rlv4174.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv4174_2 conn=wye bus1=p48rlv4174.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv4604_1 conn=wye bus1=p48rlv4604.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv4604_2 conn=wye bus1=p48rlv4604.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv4605_1 conn=wye bus1=p48rlv4605.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv4605_2 conn=wye bus1=p48rlv4605.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv4606_1 conn=wye bus1=p48rlv4606.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv4606_2 conn=wye bus1=p48rlv4606.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv4607_1 conn=wye bus1=p48rlv4607.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv4607_2 conn=wye bus1=p48rlv4607.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv5017_1 conn=wye bus1=p48rlv5017.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv5017_2 conn=wye bus1=p48rlv5017.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv5048_1 conn=wye bus1=p48rlv5048.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv5048_2 conn=wye bus1=p48rlv5048.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv5464_1 conn=wye bus1=p48rlv5464.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv5464_2 conn=wye bus1=p48rlv5464.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv5858_1 conn=wye bus1=p48rlv5858.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.954050441355474 kvar=0.9137463696612845 Phases=1 yearly=com_kw_907-Far-West_pu
+
+New Load.load_p48rlv5858_2 conn=wye bus1=p48rlv5858.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.954050441355474 kvar=0.9137463696612845 Phases=1 yearly=com_kw_907-Far-West_pu
+
+New Load.load_p48rlv6286_1 conn=wye bus1=p48rlv6286.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv6286_2 conn=wye bus1=p48rlv6286.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv6715_1 conn=wye bus1=p48rlv6715.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv6715_2 conn=wye bus1=p48rlv6715.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv6716_1 conn=wye bus1=p48rlv6716.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv6716_2 conn=wye bus1=p48rlv6716.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7144 conn=wye bus1=p48rlv7144.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=539.6618044089491 kvar=30.46108230799685 Phases=3 yearly=com_kw_23791-Far-West_pu
+
+New Load.load_p48rlv7147_1 conn=wye bus1=p48rlv7147.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7147_2 conn=wye bus1=p48rlv7147.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7149_1 conn=wye bus1=p48rlv7149.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv7149_2 conn=wye bus1=p48rlv7149.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv7150_1 conn=wye bus1=p48rlv7150.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv7150_2 conn=wye bus1=p48rlv7150.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv7525_1 conn=wye bus1=p48rlv7525.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7525_2 conn=wye bus1=p48rlv7525.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7527 conn=wye bus1=p48rlv7527.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=447.109057467619 kvar=17.435466151300396 Phases=3 yearly=com_kw_23746-Far-West_pu
+
+New Load.load_p48rlv7528_1 conn=wye bus1=p48rlv7528.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7528_2 conn=wye bus1=p48rlv7528.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv7565 conn=wye bus1=p48rlv7565.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=171.59214773334165 kvar=7.19321629791343 Phases=3 yearly=com_kw_23797-Far-West_pu
+
+New Load.load_p48rlv8356_1 conn=wye bus1=p48rlv8356.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv8356_2 conn=wye bus1=p48rlv8356.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv8360_1 conn=wye bus1=p48rlv8360.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv8360_2 conn=wye bus1=p48rlv8360.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv8777_1 conn=wye bus1=p48rlv8777.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv8777_2 conn=wye bus1=p48rlv8777.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv8831_1 conn=wye bus1=p48rlv8831.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv8831_2 conn=wye bus1=p48rlv8831.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv9241_1 conn=wye bus1=p48rlv9241.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv9241_2 conn=wye bus1=p48rlv9241.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv9249_1 conn=wye bus1=p48rlv9249.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv9249_2 conn=wye bus1=p48rlv9249.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv9254 conn=wye bus1=p48rlv9254u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv9255 conn=wye bus1=p48rlv9255.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=392.8512681403473 kvar=16.092744390237627 Phases=3 yearly=com_kw_23687-Far-West_pu
+
+New Load.load_p48rlv9256_1 conn=wye bus1=p48rlv9256.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv9256_2 conn=wye bus1=p48rlv9256.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv9639_1 conn=wye bus1=p48rlv9639.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv9639_2 conn=wye bus1=p48rlv9639.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv9641_1 conn=wye bus1=p48rlv9641.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv9641_2 conn=wye bus1=p48rlv9641.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv10499_1 conn=wye bus1=p48rlv10499.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10499_2 conn=wye bus1=p48rlv10499.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10503_1 conn=wye bus1=p48rlv10503.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10503_2 conn=wye bus1=p48rlv10503.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10504_1 conn=wye bus1=p48rlv10504.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10504_2 conn=wye bus1=p48rlv10504.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10505_1 conn=wye bus1=p48rlv10505.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10505_2 conn=wye bus1=p48rlv10505.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10902_1 conn=wye bus1=p48rlv10902.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv10902_2 conn=wye bus1=p48rlv10902.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv10905_1 conn=wye bus1=p48rlv10905.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10905_2 conn=wye bus1=p48rlv10905.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv10948_1 conn=wye bus1=p48rlv10948.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv10948_2 conn=wye bus1=p48rlv10948.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rmv10 conn=wye bus1=p48rmv10.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv11318_1 conn=wye bus1=p48rlv11318.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv11318_2 conn=wye bus1=p48rlv11318.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv11752_1 conn=wye bus1=p48rlv11752.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv11752_2 conn=wye bus1=p48rlv11752.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv12164 conn=wye bus1=p48rlv12164u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=154.0070233555845 kvar=7.360044458012081 Phases=3 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv13029_1 conn=wye bus1=p48rlv13029.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv13029_2 conn=wye bus1=p48rlv13029.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv13030_1 conn=wye bus1=p48rlv13030.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv13030_2 conn=wye bus1=p48rlv13030.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv13031_1 conn=wye bus1=p48rlv13031.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv13031_2 conn=wye bus1=p48rlv13031.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv13032_1 conn=wye bus1=p48rlv13032.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv13032_2 conn=wye bus1=p48rlv13032.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv13425_1 conn=wye bus1=p48rlv13425.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv13425_2 conn=wye bus1=p48rlv13425.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv13847_1 conn=wye bus1=p48rlv13847.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv13847_2 conn=wye bus1=p48rlv13847.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv13848 conn=wye bus1=p48rlv13848.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=701.7718711912298 kvar=29.814490680047296 Phases=3 yearly=com_kw_23689-Far-West_pu
+
+New Load.load_p48rlv13849_1 conn=wye bus1=p48rlv13849.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv13849_2 conn=wye bus1=p48rlv13849.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv14283 conn=wye bus1=p48rlv14283.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=375.6131618085523 kvar=15.966071410286455 Phases=3 yearly=com_kw_30162-Far-West_pu
+
+New Load.load_p48rlv14672_1 conn=wye bus1=p48rlv14672.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv14672_2 conn=wye bus1=p48rlv14672.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15093_1 conn=wye bus1=p48rlv15093.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15093_2 conn=wye bus1=p48rlv15093.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15096 conn=wye bus1=p48rlv15096u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv15097_1 conn=wye bus1=p48rlv15097.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv15097_2 conn=wye bus1=p48rlv15097.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv15098 conn=wye bus1=p48rlv15098.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=447.109057467619 kvar=17.435466151300396 Phases=3 yearly=com_kw_23746-Far-West_pu
+
+New Load.load_p48rlv15099_1 conn=wye bus1=p48rlv15099.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv15099_2 conn=wye bus1=p48rlv15099.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv15517_1 conn=wye bus1=p48rlv15517.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15517_2 conn=wye bus1=p48rlv15517.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15531 conn=wye bus1=p48rlv15531.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=179.71300176677644 kvar=6.519219830778702 Phases=3 yearly=com_kw_928-Far-West_pu
+
+New Load.load_p48rlv15532_1 conn=wye bus1=p48rlv15532.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15532_2 conn=wye bus1=p48rlv15532.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv15533_1 conn=wye bus1=p48rlv15533.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv15533_2 conn=wye bus1=p48rlv15533.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv15942_1 conn=wye bus1=p48rlv15942.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv15942_2 conn=wye bus1=p48rlv15942.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv15944_1 conn=wye bus1=p48rlv15944.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv15944_2 conn=wye bus1=p48rlv15944.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv15946_1 conn=wye bus1=p48rlv15946.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv15946_2 conn=wye bus1=p48rlv15946.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv16369 conn=wye bus1=p48rlv16369.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=701.7718711912298 kvar=29.814490680047296 Phases=3 yearly=com_kw_23689-Far-West_pu
+
+New Load.load_p48rlv16370_1 conn=wye bus1=p48rlv16370.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv16370_2 conn=wye bus1=p48rlv16370.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv16371_1 conn=wye bus1=p48rlv16371.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv16371_2 conn=wye bus1=p48rlv16371.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv16815_1 conn=wye bus1=p48rlv16815.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv16815_2 conn=wye bus1=p48rlv16815.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv16816 conn=wye bus1=p48rlv16816.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=539.6618044089491 kvar=30.46108230799685 Phases=3 yearly=com_kw_23791-Far-West_pu
+
+New Load.load_p48rlv16817_1 conn=wye bus1=p48rlv16817.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv16817_2 conn=wye bus1=p48rlv16817.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17211_1 conn=wye bus1=p48rlv17211.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv17211_2 conn=wye bus1=p48rlv17211.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv17212_1 conn=wye bus1=p48rlv17212.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17212_2 conn=wye bus1=p48rlv17212.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17613_1 conn=wye bus1=p48rlv17613.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17613_2 conn=wye bus1=p48rlv17613.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17614_1 conn=wye bus1=p48rlv17614.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17614_2 conn=wye bus1=p48rlv17614.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17615_1 conn=wye bus1=p48rlv17615.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv17615_2 conn=wye bus1=p48rlv17615.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18012_1 conn=wye bus1=p48rlv18012.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv18012_2 conn=wye bus1=p48rlv18012.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv18015_1 conn=wye bus1=p48rlv18015.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18015_2 conn=wye bus1=p48rlv18015.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18016_1 conn=wye bus1=p48rlv18016.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18016_2 conn=wye bus1=p48rlv18016.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18017_1 conn=wye bus1=p48rlv18017.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18017_2 conn=wye bus1=p48rlv18017.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18455_1 conn=wye bus1=p48rlv18455.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18455_2 conn=wye bus1=p48rlv18455.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18456 conn=wye bus1=p48rlv18456.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=701.7718711912298 kvar=29.814490680047296 Phases=3 yearly=com_kw_23689-Far-West_pu
+
+New Load.load_p48rlv18457_1 conn=wye bus1=p48rlv18457.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18457_2 conn=wye bus1=p48rlv18457.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18492_1 conn=wye bus1=p48rlv18492.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18492_2 conn=wye bus1=p48rlv18492.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18855_1 conn=wye bus1=p48rlv18855.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18855_2 conn=wye bus1=p48rlv18855.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18857_1 conn=wye bus1=p48rlv18857.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18857_2 conn=wye bus1=p48rlv18857.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv18858_1 conn=wye bus1=p48rlv18858.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv18858_2 conn=wye bus1=p48rlv18858.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv19266_1 conn=wye bus1=p48rlv19266.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv19266_2 conn=wye bus1=p48rlv19266.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv19267_1 conn=wye bus1=p48rlv19267.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv19267_2 conn=wye bus1=p48rlv19267.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv19662_1 conn=wye bus1=p48rlv19662.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv19662_2 conn=wye bus1=p48rlv19662.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv20536_1 conn=wye bus1=p48rlv20536.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv20536_2 conn=wye bus1=p48rlv20536.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv20537 conn=wye bus1=p48rlv20537.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=393.3690425490445 kvar=16.44056310720135 Phases=3 yearly=com_kw_8186-Far-West_pu
+
+New Load.load_p48rlv20538_1 conn=wye bus1=p48rlv20538.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv20538_2 conn=wye bus1=p48rlv20538.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv20539_1 conn=wye bus1=p48rlv20539.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv20539_2 conn=wye bus1=p48rlv20539.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv20540 conn=wye bus1=p48rlv20540.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=225.5326892426383 kvar=7.122375578346075 Phases=3 yearly=com_kw_23709-Far-West_pu
+
+New Load.load_p48rlv20541_1 conn=wye bus1=p48rlv20541.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv20541_2 conn=wye bus1=p48rlv20541.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv21389_1 conn=wye bus1=p48rlv21389.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv21389_2 conn=wye bus1=p48rlv21389.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv21399_1 conn=wye bus1=p48rlv21399.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv21399_2 conn=wye bus1=p48rlv21399.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv21400_1 conn=wye bus1=p48rlv21400.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv21400_2 conn=wye bus1=p48rlv21400.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rmv28 conn=wye bus1=p48rmv28.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv21793_1 conn=wye bus1=p48rlv21793.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv21793_2 conn=wye bus1=p48rlv21793.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv21796_1 conn=wye bus1=p48rlv21796.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv21796_2 conn=wye bus1=p48rlv21796.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv21797_1 conn=wye bus1=p48rlv21797.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv21797_2 conn=wye bus1=p48rlv21797.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv21798_1 conn=wye bus1=p48rlv21798.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv21798_2 conn=wye bus1=p48rlv21798.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv22168_1 conn=wye bus1=p48rlv22168.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv22168_2 conn=wye bus1=p48rlv22168.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv22575_1 conn=wye bus1=p48rlv22575.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv22575_2 conn=wye bus1=p48rlv22575.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv22578_1 conn=wye bus1=p48rlv22578.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv22578_2 conn=wye bus1=p48rlv22578.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv22608_1 conn=wye bus1=p48rlv22608.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv22608_2 conn=wye bus1=p48rlv22608.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv23004_1 conn=wye bus1=p48rlv23004.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv23004_2 conn=wye bus1=p48rlv23004.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv23437 conn=wye bus1=p48rlv23437.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=539.6618044089491 kvar=30.46108230799685 Phases=3 yearly=com_kw_23791-Far-West_pu
+
+New Load.load_p48rlv23871_1 conn=wye bus1=p48rlv23871.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23871_2 conn=wye bus1=p48rlv23871.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23872_1 conn=wye bus1=p48rlv23872.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23872_2 conn=wye bus1=p48rlv23872.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23873_1 conn=wye bus1=p48rlv23873.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23873_2 conn=wye bus1=p48rlv23873.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23874_1 conn=wye bus1=p48rlv23874.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv23874_2 conn=wye bus1=p48rlv23874.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv23875_1 conn=wye bus1=p48rlv23875.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23875_2 conn=wye bus1=p48rlv23875.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv23876 conn=wye bus1=p48rlv23876.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rmv31 conn=wye bus1=p48rmv31.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv24320_1 conn=wye bus1=p48rlv24320.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv24320_2 conn=wye bus1=p48rlv24320.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv24346_1 conn=wye bus1=p48rlv24346.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv24346_2 conn=wye bus1=p48rlv24346.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv25159_1 conn=wye bus1=p48rlv25159.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv25159_2 conn=wye bus1=p48rlv25159.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv25160_1 conn=wye bus1=p48rlv25160.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv25160_2 conn=wye bus1=p48rlv25160.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv25569 conn=wye bus1=p48rlv25569.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=539.6618044089491 kvar=30.46108230799685 Phases=3 yearly=com_kw_23791-Far-West_pu
+
+New Load.load_p48rlv25570_1 conn=wye bus1=p48rlv25570.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv25570_2 conn=wye bus1=p48rlv25570.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv25571_1 conn=wye bus1=p48rlv25571.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv25571_2 conn=wye bus1=p48rlv25571.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv25572_1 conn=wye bus1=p48rlv25572.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv25572_2 conn=wye bus1=p48rlv25572.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv25573 conn=wye bus1=p48rlv25573.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv25983_1 conn=wye bus1=p48rlv25983.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv25983_2 conn=wye bus1=p48rlv25983.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv26015_1 conn=wye bus1=p48rlv26015.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv26015_2 conn=wye bus1=p48rlv26015.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv26366_1 conn=wye bus1=p48rlv26366.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv26366_2 conn=wye bus1=p48rlv26366.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv26369 conn=wye bus1=p48rlv26369.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=171.59214773334165 kvar=7.19321629791343 Phases=3 yearly=com_kw_23797-Far-West_pu
+
+New Load.load_p48rlv26370_1 conn=wye bus1=p48rlv26370.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv26370_2 conn=wye bus1=p48rlv26370.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv26768_1 conn=wye bus1=p48rlv26768.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv26768_2 conn=wye bus1=p48rlv26768.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv26769_1 conn=wye bus1=p48rlv26769.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv26769_2 conn=wye bus1=p48rlv26769.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv26770_1 conn=wye bus1=p48rlv26770.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=46.280110668393846 kvar=1.7118936051097078 Phases=1 yearly=com_kw_19999-Far-West_pu
+
+New Load.load_p48rlv26770_2 conn=wye bus1=p48rlv26770.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=46.280110668393846 kvar=1.7118936051097078 Phases=1 yearly=com_kw_19999-Far-West_pu
+
+New Load.load_p48rlv26775_1 conn=wye bus1=p48rlv26775.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv26775_2 conn=wye bus1=p48rlv26775.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv26776_1 conn=wye bus1=p48rlv26776.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv26776_2 conn=wye bus1=p48rlv26776.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27195_1 conn=wye bus1=p48rlv27195.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27195_2 conn=wye bus1=p48rlv27195.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27196_1 conn=wye bus1=p48rlv27196.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27196_2 conn=wye bus1=p48rlv27196.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27197_1 conn=wye bus1=p48rlv27197.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27197_2 conn=wye bus1=p48rlv27197.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27560_1 conn=wye bus1=p48rlv27560.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv27560_2 conn=wye bus1=p48rlv27560.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv27565 conn=wye bus1=p48rlv27565.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=383.3840180656248 kvar=17.711218069819815 Phases=3 yearly=com_kw_873-Far-West_pu
+
+New Load.load_p48rlv27566_1 conn=wye bus1=p48rlv27566.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv27566_2 conn=wye bus1=p48rlv27566.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv27976_1 conn=wye bus1=p48rlv27976.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv27976_2 conn=wye bus1=p48rlv27976.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv27978_1 conn=wye bus1=p48rlv27978.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27978_2 conn=wye bus1=p48rlv27978.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv27979 conn=wye bus1=p48rlv27979.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=588.1112489308942 kvar=28.580417208852406 Phases=3 yearly=com_kw_19381-Far-West_pu
+
+New Load.load_p48rlv28401_1 conn=wye bus1=p48rlv28401.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28401_2 conn=wye bus1=p48rlv28401.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28403_1 conn=wye bus1=p48rlv28403.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28403_2 conn=wye bus1=p48rlv28403.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28404_1 conn=wye bus1=p48rlv28404.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28404_2 conn=wye bus1=p48rlv28404.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28441_1 conn=wye bus1=p48rlv28441.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28441_2 conn=wye bus1=p48rlv28441.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv28845_1 conn=wye bus1=p48rlv28845.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv28845_2 conn=wye bus1=p48rlv28845.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv28846 conn=wye bus1=p48rlv28846u.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=154.0070233555845 kvar=7.360044458012081 Phases=3 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv28847_1 conn=wye bus1=p48rlv28847.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv28847_2 conn=wye bus1=p48rlv28847.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv28848_1 conn=wye bus1=p48rlv28848.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv28848_2 conn=wye bus1=p48rlv28848.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv28849_1 conn=wye bus1=p48rlv28849.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv28849_2 conn=wye bus1=p48rlv28849.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv29239_1 conn=wye bus1=p48rlv29239.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.954050441355474 kvar=0.9137463696612845 Phases=1 yearly=com_kw_907-Far-West_pu
+
+New Load.load_p48rlv29239_2 conn=wye bus1=p48rlv29239.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.954050441355474 kvar=0.9137463696612845 Phases=1 yearly=com_kw_907-Far-West_pu
+
+New Load.load_p48rlv29689_1 conn=wye bus1=p48rlv29689.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv29689_2 conn=wye bus1=p48rlv29689.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv29697_1 conn=wye bus1=p48rlv29697.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv29697_2 conn=wye bus1=p48rlv29697.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv29701_1 conn=wye bus1=p48rlv29701.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv29701_2 conn=wye bus1=p48rlv29701.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv30102_1 conn=wye bus1=p48rlv30102.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv30102_2 conn=wye bus1=p48rlv30102.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv30551_1 conn=wye bus1=p48rlv30551.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv30551_2 conn=wye bus1=p48rlv30551.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv30552_1 conn=wye bus1=p48rlv30552.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv30552_2 conn=wye bus1=p48rlv30552.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv30974_1 conn=wye bus1=p48rlv30974.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv30974_2 conn=wye bus1=p48rlv30974.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rmv36 conn=wye bus1=p48rmv36.1.2.3 kV=25.0 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=868.4595623422344 kvar=47.61126610303482 Phases=3 yearly=com_kw_23773-Far-West_pu
+
+New Load.load_p48rlv30977_1 conn=wye bus1=p48rlv30977.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv30977_2 conn=wye bus1=p48rlv30977.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv30978_1 conn=wye bus1=p48rlv30978.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv30978_2 conn=wye bus1=p48rlv30978.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31417_1 conn=wye bus1=p48rlv31417.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31417_2 conn=wye bus1=p48rlv31417.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31420_1 conn=wye bus1=p48rlv31420.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31420_2 conn=wye bus1=p48rlv31420.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31422_1 conn=wye bus1=p48rlv31422.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31422_2 conn=wye bus1=p48rlv31422.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31423_1 conn=wye bus1=p48rlv31423.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv31423_2 conn=wye bus1=p48rlv31423.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv31851_1 conn=wye bus1=p48rlv31851.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv31851_2 conn=wye bus1=p48rlv31851.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv32274_1 conn=wye bus1=p48rlv32274.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv32274_2 conn=wye bus1=p48rlv32274.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv32693_1 conn=wye bus1=p48rlv32693.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv32693_2 conn=wye bus1=p48rlv32693.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv32694_1 conn=wye bus1=p48rlv32694.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv32694_2 conn=wye bus1=p48rlv32694.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv32695_1 conn=wye bus1=p48rlv32695.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv32695_2 conn=wye bus1=p48rlv32695.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv33113_1 conn=wye bus1=p48rlv33113.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33113_2 conn=wye bus1=p48rlv33113.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33511_1 conn=wye bus1=p48rlv33511.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv33511_2 conn=wye bus1=p48rlv33511.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=9.437505023739881 kvar=0.7584042630481622 Phases=1 yearly=com_kw_23799-Far-West_pu
+
+New Load.load_p48rlv33512_1 conn=wye bus1=p48rlv33512.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv33512_2 conn=wye bus1=p48rlv33512.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=77.00351167779225 kvar=3.6800222290060405 Phases=1 yearly=com_kw_842-Far-West_pu
+
+New Load.load_p48rlv33902_1 conn=wye bus1=p48rlv33902.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33902_2 conn=wye bus1=p48rlv33902.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33906_1 conn=wye bus1=p48rlv33906.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33906_2 conn=wye bus1=p48rlv33906.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33939_1 conn=wye bus1=p48rlv33939.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33939_2 conn=wye bus1=p48rlv33939.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33942_1 conn=wye bus1=p48rlv33942.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv33942_2 conn=wye bus1=p48rlv33942.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv34315_1 conn=wye bus1=p48rlv34315.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv34315_2 conn=wye bus1=p48rlv34315.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv34316_1 conn=wye bus1=p48rlv34316.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv34316_2 conn=wye bus1=p48rlv34316.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv34317_1 conn=wye bus1=p48rlv34317.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv34317_2 conn=wye bus1=p48rlv34317.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv34794_1 conn=wye bus1=p48rlv34794.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv34794_2 conn=wye bus1=p48rlv34794.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv34795 conn=wye bus1=p48rlv34795.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=352.53096192632046 kvar=17.214629785365904 Phases=3 yearly=com_kw_30169-Far-West_pu
+
+New Load.load_p48rlv35255_1 conn=wye bus1=p48rlv35255.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv35255_2 conn=wye bus1=p48rlv35255.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36061_1 conn=wye bus1=p48rlv36061.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv36061_2 conn=wye bus1=p48rlv36061.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv36063 conn=wye bus1=p48rlv36063.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=383.3840180656248 kvar=17.711218069819815 Phases=3 yearly=com_kw_873-Far-West_pu
+
+New Load.load_p48rlv36064_1 conn=wye bus1=p48rlv36064.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36064_2 conn=wye bus1=p48rlv36064.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36082_1 conn=wye bus1=p48rlv36082.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36082_2 conn=wye bus1=p48rlv36082.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36084_1 conn=wye bus1=p48rlv36084.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36084_2 conn=wye bus1=p48rlv36084.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36472_1 conn=wye bus1=p48rlv36472.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv36472_2 conn=wye bus1=p48rlv36472.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv36894_1 conn=wye bus1=p48rlv36894.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv36894_2 conn=wye bus1=p48rlv36894.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv37311_1 conn=wye bus1=p48rlv37311.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv37311_2 conn=wye bus1=p48rlv37311.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv37312_1 conn=wye bus1=p48rlv37312.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv37312_2 conn=wye bus1=p48rlv37312.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv37757 conn=wye bus1=p48rlv37757.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=171.59214773334165 kvar=7.19321629791343 Phases=3 yearly=com_kw_23797-Far-West_pu
+
+New Load.load_p48rlv37758_1 conn=wye bus1=p48rlv37758.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv37758_2 conn=wye bus1=p48rlv37758.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv37759_1 conn=wye bus1=p48rlv37759.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv37759_2 conn=wye bus1=p48rlv37759.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38181_1 conn=wye bus1=p48rlv38181.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv38181_2 conn=wye bus1=p48rlv38181.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv38182_1 conn=wye bus1=p48rlv38182.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38182_2 conn=wye bus1=p48rlv38182.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38585_1 conn=wye bus1=p48rlv38585.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38585_2 conn=wye bus1=p48rlv38585.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38586_1 conn=wye bus1=p48rlv38586.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38586_2 conn=wye bus1=p48rlv38586.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38973_1 conn=wye bus1=p48rlv38973.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv38973_2 conn=wye bus1=p48rlv38973.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv38974_1 conn=wye bus1=p48rlv38974.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38974_2 conn=wye bus1=p48rlv38974.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv38975_1 conn=wye bus1=p48rlv38975.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv38975_2 conn=wye bus1=p48rlv38975.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv39384_1 conn=wye bus1=p48rlv39384.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv39384_2 conn=wye bus1=p48rlv39384.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv39433_1 conn=wye bus1=p48rlv39433.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=4.333500461436227 kvar=0.24600187699090148 Phases=1 yearly=com_kw_23806-Far-West_pu
+
+New Load.load_p48rlv39433_2 conn=wye bus1=p48rlv39433.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=4.333500461436227 kvar=0.24600187699090148 Phases=1 yearly=com_kw_23806-Far-West_pu
+
+New Load.load_p48rlv40210_1 conn=wye bus1=p48rlv40210.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv40210_2 conn=wye bus1=p48rlv40210.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv40636_1 conn=wye bus1=p48rlv889.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv40636_2 conn=wye bus1=p48rlv889.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv40640_1 conn=wye bus1=p48rlv40640.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv40640_2 conn=wye bus1=p48rlv40640.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv40641_1 conn=wye bus1=p48rlv40641.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv40641_2 conn=wye bus1=p48rlv40641.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv40642_1 conn=wye bus1=p48rlv40642.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv40642_2 conn=wye bus1=p48rlv40642.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41083_1 conn=wye bus1=p48rlv41083.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41083_2 conn=wye bus1=p48rlv41083.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41086_1 conn=wye bus1=p48rlv41086.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41086_2 conn=wye bus1=p48rlv41086.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41088_1 conn=wye bus1=p48rlv41088.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41088_2 conn=wye bus1=p48rlv41088.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41091_1 conn=wye bus1=p48rlv41091.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41091_2 conn=wye bus1=p48rlv41091.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41514_1 conn=wye bus1=p48rlv41514.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41514_2 conn=wye bus1=p48rlv41514.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41515 conn=wye bus1=p48rlv41515.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=539.6618044089491 kvar=30.46108230799685 Phases=3 yearly=com_kw_23791-Far-West_pu
+
+New Load.load_p48rlv41929_1 conn=wye bus1=p48rlv41929.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41929_2 conn=wye bus1=p48rlv41929.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41930_1 conn=wye bus1=p48rlv41930.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41930_2 conn=wye bus1=p48rlv41930.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv41931_1 conn=wye bus1=p48rlv41931.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv41931_2 conn=wye bus1=p48rlv41931.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=41.19973270427663 kvar=1.953531706474269 Phases=1 yearly=com_kw_847-Far-West_pu
+
+New Load.load_p48rlv42324_1 conn=wye bus1=p48rlv42324.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=4.333500461436227 kvar=0.24600187699090148 Phases=1 yearly=com_kw_23806-Far-West_pu
+
+New Load.load_p48rlv42324_2 conn=wye bus1=p48rlv42324.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=4.333500461436227 kvar=0.24600187699090148 Phases=1 yearly=com_kw_23806-Far-West_pu
+
+New Load.load_p48rlv42325_1 conn=wye bus1=p48rlv42325.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv42325_2 conn=wye bus1=p48rlv42325.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv42326_1 conn=wye bus1=p48rlv42326.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv42326_2 conn=wye bus1=p48rlv42326.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv42745_1 conn=wye bus1=p48rlv42745.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv42745_2 conn=wye bus1=p48rlv42745.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=29.683345288816028 kvar=2.898622273371531 Phases=1 yearly=com_kw_958-Far-West_pu
+
+New Load.load_p48rlv42746_1 conn=wye bus1=p48rlv42746.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv42746_2 conn=wye bus1=p48rlv42746.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv43174_1 conn=wye bus1=p48rlv43174.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv43174_2 conn=wye bus1=p48rlv43174.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv43188 conn=wye bus1=p48rlv43188.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=352.53096192632046 kvar=17.214629785365904 Phases=3 yearly=com_kw_30169-Far-West_pu
+
+New Load.load_p48rlv43189 conn=wye bus1=p48rlv43189.1.2.3 kV=0.48 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=295.9613858048458 kvar=16.095969334284433 Phases=3 yearly=com_kw_825-Far-West_pu
+
+New Load.load_p48rlv43190_1 conn=wye bus1=p48rlv43190.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv43190_2 conn=wye bus1=p48rlv43190.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv43191_1 conn=wye bus1=p48rlv43191.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv43191_2 conn=wye bus1=p48rlv43191.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=20.8455664011169 kvar=0.875460526022851 Phases=1 yearly=com_kw_880-Far-West_pu
+
+New Load.load_p48rlv43192_1 conn=wye bus1=p48rlv43192.1 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+
+New Load.load_p48rlv43192_2 conn=wye bus1=p48rlv43192.2 kV=0.12 Vminpu=0.8 Vmaxpu=1.2 model=1 kW=16.556220196510694 kvar=0.8522896801471033 Phases=1 yearly=com_kw_812-Far-West_pu
+

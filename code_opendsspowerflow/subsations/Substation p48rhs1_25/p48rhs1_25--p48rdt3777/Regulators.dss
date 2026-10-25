@@ -1,0 +1,6 @@
+New RegControl.reg_creguladortension(r:p48rdt22376-p48rdt3075) transformer=trans_reg_creguladortension(r:p48rdt22376-p48rdt3075) winding=2 ptratio=120.28130608117205 band=2.4 vreg = 123.60000000000001
+
+New RegControl.reg_creguladortension(r:p48rlv15096u-p48rlv28846u) transformer=trans_reg_creguladortension(r:p48rlv15096u-p48rlv28846u) winding=2 ptratio=120.28130608117205 band=2.4 vreg = 123.60000000000001
+
+New RegControl.reg_creguladortension(r:p48rdt16209-p48rdt4116) transformer=trans_reg_creguladortension(r:p48rdt16209-p48rdt4116) winding=2 ptratio=120.28130608117205 band=2.4 vreg = 123.60000000000001
+
