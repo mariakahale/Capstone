@@ -1,32 +1,31 @@
 """
 POLE FRAGILITY LOOKUP -- ICE + CONCURRENT WIND, ANY SPAN (Ma et al. 2020, Fig. 7(a)-(c))
 ======================================================================================
-Simple interface for the team: give the pole's two adjacent spans, its age and the
+Simple interface for the team: give the pole's tributary span, its age and the
 weather, get a failure probability.
 
 USAGE (for teammates):
     from pole_fig7_lookup import lookup_pole_ice_fragility, lookup_pole_ice_annual_pf
 
     # "If this ice storm happens, how likely is this pole to fail?"  (conditional)
-    p = lookup_pole_ice_fragility(age_years=30, span_left_m=40, span_right_m=55,
-                                  ice_mm=20, wind_ms=31.9)
+    p = lookup_pole_ice_fragility(age_years=30, tributary_m=47.5, ice_mm=20, wind_ms=31.9)
     # leave wind out to use Toronto's concurrent gust (concurrentwindspeed.py)
-    p = lookup_pole_ice_fragility(30, 40, 55, ice_mm=20)
+    p = lookup_pole_ice_fragility(30, 47.5, ice_mm=20)
 
     # "How likely is it to fail from ice storms in a typical year?"  (Eq. 10)
-    pa = lookup_pole_ice_annual_pf(age_years=30, span_left_m=40, span_right_m=55)
-
-    # end-of-line pole: leave span_right_m out
+    pa = lookup_pole_ice_annual_pf(age_years=30, tributary_m=47.5)
 
 Public functions:
-    lookup_pole_ice_fragility(age_years, span_left_m, span_right_m=None, ice_mm=0, wind_ms=None)
-    lookup_pole_ice_annual_pf(age_years, span_left_m, span_right_m=None, site="toronto")
-    tributary_span(span_left_m, span_right_m=None), span_bin(tributary_m), age_bin(age_years)
+    lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0, wind_ms=None)
+    lookup_pole_ice_annual_pf(age_years, tributary_m, site="toronto")
+    span_bin(tributary_m), age_bin(age_years)
     available_span_bins(), available_ages(), available_sites()
 
 How the span is handled:
-    tributary span = (left + right) / 2  (end pole: left / 2), rounded UP to the next
-    bin (10, 15, ..., 150 m, plus 91.44 m). Conservative: longer = more wire wind load.
+    tributary span = (sum of all attached spans) / 2, computed upstream in
+    pipeline/asset_adapter.py (end pole: span / 2; junction pole with 3+ spans: all
+    summed, conservative). Rounded UP to the next bin (10, 15, ..., 150 m, plus
+    91.44 m). Conservative: longer = more wire wind load.
 
 Ages:
     Tabulated every 5 years (0, 5, ..., 60), the same ages as the Fig. 4 lookup.
@@ -82,9 +81,11 @@ def _site(site):
     return dict(alpha=a, k=k, u=u, v_conc=v)
 
 
-def tributary_span(span_left_m, span_right_m=None):
-    """Half of each adjacent span. End pole (one span): half of that span."""
-    return span_left_m / 2 if span_right_m is None else (span_left_m + span_right_m) / 2
+# REMOVED (Oct 2026): the tributary span is now computed upstream in
+# pipeline/asset_adapter.py and passed in as tributary_m.
+# def tributary_span(span_left_m, span_right_m=None):
+#     """Half of each adjacent span. End pole (one span): half of that span."""
+#     return span_left_m / 2 if span_right_m is None else (span_left_m + span_right_m) / 2
 
 
 def span_bin(tributary_m):
@@ -112,19 +113,22 @@ def _interp(i_span, j_age):
     return _INTERP[key]
 
 
-def lookup_pole_ice_fragility(age_years, span_left_m, span_right_m=None,
-                              ice_mm=0.0, wind_ms=None):
+# def lookup_pole_ice_fragility(age_years, span_left_m, span_right_m=None,
+#                               ice_mm=0.0, wind_ms=None):
+def lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0.0, wind_ms=None):
     """P(pole fails | ice thickness on the wires, concurrent gust).
 
     age_years    : 0-60, rounded up to the next 5-yr bin
-    span_left_m  : span on one side (m);  span_right_m : other side (None = end pole)
+    tributary_m  : tributary span of the pole, m (half of all attached spans,
+                   from pipeline/asset_adapter.py); rounded up to the next bin
     ice_mm       : float or array, equivalent radial ice thickness on the wires (mm)
     wind_ms      : float or array, concurrent 3-s gust (m/s). None -> Toronto.
     """
     if wind_ms is None:
         wind_ms = _site("toronto")["v_conc"]
     bins, ages = _D["span_bins_m"], _D["ages"]
-    i = int(np.where(bins == span_bin(tributary_span(span_left_m, span_right_m)))[0][0])
+    # i = int(np.where(bins == span_bin(tributary_span(span_left_m, span_right_m)))[0][0])
+    i = int(np.where(bins == span_bin(tributary_m))[0][0])
     j = int(np.where(ages == age_bin(age_years))[0][0])
 
     ice, wind = np.broadcast_arrays(np.asarray(ice_mm, float), np.asarray(wind_ms, float))
@@ -138,13 +142,15 @@ def lookup_pole_ice_fragility(age_years, span_left_m, span_right_m=None,
     return float(p) if p.ndim == 0 else p
 
 
-def lookup_pole_ice_annual_pf(age_years, span_left_m, span_right_m=None, site="toronto"):
+# def lookup_pole_ice_annual_pf(age_years, span_left_m, span_right_m=None, site="toronto"):
+def lookup_pole_ice_annual_pf(age_years, tributary_m, site="toronto"):
     """Annual probability the pole fails from ice + concurrent wind (Eq. 10):
     integral of F(r) f(r) dr, F = fragility at the site's concurrent gust,
     f = site's GPD ice density (same form as reconstruct_fig7.py)."""
     s = _site(site)
     ice = _D["ice_mm"]
-    F = lookup_pole_ice_fragility(age_years, span_left_m, span_right_m, ice, s["v_conc"])
+    # F = lookup_pole_ice_fragility(age_years, span_left_m, span_right_m, ice, s["v_conc"])
+    F = lookup_pole_ice_fragility(age_years, tributary_m, ice, s["v_conc"])
     r = np.linspace(0, ice[-1], 10001)
     base = np.clip(1 - s["k"] * (r - s["u"]) / s["alpha"], 1e-300, None)
     f = np.where(r < s["u"], 0.0, base ** (1 / s["k"] - 1) / s["alpha"])
@@ -159,11 +165,16 @@ _load()
 if __name__ == "__main__":
     v = _site("toronto")["v_conc"]
     print(f"Toronto concurrent gust: {v:.2f} m/s\n")
-    for left, right in [(91.44, 91.44), (40, 55), (40, None)]:
-        L = tributary_span(left, right)
-        print(f"spans {left}/{right}: tributary {L:.1f} m -> bin {span_bin(L):g} m")
+    # for left, right in [(91.44, 91.44), (40, 55), (40, None)]:
+    #     L = tributary_span(left, right)
+    #     print(f"spans {left}/{right}: tributary {L:.1f} m -> bin {span_bin(L):g} m")
+    #     for age in (0, 32, 60):
+    #         p20 = lookup_pole_ice_fragility(age, left, right, ice_mm=20)
+    #         pa = lookup_pole_ice_annual_pf(age, left, right)
+    for L in (91.44, 47.5, 20):
+        print(f"tributary {L:.1f} m -> bin {span_bin(L):g} m")
         for age in (0, 32, 60):
-            p20 = lookup_pole_ice_fragility(age, left, right, ice_mm=20)
-            pa = lookup_pole_ice_annual_pf(age, left, right)
+            p20 = lookup_pole_ice_fragility(age, L, ice_mm=20)
+            pa = lookup_pole_ice_annual_pf(age, L)
             print(f"   {age:>2}-yr pole (bin {age_bin(age)}): P(fail | 20 mm, {v:.1f} m/s) = {p20:.4f}   "
                   f"annual (Toronto) = {pa:.3e}")

@@ -1,29 +1,27 @@
 """
 POLE WIND FRAGILITY LOOKUP, ANY SPAN (Ma et al. 2020, Fig. 4)
 =============================================================
-Simple interface for the team: give the pole's two adjacent span lengths, its
-age and the wind speed, get a failure probability.
+Simple interface for the team: give the pole's tributary span, its age and the
+wind speed, get a failure probability.
 
 USAGE (for teammates):
     from figure4_fragility_by_span_lookup import lookup_wind_fragility_pole_span
 
-    # pole between a 40 m span and a 55 m span, 30 years old, 50 m/s gust
-    p = lookup_wind_fragility_pole_span(wind_speed=50, age_years=30,
-                                        span_left_m=40, span_right_m=55)
-
-    # end-of-line pole (only one span attached): leave span_right_m out
-    p = lookup_wind_fragility_pole_span(50, 30, span_left_m=40)
+    # pole with 47.5 m tributary span (e.g. between a 40 m and a 55 m span),
+    # 30 years old, 50 m/s gust
+    p = lookup_wind_fragility_pole_span(wind_speed=50, age_years=30, tributary_m=47.5)
 
 Public functions:
-    lookup_wind_fragility_pole_span(wind_speed, age_years, span_left_m, span_right_m=None)
-    tributary_span(span_left_m, span_right_m=None)
+    lookup_wind_fragility_pole_span(wind_speed, age_years, tributary_m)
     span_bin(tributary_m), age_bin(age_years)
     available_span_bins(), available_ages()
 
 How the span is handled:
-    A pole carries half of each adjacent span (Ma Fig. 1), so
-        tributary span = (left + right) / 2     (end pole: left / 2)
-    which is rounded UP to the next bin (10, 15, ..., 150 m, plus 91.44 m).
+    A pole carries half of each attached span (Ma Fig. 1). The tributary span is
+    computed upstream in pipeline/asset_adapter.py:
+        tributary span = (sum of all attached spans) / 2
+        (end pole: span / 2; junction pole with 3+ spans: all summed, conservative)
+    It is rounded UP to the next bin (10, 15, ..., 150 m, plus 91.44 m).
     Rounding up is conservative: a longer tributary span means more wind load.
 
 Wind speed is a 3-SECOND GUST (m/s), same as Ma et al. and figure4_fragility_lookup.py.
@@ -67,11 +65,13 @@ def available_ages():
     return _AGES.tolist()
 
 
-def tributary_span(span_left_m, span_right_m=None):
-    """Half of each adjacent span. End pole (one span): half of that span."""
-    if span_right_m is None:
-        return span_left_m / 2
-    return (span_left_m + span_right_m) / 2
+# REMOVED (Oct 2026): the tributary span is now computed upstream in
+# pipeline/asset_adapter.py and passed in as tributary_m.
+# def tributary_span(span_left_m, span_right_m=None):
+#     """Half of each adjacent span. End pole (one span): half of that span."""
+#     if span_right_m is None:
+#         return span_left_m / 2
+#     return (span_left_m + span_right_m) / 2
 
 
 def span_bin(tributary_m):
@@ -90,15 +90,17 @@ def age_bin(age_years):
     return int(ages[np.searchsorted(ages, age_years - 1e-9)])
 
 #***#
-def lookup_wind_fragility_pole_span(wind_speed, age_years, span_left_m, span_right_m=None):
+# def lookup_wind_fragility_pole_span(wind_speed, age_years, span_left_m, span_right_m=None):
+def lookup_wind_fragility_pole_span(wind_speed, age_years, tributary_m):
     """P(failure) for a wood pole under extreme wind (no ice).
 
     wind_speed   : float or array, 3-s gust, m/s (tabulated 20-90 m/s)
     age_years    : float, 0-60, rounded up to the next 5-yr bin
-    span_left_m  : span on one side of the pole, m
-    span_right_m : span on the other side, m (None for an end pole)
+    tributary_m  : tributary span of the pole, m (half of all attached spans,
+                   from pipeline/asset_adapter.py); rounded up to the next bin
     """
-    i = int(np.where(_SPANS == span_bin(tributary_span(span_left_m, span_right_m)))[0][0])
+    # i = int(np.where(_SPANS == span_bin(tributary_span(span_left_m, span_right_m)))[0][0])
+    i = int(np.where(_SPANS == span_bin(tributary_m))[0][0])
 
     j = int(np.where(_AGES == age_bin(age_years))[0][0])
     curve = _P[i, j]
@@ -114,9 +116,14 @@ def lookup_wind_fragility_pole_span(wind_speed, age_years, span_left_m, span_rig
 _load()
 
 if __name__ == "__main__":
-    for left, right in [(40, 40), (40, 55), (91.44, 91.44), (40, None)]:
-        L = tributary_span(left, right)
-        print(f"spans {left}/{right}: tributary {L:.1f} m -> bin {span_bin(L):g} m")
+    # for left, right in [(40, 40), (40, 55), (91.44, 91.44), (40, None)]:
+    #     L = tributary_span(left, right)
+    #     print(f"spans {left}/{right}: tributary {L:.1f} m -> bin {span_bin(L):g} m")
+    #     for v in (40, 50, 60):
+    #         print(f"   32-yr pole (bin {age_bin(32)}) @ {v} m/s: P(fail) = "
+    #               f"{lookup_wind_fragility_pole_span(v, 32, left, right):.4f}")
+    for L in (40, 47.5, 91.44, 20):
+        print(f"tributary {L:.1f} m -> bin {span_bin(L):g} m")
         for v in (40, 50, 60):
             print(f"   32-yr pole (bin {age_bin(32)}) @ {v} m/s: P(fail) = "
-                  f"{lookup_wind_fragility_pole_span(v, 32, left, right):.4f}")
+                  f"{lookup_wind_fragility_pole_span(v, 32, L):.4f}")
