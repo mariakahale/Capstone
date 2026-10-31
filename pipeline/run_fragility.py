@@ -60,7 +60,7 @@ from wire_fig7d_lookup import lookup_wire_fragility, _site                      
 #Modeling Event #2
 SCENARIO = "wind"                # "ice" (ice storm with concurrent wind) or "wind" (wind only)
 ICE_MM = 0
-WIND_GUST_MS = 23.8
+WIND_GUST_MS = 50
 
 CONCURRENT_WIND_MS = None       # 3-s gust during the ice storm (m/s); None -> Toronto (31.9)
 STRINGING = "slack"             # wire stringing rule: "slack" (default) or "tension"
