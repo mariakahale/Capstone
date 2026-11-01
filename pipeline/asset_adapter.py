@@ -15,7 +15,9 @@ What it does
   * converts span lengths from feet to metres
   * gives each pole its tributary span: half of every span attached to it
     (end pole = one span / 2; junction poles with 3-4 spans = sum / 2)
-  * assigns a pole age (polegen2 has none -- see AGE SETTINGS below)
+  * assigns a pole age (polegen2 has none -- see AGE SETTINGS below). The default,
+    AGE_MODE = "alectra", follows Alectra's 2023 wood pole age distribution with
+    line sections sharing an installation age: see agedistribution_alectra/
   * checks the tables and flags rows that fall outside the model's assumptions
 
 What it does NOT do
@@ -30,10 +32,14 @@ Use from other code:
     poles, spans = build_asset_tables()
 """
 
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "agedistribution_alectra"))
+from alectra_age_model import assign_alectra_ages   # noqa: E402
 
 # =============================================================================
 # SETTINGS  <-- edit this block
@@ -46,12 +52,24 @@ FEEDER_NAME = "1878"
 AREA_TYPE = "suburban"          # must match code_polegen2/config.py AREA_TYPE
 
 # AGE SETTINGS -- polegen2 does not give pole ages, so they are assumed here.
+#   "alectra" : Alectra 2023 wood pole age distribution, one installation age per line
+#               section + a fraction ALECTRA_RHO of individually replaced poles
+#               (see agedistribution_alectra/age_assignment_explanation.txt)
 #   "fixed"   : every pole gets FIXED_AGE_YEARS
 #   "uniform" : random whole-number ages in [AGE_MIN, AGE_MAX], reproducible via AGE_SEED
-AGE_MODE = "fixed"
+AGE_MODE = "alectra"
 FIXED_AGE_YEARS = 30
 AGE_MIN, AGE_MAX = 0, 60        # the lookups only cover 0-60 yr
 AGE_SEED = 2026
+
+ALECTRA_RHO = 0.20              # share of spot-replaced poles (0 = pure cohorts, 1 = independent)
+ALECTRA_JITTER = 2              # +/- years of spread within a line section
+YEARS_SINCE_2023 = 0            # shift ages forward from the 2023 snapshot (0 = as-is)
+
+# Ages above LOOKUP_MAX_AGE are capped for the fragility lookups (age_years) and the
+# true assigned age is kept in age_true_years. Capping UNDERESTIMATES the failure
+# probability of these old poles -- a stated limitation of the Ma et al. curves.
+LOOKUP_MAX_AGE = 60
 
 FT_TO_M = 0.3048
 
@@ -64,8 +82,13 @@ MAX_BIN_M = 150.0               # lookups raise an error above this
 # =============================================================================
 SPAN_COLUMNS = ["span_id", "start_pole", "end_pole", "span_m",
                 "voltage_class", "n_phases", "flag_short_span"]
-POLE_COLUMNS = ["pole_id", "pole_type", "x", "y", "age_years", "n_spans", "span_ids",
-                "tributary_m", "flag_end_pole", "flag_junction_pole"]
+POLE_COLUMNS = ["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
+                "flag_age_capped", "section_id", "flag_spot_replacement",
+                "n_spans", "span_ids", "tributary_m", "flag_end_pole", "flag_junction_pole"]
+# age_years      : age fed to the fragility lookups (capped at LOOKUP_MAX_AGE)
+# age_true_years : age assigned by AGE_MODE before capping
+# section_id     : line section (poles between junctions); -1 if AGE_MODE is not "alectra"
+
 
 
 # =============================================================================
@@ -105,13 +128,25 @@ def build_spans(raw_spans):
     return spans[SPAN_COLUMNS]
 
 
-def assign_ages(n, mode=AGE_MODE):
+def assign_ages(pole_ids, spans, mode=AGE_MODE):
+    """Returns a DataFrame (one row per pole, same order as pole_ids) with
+    age_true_years, section_id, flag_spot_replacement."""
+    n = len(pole_ids)
+    if mode == "alectra":
+        a = assign_alectra_ages(pole_ids, spans, rho=ALECTRA_RHO, jitter=ALECTRA_JITTER,
+                                seed=AGE_SEED, years_since_2023=YEARS_SINCE_2023)
+        return pd.DataFrame({"age_true_years": a["age_years"].to_numpy(),
+                             "section_id": a["section_id"].to_numpy(),
+                             "flag_spot_replacement": a["spot"].to_numpy()})
     if mode == "fixed":
-        return np.full(n, FIXED_AGE_YEARS, dtype=int)
-    if mode == "uniform":
+        ages = np.full(n, FIXED_AGE_YEARS, dtype=int)
+    elif mode == "uniform":
         rng = np.random.default_rng(AGE_SEED)
-        return rng.integers(AGE_MIN, AGE_MAX, size=n, endpoint=True)
-    raise ValueError(f"Unknown AGE_MODE '{mode}' (use 'fixed' or 'uniform').")
+        ages = rng.integers(AGE_MIN, AGE_MAX, size=n, endpoint=True)
+    else:
+        raise ValueError(f"Unknown AGE_MODE '{mode}' (use 'alectra', 'fixed' or 'uniform').")
+    return pd.DataFrame({"age_true_years": ages, "section_id": -1,
+                         "flag_spot_replacement": False})
 
 
 def build_poles(raw_poles, spans, age_mode=AGE_MODE):
@@ -125,12 +160,17 @@ def build_poles(raw_poles, spans, age_mode=AGE_MODE):
                          f"e.g. {sorted(unknown)[:5]}")
 
     n_spans = span_lists.str.len()
+    ages = assign_ages(raw_poles["pole_id"], spans, age_mode)
     poles = pd.DataFrame({
         "pole_id": raw_poles["pole_id"],
         "pole_type": raw_poles["pole_type"],
         "x": raw_poles["x"],
         "y": raw_poles["y"],
-        "age_years": assign_ages(len(raw_poles), age_mode),
+        "age_years": np.minimum(ages["age_true_years"], LOOKUP_MAX_AGE).to_numpy(),
+        "age_true_years": ages["age_true_years"].to_numpy(),
+        "flag_age_capped": (ages["age_true_years"] > LOOKUP_MAX_AGE).to_numpy(),
+        "section_id": ages["section_id"].to_numpy(),
+        "flag_spot_replacement": ages["flag_spot_replacement"].to_numpy(),
         "n_spans": n_spans,
         "span_ids": raw_poles["connected_span_ids"],
         "tributary_m": span_lists.apply(lambda ids: span_len[ids].sum() / 2),
@@ -156,8 +196,8 @@ def validate(poles, spans):
     ends = set(spans["start_pole"]) | set(spans["end_pole"])
     if not ends <= set(poles["pole_id"]):
         problems.append("span endpoints not found in the poles file")
-    if not poles["age_years"].between(AGE_MIN, AGE_MAX).all():
-        problems.append(f"pole age outside {AGE_MIN}-{AGE_MAX} yr (lookups would fail)")
+    if not poles["age_years"].between(0, LOOKUP_MAX_AGE).all():
+        problems.append(f"pole age outside 0-{LOOKUP_MAX_AGE} yr (lookups would fail)")
     if (spans["span_m"] > MAX_BIN_M).any() or (poles["tributary_m"] > MAX_BIN_M).any():
         problems.append(f"span or tributary span above {MAX_BIN_M} m (lookups would fail)")
     if problems:
@@ -189,6 +229,12 @@ def main():
     print(f"  poles: {len(poles)}  (tributary {poles.tributary_m.min():.1f}-"
           f"{poles.tributary_m.max():.1f} m, {poles.flag_end_pole.sum()} end poles, "
           f"{poles.flag_junction_pole.sum()} junction poles)")
+    print(f"  ages : mean {poles.age_true_years.mean():.1f} yr, "
+          f"range {poles.age_true_years.min()}-{poles.age_true_years.max()} yr, "
+          f"{poles.flag_age_capped.sum()} capped at {LOOKUP_MAX_AGE} yr for the lookups")
+    if AGE_MODE == "alectra":
+        print(f"         {poles.section_id.nunique()} line sections, "
+              f"{poles.flag_spot_replacement.sum()} spot replacements (rho = {ALECTRA_RHO})")
     print(f"Saved to {OUTPUT_DIR}")
 
 

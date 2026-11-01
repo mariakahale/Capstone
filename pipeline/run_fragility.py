@@ -86,7 +86,8 @@ def pole_fragility(poles, scenario):
              for age, trib in zip(poles["age_years"], poles["tributary_m"])]
     else:
         raise ValueError(f"Unknown SCENARIO '{scenario}' (use 'ice' or 'wind').")
-    out = poles[["pole_id", "pole_type", "x", "y", "age_years", "tributary_m",
+    out = poles[["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
+                 "flag_age_capped", "section_id", "tributary_m",
                  "n_spans", "flag_end_pole", "flag_junction_pole"]].copy()
     out["p_fail"] = p
     return out

@@ -1,0 +1,217 @@
+POLE AGE ASSIGNMENT -- ALECTRA 2023 WOOD POLE AGE DISTRIBUTION
+==============================================================
+
+Files in this folder
+  alectra_age_model.py              the age assignment code
+  age_assignment_explanation.txt    this file
+
+How it plugs into the pipeline
+  polegen2 CSVs -> asset_adapter.py -> poles_for_fragility_*.csv -> run_fragility.py
+                        |
+                        uses alectra_age_model.py when AGE_MODE = "alectra" (default)
+
+  Settings live in pipeline/asset_adapter.py (AGE SETTINGS block):
+    AGE_MODE = "alectra"     ALECTRA_RHO = 0.20     ALECTRA_JITTER = 2
+    AGE_SEED = 2026          YEARS_SINCE_2023 = 0   LOOKUP_MAX_AGE = 60
+
+  To check the assigned ages against Alectra's histogram, run:
+    python pipeline/agedistribution_alectra/alectra_age_model.py
+
+
+1. SOURCE DATA
+--------------
+Alectra Utilities, 2027 Rebasing Application (EB-2025-0252), Exhibit 2A,
+Distribution System Plan, Section 5.5.3.1, Figure 17 "2023 Wood Pole Age
+Distribution". Alectra serves the GTA and Golden Horseshoe, so it is a good
+proxy for a Toronto-area feeder.
+
+  Age bin (yr)   Poles     Share of known-age poles
+  0-5            10,603    10.7%
+  6-10           11,447    11.5%
+  11-15           9,116     9.2%
+  16-20           8,871     8.9%
+  21-25           8,452     8.5%
+  26-30           8,463     8.5%
+  31-35           7,708     7.8%
+  36-40           5,882     5.9%
+  41-45           4,415     4.4%
+  46-50           4,228     4.3%
+  51-55           4,756     4.8%
+  56-60           3,549     3.6%
+  61-65           3,220     3.2%
+  66-70           3,726     3.8%
+  71-75           3,986     4.0%
+  76+               854     0.9%
+  Unknown         5,986     (left out)
+  Total         105,262
+  Known age      99,276
+
+Choices made with the data
+  * The 5,986 Unknown-age poles (5.7%) are left out and the other bins are
+    renormalized so they add to 100%.
+  * The 76+ bin has no upper end. It is capped at 85 years (assumption).
+  * Ages are a 2023 snapshot. YEARS_SINCE_2023 can shift every age forward;
+    it is 0 by default (snapshot used as-is).
+
+
+2. WHY POLES ARE GROUPED INTO LINE SECTIONS
+-------------------------------------------
+Utilities usually install poles as part of a project (a new subdivision, a
+line rebuild or extension, a road widening), so a whole stretch of line gets
+poles of the same age. After that, single poles are replaced one at a time
+over the decades (failed inspections, car hits, storm damage).
+
+If every pole's age were drawn independently, every part of the feeder would
+get the same mix of old and new poles. That gives the right failure
+probability for each pole, but it hides the fact that an old section fails
+together and takes out everything downstream. For system-level results
+(outages, crews) that matters, so ages are assigned by section.
+
+How a line section is defined
+  The spans table says which two poles each span connects. A pole with 3 or
+  more spans is a junction. A line section is a chain of poles between
+  junctions (or line ends). Each junction pole joins the largest section it
+  touches. This uses the network connections, not x/y distance, because two
+  poles can be close together but on different lines built decades apart.
+
+  Feeder 1878 (suburban): 1,432 poles in 344 line sections
+  (median 2 poles per section, largest 36). Sections are short because the
+  polegen2 network has many short stubs (506 end poles).
+
+
+3. HOW EACH POLE GETS ITS AGE
+-----------------------------
+Step A - Spot replacements
+  Each pole has a 20% chance (rho = 0.20) of being a "spot replacement". Its
+  age is drawn on its own from the Alectra histogram (pick a bin using the
+  percentages above, then a whole-number age inside that bin), independent of
+  its section.
+
+Step B - Section cohorts
+  Every other pole takes its section's installation age:
+  * Sections are processed in random order. Each one picks an age bin with
+    probability proportional to how many poles that bin still needs to match
+    the Alectra percentages. This keeps the feeder's overall histogram close
+    to Alectra's even though there are only a few hundred sections.
+  * The section gets one age inside that bin.
+  * Each pole in the section gets that age +/- up to 2 years (jitter), since
+    a project is not all installed on the same day.
+
+Both steps draw from the same histogram, so the overall age distribution
+matches Alectra whatever value rho takes. rho only controls how strongly ages
+are grouped by section:
+  rho = 0   -> pure cohorts (every pole matches its section)
+  rho = 1   -> fully independent (no grouping)
+
+Reproducibility: AGE_SEED = 2026 gives the same ages every run.
+
+
+4. HOW rho = 0.20 WAS DERIVED
+-----------------------------
+Source: the same Alectra DSP, Appendix B01 (Overhead Asset Renewal). Alectra
+replaced 3,259 poles from 2021 to 2024 under its Pole Renewal program. These
+are individual poles flagged by inspection and residual-strength testing
+(CSA C22.3: replace or reinforce at 60% of design strength), which is the
+kind of one-at-a-time replacement rho stands for.
+
+Step 1 - yearly replacement rate
+  3,259 poles / 4 years = about 815 poles per year
+  815 / 105,262 wood poles = 0.77% of poles per year
+
+Step 2 - chance a pole has been swapped after t years
+  Each year a pole has a 99.23% chance of NOT being replaced, so after t years
+  the share swapped is 1 - 0.9923^t.
+  Example: a 30-year-old section -> 1 - 0.9923^30 = about 21% swapped.
+
+Step 3 - average over the Alectra age histogram
+  For each bin, use the middle age, compute the share swapped, and multiply
+  by the number of poles in the bin.
+
+  Age bin   Middle age   Poles    % swapped   Expected swapped poles
+  0-5          2.5       10,603      1.9%           203
+  6-10         8         11,447      6.0%           686
+  11-15       13          9,116      9.6%           872
+  16-20       18          8,871     13.0%         1,152
+  21-25       23          8,452     16.3%         1,377
+  26-30       28          8,463     19.5%         1,647
+  31-35       33          7,708     22.5%         1,735
+  36-40       38          5,882     25.5%         1,497
+  41-45       43          4,415     28.3%         1,249
+  46-50       48          4,228     31.0%         1,311
+  51-55       53          4,756     33.6%         1,599
+  56-60       58          3,549     36.1%         1,282
+  61-65       63          3,220     38.6%         1,241
+  66-70       68          3,726     40.9%         1,523
+  71-75       73          3,986     43.1%         1,719
+  76+         80            854     46.1%           394
+  Total                  99,276                  19,487
+
+  rho = 19,487 / 99,276 = 0.196, rounded to 0.20
+
+Same calculation at other rates (for sensitivity):
+  0.5% per year                         -> rho = 0.13
+  0.77% per year (Alectra 2021-2024)    -> rho = 0.20
+  1.0% per year (Alectra 2027-2031 plan: 5,256 poles over 5 years) -> rho = 0.24
+
+Why 0.20 holds up
+  * Not counted: reactive replacements (car hits, storm damage). The DSP only
+    reports these as costs and work orders, not pole counts. This would push
+    rho up.
+  * Pole Renewal also covers concrete poles, so dividing by wood poles alone
+    slightly overstates the wood rate, and past decades likely had a lower
+    replacement rate (the DSP describes a growing backlog of deteriorated
+    poles). These push rho down.
+  * The two roughly cancel.
+
+Note: spot-replaced poles get ages from the full histogram, not forced young.
+So rho is best described as "the share of poles whose age is independent of
+their line section", a correlation setting more than a literal replacement
+rate. Suggested sensitivity runs: rho = 0.15, 0.25, plus 0 and 1.0 as the
+extremes.
+
+
+5. CAP AT 60 YEARS FOR THE FRAGILITY LOOKUPS (LIMITATION)
+---------------------------------------------------------
+The Ma et al. (2020) Fig. 4 and Fig. 7 lookups only cover pole ages 0-60 yr.
+About 12% of Alectra's known-age wood poles are older than 60.
+
+  age_true_years  = age assigned from the Alectra distribution (up to 85)
+  age_years       = age used by the fragility lookups = min(age_true_years, 60)
+  flag_age_capped = True where the age was capped
+
+Treating a 70-year-old pole as 60 UNDERESTIMATES its failure probability.
+This should be stated as a limitation. Feeder 1878: 177 of 1,432 poles capped.
+
+
+6. CHECK - FEEDER 1878 (suburban), seed 2026
+---------------------------------------------
+  Age bin   Alectra %   Feeder %
+  0-5         10.7        10.2
+  6-10        11.5        11.3
+  11-15        9.2         9.6
+  16-20        8.9         9.1
+  21-25        8.5         8.3
+  26-30        8.5         8.3
+  31-35        7.8         7.6
+  36-40        5.9         5.6
+  41-45        4.4         4.8
+  46-50        4.3         5.0
+  51-55        4.8         4.4
+  56-60        3.6         3.4
+  61-65        3.2         4.3
+  66-70        3.8         3.7
+  71-75        4.0         2.9
+  76+          0.9         1.5
+
+  Mean age: feeder 30.2 yr, Alectra 29.9 yr.
+  250 spot replacements (17.5%; expected 20%, random variation).
+
+
+7. NEW COLUMNS IN poles_for_fragility_*.csv
+-------------------------------------------
+  age_years              age used by the lookups (capped at 60)
+  age_true_years         assigned age before capping
+  flag_age_capped        True if age_true_years > 60
+  section_id             line section number (-1 if AGE_MODE is "fixed"/"uniform")
+  flag_spot_replacement  True if the pole was a spot replacement
+pole_fragility_*.csv also carries age_true_years, flag_age_capped, section_id.
