@@ -7,6 +7,10 @@ pole_fig7_lookup.py.
 
     run once:   python build_pole_fig7_lookup.py
     writes:     pole_fig7_surfaces_by_span.npz   (next to this script)
+                p_fail_u16[phase, span, age, ice, wind]   phases = 1, 2, 3
+                stored as uint16: P(fail) = p_fail_u16 / p_fail_scale (scale 65535).
+                Rounding error <= 7.6e-6, far below the Monte Carlo noise; keeps the
+                file ~23 MB instead of ~41 MB as float32.
 
 WHY SPAN MATTERS FOR A POLE
   Ma ignores ice on the pole itself ("not significant according to ASCE 74"), but
@@ -18,6 +22,12 @@ WHY SPAN MATTERS FOR A POLE
       L_trib = (left span + right span) / 2      (end pole: one span / 2).
   Everything else is reconstruct_fig7.py's model: same constants, same random
   samples (draw_samples, SEED), same strength model (Eqs. 1-2).
+
+NUMBER OF PHASES (added Nov 2026)
+  N_COND = 3 in Ma is three phase conductors. Here N_COND is replaced by the
+  number of phases on the line (1, 2 or 3), so a 1-phase pole carries 1/3 of the
+  iced-wire wind and weight. Neutral neglected, as in Ma; conductor size unchanged.
+  n_phases = 3 reproduces the previous file exactly.
 
 SPEED
   reconstruct_fig7.pole_surface() checks every sample at every wind speed. This
@@ -39,17 +49,20 @@ sys.path.insert(0, str(FIG7_DIR))
 import reconstruct_fig7 as r7                      # noqa: E402
 
 OUT_PATH = HERE / "pole_fig7_surfaces_by_span.npz"
+P_SCALE = 65535                                    # uint16 storage, see docstring
 
 BASE_SPAN = r7.SPAN                                # 91.44 m
 SPAN_BINS = np.unique(np.append(np.arange(10, 150.01, 5.0), BASE_SPAN))
 AGES = np.arange(0, 61, 5)                         # 0, 5, ..., 60 yr (same as Fig. 4)
 ICE_GRID = np.arange(0, 150.01, 0.5)               # mm (Ma: 0-80; same 0-150 as the wire lookup)
 WIND_GRID = r7.V_GRID                              # m/s, 0-40 in 0.5 (Ma's grid)
+PHASES = (1, 2, 3)                                 # phase conductors on the pole (Ma = 3)
+BASE_PHASES = r7.N_COND
 
 
-def pole_surface_span(s, age, span, r_grid=ICE_GRID, v_grid=WIND_GRID):
-    """Same model as reconstruct_fig7.pole_surface(), with SPAN -> `span`.
-    Returns P_f, shape (len(r_grid), len(v_grid))."""
+def pole_surface_span(s, age, span, n_phases=BASE_PHASES, r_grid=ICE_GRID, v_grid=WIND_GRID):
+    """Same model as reconstruct_fig7.pole_surface(), with SPAN -> `span` and
+    N_COND -> `n_phases`. Returns P_f, shape (len(r_grid), len(v_grid))."""
     mean, sd = r7.pole_strength_stats(age)
     strength = r7.lognormal_from_mean_sd(s["z_strength"], mean, sd)
 
@@ -60,12 +73,12 @@ def pole_surface_span(s, age, span, r_grid=ICE_GRID, v_grid=WIND_GRID):
     n = strength.size
     surf = np.empty((len(r_grid), len(v_grid)))
     for i, r in enumerate(r_grid):
-        A_w = r7.N_COND * span * (r7.D_COND + 2 * r / 1000)
+        A_w = n_phases * span * (r7.D_COND + 2 * r / 1000)
         m_wire = 0.613 * s["Kz_w"] * r7.KZT * s["G_w"] * r7.CF_WIRE_ICED * A_w * s["h_wire"]
         c = (m_pole + m_wire) / r7.S_GL                     # bending stress per v^2
         axial = 0.0
         if r7.INCLUDE_WIRE_GRAVITY_ON_POLE:
-            axial = r7.N_COND * span * (r7.W_SELF + r7.ice_weight_per_m(r)) / r7.AREA_GL
+            axial = n_phases * span * (r7.W_SELF + r7.ice_weight_per_m(r)) / r7.AREA_GL
 
         # fail when c*v^2 + axial >= strength  ->  v >= v_crit
         need = strength - axial
@@ -78,11 +91,11 @@ def pole_surface_span(s, age, span, r_grid=ICE_GRID, v_grid=WIND_GRID):
 
 
 def check_against_reconstruct_fig7(s):
-    print("Check vs reconstruct_fig7.pole_surface() at 91.44 m (slow, ~1 min per age):")
-    for age in (0, 60):
-        ref = r7.pole_surface(s, age)
-        new = pole_surface_span(s, age, BASE_SPAN, r_grid=r7.R_GRID, v_grid=r7.V_GRID)
-        print(f"  age {age:>2}: max difference = {np.abs(ref - new).max():.2e}")
+    print("Check vs reconstruct_fig7.pole_surface() at 91.44 m (slow, ~1 min per case):")
+    for age, ph in ((0, 3), (60, 3), (30, 1)):
+        ref = r7.pole_surface(s, age, n_cond=ph)
+        new = pole_surface_span(s, age, BASE_SPAN, ph, r_grid=r7.R_GRID, v_grid=r7.V_GRID)
+        print(f"  age {age:>2}, {ph}-phase: max difference = {np.abs(ref - new).max():.2e}")
 
 
 def main(check=True):
@@ -92,30 +105,39 @@ def main(check=True):
         check_against_reconstruct_fig7(s)
 
     t0 = time.time()
-    P = np.empty((len(SPAN_BINS), len(AGES), len(ICE_GRID), len(WIND_GRID)), np.float32)
-    for i, L in enumerate(SPAN_BINS):
-        for j, age in enumerate(AGES):
-            P[i, j] = pole_surface_span(s, age, float(L))
-    print(f"\nBuilt {len(SPAN_BINS)} spans x {len(AGES)} ages ({time.time() - t0:.0f} s)")
+    P = np.empty((len(PHASES), len(SPAN_BINS), len(AGES), len(ICE_GRID), len(WIND_GRID)),
+                 np.float32)
+    for k, ph in enumerate(PHASES):
+        for i, L in enumerate(SPAN_BINS):
+            for j, age in enumerate(AGES):
+                P[k, i, j] = pole_surface_span(s, age, float(L), ph)
+        print(f"  {ph}-phase done ({time.time() - t0:.0f} s)", flush=True)
+    print(f"\nBuilt {len(PHASES)} phases x {len(SPAN_BINS)} spans x {len(AGES)} ages "
+          f"({time.time() - t0:.0f} s)")
 
     site_arrays = {f"site_{n.lower().replace(' ', '_')}":
                    np.array([v["alpha"], v["k"], v["u"], v["v_conc"]], float)
                    for n, v in r7.SITES.items()}
-    np.savez_compressed(OUT_PATH, span_bins_m=SPAN_BINS, ages=AGES, ice_mm=ICE_GRID,
-                        wind_ms=WIND_GRID, p_fail=P,
+    np.savez_compressed(OUT_PATH, phases=np.array(PHASES), span_bins_m=SPAN_BINS,
+                        ages=AGES, ice_mm=ICE_GRID,
+                        wind_ms=WIND_GRID,
+                        p_fail_u16=np.rint(P.astype(np.float64) * P_SCALE).astype(np.uint16),
+                        p_fail_scale=np.array(P_SCALE),
                         site_names=np.array(list(site_arrays)), **site_arrays)
     print(f"Saved {OUT_PATH.name}")
 
     print("\nAnnual pole failure, ice + concurrent wind (Eq. 10):")
     tor, gm = r7.SITES["Toronto"], r7.SITES["Grand Marais"]
-    print(f"  {'trib. span':>10} | {'age':>3} | Toronto ({tor['v_conc']:.1f} m/s) | Grand Marais")
-    for L in (20, 40, 60, 91.44):
-        i = int(np.searchsorted(SPAN_BINS, L - 1e-9))
-        for j, age in enumerate(AGES):
-            if age not in (0, 30, 60):
-                continue
-            out = [annual_pf(P[i, j], site) for site in (tor, gm)]
-            print(f"  {SPAN_BINS[i]:10.2f} | {age:3d} | {out[0]:20.3e} | {out[1]:.3e}")
+    print(f"  {'phases':>6} | {'trib. span':>10} | {'age':>3} | "
+          f"Toronto ({tor['v_conc']:.1f} m/s) | Grand Marais")
+    for k, ph in enumerate(PHASES):
+        for L in (20, 40, 60, 91.44):
+            i = int(np.searchsorted(SPAN_BINS, L - 1e-9))
+            for j, age in enumerate(AGES):
+                if age not in (0, 30, 60):
+                    continue
+                out = [annual_pf(P[k, i, j], site) for site in (tor, gm)]
+                print(f"  {ph:6d} | {SPAN_BINS[i]:10.2f} | {age:3d} | {out[0]:20.3e} | {out[1]:.3e}")
 
 
 def annual_pf(surf, site):

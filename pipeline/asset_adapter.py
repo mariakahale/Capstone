@@ -15,6 +15,9 @@ What it does
   * converts span lengths from feet to metres
   * gives each pole its tributary span: half of every span attached to it
     (end pole = one span / 2; junction poles with 3-4 spans = sum / 2)
+  * gives each pole its number of phase conductors (n_phases) and an equivalent
+    tributary span (tributary_eff_m) for the phase-dependent pole lookups -- see
+    build_poles()
   * assigns a pole age (polegen2 has none -- see AGE SETTINGS below). The default,
     AGE_MODE = "alectra", follows Alectra's 2023 wood pole age distribution with
     line sections sharing an installation age: see agedistribution_alectra/
@@ -84,10 +87,16 @@ SPAN_COLUMNS = ["span_id", "start_pole", "end_pole", "span_m",
                 "voltage_class", "n_phases", "flag_short_span"]
 POLE_COLUMNS = ["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
                 "flag_age_capped", "section_id", "flag_spot_replacement",
-                "n_spans", "span_ids", "tributary_m", "flag_end_pole", "flag_junction_pole"]
+                "n_spans", "span_ids", "tributary_m", "n_phases", "tributary_eff_m",
+                "flag_mixed_phase", "flag_end_pole", "flag_junction_pole"]
 # age_years      : age fed to the fragility lookups (capped at LOOKUP_MAX_AGE)
 # age_true_years : age assigned by AGE_MODE before capping
 # section_id     : line section (poles between junctions); -1 if AGE_MODE is not "alectra"
+# n_phases       : phase conductors on the pole = largest n_phases of its attached spans
+# tributary_eff_m: tributary span that, with n_phases wires, gives the same total wire
+#                  length as the real attached spans (= tributary_m unless flag_mixed_phase)
+# flag_mixed_phase: attached spans have different phase counts (e.g. 1-phase tap off 3-phase)
+# Pole lookups use (tributary_eff_m, n_phases). Neutral wires are neglected (as in Ma et al.).
 
 
 
@@ -150,8 +159,19 @@ def assign_ages(pole_ids, spans, mode=AGE_MODE):
 
 
 def build_poles(raw_poles, spans, age_mode=AGE_MODE):
-    """One row per pole, with its tributary span (half of every attached span)."""
+    """One row per pole, with its tributary span (half of every attached span).
+
+    Phases: the pole models load the pole with (number of phase wires) x (tributary
+    span), for both wind area and weight, so only the total length of phase wire on
+    the pole matters:
+        wire_m          = sum over attached spans of n_phases_i * span_i / 2
+        n_phases        = max n_phases_i
+        tributary_eff_m = wire_m / n_phases
+    For a pole whose spans all have the same phase count, tributary_eff_m = tributary_m.
+    For a mixed pole (e.g. 3-phase main + 1-phase tap) this gives exactly the same wire
+    load as summing each span with its own phase count."""
     span_len = spans.set_index("span_id")["span_m"]
+    span_ph = spans.set_index("span_id")["n_phases"]
     span_lists = raw_poles["connected_span_ids"].str.split(";")
 
     unknown = set(s for ids in span_lists for s in ids) - set(span_len.index)
@@ -160,6 +180,9 @@ def build_poles(raw_poles, spans, age_mode=AGE_MODE):
                          f"e.g. {sorted(unknown)[:5]}")
 
     n_spans = span_lists.str.len()
+    n_phases = span_lists.apply(lambda ids: int(span_ph[ids].max()))
+    wire_m = span_lists.apply(lambda ids: float((span_len[ids] * span_ph[ids]).sum() / 2))
+    mixed = span_lists.apply(lambda ids: span_ph[ids].nunique() > 1)
     ages = assign_ages(raw_poles["pole_id"], spans, age_mode)
     poles = pd.DataFrame({
         "pole_id": raw_poles["pole_id"],
@@ -174,6 +197,9 @@ def build_poles(raw_poles, spans, age_mode=AGE_MODE):
         "n_spans": n_spans,
         "span_ids": raw_poles["connected_span_ids"],
         "tributary_m": span_lists.apply(lambda ids: span_len[ids].sum() / 2),
+        "n_phases": n_phases,
+        "tributary_eff_m": wire_m / n_phases,
+        "flag_mixed_phase": mixed,
     })
     poles["flag_end_pole"] = n_spans == 1
     # 3+ spans: wires pull in different directions, so summing them overstates the
@@ -198,6 +224,8 @@ def validate(poles, spans):
         problems.append("span endpoints not found in the poles file")
     if not poles["age_years"].between(0, LOOKUP_MAX_AGE).all():
         problems.append(f"pole age outside 0-{LOOKUP_MAX_AGE} yr (lookups would fail)")
+    if not spans["n_phases"].isin([1, 2, 3]).all():
+        problems.append("span n_phases not in {1, 2, 3} (lookups would fail)")
     if (spans["span_m"] > MAX_BIN_M).any() or (poles["tributary_m"] > MAX_BIN_M).any():
         problems.append(f"span or tributary span above {MAX_BIN_M} m (lookups would fail)")
     if problems:
@@ -229,6 +257,9 @@ def main():
     print(f"  poles: {len(poles)}  (tributary {poles.tributary_m.min():.1f}-"
           f"{poles.tributary_m.max():.1f} m, {poles.flag_end_pole.sum()} end poles, "
           f"{poles.flag_junction_pole.sum()} junction poles)")
+    print(f"  phases: spans {spans.n_phases.value_counts().sort_index().to_dict()}, "
+          f"poles {poles.n_phases.value_counts().sort_index().to_dict()}, "
+          f"{poles.flag_mixed_phase.sum()} mixed-phase poles")
     print(f"  ages : mean {poles.age_true_years.mean():.1f} yr, "
           f"range {poles.age_true_years.min()}-{poles.age_true_years.max()} yr, "
           f"{poles.flag_age_capped.sum()} capped at {LOOKUP_MAX_AGE} yr for the lookups")

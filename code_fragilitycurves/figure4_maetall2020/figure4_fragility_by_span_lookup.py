@@ -8,13 +8,20 @@ USAGE (for teammates):
     from figure4_fragility_by_span_lookup import lookup_wind_fragility_pole_span
 
     # pole with 47.5 m tributary span (e.g. between a 40 m and a 55 m span),
-    # 30 years old, 50 m/s gust
+    # 30 years old, 50 m/s gust, 3-phase line (default)
     p = lookup_wind_fragility_pole_span(wind_speed=50, age_years=30, tributary_m=47.5)
+    # same pole on a 1-phase line
+    p = lookup_wind_fragility_pole_span(50, 30, 47.5, n_phases=1)
 
 Public functions:
-    lookup_wind_fragility_pole_span(wind_speed, age_years, tributary_m)
+    lookup_wind_fragility_pole_span(wind_speed, age_years, tributary_m, n_phases=3)
     span_bin(tributary_m), age_bin(age_years)
-    available_span_bins(), available_ages()
+    available_span_bins(), available_ages(), available_phases()
+
+Number of phases:
+    n_phases = number of phase conductors on the pole (1, 2 or 3). Ma et al. = 3.
+    The wire wind area and wire weight on the pole scale with n_phases / 3; the
+    neutral is neglected (same as Ma). Default 3 = previous behaviour.
 
 How the span is handled:
     A pole carries half of each attached span (Ma Fig. 1). The tributary span is
@@ -44,17 +51,21 @@ import numpy as np
 SCRIPT_DIR = Path(__file__).resolve().parent
 NPZ_PATH = SCRIPT_DIR / "figure4_fragility_curves_by_span.npz"
 
-_SPANS = _AGES = _WIND = _P = None
+_PHASES = _SPANS = _AGES = _WIND = _P = None
 
 
 def _load():
-    global _SPANS, _AGES, _WIND, _P
+    global _PHASES, _SPANS, _AGES, _WIND, _P
     if not NPZ_PATH.exists():
         raise FileNotFoundError(
             f"[figure4_fragility_by_span_lookup] Missing {NPZ_PATH.name}. "
             f"Run figure4_fragility_by_span.py first to generate it.")
     d = np.load(NPZ_PATH)
-    _SPANS, _AGES, _WIND, _P = d["span_bins_m"], d["ages"], d["wind_ms"], d["p_fail"]
+    if "phases" not in d:
+        raise ValueError(f"[figure4_fragility_by_span_lookup] {NPZ_PATH.name} is the old "
+                         f"3-phase-only file. Re-run figure4_fragility_by_span.py.")
+    _PHASES, _SPANS, _AGES, _WIND, _P = (d["phases"], d["span_bins_m"], d["ages"],
+                                         d["wind_ms"], d["p_fail"])
 
 
 def available_span_bins():
@@ -63,6 +74,18 @@ def available_span_bins():
 
 def available_ages():
     return _AGES.tolist()
+
+
+def available_phases():
+    return _PHASES.tolist()
+
+
+def phase_index(n_phases):
+    """Index of n_phases (1, 2 or 3) in the table. No rounding: must match exactly."""
+    k = np.where(_PHASES == int(n_phases))[0]
+    if int(n_phases) != n_phases or k.size == 0:
+        raise ValueError(f"n_phases={n_phases} not tabulated; use one of {available_phases()}.")
+    return int(k[0])
 
 
 # REMOVED (Oct 2026): the tributary span is now computed upstream in
@@ -91,19 +114,21 @@ def age_bin(age_years):
 
 #***#
 # def lookup_wind_fragility_pole_span(wind_speed, age_years, span_left_m, span_right_m=None):
-def lookup_wind_fragility_pole_span(wind_speed, age_years, tributary_m):
+def lookup_wind_fragility_pole_span(wind_speed, age_years, tributary_m, n_phases=3):
     """P(failure) for a wood pole under extreme wind (no ice).
 
     wind_speed   : float or array, 3-s gust, m/s (tabulated 20-90 m/s)
     age_years    : float, 0-60, rounded up to the next 5-yr bin
     tributary_m  : tributary span of the pole, m (half of all attached spans,
                    from pipeline/asset_adapter.py); rounded up to the next bin
+    n_phases     : phase conductors on the pole, 1, 2 or 3 (default 3 = Ma et al.)
     """
+    k = phase_index(n_phases)
     # i = int(np.where(_SPANS == span_bin(tributary_span(span_left_m, span_right_m)))[0][0])
     i = int(np.where(_SPANS == span_bin(tributary_m))[0][0])
 
     j = int(np.where(_AGES == age_bin(age_years))[0][0])
-    curve = _P[i, j]
+    curve = _P[k, i, j]
 
     ws = np.asarray(wind_speed, dtype=float)
     if np.any((ws < _WIND[0]) | (ws > _WIND[-1])):
@@ -125,5 +150,6 @@ if __name__ == "__main__":
     for L in (40, 47.5, 91.44, 20):
         print(f"tributary {L:.1f} m -> bin {span_bin(L):g} m")
         for v in (40, 50, 60):
+            p = [lookup_wind_fragility_pole_span(v, 32, L, ph) for ph in available_phases()]
             print(f"   32-yr pole (bin {age_bin(32)}) @ {v} m/s: P(fail) = "
-                  f"{lookup_wind_fragility_pole_span(v, 32, L):.4f}")
+                  + "   ".join(f"{ph}-ph {x:.4f}" for ph, x in zip(available_phases(), p)))

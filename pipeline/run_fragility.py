@@ -12,10 +12,16 @@ the feeder, for ONE storm scenario.
                                               Monte Carlo (next step) -> power flow
 
 What it does
-  * ice storm : pole  -> Fig. 7(a)-(c) lookup  (age, tributary span, ice, concurrent wind)
+  * ice storm : pole  -> Fig. 7(a)-(c) lookup  (age, tributary span, phases, ice, concurrent wind)
                 wire  -> Fig. 7(d) lookup      (span length, ice, concurrent wind)
-  * wind storm: pole  -> Fig. 4 lookup         (age, tributary span, 3-s gust)
+  * wind storm: pole  -> Fig. 4 lookup         (age, tributary span, phases, 3-s gust)
                 wire  -> 0 (Ma et al.: wires do not fail from wind alone)
+
+Phases (Nov 2026): a pole's wire load scales with its number of phase conductors
+(1-phase pole = 1/3 of Ma's 3-phase wire load; neutral neglected, as in Ma). Poles use
+(tributary_eff_m, n_phases) from asset_adapter.py. The wire lookup is per conductor and
+does not change with phases: all phase wires in a span see the same storm, so in Ma's
+model they fail together and one draw per span is enough.
 
 For the Monte Carlo, use p_fail (poles) and p_fail_wire (spans), and draw each pole and
 each wire separately. A pole is shared by the spans on either side of it, so it must be
@@ -79,15 +85,18 @@ OUTPUT_DIR = HERE / "outputs" / "fragility"
 def pole_fragility(poles, scenario):
     if scenario == "ice":
         wind = toronto_concurrent_wind() if CONCURRENT_WIND_MS is None else CONCURRENT_WIND_MS
-        p = [lookup_pole_ice_fragility(age, trib, ice_mm=ICE_MM, wind_ms=wind)
-             for age, trib in zip(poles["age_years"], poles["tributary_m"])]
+        p = [lookup_pole_ice_fragility(age, trib, ice_mm=ICE_MM, wind_ms=wind, n_phases=ph)
+             for age, trib, ph in zip(poles["age_years"], poles["tributary_eff_m"],
+                                      poles["n_phases"])]
     elif scenario == "wind":
-        p = [lookup_wind_fragility_pole_span(WIND_GUST_MS, age, trib)
-             for age, trib in zip(poles["age_years"], poles["tributary_m"])]
+        p = [lookup_wind_fragility_pole_span(WIND_GUST_MS, age, trib, n_phases=ph)
+             for age, trib, ph in zip(poles["age_years"], poles["tributary_eff_m"],
+                                      poles["n_phases"])]
     else:
         raise ValueError(f"Unknown SCENARIO '{scenario}' (use 'ice' or 'wind').")
     out = poles[["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
-                 "flag_age_capped", "section_id", "tributary_m",
+                 "flag_age_capped", "section_id", "tributary_m", "n_phases",
+                 "tributary_eff_m", "flag_mixed_phase",
                  "n_spans", "flag_end_pole", "flag_junction_pole"]].copy()
     out["p_fail"] = p
     return out
@@ -154,6 +163,9 @@ def main():
     print(f"Feeder {FEEDER_NAME} ({AREA_TYPE}), scenario: {tag}")
     print(f"  poles: {len(pp):5d}  mean P_fail {pp.mean():.4f}  max {pp.max():.4f}  "
           f">= {THRESHOLD:g}: {(pp >= THRESHOLD).sum()}")
+    for ph, g in pole_frag.groupby("n_phases")["p_fail"]:
+        print(f"    {ph}-phase poles: {len(g):5d}  mean P_fail {g.mean():.4f}  "
+              f"expected failures {g.sum():.1f}")
     print(f"  wires: {len(pw):5d}  mean P_fail {pw.mean():.4f}  max {pw.max():.4f}  "
           f">= {THRESHOLD:g}: {(pw >= THRESHOLD).sum()}")
     print(f"  spans (wire + 2 poles, maps only): >= {THRESHOLD:g}: {(ps >= THRESHOLD).sum()}")

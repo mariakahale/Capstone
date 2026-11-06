@@ -68,7 +68,10 @@ RHO_ICE = 917.0          # kg/m^3 (paper prints 0.917 kg/m^3 -- a unit typo)
 
 # --- Wires: "Structural Model of Wires" ---
 SPAN = 91.44             # m (300 ft)
-N_COND = 3               # "three conductor wires at the same height"
+N_COND = 3               # "three conductor wires at the same height" (= 3 phases)
+                         # pole_surface(..., n_cond=1) models a 1-phase line; the
+                         # neutral is neglected, as in Ma. The wire surface is per
+                         # conductor and does not depend on n_cond.
 D_COND = 0.01882         # m, 18.82 mm ACSR
 R_COND = D_COND / 2
 W_SELF = 776.6e-3 * G_ACC    # N/m  (776.6 kg/km)
@@ -173,8 +176,9 @@ def draw_samples(rng, n):
     )
 
 
-def pole_surface(s, age):
-    """P_f(r, v) for a pole of given age. Returns array [len(R_GRID), len(V_GRID)]."""
+def pole_surface(s, age, n_cond=N_COND):
+    """P_f(r, v) for a pole of given age carrying `n_cond` phase conductors
+    (3 = Ma et al.; 1 = 1-phase line). Returns array [len(R_GRID), len(V_GRID)]."""
     mean, sd = pole_strength_stats(age)
     strength = lognormal_from_mean_sd(s["z_strength"], mean, sd)   # Pa, (N,)
 
@@ -188,16 +192,16 @@ def pole_surface(s, age):
     v2 = V_GRID**2
     surf = np.zeros((len(R_GRID), len(V_GRID)))
     for i, r in enumerate(R_GRID):
-        # Wind on the iced wires: 3 conductors x one span x iced diameter,
+        # Wind on the iced wires: n_cond conductors x one span x iced diameter,
         # applied at wire height. Ice only reaches the pole through this term.
-        A_w = N_COND * SPAN * (D_COND + 2 * r / 1000)
+        A_w = n_cond * SPAN * (D_COND + 2 * r / 1000)
         m_wire = 0.613 * s["Kz_w"] * KZT * s["G_w"] * CF_WIRE_ICED * A_w * s["h_wire"]
 
         # Ground-line stress = bending + compression
         bending = np.outer(m_pole + m_wire, v2) / S_GL                 # (N, nV)
         axial = 0.0
         if INCLUDE_WIRE_GRAVITY_ON_POLE:
-            axial = N_COND * SPAN * (W_SELF + ice_weight_per_m(r)) / AREA_GL
+            axial = n_cond * SPAN * (W_SELF + ice_weight_per_m(r)) / AREA_GL
         stress = bending + axial
 
         surf[i] = (stress >= strength[:, None]).mean(axis=0)

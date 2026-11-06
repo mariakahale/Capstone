@@ -18,10 +18,20 @@ WHY SPAN MATTERS FOR A POLE
   Everything else (pole, strength, decay, wind randomization) is identical to
   figure4_fragility.py: same seed, same random draws, same formulas.
 
+NUMBER OF PHASES (added Nov 2026)
+  Ma's "3" above is three phase conductors on the pole. A 1-phase line carries one.
+  So both wire terms are also scaled by  n_phases / 3:
+      Aw = N(5.16, ...) * (L_trib / 91.44) * (n_phases / 3)
+      gravity_stress = Gi * n_phases / (pole cross-section area)
+  ASSUMPTION (same as Ma): only phase conductors are counted; the neutral is
+  neglected. Every wire is Ma's 18.82 mm ACSR (conductor size is not changed here).
+  n_phases = 3 reproduces the previous results exactly.
+
 RUN ONCE
   python figure4_fragility_by_span.py
   -> writes figure4_fragility_curves_by_span.npz (next to this script)
-  -> checks the 91.44 m result against figure4_fragility_curves_5yr.csv
+     p_fail[phase, span, age, wind]   phases = 1, 2, 3
+  -> checks the 3-phase, 91.44 m result against figure4_fragility_curves_5yr.csv
 
 Teammates read the NPZ through figure4_fragility_by_span_lookup.py.
 """
@@ -43,6 +53,10 @@ BASE_SPAN = 91.44
 
 # Tributary span bins (m): 10, 15, ..., 150 plus Ma's 91.44 m
 SPAN_BINS = np.unique(np.append(np.arange(10, 150.01, 5.0), BASE_SPAN))
+
+# Number of phase conductors on the pole. Ma et al. = 3.
+PHASES = (1, 2, 3)
+BASE_PHASES = 3
 
 
 def aged_pole_strength_kpa(age_years, n, rng):
@@ -66,13 +80,15 @@ def fragility_from_critical_speed(strength_pa, gravity_stress, wind_coeff, wind_
     return np.searchsorted(v_sorted, wind_speed, side="left") / v_crit.size
 
 
-def pole_wind_fragility(span_trib_m=BASE_SPAN, ages=AGES, n=N, seed=SEED):
-    """Fig. 4 curves for a pole with tributary span `span_trib_m`.
+def pole_wind_fragility(span_trib_m=BASE_SPAN, n_phases=BASE_PHASES, ages=AGES, n=N, seed=SEED):
+    """Fig. 4 curves for a pole with tributary span `span_trib_m` carrying
+    `n_phases` phase conductors (1, 2 or 3).
 
-    Returns array (len(ages), len(V)). With span_trib_m = 91.44 this reproduces
-    figure4_fragility.py exactly (same seed and draw order)."""
+    Returns array (len(ages), len(V)). With span_trib_m = 91.44 and n_phases = 3
+    this reproduces figure4_fragility.py exactly (same seed and draw order)."""
     rng = np.random.default_rng(seed)
     scale = span_trib_m / BASE_SPAN
+    wires = n_phases / BASE_PHASES                    # 1-phase: 1/3 of Ma's wire load
 
     # Same draws, same order as figure4_fragility.py
     Kzp = rng.normal(0.951, 0.05706, n)
@@ -82,7 +98,7 @@ def pole_wind_fragility(span_trib_m=BASE_SPAN, ages=AGES, n=N, seed=SEED):
     Cfp = rng.normal(0.9, 0.108, n)
     Cfw = rng.normal(1.0, 0.12, n)
     Ap = rng.normal(2.66, 0.1596, n)
-    Aw = rng.normal(5.16, 0.3098, n) * scale          # <-- span-dependent
+    Aw = rng.normal(5.16, 0.3098, n) * scale * wires  # <-- span- and phase-dependent
     Hp = rng.normal(11.7, 0.351, n)
     Hw = rng.normal(11.1, 0.333, n)
 
@@ -91,7 +107,7 @@ def pole_wind_fragility(span_trib_m=BASE_SPAN, ages=AGES, n=N, seed=SEED):
 
     D = 0.28
     Gi = 7766 * 0.09144 * scale                       # <-- span-dependent
-    gravity_stress = Gi * 3 / ((D / 2) ** 2 * np.pi)
+    gravity_stress = Gi * n_phases / ((D / 2) ** 2 * np.pi)   # Ma: Gi * 3
     wind_coeff = 32.0 * (0.5 * Kp * Hp + Kw * Hw) / (np.pi * D ** 3)
 
     # figure4_fragility.py draws the archived new-pole strength before the aged
@@ -118,21 +134,25 @@ def check_against_original(curves_91):
 
 
 def main():
-    P = np.stack([pole_wind_fragility(L) for L in SPAN_BINS])
-    np.savez_compressed(NPZ_PATH, span_bins_m=SPAN_BINS, ages=np.array(AGES),
-                        wind_ms=V, p_fail=P.astype(np.float32))
-    print(f"Saved {NPZ_PATH.name}: {len(SPAN_BINS)} spans x {len(AGES)} ages x {len(V)} speeds")
+    P = np.stack([np.stack([pole_wind_fragility(L, ph) for L in SPAN_BINS])
+                  for ph in PHASES])
+    np.savez_compressed(NPZ_PATH, phases=np.array(PHASES), span_bins_m=SPAN_BINS,
+                        ages=np.array(AGES), wind_ms=V, p_fail=P.astype(np.float32))
+    print(f"Saved {NPZ_PATH.name}: {len(PHASES)} phase counts x {len(SPAN_BINS)} spans x "
+          f"{len(AGES)} ages x {len(V)} speeds")
 
-    print("Check:")
+    print("Check (3-phase):")
+    k3 = PHASES.index(BASE_PHASES)
     i91 = int(np.where(SPAN_BINS == BASE_SPAN)[0][0])
-    check_against_original(P[i91])
+    check_against_original(P[k3, i91])
 
     print("\nWind speed at 50% failure, new pole (m/s):")
     j0 = AGES.index(0)
+    print(f"  {'tributary span':>16} | " + " | ".join(f"{ph}-phase" for ph in PHASES))
     for L in (20, 40, 60, 91.44, 120):
         i = int(np.searchsorted(SPAN_BINS, L - 1e-9))
-        v50 = np.interp(0.5, P[i, j0], V)
-        print(f"  tributary span {SPAN_BINS[i]:6.2f} m: {v50:5.1f} m/s")
+        v50 = [np.interp(0.5, P[k, i, j0], V) for k in range(len(PHASES))]
+        print(f"  {SPAN_BINS[i]:14.2f} m | " + " | ".join(f"{v:7.1f}" for v in v50))
 
 
 if __name__ == "__main__":

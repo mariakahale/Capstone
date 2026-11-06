@@ -11,15 +11,22 @@ USAGE (for teammates):
     p = lookup_pole_ice_fragility(age_years=30, tributary_m=47.5, ice_mm=20, wind_ms=31.9)
     # leave wind out to use Toronto's concurrent gust (concurrentwindspeed.py)
     p = lookup_pole_ice_fragility(30, 47.5, ice_mm=20)
+    # same pole on a 1-phase line (default n_phases=3)
+    p = lookup_pole_ice_fragility(30, 47.5, ice_mm=20, n_phases=1)
 
     # "How likely is it to fail from ice storms in a typical year?"  (Eq. 10)
     pa = lookup_pole_ice_annual_pf(age_years=30, tributary_m=47.5)
 
 Public functions:
-    lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0, wind_ms=None)
-    lookup_pole_ice_annual_pf(age_years, tributary_m, site="toronto")
-    span_bin(tributary_m), age_bin(age_years)
-    available_span_bins(), available_ages(), available_sites()
+    lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0, wind_ms=None, n_phases=3)
+    lookup_pole_ice_annual_pf(age_years, tributary_m, site="toronto", n_phases=3)
+    span_bin(tributary_m), age_bin(age_years), phase_index(n_phases)
+    available_span_bins(), available_ages(), available_sites(), available_phases()
+
+Number of phases:
+    n_phases = number of phase conductors on the pole (1, 2 or 3). Ma et al. = 3.
+    The iced-wire wind area and weight on the pole scale with n_phases / 3; the
+    neutral is neglected (same as Ma). Default 3 = previous behaviour.
 
 How the span is handled:
     tributary span = (sum of all attached spans) / 2, computed upstream in
@@ -59,6 +66,9 @@ def _load():
         raise FileNotFoundError(f"[pole_fig7_lookup] Missing {NPZ_PATH.name}. "
                                 f"Run build_pole_fig7_lookup.py first to generate it.")
     _D = dict(np.load(NPZ_PATH, allow_pickle=False))
+    if "phases" not in _D or "p_fail_u16" not in _D:
+        raise ValueError(f"[pole_fig7_lookup] {NPZ_PATH.name} is the old 3-phase-only file. "
+                         f"Re-run build_pole_fig7_lookup.py.")
 
 
 def available_span_bins():
@@ -67,6 +77,18 @@ def available_span_bins():
 
 def available_ages():
     return _D["ages"].tolist()
+
+
+def available_phases():
+    return _D["phases"].tolist()
+
+
+def phase_index(n_phases):
+    """Index of n_phases (1, 2 or 3) in the table. No rounding: must match exactly."""
+    k = np.where(_D["phases"] == int(n_phases))[0]
+    if int(n_phases) != n_phases or k.size == 0:
+        raise ValueError(f"n_phases={n_phases} not tabulated; use one of {available_phases()}.")
+    return int(k[0])
 
 
 def available_sites():
@@ -104,18 +126,19 @@ def age_bin(age_years):
     return int(ages[np.searchsorted(ages, age_years - 1e-9)])
 
 
-def _interp(i_span, j_age):
-    key = (i_span, j_age)
+def _interp(k_phase, i_span, j_age):
+    key = (k_phase, i_span, j_age)
     if key not in _INTERP:
         _INTERP[key] = RegularGridInterpolator(
-            (_D["ice_mm"], _D["wind_ms"]), _D["p_fail"][i_span, j_age].astype(float),
+            (_D["ice_mm"], _D["wind_ms"]),
+            _D["p_fail_u16"][k_phase, i_span, j_age] / float(_D["p_fail_scale"]),
             bounds_error=False, fill_value=None)
     return _INTERP[key]
 
 
 # def lookup_pole_ice_fragility(age_years, span_left_m, span_right_m=None,
 #                               ice_mm=0.0, wind_ms=None):
-def lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0.0, wind_ms=None):
+def lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0.0, wind_ms=None, n_phases=3):
     """P(pole fails | ice thickness on the wires, concurrent gust).
 
     age_years    : 0-60, rounded up to the next 5-yr bin
@@ -123,7 +146,9 @@ def lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0.0, wind_ms=None):
                    from pipeline/asset_adapter.py); rounded up to the next bin
     ice_mm       : float or array, equivalent radial ice thickness on the wires (mm)
     wind_ms      : float or array, concurrent 3-s gust (m/s). None -> Toronto.
+    n_phases     : phase conductors on the pole, 1, 2 or 3 (default 3 = Ma et al.)
     """
+    k = phase_index(n_phases)
     if wind_ms is None:
         wind_ms = _site("toronto")["v_conc"]
     bins, ages = _D["span_bins_m"], _D["ages"]
@@ -138,19 +163,19 @@ def lookup_pole_ice_fragility(age_years, tributary_m, ice_mm=0.0, wind_ms=None):
                       "values are extrapolated and clipped to [0, 1].")
     pts = np.stack([ice.ravel(), wind.ravel()], -1)
 
-    p = np.clip(_interp(i, j)(pts), 0, 1).reshape(ice.shape)
+    p = np.clip(_interp(k, i, j)(pts), 0, 1).reshape(ice.shape)
     return float(p) if p.ndim == 0 else p
 
 
 # def lookup_pole_ice_annual_pf(age_years, span_left_m, span_right_m=None, site="toronto"):
-def lookup_pole_ice_annual_pf(age_years, tributary_m, site="toronto"):
+def lookup_pole_ice_annual_pf(age_years, tributary_m, site="toronto", n_phases=3):
     """Annual probability the pole fails from ice + concurrent wind (Eq. 10):
     integral of F(r) f(r) dr, F = fragility at the site's concurrent gust,
     f = site's GPD ice density (same form as reconstruct_fig7.py)."""
     s = _site(site)
     ice = _D["ice_mm"]
     # F = lookup_pole_ice_fragility(age_years, span_left_m, span_right_m, ice, s["v_conc"])
-    F = lookup_pole_ice_fragility(age_years, tributary_m, ice, s["v_conc"])
+    F = lookup_pole_ice_fragility(age_years, tributary_m, ice, s["v_conc"], n_phases)
     r = np.linspace(0, ice[-1], 10001)
     base = np.clip(1 - s["k"] * (r - s["u"]) / s["alpha"], 1e-300, None)
     f = np.where(r < s["u"], 0.0, base ** (1 / s["k"] - 1) / s["alpha"])
@@ -174,7 +199,8 @@ if __name__ == "__main__":
     for L in (91.44, 47.5, 20):
         print(f"tributary {L:.1f} m -> bin {span_bin(L):g} m")
         for age in (0, 32, 60):
-            p20 = lookup_pole_ice_fragility(age, L, ice_mm=20)
-            pa = lookup_pole_ice_annual_pf(age, L)
-            print(f"   {age:>2}-yr pole (bin {age_bin(age)}): P(fail | 20 mm, {v:.1f} m/s) = {p20:.4f}   "
-                  f"annual (Toronto) = {pa:.3e}")
+            for ph in available_phases():
+                p20 = lookup_pole_ice_fragility(age, L, ice_mm=20, n_phases=ph)
+                pa = lookup_pole_ice_annual_pf(age, L, n_phases=ph)
+                print(f"   {age:>2}-yr pole (bin {age_bin(age)}), {ph}-phase: "
+                      f"P(fail | 20 mm, {v:.1f} m/s) = {p20:.4f}   annual (Toronto) = {pa:.3e}")

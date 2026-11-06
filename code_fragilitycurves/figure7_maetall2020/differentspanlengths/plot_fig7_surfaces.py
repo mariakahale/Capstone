@@ -10,26 +10,36 @@ Same axes as Ma et al. Fig. 7. Reads the precomputed surfaces only (numpy + matp
 no scipy), so it shows exactly what pole_fig7_lookup.py / wire_fig7d_lookup.py return
 (they interpolate these same grids).
 
-    pole_fig7_surfaces_by_span.npz   p_fail[span, age, ice, wind]   30 spans x 13 ages
+    pole_fig7_surfaces_by_span.npz   p_fail[phase, span, age, ice, wind]
+                                     3 phase counts x 30 spans x 13 ages
     wire_fig7d_surfaces_by_span.npz  p_slack / p_tension[span, ice, wind]   30 spans
 
 HOW MANY SURFACES
-    poles : 30 tributary-span bins x 13 ages (0, 5, ..., 60)       = 390
-    wires : 30 span bins x 2 stringing rules (slack, tension)      =  60
-    total                                                          = 450
-    (390 + 30 = 420 if you only use the default "slack" stringing)
+    poles : 3 phase counts (1, 2, 3) x 30 tributary-span bins x 13 ages = 1170
+    wires : 30 span bins x 2 stringing rules (slack, tension)          =   60
+    The wire surface is per conductor, so it is the same for 1- and 3-phase lines.
+
+1-PHASE vs 3-PHASE
+    A 1-phase pole carries 1 phase wire, a 3-phase pole carries 3 (Ma et al. = 3;
+    neutral neglected). The pole's iced-wire wind area and weight scale with that.
+    In the viewer, the "Pole phases" buttons switch the pole surface, and the Result
+    panel prints P(pole fails) for every phase count at the storm point.
 
 RUN
     # 1) Interactive viewer -- just press Run in VS Code (no arguments needed).
-    #    Sliders pick the pole age, pole tributary span and wire span bins. Type ice
-    #    and wind in the boxes, press Enter or click "Plot point": the dot appears on
-    #    both surfaces and P(fail) shows in the Result panel. Drag a plot to rotate it.
+    #    Sliders pick the pole age, pole tributary span and wire span bins; buttons
+    #    pick the pole phase count and wire stringing. Type ice and wind in the boxes,
+    #    press Enter or click "Plot point": the dot appears on both surfaces and
+    #    P(fail) shows in the Result panel. Drag a plot to rotate it.
     python plot_fig7_surfaces.py
     python plot_fig7_surfaces.py --ice 14.7 --wind 12.3      # optional: pre-fill the boxes
+    python plot_fig7_surfaces.py --phases 1                  # optional: start on 1-phase
 
-    # 2) Save every combination as PNGs, one sheet per span bin
-    #    (13 pole ages + wire slack + wire tension on each sheet -> 30 sheets)
-    python plot_fig7_surfaces.py --save
+    # 2) Save every combination as PNGs, one sheet per span bin and phase count
+    #    (13 pole ages + wire slack + wire tension on each sheet)
+    python plot_fig7_surfaces.py --save                       # 1- and 3-phase (default)
+    python plot_fig7_surfaces.py --save --phases 1            # 1-phase only
+    python plot_fig7_surfaces.py --save --phases 1 2 3
     python plot_fig7_surfaces.py --save --feeder-bins         # only the bins feeder 1878 uses
     python plot_fig7_surfaces.py --save --ice 14.7 --wind 12.3 --ice-max 150
 
@@ -65,12 +75,17 @@ def load():
             raise FileNotFoundError(f"Missing {p.name}. Run build_pole_fig7_lookup.py / "
                                     f"build_wire_fig7d_lookup.py first.")
     pole, wire = np.load(POLE_NPZ), np.load(WIRE_NPZ)
+    if "phases" not in pole or "p_fail_u16" not in pole:
+        raise ValueError(f"{POLE_NPZ.name} is the old 3-phase-only file. "
+                         f"Re-run build_pole_fig7_lookup.py.")
     if not (np.allclose(pole["span_bins_m"], wire["span_bins_m"])
             and np.allclose(pole["ice_mm"], wire["ice_mm"])
             and np.allclose(pole["wind_ms"], wire["wind_ms"])):
         raise ValueError("Pole and wire npz files use different grids -- rebuild one of them.")
-    return dict(spans=pole["span_bins_m"], ages=pole["ages"], ice=pole["ice_mm"],
-                wind=pole["wind_ms"], pole=pole["p_fail"],
+    return dict(phases=pole["phases"], spans=pole["span_bins_m"], ages=pole["ages"],
+                ice=pole["ice_mm"],
+                wind=pole["wind_ms"],
+                pole=(pole["p_fail_u16"] / np.float32(pole["p_fail_scale"])).astype(np.float32),
                 wire={"slack": wire["p_slack"], "tension": wire["p_tension"]},
                 v_toronto=float(pole["site_toronto"][3]))
 
@@ -127,6 +142,13 @@ def span_label(L):
     return "91.44 (Ma)" if abs(L - 91.44) < 1e-6 else f"{L:g}"
 
 
+def phase_index(D, n_phases):
+    k = np.where(D["phases"] == n_phases)[0]
+    if k.size == 0:
+        raise ValueError(f"n_phases={n_phases} not in the pole file ({D['phases'].tolist()})")
+    return int(k[0])
+
+
 # -----------------------------------------------------------------------------
 # Mode 1: interactive viewer (text boxes + button)
 # -----------------------------------------------------------------------------
@@ -138,7 +160,7 @@ def bin_up(values, x):
     return k
 
 
-def interactive(D, ice_max, scenario):
+def interactive(D, ice_max, scenario, start_phases=3):
     from matplotlib.widgets import TextBox, Button, RadioButtons, Slider
 
     fig = plt.figure(figsize=(15, 8.5))
@@ -169,8 +191,12 @@ def interactive(D, ice_max, scenario):
     s_span = Slider(fig.add_axes([0.36, 0.07, 0.20, 0.03]), "Wire span length",
                     0, n_s - 1, valinit=i40, valstep=1)
 
-    fig.text(0.635, 0.235, "Wire stringing", fontsize=9)
-    radio = RadioButtons(fig.add_axes([0.635, 0.10, 0.065, 0.12]), ("slack", "tension"))
+    fig.text(0.635, 0.235, "Pole phases", fontsize=9)
+    ph_labels = tuple(f"{ph}-phase" for ph in D["phases"])
+    radio_ph = RadioButtons(fig.add_axes([0.635, 0.135, 0.07, 0.095]), ph_labels,
+                            active=phase_index(D, start_phases))
+    fig.text(0.635, 0.105, "Wire stringing", fontsize=9)
+    radio = RadioButtons(fig.add_axes([0.635, 0.035, 0.07, 0.065]), ("slack", "tension"))
 
     # ---- results (right) ----
     fig.text(0.72, 0.245, "Result", fontsize=11, weight="bold")
@@ -214,10 +240,12 @@ def interactive(D, ice_max, scenario):
         sc = (ice, wind) if (ice is not None and state["show_point"]) else None
         top = ice_max if sc is None else min(max(ice_max, ice * 1.25), D["ice"][-1])
         mode = radio.value_selected
-        pole_surf, wire_surf = D["pole"][i_p, j], D["wire"][mode][i_w]
+        k = ph_labels.index(radio_ph.value_selected)
+        ph = int(D["phases"][k])
+        pole_surf, wire_surf = D["pole"][k, i_p, j], D["wire"][mode][i_w]
 
         draw_surface(ax_p, D, pole_surf,
-                     f"Pole: age {D['ages'][j]} yr, tributary span "
+                     f"Pole ({ph}-phase): age {D['ages'][j]} yr, tributary span "
                      f"{span_label(D['spans'][i_p])} m", top, sc)
         draw_surface(ax_w, D, wire_surf,
                      f"Wire: span {span_label(D['spans'][i_w])} m ({mode})",
@@ -227,11 +255,15 @@ def interactive(D, ice_max, scenario):
         if sc is not None:
             pp = bilinear(pole_surf, D["ice"], D["wind"], ice, wind)
             pw = bilinear(wire_surf, D["ice"], D["wind"], ice, wind)
+            others = [f"  {int(q)}-phase pole: "
+                      f"{bilinear(D['pole'][kk, i_p, j], D['ice'], D['wind'], ice, wind):.4f}"
+                      for kk, q in enumerate(D["phases"])]
             lines = [f"At {ice:g} mm ice, {wind:g} m/s gust:", "",
-                     f"P(pole fails) = {pp:.4f}",
+                     f"P(pole fails) = {pp:.4f}  ({ph}-ph)",
                      f"P(wire fails) = {pw:.4f}",
                      f"P(either)     = {1 - (1 - pp) * (1 - pw):.4f}",
-                     "  (pole and wire independent)"]
+                     "  (pole and wire independent)", "",
+                     "Pole, all phase counts:"] + others
         else:
             lines = ["No storm point.", "Enter ice and wind,", "then press Enter."]
         result.set_text("\n".join(lines))
@@ -253,9 +285,10 @@ def interactive(D, ice_max, scenario):
     for sl in (s_age, s_trib, s_span):
         sl.on_changed(update)
     radio.on_clicked(update)
+    radio_ph.on_clicked(update)
 
     # widgets must stay referenced or matplotlib garbage-collects them (dead boxes)
-    fig._widgets = (tb_ice, tb_wind, btn, btn_clear, s_age, s_trib, s_span, radio)
+    fig._widgets = (tb_ice, tb_wind, btn, btn_clear, s_age, s_trib, s_span, radio, radio_ph)
     update()
     plt.show()
 
@@ -263,7 +296,7 @@ def interactive(D, ice_max, scenario):
 # -----------------------------------------------------------------------------
 # Mode 2: save every combination
 # -----------------------------------------------------------------------------
-def save_all(D, ice_max, scenario, feeder_only):
+def save_all(D, ice_max, scenario, feeder_only, phases=(1, 3)):
     OUT_DIR.mkdir(exist_ok=True)
     idx = range(len(D["spans"]))
     if feeder_only:
@@ -271,10 +304,13 @@ def save_all(D, ice_max, scenario, feeder_only):
         idx = [i for i, L in enumerate(D["spans"]) if any(abs(L - w) < 1e-6 for w in want)]
 
     n_ages = len(D["ages"])
-    for i in idx:
+    n_sheets = 0
+    for ph, i in [(ph, i) for ph in phases for i in idx]:
+        k = phase_index(D, ph)
         L = D["spans"][i]
         fig = plt.figure(figsize=(18, 17))
-        panels = [(D["pole"][i, j], f"Pole, {age} yr", STRIDE) for j, age in enumerate(D["ages"])]
+        panels = [(D["pole"][k, i, j], f"Pole ({ph}-phase), {age} yr", STRIDE)
+                  for j, age in enumerate(D["ages"])]
         panels += [(D["wire"]["slack"][i], "Wire (slack, default)", 1),
                    (D["wire"]["tension"][i], "Wire (tension)", 1)]
         ncol = 4
@@ -283,16 +319,17 @@ def save_all(D, ice_max, scenario, feeder_only):
             ax = fig.add_subplot(nrow, ncol, k + 1, projection="3d")
             draw_surface(ax, D, surf, ttl, ice_max, scenario, stride)
         sc = f"   |   scenario: {scenario[0]:g} mm ice, {scenario[1]:g} m/s" if scenario else ""
-        fig.suptitle(f"Ma et al. (2020) Fig. 7 surfaces, span bin {span_label(L)} m "
-                     f"(pole: tributary span, wire: span length){sc}\n"
+        fig.suptitle(f"Ma et al. (2020) Fig. 7 surfaces, {ph}-phase pole, span bin "
+                     f"{span_label(L)} m (pole: tributary span, wire: span length){sc}\n"
                      f"red line = Toronto concurrent gust {D['v_toronto']:.1f} m/s",
                      fontsize=13)
         fig.tight_layout(rect=[0, 0, 1, 0.96])
-        name = f"fig7_span{('91.44' if abs(L - 91.44) < 1e-6 else f'{L:g}')}m.png"
+        name = f"fig7_span{('91.44' if abs(L - 91.44) < 1e-6 else f'{L:g}')}m_{ph}ph.png"
         fig.savefig(OUT_DIR / name, dpi=110)
         plt.close(fig)
+        n_sheets += 1
         print(f"saved {name}  ({n_ages} pole ages + 2 wire surfaces)")
-    print(f"\n{len(list(idx))} sheets in {OUT_DIR}")
+    print(f"\n{n_sheets} sheets in {OUT_DIR}")
 
 
 # -----------------------------------------------------------------------------
@@ -304,6 +341,9 @@ def main():
                     help="with --save: only span bins feeder 1878 uses")
     ap.add_argument("--ice", type=float, help="scenario ice thickness (mm) to mark")
     ap.add_argument("--wind", type=float, help="scenario concurrent 3-s gust (m/s) to mark")
+    ap.add_argument("--phases", type=int, nargs="+", choices=[1, 2, 3], default=None,
+                    help="pole phase count(s). --save: sheets for each (default 1 3); "
+                         "viewer: starting phase count (default 3)")
     ap.add_argument("--ice-max", type=float, default=80,
                     help="ice axis limit, mm (default 80 = Ma's range; grid goes to 150)")
     a = ap.parse_args()
@@ -315,9 +355,10 @@ def main():
     D = load()
     if a.save:
         matplotlib.use("Agg")
-        save_all(D, a.ice_max, scenario, a.feeder_bins)
+        save_all(D, a.ice_max, scenario, a.feeder_bins,
+                 phases=tuple(a.phases) if a.phases else (1, 3))
     else:
-        interactive(D, a.ice_max, scenario)
+        interactive(D, a.ice_max, scenario, start_phases=a.phases[0] if a.phases else 3)
 
 
 if __name__ == "__main__":
