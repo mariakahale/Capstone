@@ -1,0 +1,5 @@
+p_fail_span_combined = probability of failure, combined with the probabilities of failure for the two attached wires.
+p_fail_span_combined = 1 - (1 - p_wire) * (1 - p_start) * (1 - p_end)
+
+p_fail_wire = probability of failure for the wire.
+p_fail = probability of failure for the pole.
