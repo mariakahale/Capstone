@@ -56,15 +56,69 @@ FALLBACK_BUSCOORDS = {
 # =========================================================
 # Outputs
 #
-# All feeders and area types are written to this one folder.
-# File names already include the feeder and area type, e.g.
-#   feeder_1878_poles_suburban.csv
-#   feeder_1878_poles_rural.csv
-# which is the naming pipeline/asset_adapter.py expects.
+# outputs/
+#   feeder_1878/
+#     assets/        poles and spans: the pole/span model itself
+#                    (read by pipeline/asset_adapter.py for fragility)
+#       feeder_1878_poles_suburban.csv
+#       feeder_1878_spans_suburban.csv
+#       ... and the same for rural
+#     mapping/       pole/span -> OpenDSS line links (for power flow)
+#       feeder_1878_pole_line_map_suburban.csv
+#       feeder_1878_span_line_map_suburban.csv
+#       ...
+#     intermediate/  working tables, useful for checking the model
+#       feeder_1878_overhead.csv
+#       feeder_1878_routes.csv
+#       feeder_1878_span_plan_suburban.csv
+#       ...
+#   feeder_3777/
+#     (same layout)
+#
+# File names keep the feeder and area type, so a file still
+# makes sense if it is copied out of its folder.
 # =========================================================
 
 OUTPUT_DIR = BASE_DIR / "outputs"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Which subfolder each output table goes in
+OUTPUT_GROUPS = {
+    "poles": "assets",
+    "spans": "assets",
+
+    "pole_line_map": "mapping",
+    "span_line_map": "mapping",
+
+    "overhead": "intermediate",
+    "routes": "intermediate",
+    "span_plan": "intermediate",
+}
+
+
+def output_path(feeder_name, table_name, area_type=None):
+    """
+    Full path for one output CSV, creating its folder if needed.
+
+    area_type is left out for tables that don't depend on span
+    length (overhead, routes).
+
+    Example:
+        output_path("1878", "poles", "rural")
+        -> outputs/feeder_1878/assets/feeder_1878_poles_rural.csv
+    """
+    folder = (
+        OUTPUT_DIR
+        / f"feeder_{feeder_name}"
+        / OUTPUT_GROUPS[table_name]
+    )
+    folder.mkdir(parents=True, exist_ok=True)
+
+    if area_type is None:
+        file_name = f"feeder_{feeder_name}_{table_name}.csv"
+    else:
+        file_name = f"feeder_{feeder_name}_{table_name}_{area_type}.csv"
+
+    return folder / file_name
 
 # =========================================================
 # Pole-generation scenarios

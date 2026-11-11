@@ -18,6 +18,7 @@ from config import (
     FEEDERS,
     FALLBACK_BUSCOORDS,
     OUTPUT_DIR,
+    output_path,
     AREA_TYPES,
     SPAN_RANGES_FT
 )
@@ -159,12 +160,12 @@ def build_feeder_routes(feeder_name, master_path):
 
     # Span-independent outputs: saved once per feeder
     overhead.to_csv(
-        OUTPUT_DIR / f"feeder_{feeder_name}_overhead.csv",
+        output_path(feeder_name, "overhead"),
         index=False
     )
 
     routes.to_csv(
-        OUTPUT_DIR / f"feeder_{feeder_name}_routes.csv",
+        output_path(feeder_name, "routes"),
         index=False
     )
 
@@ -257,8 +258,7 @@ def generate_area_version(
 
     for table_name, table in tables.items():
         table.to_csv(
-            OUTPUT_DIR /
-            f"feeder_{feeder_name}_{table_name}_{area_type}.csv",
+            output_path(feeder_name, table_name, area_type),
             index=False
         )
 

@@ -66,20 +66,27 @@ HOW IT WORKS (unchanged by the update)
 
 OUTPUT FILES (per feeder F and area type A)
 -------------------------------------------
-Same for every area type (span length doesn't affect them):
-  feeder_F_overhead.csv          OH lines with length, voltage class, phases, coords
-  feeder_F_routes.csv            anchor-to-anchor routes and the lines/buses in each
-Depend on area type:
-  feeder_F_span_plan_A.csv       number of spans and span length per route, exception flag
-  feeder_F_poles_A.csv           one row per pole: id, type (anchor/intermediate), x, y,
-                                 connected spans and OpenDSS lines
-  feeder_F_spans_A.csv           one row per span: start/end pole, length, voltage class,
-                                 phases, within_preferred_range
-  feeder_F_span_line_map_A.csv   span -> OpenDSS line(s)
-  feeder_F_pole_line_map_A.csv   pole -> OpenDSS line(s)
+outputs/feeder_F/
+  assets/         the pole/span model itself (used for fragility, later the GIS map)
+    feeder_F_poles_A.csv           one row per pole: id, type (anchor/intermediate), x, y,
+                                   connected spans and OpenDSS lines
+    feeder_F_spans_A.csv           one row per span: start/end pole, length, voltage class,
+                                   phases, within_preferred_range
+  mapping/        links back to OpenDSS (used for power flow: which line to switch off
+                  when a pole or span fails)
+    feeder_F_pole_line_map_A.csv   pole -> OpenDSS line(s)
+    feeder_F_span_line_map_A.csv   span -> OpenDSS line(s)
+  intermediate/   working tables, not read by other code; useful for checking the model
+    feeder_F_overhead.csv          OH lines with length, voltage class, phases, coords
+    feeder_F_routes.csv            anchor-to-anchor routes and the lines/buses in each
+    feeder_F_span_plan_A.csv       number of spans and span length per route, exception flag
+
+overhead and routes have no area type in their name because span length doesn't
+affect them. Folder assignment lives in OUTPUT_GROUPS in config.py, and every path
+is built by output_path() in config.py.
 
 pipeline/asset_adapter.py reads feeder_F_poles_A.csv and feeder_F_spans_A.csv
-from code_polegen2/outputs/.
+from outputs/feeder_F/assets/.
 
 BEFORE THE UPDATE
 -----------------
@@ -118,8 +125,8 @@ AFTER THE UPDATE
     load_feeder() takes an optional fallback_buscoords file and fills in
     coordinates only for buses that have none (it prints which ones).
 - No change to the span, pole, mapping or validation logic.
-- All outputs now go to the single outputs/ folder; file names already carry
-  the feeder and area type.
+- Outputs are organised by feeder, then by assets / mapping / intermediate
+  (Nov 10, 2026; see OUTPUT FILES above).
 
 RESULTS (Nov 8, 2026 run)
 -------------------------
