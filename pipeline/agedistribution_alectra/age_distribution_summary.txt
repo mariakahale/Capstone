@@ -1,0 +1,44 @@
+POLE AGES - SHORT SUMMARY
+=========================
+(Full details and numbers: age_assignment_explanation.txt in this folder.)
+
+SOURCE
+  Alectra Utilities, 2027 Rebasing Application (EB-2025-0252), Exhibit 2A,
+  Distribution System Plan, Figure 17 "2023 Wood Pole Age Distribution".
+  A histogram of 105,262 real wood poles in the GTA, grouped into 5-year age bins.
+  Used because Alectra serves the Toronto area.
+
+AGE DISTRIBUTION
+  We use Alectra's histogram directly (an "empirical" distribution), not a fitted curve.
+  It has more young poles than old ones, with a long tail of old poles up to 85 years.
+  To give a pole an age: pick a 5-year bin using Alectra's shares, then pick a
+  whole-number age inside that bin (every age in the bin equally likely).
+    - Poles of unknown age (5.7%) are left out.
+    - The open "76+" bin is capped at 85 years (our assumption).
+
+LINE SECTIONS (poles built together share an age)
+  Utilities install a whole stretch of line at once, so neighbouring poles are often
+  the same age. A "line section" = the poles between two junctions (a junction is a
+  pole with 3+ spans). Each section gets one age; each pole in it gets that age
+  +/- 2 years.
+
+SPOT REPLACEMENTS (single poles swapped later)
+  Over the years, single poles get replaced (failed inspection, car hit, storm).
+  So 20% of poles ignore their section and get their own age from the histogram.
+  Where 20% comes from: Alectra replaced about 0.77% of its poles per year
+  (3,259 poles in 2021-2024). Averaged over the pole ages, that means about 20%
+  of poles have been swapped since their section was built.
+
+60-YEAR CAP (limitation)
+  The fragility curves (Ma et al. 2020) only go up to 60 years. Older poles are
+  treated as 60 for the lookups, which UNDERESTIMATES their failure probability.
+  The real age is kept in age_true_years, and flag_age_capped marks these poles.
+
+RESULT - FEEDER 1878 SUBURBAN
+  Mean age 30.2 years (Alectra: 29.9). 344 line sections.
+  250 spot replacements. 177 of 1,432 poles capped at 60.
+  The feeder's histogram matches Alectra's within about 1 percentage point per bin.
+
+SETTINGS (top of pipeline/asset_adapter.py)
+  AGE_MODE = "alectra"   ALECTRA_RHO = 0.20 (spot replacements)
+  ALECTRA_JITTER = 2     AGE_SEED = 2026 (same ages every run)
