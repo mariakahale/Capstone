@@ -1,5 +1,26 @@
-p_fail_span_combined = probability of failure, combined with the probabilities of failure for the two attached wires.
-p_fail_span_combined = 1 - (1 - p_wire) * (1 - p_start) * (1 - p_end)
+FRAGILITY OUTPUTS (written by pipeline/run_fragility.py)
+=======================================================
+One pair of files per storm. File name = feeder _ area type _ storm:
+  pole_fragility_1878_suburban_ice14.7mm_wind12.3ms.csv
+  span_fragility_1878_suburban_ice14.7mm_wind12.3ms.csv
 
-p_fail_wire = probability of failure for the wire.
-p_fail = probability of failure for the pole.
+Storms currently here (all re-run Nov 10, 2026 with the same code):
+  ice14.7mm_wind12.3ms    Event #1, with its measured concurrent wind
+  ice14.7mm_wind31.92ms   Event #1 ice, Toronto's default concurrent wind (31.92 m/s)
+  ice20mm_wind31.92ms     test ice storm
+  wind23.8ms              Event #2 (Dec 29, 2025, 1 pm), wind only
+  wind50ms                test wind storm
+
+COLUMNS
+  p_fail                (pole file) probability that the POLE fails in this storm.
+  p_fail_wire           (span file) probability that the WIRE in this span breaks.
+  p_fail_span_combined  (span file) probability that the span goes down: its wire
+                        breaks OR either of its two END POLES fails (assumed independent):
+                            p_fail_span_combined = 1 - (1 - p_wire) * (1 - p_start) * (1 - p_end)
+                        For maps and checks ONLY. Don't use it in the Monte Carlo: a pole is
+                        shared by the spans on both sides, so it would be counted twice.
+                        In the Monte Carlo, draw each pole (p_fail) and each wire
+                        (p_fail_wire) once.
+
+All other columns come from pipeline/asset_adapter.py (age, tributary span, phases,
+flags) -- see the column notes at the top of that file.
