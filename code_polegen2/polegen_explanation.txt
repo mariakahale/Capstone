@@ -97,13 +97,11 @@ AFTER THE UPDATE
 ----------------
 - config.py
     FEEDERS            dict of feeder name -> OpenDSS master file
-                       ("1878" -> the copy in this folder,
-                        "3777" -> code_opendsspowerflow/.../Master_snapshot.dss)
+                       (both point into <repo>/data/opendss/, see below)
     AREA_TYPES         ["suburban", "rural"]
     FALLBACK_BUSCOORDS optional per-feeder Buscoords file used only for buses
                        that have no coordinates ("3777" -> the substation-level
-                       Buscoords.dss in code_opendsspowerflow/subsations/
-                       Substation p48rhs1_25/)
+                       data/opendss/p48rhs1_25/Buscoords.dss)
     FEEDER_NAME, FEEDER_DIR, MASTER_PATH and AREA_TYPE were removed.
 - main.py
     Steps 1-4 (load, classify, topology, routes) run once per feeder.
@@ -139,9 +137,21 @@ Check against the old outputs:
     mappings are unchanged, because lengths come from OpenDSS, not coordinates.
     Worth confirming with Laiba where her coordinate came from.
 
+INPUT DATA LOCATION (Nov 10, 2026)
+----------------------------------
+All OpenDSS input files moved out of the code folders into <repo>/data/opendss/
+(one folder per substation, one subfolder per feeder). config.py points there
+through DSS_DATA_DIR:
+  1878 -> data/opendss/p1uhs0_1247/p1uhs0_1247--p1udt1878/Master_snapshot.dss
+          (this file used to be code_polegen2/p1uhs0_1247--p1udt1878/Master.dss;
+           renamed because it is a hand-edited snapshot version)
+  3777 -> data/opendss/p48rhs1_25/p48rhs1_25--p48rdt3777/Master_snapshot.dss
+Re-running after the move gave byte-for-byte the same outputs.
+
 TO ADD A FEEDER OR AREA TYPE
 ----------------------------
-  Feeder:    add "name": path/to/Master.dss to FEEDERS (use a snapshot master
-             file, no yearly solve or plots).
+  Feeder:    put the SMART-DS folder in data/opendss/ (see its README.md), then
+             add "name": path/to/Master_snapshot.dss to FEEDERS (snapshot
+             master file: no yearly solve or plots).
   Area type: add "urban": (min_ft, max_ft) to SPAN_RANGES_FT and "urban" to
              AREA_TYPES.

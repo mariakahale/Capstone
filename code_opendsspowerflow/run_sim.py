@@ -1,7 +1,12 @@
 import os, re
 from dss import DSS
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
+# Feeder to run. OpenDSS source data lives in <repo>/data/opendss/.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FEEDER_NAME = "3777"
+FEEDER_DIR = os.path.join(REPO_ROOT, "data", "opendss", "p48rhs1_25", "p48rhs1_25--p48rdt3777")
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 def make_snapshot_files(folder):
     master = os.path.join(folder, "Master.dss")
@@ -25,8 +30,8 @@ def make_snapshot_files(folder):
             out.append(line)
         open(master_snap, "w").write("".join(out))
 
-make_snapshot_files(script_dir)
-master_path = os.path.join(script_dir, "Master_snapshot.dss")
+make_snapshot_files(FEEDER_DIR)
+master_path = os.path.join(FEEDER_DIR, "Master_snapshot.dss")
 print("Using:", master_path)
 
 

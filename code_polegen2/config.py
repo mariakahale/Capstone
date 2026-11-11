@@ -13,18 +13,21 @@ REPO_ROOT = BASE_DIR.parent
 # so the feeder compiles and solves quickly.
 # =========================================================
 
+# All OpenDSS source data lives in <repo>/data/opendss/
+# (one folder per substation, one subfolder per feeder).
+DSS_DATA_DIR = REPO_ROOT / "data" / "opendss"
+
 FEEDERS = {
     "1878": (
-        BASE_DIR
+        DSS_DATA_DIR
+        / "p1uhs0_1247"
         / "p1uhs0_1247--p1udt1878"
-        / "Master.dss"
+        / "Master_snapshot.dss"
     ),
 
     "3777": (
-        REPO_ROOT
-        / "code_opendsspowerflow"
-        / "subsations"
-        / "Substation p48rhs1_25"
+        DSS_DATA_DIR
+        / "p48rhs1_25"
         / "p48rhs1_25--p48rdt3777"
         / "Master_snapshot.dss"
     ),
@@ -44,10 +47,8 @@ FEEDERS = {
 
 FALLBACK_BUSCOORDS = {
     "3777": (
-        REPO_ROOT
-        / "code_opendsspowerflow"
-        / "subsations"
-        / "Substation p48rhs1_25"
+        DSS_DATA_DIR
+        / "p48rhs1_25"
         / "Buscoords.dss"
     ),
 }
