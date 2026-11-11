@@ -1,8 +1,25 @@
+"""
+Pole/span generator (polegen2).
+
+For every feeder in config.FEEDERS and every area type in
+config.AREA_TYPES, build a synthetic pole/span model from the
+feeder's OpenDSS overhead lines and save it as CSV files.
+
+Usage:
+    python main.py                              # all feeders, all area types
+    python main.py --feeders 1878               # one feeder, all area types
+    python main.py --areas rural                # all feeders, rural only
+    python main.py --feeders 1878 3777 --areas suburban rural
+"""
+
+import argparse
+
 from config import (
-    MASTER_PATH,
+    FEEDERS,
+    FALLBACK_BUSCOORDS,
     OUTPUT_DIR,
-    FEEDER_NAME,
-    AREA_TYPE,
+    output_path,
+    AREA_TYPES,
     SPAN_RANGES_FT
 )
 
@@ -42,16 +59,33 @@ from grid.validation import (
 )
 
 
-def main():
+def build_feeder_routes(feeder_name, master_path):
+    """
+    Steps 1-4: everything that does NOT depend on span length.
+
+    Load the OpenDSS feeder, keep the overhead conductors,
+    build the overhead topology and trace anchor-to-anchor
+    routes. This is done once per feeder and shared by every
+    area type.
+    """
 
     # =========================================================
     # 1. Load OpenDSS feeder
     # =========================================================
 
-    print(f"\nProcessing feeder: {FEEDER_NAME}")
-    print(f"Area type: {AREA_TYPE}")
+    print(f"\n==============================")
+    print(f"Processing feeder: {feeder_name}")
+    print(f"Master file: {master_path}")
 
-    load_feeder(MASTER_PATH)
+    if not master_path.exists():
+        raise FileNotFoundError(
+            f"OpenDSS master file not found: {master_path}"
+        )
+
+    load_feeder(
+        master_path,
+        fallback_buscoords=FALLBACK_BUSCOORDS.get(feeder_name)
+    )
 
     # =========================================================
     # 2. Extract and classify overhead conductors
@@ -124,17 +158,53 @@ def main():
             f"not assigned to a route."
         )
 
+    # Span-independent outputs: saved once per feeder
+    overhead.to_csv(
+        output_path(feeder_name, "overhead"),
+        index=False
+    )
+
+    routes.to_csv(
+        output_path(feeder_name, "routes"),
+        index=False
+    )
+
+    print(f"OH conductors: {len(overhead)}")
+    print(f"Routes: {len(routes)}")
+
+    return overhead, routes, bus_data, components
+
+
+def generate_area_version(
+    feeder_name,
+    area_type,
+    overhead,
+    routes,
+    bus_data,
+    components
+):
+    """
+    Steps 5-8: everything that DOES depend on span length.
+
+    Split every route into equal spans using the span range
+    for this area type, place poles, validate, and save the
+    area-specific CSV files.
+    """
+
+    print(f"\n--- Feeder {feeder_name}: {area_type} ---")
+
     # =========================================================
     # 5. Determine equal span plan
     # =========================================================
 
-    if AREA_TYPE not in SPAN_RANGES_FT:
+    if area_type not in SPAN_RANGES_FT:
         raise ValueError(
-            f"Unknown AREA_TYPE: {AREA_TYPE}"
+            f"Unknown area type: {area_type}. "
+            f"Add it to SPAN_RANGES_FT in config.py."
         )
 
     min_span_ft, max_span_ft = (
-        SPAN_RANGES_FT[AREA_TYPE]
+        SPAN_RANGES_FT[area_type]
     )
 
     span_plan = build_span_plan(
@@ -157,7 +227,7 @@ def main():
         overhead=overhead,
         span_plan=span_plan,
         bus_data=bus_data,
-        feeder_name=FEEDER_NAME
+        feeder_name=feeder_name
     )
 
     # =========================================================
@@ -175,111 +245,121 @@ def main():
     )
 
     # =========================================================
-    # 8. Save outputs
+    # 8. Save area-specific outputs
     # =========================================================
 
-    output_files = {
-        "overhead":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_overhead.csv",
-
-        "routes":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_routes.csv",
-
-        "span_plan":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_span_plan_{AREA_TYPE}.csv",
-
-        "poles":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_poles_{AREA_TYPE}.csv",
-
-        "spans":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_spans_{AREA_TYPE}.csv",
-
-        "span_line_map":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_span_line_map_{AREA_TYPE}.csv",
-
-        "pole_line_map":
-            OUTPUT_DIR /
-            f"feeder_{FEEDER_NAME}_pole_line_map_{AREA_TYPE}.csv"
+    tables = {
+        "span_plan": span_plan,
+        "poles": poles,
+        "spans": spans,
+        "span_line_map": span_line_map,
+        "pole_line_map": pole_line_map
     }
 
-    overhead.to_csv(
-        output_files["overhead"],
-        index=False
-    )
-
-    routes.to_csv(
-        output_files["routes"],
-        index=False
-    )
-
-    span_plan.to_csv(
-        output_files["span_plan"],
-        index=False
-    )
-
-    poles.to_csv(
-        output_files["poles"],
-        index=False
-    )
-
-    spans.to_csv(
-        output_files["spans"],
-        index=False
-    )
-
-    span_line_map.to_csv(
-        output_files["span_line_map"],
-        index=False
-    )
-
-    pole_line_map.to_csv(
-        output_files["pole_line_map"],
-        index=False
-    )
-
-    # =========================================================
-    # 9. Final summary
-    # =========================================================
-
-    print("\n--- MODEL COMPLETE ---")
-
-    print(
-        f"OH conductors: {len(overhead)}"
-    )
-
-    print(
-        f"Routes: {len(routes)}"
-    )
-
-    print(
-        f"Poles: {len(poles)}"
-    )
-
-    print(
-        f"Spans: {len(spans)}"
-    )
+    for table_name, table in tables.items():
+        table.to_csv(
+            output_path(feeder_name, table_name, area_type),
+            index=False
+        )
 
     print(
         f"Preferred span range: "
         f"{min_span_ft:.0f}-{max_span_ft:.0f} ft"
     )
-
+    print(f"Poles: {len(poles)}")
+    print(f"Spans: {len(spans)}")
     print(
         "Exception spans:",
-        (
-            ~spans["within_preferred_range"]
-        ).sum()
+        (~spans["within_preferred_range"]).sum()
     )
 
-    print(
-        f"\nOutputs saved to:\n{OUTPUT_DIR}"
+    return {
+        "feeder": feeder_name,
+        "area_type": area_type,
+        "poles": len(poles),
+        "spans": len(spans),
+        "exception_spans":
+            int((~spans["within_preferred_range"]).sum())
+    }
+
+
+def parse_args():
+
+    parser = argparse.ArgumentParser(
+        description="Generate synthetic poles and spans "
+                    "for each feeder and area type."
     )
+
+    parser.add_argument(
+        "--feeders",
+        nargs="+",
+        default=list(FEEDERS.keys()),
+        help=f"Feeders to process (default: all of "
+             f"{list(FEEDERS.keys())})"
+    )
+
+    parser.add_argument(
+        "--areas",
+        nargs="+",
+        default=AREA_TYPES,
+        help=f"Area types to generate (default: {AREA_TYPES})"
+    )
+
+    return parser.parse_args()
+
+
+def main():
+
+    args = parse_args()
+
+    unknown = [f for f in args.feeders if f not in FEEDERS]
+    if unknown:
+        raise ValueError(
+            f"Unknown feeder(s): {unknown}. "
+            f"Add them to FEEDERS in config.py."
+        )
+
+    summary = []
+
+    for feeder_name in args.feeders:
+
+        overhead, routes, bus_data, components = (
+            build_feeder_routes(
+                feeder_name,
+                FEEDERS[feeder_name]
+            )
+        )
+
+        for area_type in args.areas:
+
+            summary.append(
+                generate_area_version(
+                    feeder_name,
+                    area_type,
+                    overhead,
+                    routes,
+                    bus_data,
+                    components
+                )
+            )
+
+    # =========================================================
+    # 9. Final summary
+    # =========================================================
+
+    print("\n==============================")
+    print("--- MODEL COMPLETE ---")
+
+    for row in summary:
+        print(
+            f"Feeder {row['feeder']:>6} | "
+            f"{row['area_type']:<9} | "
+            f"poles {row['poles']:>5} | "
+            f"spans {row['spans']:>5} | "
+            f"exceptions {row['exception_spans']:>4}"
+        )
+
+    print(f"\nOutputs saved to:\n{OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

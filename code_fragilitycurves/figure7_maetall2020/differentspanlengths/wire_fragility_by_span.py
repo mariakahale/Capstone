@@ -247,13 +247,13 @@ class WireFragility:
 # Span binning (round UP -> conservative)
 # ----------------------------------------------------------------------------
 def span_bin(length_m: float, bin_width: float = 5.0, min_bin: float = 10.0,
-             max_bin: float = 100.0) -> float:
+             max_bin: float = 150.0) -> float:
     """Round a span up to the next bin. Spans above max_bin get max_bin + flagged by caller."""
     b = math.ceil(length_m / bin_width) * bin_width
     return float(min(max(b, min_bin), max_bin))
 
 
-def build_lookup(frag: WireFragility, bins=np.arange(10, 100.1, 5),
+def build_lookup(frag: WireFragility, bins=np.arange(10, 150.01, 5),
                  v_concurrent_list=(0.0, 9.0, 15.0, 20.0, 26.817)):
     """Table of (span_bin, v_concurrent) -> theta_mm, beta, w_crit."""
     import pandas as pd
@@ -266,7 +266,7 @@ def build_lookup(frag: WireFragility, bins=np.arange(10, 100.1, 5),
     return pd.DataFrame(rows)
 
 
-def build_surface(frag: WireFragility, bins=np.arange(10, 100.1, 5),
+def build_surface(frag: WireFragility, bins=np.arange(10, 150.01, 5),
                   r_mm=np.arange(0, 80.01, 0.5), v=np.arange(0, 40.01, 0.5)):
     """Long-format Fig. 7(d)-style surface for every span bin (Ma's grid: 0.5 mm x 0.5 m/s)."""
     import pandas as pd
@@ -327,9 +327,8 @@ if __name__ == "__main__":
         print(f"  {L:5.1f} | {frag.w_crit(L):10.1f} N/m {a:8.1f} mm   |"
               f" {frag_T.w_crit(L):10.1f} N/m {b:8.1f} mm")
 
+    # Preview only -- nothing is saved. The pipeline's wire lookup table is
+    # wire_fig7d_surfaces_by_span.npz, built by build_wire_fig7d_lookup.py.
+    # (The old wire_fragility_lookup*.csv files were removed Nov 2026: unused and stale.)
     table = build_lookup(frag)
-    table.to_csv("wire_fragility_lookup.csv", index=False)
-    build_lookup(frag_T).to_csv("wire_fragility_lookup_tension_rule.csv", index=False)
     print("\nLookup table (first rows):\n", table.head(10).to_string(index=False))
-    build_surface(frag).to_csv("wire_fragility_surfaces.csv", index=False)
-    print("\nSaved wire_fragility_lookup.csv and wire_fragility_surfaces.csv")

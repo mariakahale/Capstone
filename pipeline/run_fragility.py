@@ -95,8 +95,8 @@ def pole_fragility(poles, scenario):
     else:
         raise ValueError(f"Unknown SCENARIO '{scenario}' (use 'ice' or 'wind').")
     out = poles[["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
-                 "flag_age_capped", "section_id", "tributary_m", "n_phases",
-                 "tributary_eff_m", "flag_mixed_phase",
+                 "flag_age_capped", "section_id", "tributary_m", "tributary_true_m",
+                 "n_phases", "tributary_eff_m", "flag_tributary_capped", "flag_mixed_phase",
                  "n_spans", "flag_end_pole", "flag_junction_pole"]].copy()
     out["p_fail"] = p
     return out
@@ -110,8 +110,8 @@ def wire_fragility(spans, scenario):
         # Ma et al. (2020): "the failure of the wires is unlikely to occur when only
         # subjected to wind", so wire failure is ignored in the wind-only case.
         p = np.zeros(len(spans))
-    out = spans[["span_id", "start_pole", "end_pole", "span_m", "voltage_class",
-                 "n_phases", "flag_short_span"]].copy()
+    out = spans[["span_id", "start_pole", "end_pole", "span_m", "span_true_m",
+                 "flag_span_capped", "voltage_class", "n_phases", "flag_short_span"]].copy()
     out["p_fail_wire"] = p
     return out
 

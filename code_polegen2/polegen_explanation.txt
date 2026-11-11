@@ -1,0 +1,164 @@
+POLEGEN2 - WHAT THE CODE DOES
+=============================
+Original code: Laiba. Multi-feeder / multi-area update: Maria (branch polegen-multi-area, Nov 2026).
+
+PURPOSE
+-------
+SMART-DS OpenDSS feeders contain lines and buses, but no poles. The fragility
+step needs individual poles and the wire spans between them, so polegen2 builds
+a synthetic but physically consistent pole/span model from the feeder's
+overhead (OH) lines.
+
+HOW IT WORKS (unchanged by the update)
+--------------------------------------
+1. Load feeder (grid/feeder.py)
+   Compile the OpenDSS Master file, solve the base case, and read every Line
+   element with its buses, length, linecode, phases, voltage base and bus
+   coordinates.
+
+2. Keep overhead conductors (grid/line_classifier.py)
+   - Keep lines whose linecode contains "_oh_" and drop device-type lines
+     (switches, fuses, disconnects).
+   - Convert lengths to feet.
+   - Voltage class from bus kV bases: primary (>= 1 kV), secondary (< 1 kV),
+     or mixed.
+   - Construction phases (1, 2 or 3) from the linecode prefix (1p_, 2p_, 3p_).
+   - Stop if any line has no length or coordinates, or if two OH lines connect
+     the same pair of buses.
+
+3. Build topology (grid/topology.py)
+   Undirected graph: buses are nodes, OH lines are edges. Also finds the
+   disconnected OH islands (split up by underground cable, transformers, etc.).
+
+4. Trace routes (grid/route_builder.py)
+   An "anchor" bus is a line end (degree 1), a branch point (degree 3+), or a
+   degree-2 bus where the voltage class or phase count changes. A route is the
+   continuous run of OH lines from one anchor to the next. Each OpenDSS line
+   belongs to exactly one route.
+
+5. Plan spans (grid/span_planner.py)
+   Each route is split into N equal spans so that every span falls inside the
+   preferred range for the area type:
+       suburban: 100-150 ft
+       rural:    300-400 ft
+   If several N work, pick the one closest to the middle of the range.
+   If none work, the route length is kept and the closest equal split is used,
+   flagged as an exception:
+       route_shorter_than_minimum  - whole route shorter than the minimum span
+       no_feasible_equal_division  - e.g. a 170 ft suburban route (1 x 170 is
+                                     too long, 2 x 85 is too short)
+
+6. Place poles and spans (grid/pole_span_generator.py)
+   - Anchor poles sit on anchor buses and are shared between routes.
+   - Intermediate poles are placed every span_length_ft along the route,
+     with x/y interpolated along the real bus-to-bus path.
+   - Every span is mapped to the OpenDSS line(s) it overlaps, and every pole
+     to the OpenDSS lines touched by its attached spans. This is how a pole
+     or span failure gets traced back to an OpenDSS line for power flow.
+
+7. Validate (grid/validation.py)
+   Strict checks, raises an error if any fail: unique IDs, valid pole
+   references, planned span counts, route and line lengths rebuilt exactly,
+   equal spans within each route, span ranges, span-to-line mapping, pole
+   coordinates, and radial (tree) topology.
+
+8. Save CSVs to outputs/
+
+OUTPUT FILES (per feeder F and area type A)
+-------------------------------------------
+outputs/feeder_F/
+  assets/         the pole/span model itself (used for fragility, later the GIS map)
+    feeder_F_poles_A.csv           one row per pole: id, type (anchor/intermediate), x, y,
+                                   connected spans and OpenDSS lines
+    feeder_F_spans_A.csv           one row per span: start/end pole, length, voltage class,
+                                   phases, within_preferred_range
+  mapping/        links back to OpenDSS (used for power flow: which line to switch off
+                  when a pole or span fails)
+    feeder_F_pole_line_map_A.csv   pole -> OpenDSS line(s)
+    feeder_F_span_line_map_A.csv   span -> OpenDSS line(s)
+  intermediate/   working tables, not read by other code; useful for checking the model
+    feeder_F_overhead.csv          OH lines with length, voltage class, phases, coords
+    feeder_F_routes.csv            anchor-to-anchor routes and the lines/buses in each
+    feeder_F_span_plan_A.csv       number of spans and span length per route, exception flag
+
+overhead and routes have no area type in their name because span length doesn't
+affect them. Folder assignment lives in OUTPUT_GROUPS in config.py, and every path
+is built by output_path() in config.py.
+
+pipeline/asset_adapter.py reads feeder_F_poles_A.csv and feeder_F_spans_A.csv
+from outputs/feeder_F/assets/.
+
+BEFORE THE UPDATE
+-----------------
+- One feeder and one area type per run, set by hand in config.py
+  (FEEDER_NAME = "1878", AREA_TYPE = "suburban", plus FEEDER_DIR / MASTER_PATH).
+- Getting rural or another feeder meant editing config.py, re-running, and
+  moving the outputs by hand. That is how "outputs rural/" (1878 rural) and
+  "outputs_3777/" (3777 suburban) were made.
+- Feeder 3777 does not run from the repo as-is: bus p48rdt9397 has no
+  coordinates in the feeder's own Buscoords.dss, so the coordinate check stops
+  the run. The 3777 files in outputs_3777/ used a coordinate that is not in
+  any file in the repo (-101.95949, 32.69152).
+
+AFTER THE UPDATE
+----------------
+- config.py
+    FEEDERS            dict of feeder name -> OpenDSS master file
+                       (both point into <repo>/data/opendss/, see below)
+    AREA_TYPES         ["suburban", "rural"]
+    FALLBACK_BUSCOORDS optional per-feeder Buscoords file used only for buses
+                       that have no coordinates ("3777" -> the substation-level
+                       data/opendss/p48rhs1_25/Buscoords.dss)
+    FEEDER_NAME, FEEDER_DIR, MASTER_PATH and AREA_TYPE were removed.
+- main.py
+    Steps 1-4 (load, classify, topology, routes) run once per feeder.
+    Steps 5-8 (span plan, poles, validation, save) run once per area type,
+    reusing the same routes.
+    Every feeder gets both a suburban and a rural version in one run.
+    Prints a summary table at the end.
+    Optional command-line filters:
+        python main.py                                  # everything
+        python main.py --feeders 1878                   # one feeder
+        python main.py --areas rural                    # one area type
+        python main.py --feeders 3777 --areas suburban
+- grid/feeder.py
+    load_feeder() takes an optional fallback_buscoords file and fills in
+    coordinates only for buses that have none (it prints which ones).
+- No change to the span, pole, mapping or validation logic.
+- Outputs are organised by feeder, then by assets / mapping / intermediate
+  (Nov 10, 2026; see OUTPUT FILES above).
+
+RESULTS (Nov 8, 2026 run)
+-------------------------
+  Feeder 1878 | suburban | 1432 poles | 1215 spans | 170 exception spans
+  Feeder 1878 | rural    |  791 poles |  574 spans | 304 exception spans
+  Feeder 3777 | suburban | 3757 poles | 3503 spans | 113 exception spans
+  Feeder 3777 | rural    | 1601 poles | 1347 spans | 231 exception spans
+
+Check against the old outputs:
+  - 1878 suburban and 1878 rural are byte-for-byte identical to the old files.
+  - 3777 suburban is identical except for bus p48rdt9397: the substation
+    Buscoords puts it at (-101.95418, 32.68651) instead of the hand-entered
+    (-101.95949, 32.69152). This changes one row of feeder_3777_overhead.csv
+    and the x/y of the 21 poles along that line. Pole/span counts, lengths and
+    mappings are unchanged, because lengths come from OpenDSS, not coordinates.
+    Worth confirming with Laiba where her coordinate came from.
+
+INPUT DATA LOCATION (Nov 10, 2026)
+----------------------------------
+All OpenDSS input files moved out of the code folders into <repo>/data/opendss/
+(one folder per substation, one subfolder per feeder). config.py points there
+through DSS_DATA_DIR:
+  1878 -> data/opendss/p1uhs0_1247/p1uhs0_1247--p1udt1878/Master_snapshot.dss
+          (this file used to be code_polegen2/p1uhs0_1247--p1udt1878/Master.dss;
+           renamed because it is a hand-edited snapshot version)
+  3777 -> data/opendss/p48rhs1_25/p48rhs1_25--p48rdt3777/Master_snapshot.dss
+Re-running after the move gave byte-for-byte the same outputs.
+
+TO ADD A FEEDER OR AREA TYPE
+----------------------------
+  Feeder:    put the SMART-DS folder in data/opendss/ (see its README.md), then
+             add "name": path/to/Master_snapshot.dss to FEEDERS (snapshot
+             master file: no yearly solve or plots).
+  Area type: add "urban": (min_ft, max_ft) to SPAN_RANGES_FT and "urban" to
+             AREA_TYPES.

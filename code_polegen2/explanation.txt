@@ -1,0 +1,31 @@
+CODE_POLEGEN2 - QUICK GUIDE
+===========================
+(For the full step-by-step explanation, see polegen_explanation.txt.)
+
+INPUT
+-----
+polegen2 reads the OpenDSS feeder files from:
+
+  data/opendss/<substation>/<feeder>/Master_snapshot.dss
+
+  1878 -> data/opendss/p1uhs0_1247/p1uhs0_1247--p1udt1878/
+  3777 -> data/opendss/p48rhs1_25/p48rhs1_25--p48rdt3777/
+
+These paths are set in FEEDERS in config.py.
+(See data/opendss/README.md for how that folder works.)
+
+OUTPUT
+------
+Running "python main.py" makes a suburban and a rural version of every feeder.
+Outputs are organized by feeder, then by type of file:
+
+  outputs/
+    feeder_1878/
+      assets/          poles and spans      -> used for fragility
+      mapping/         pole/span -> OpenDSS line links  -> for power flow
+      intermediate/    overhead, routes, span plan  -> working files, for checking
+    feeder_3777/
+      (same)
+
+Every file name says its feeder and area type,
+e.g. feeder_1878_poles_rural.csv.

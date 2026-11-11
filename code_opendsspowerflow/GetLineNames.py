@@ -1,15 +1,19 @@
 import os, csv
 import opendssdirect as dss
 
-# Folder this script lives in (the feeder folder)
-script_dir = os.path.dirname(os.path.abspath(__file__))
-master_path = os.path.join(script_dir, "Master_snapshot.dss")
+# Feeder to run. OpenDSS source data lives in <repo>/data/opendss/.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FEEDER_NAME = "3777"
+FEEDER_DIR = os.path.join(REPO_ROOT, "data", "opendss", "p48rhs1_25", "p48rhs1_25--p48rdt3777")
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs")
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+master_path = os.path.join(FEEDER_DIR, "Master_snapshot.dss")
 
 dss.Command(f'Redirect "{master_path}"')
 dss.Solution.Solve()
 
 # --- Lines: name, from-bus, to-bus, length ---
-lines_csv = os.path.join(script_dir, "line_names.csv")
+lines_csv = os.path.join(OUTPUT_DIR, f"feeder_{FEEDER_NAME}_line_names.csv")
 with open(lines_csv, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["line_name", "bus1", "bus2", "length"])
@@ -19,7 +23,7 @@ with open(lines_csv, "w", newline="") as f:
 print(f"Saved {len(dss.Lines.AllNames())} lines to {lines_csv}")
 
 # --- Buses: name, x, y, base voltage ---
-buses_csv = os.path.join(script_dir, "bus_names.csv")
+buses_csv = os.path.join(OUTPUT_DIR, f"feeder_{FEEDER_NAME}_bus_names.csv")
 with open(buses_csv, "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["bus_name", "x", "y", "kv_base"])

@@ -2,9 +2,15 @@ import opendssdirect as dss
 import pandas as pd
 
 
-def load_feeder(master_path):
+def load_feeder(master_path, fallback_buscoords=None):
     """
     Compile the OpenDSS feeder and solve the base case.
+
+    fallback_buscoords (optional):
+        Path to a Buscoords.dss file (e.g. the substation-level
+        one). Any bus that has no coordinates after compiling
+        the feeder gets them from this file. Buses that already
+        have coordinates are never changed.
     """
     dss.Basic.ClearAll()
 
@@ -15,6 +21,69 @@ def load_feeder(master_path):
         raise RuntimeError("OpenDSS power flow did not converge.")
 
     print("OpenDSS power flow converged.")
+
+    if fallback_buscoords is not None:
+        fill_missing_buscoords(fallback_buscoords)
+
+
+def read_buscoords_file(path):
+    """
+    Read an OpenDSS Buscoords file: one 'bus x y' per line
+    (spaces or commas). Returns {bus_name_lower: (x, y)}.
+    """
+    coords = {}
+
+    with open(path) as f:
+        for line in f:
+            parts = line.replace(",", " ").split()
+
+            if len(parts) < 3 or parts[0].startswith("!"):
+                continue
+
+            try:
+                coords[parts[0].lower()] = (
+                    float(parts[1]),
+                    float(parts[2])
+                )
+            except ValueError:
+                continue
+
+    return coords
+
+
+def fill_missing_buscoords(fallback_path):
+    """
+    Give coordinates to buses that have none, using a
+    fallback Buscoords file.
+    """
+    fallback = read_buscoords_file(fallback_path)
+
+    filled = []
+    still_missing = []
+
+    for bus in dss.Circuit.AllBusNames():
+
+        dss.Circuit.SetActiveBus(bus)
+
+        if dss.Bus.Coorddefined():
+            continue
+
+        xy = fallback.get(bus.lower())
+
+        if xy is None:
+            still_missing.append(bus)
+            continue
+
+        dss.Text.Command(
+            f"SetBusXY bus={bus} x={xy[0]} y={xy[1]}"
+        )
+        filled.append(bus)
+
+    if filled:
+        print(
+            f"Filled coordinates for {len(filled)} bus(es) "
+            f"from {fallback_path}: {filled}"
+        )
 
 
 def clean_bus_name(bus_full):
