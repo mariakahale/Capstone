@@ -1,7 +1,8 @@
 """
 asset_adapter.py
 ================
-Translates Laiba's pole/span generator output (code_polegen2/outputs/*.csv) into the
+Translates Laiba's pole/span generator output
+(code_polegen2/outputs/feeder_<F>/assets/*.csv) into the
 two standard tables the fragility step reads. This is the ONLY file that knows the
 polegen2 CSV layout; if her output changes, only this file changes.
 
@@ -52,7 +53,7 @@ POLEGEN_OUTPUT_DIR = REPO_ROOT / "code_polegen2" / "outputs"
 OUTPUT_DIR = Path(__file__).resolve().parent / "outputs"
 
 FEEDER_NAME = "1878"
-AREA_TYPE = "suburban"          # must match code_polegen2/config.py AREA_TYPE
+AREA_TYPE = "suburban"          # one of AREA_TYPES in code_polegen2/config.py ("suburban", "rural")
 
 # AGE SETTINGS -- polegen2 does not give pole ages, so they are assumed here.
 #   "alectra" : Alectra 2023 wood pole age distribution, one installation age per line
@@ -104,6 +105,8 @@ POLE_COLUMNS = ["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
 # 1. LOAD (the only part that knows polegen2 file names)
 # =============================================================================
 def polegen_paths(feeder=FEEDER_NAME, area_type=AREA_TYPE, folder=POLEGEN_OUTPUT_DIR):
+    # polegen2 layout: outputs/feeder_<F>/assets/feeder_<F>_poles_<area>.csv
+    folder = folder / f"feeder_{feeder}" / "assets"
     return {
         "poles": folder / f"feeder_{feeder}_poles_{area_type}.csv",
         "spans": folder / f"feeder_{feeder}_spans_{area_type}.csv",
