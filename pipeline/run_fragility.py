@@ -31,7 +31,15 @@ p_fail_span_combined (Eq. 11: wire + its two end poles, assumed independent) is 
 and checks ONLY. Do not feed it into the Monte Carlo: a shared pole would be counted twice.
 
 Run:
-    python pipeline/run_fragility.py           (edit SETTINGS below first)
+    python pipeline/run_fragility.py           (choose the storm in get_weather() first)
+
+Structure:
+    get_weather()                  -> ice_mm, wind_ms   (WHERE the weather comes from)
+    run_fragility(ice_mm, wind_ms) -> pole_frag, span_frag   (the work; saves nothing)
+    main()                         -> get_weather -> run_fragility -> save_and_print
+From other code (e.g. the GUI):
+    from pipeline.run_fragility import run_fragility
+    pole_frag, span_frag = run_fragility(ice_mm=17.3, wind_ms=14.9)
 """
 
 import sys
@@ -49,29 +57,42 @@ FRAG_DIR = REPO_ROOT / "code_fragilitycurves"
 sys.path.insert(0, str(REPO_ROOT))
 sys.path.insert(0, str(FRAG_DIR / "figure4_maetall2020"))
 sys.path.insert(0, str(FRAG_DIR / "figure7_maetall2020" / "differentspanlengths"))
+sys.path.insert(0, str(REPO_ROOT / "code_weather"))
 
 from pipeline.asset_adapter import build_asset_tables, FEEDER_NAME, AREA_TYPE   # noqa: E402
 from figure4_fragility_by_span_lookup import lookup_wind_fragility_pole_span   # noqa: E402
 from pole_fig7_lookup import lookup_pole_ice_fragility                          # noqa: E402
 from wire_fig7d_lookup import lookup_wire_fragility, _site                       # noqa: E402
+import weather_input                                                             # noqa: E402
 
 # =============================================================================
 # SETTINGS  <-- edit this block
 # =============================================================================
+# --- WEATHER: which storm to model -------------------------------------------
+# Where the weather comes from (see code_weather/weather_input.py):
+#   "user"       : the two numbers below (option 3)
+#   "historical" : a storm from the historical catalogue (option 2) -- not implemented yet
+#   "csv"        : a storm found in a weather CSV (option 1)       -- not implemented yet
+WEATHER_SOURCE = "user"
 
+# "user": ice on the wire (mm; 0 = wind-only storm) and 3-s gust (m/s; for an ice
+# storm, the gust DURING the ice). Storms modelled so far:
+#   Event #1                       : USER_ICE_MM = 14.7, USER_WIND_MS = 12.3
+#   Event #1, Toronto default wind : USER_ICE_MM = 14.7, USER_WIND_MS = 31.92
+#   Test ice storm                 : USER_ICE_MM = 20,   USER_WIND_MS = 31.92
+#   Event #2 (Dec 29, 2025, 1 pm)  : USER_ICE_MM = 0,    USER_WIND_MS = 23.8
+#   Test wind storm                : USER_ICE_MM = 0,    USER_WIND_MS = 50
+USER_ICE_MM = 0
+USER_WIND_MS = 50
 
-#EVENT #1: 12.3 wind speed, ice_mm = 14.7
-#EVENT #2 (dec 29, 2025, 1pm): ice_mm =0, 23.8m/s
+# "historical": the storm_id from weather_input.list_historical_storms()
+HISTORICAL_STORM_ID = None
+# "csv": the weather CSV and the storm_id from weather_input.list_storms_from_csv()
+WEATHER_CSV = None
+CSV_STORM_ID = None
 
-#Modeling Event #2
-SCENARIO = "wind"                # "ice" (ice storm with concurrent wind) or "wind" (wind only)
-ICE_MM = 0
-WIND_GUST_MS = 50
-
-CONCURRENT_WIND_MS = None       # 3-s gust during the ice storm (m/s); None -> Toronto (31.9)
+# --- MODEL CHOICES (not weather) ---------------------------------------------
 STRINGING = "slack"             # wire stringing rule: "slack" (default) or "tension"
-
-
 
 # Summary only: how many assets are at or above this failure probability
 THRESHOLD = 0.10
@@ -82,18 +103,21 @@ OUTPUT_DIR = HERE / "outputs" / "fragility"
 # =============================================================================
 # 1. PER-ASSET FAILURE PROBABILITIES
 # =============================================================================
-def pole_fragility(poles, scenario):
-    if scenario == "ice":
-        wind = toronto_concurrent_wind() if CONCURRENT_WIND_MS is None else CONCURRENT_WIND_MS
-        p = [lookup_pole_ice_fragility(age, trib, ice_mm=ICE_MM, wind_ms=wind, n_phases=ph)
-             for age, trib, ph in zip(poles["age_years"], poles["tributary_eff_m"],
-                                      poles["n_phases"])]
-    elif scenario == "wind":
-        p = [lookup_wind_fragility_pole_span(WIND_GUST_MS, age, trib, n_phases=ph)
+def is_ice_storm(ice_mm):
+    """Ice on the wire -> ice curves (Fig. 7); no ice -> wind curves (Fig. 4)."""
+    return ice_mm > 0
+
+
+def pole_fragility(poles, ice_mm, wind_ms):
+    """p_fail for every pole. Ice storm: wind_ms is the gust during the ice."""
+    if is_ice_storm(ice_mm):
+        p = [lookup_pole_ice_fragility(age, trib, ice_mm=ice_mm, wind_ms=wind_ms, n_phases=ph)
              for age, trib, ph in zip(poles["age_years"], poles["tributary_eff_m"],
                                       poles["n_phases"])]
     else:
-        raise ValueError(f"Unknown SCENARIO '{scenario}' (use 'ice' or 'wind').")
+        p = [lookup_wind_fragility_pole_span(wind_ms, age, trib, n_phases=ph)
+             for age, trib, ph in zip(poles["age_years"], poles["tributary_eff_m"],
+                                      poles["n_phases"])]
     out = poles[["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
                  "flag_age_capped", "section_id", "tributary_m", "tributary_true_m",
                  "n_phases", "tributary_eff_m", "flag_tributary_capped", "flag_mixed_phase",
@@ -102,10 +126,10 @@ def pole_fragility(poles, scenario):
     return out
 
 
-def wire_fragility(spans, scenario):
-    if scenario == "ice":
-        wind = toronto_concurrent_wind() if CONCURRENT_WIND_MS is None else CONCURRENT_WIND_MS
-        p = [lookup_wire_fragility(L, ICE_MM, wind, STRINGING) for L in spans["span_m"]]
+def wire_fragility(spans, ice_mm, wind_ms):
+    """p_fail_wire for every span."""
+    if is_ice_storm(ice_mm):
+        p = [lookup_wire_fragility(L, ice_mm, wind_ms, STRINGING) for L in spans["span_m"]]
     else:
         # Ma et al. (2020): "the failure of the wires is unlikely to occur when only
         # subjected to wind", so wire failure is ignored in the wind-only case.
@@ -128,31 +152,54 @@ def add_span_combined(span_frag, pole_frag):
 
 
 def toronto_concurrent_wind():
+    """Toronto's 3-s gust during an ice storm (m/s), for when no measured wind is known."""
     return float(_site("toronto")["v_conc"])
 
 
 # =============================================================================
-# 2. RUN ONE SCENARIO
+# 2. WEATHER INPUT  <-- choose the storm here
 # =============================================================================
-def scenario_tag():
-    if SCENARIO == "ice":
-        wind = toronto_concurrent_wind() if CONCURRENT_WIND_MS is None else CONCURRENT_WIND_MS
-        return f"ice{ICE_MM:g}mm_wind{wind:g}ms"
-    return f"wind{WIND_GUST_MS:g}ms"
+def get_weather():
+    """Decide WHERE the weather comes from (WEATHER_SOURCE). Returns (ice_mm, wind_ms).
+
+    ice_mm  : radial ice on the wire (mm). 0 = wind-only storm.
+    wind_ms : 3-s gust (m/s). For an ice storm, the gust DURING the ice.
+    The sources live in code_weather/weather_input.py; they all return these two numbers.
+    """
+    if WEATHER_SOURCE == "user":
+        return weather_input.user_storm(USER_ICE_MM, USER_WIND_MS)
+    if WEATHER_SOURCE == "historical":
+        return weather_input.historical_storm(HISTORICAL_STORM_ID)
+    if WEATHER_SOURCE == "csv":
+        return weather_input.storm_from_csv(WEATHER_CSV, CSV_STORM_ID)
+    raise ValueError(f"Unknown WEATHER_SOURCE {WEATHER_SOURCE!r} "
+                     "(use 'user', 'historical' or 'csv').")
 
 
-def run_scenario():
-    """Returns (pole_frag, span_frag) DataFrames for the scenario in SETTINGS."""
+def scenario_tag(ice_mm, wind_ms):
+    """Name used in the output file names, e.g. ice14.7mm_wind12.3ms or wind50ms."""
+    if is_ice_storm(ice_mm):
+        return f"ice{ice_mm:g}mm_wind{wind_ms:g}ms"
+    return f"wind{wind_ms:g}ms"
+
+
+# =============================================================================
+# 3. RUN
+# =============================================================================
+def run_fragility(ice_mm, wind_ms):
+    """Weather in -> failure probabilities out. Returns (pole_frag, span_frag).
+    Saves nothing, so the GUI can call it directly."""
+    if ice_mm < 0 or wind_ms < 0:
+        raise ValueError(f"ice_mm and wind_ms must be >= 0 (got {ice_mm}, {wind_ms}).")
     poles, spans = build_asset_tables()
-    pole_frag = pole_fragility(poles, SCENARIO)
-    span_frag = wire_fragility(spans, SCENARIO)
+    pole_frag = pole_fragility(poles, ice_mm, wind_ms)
+    span_frag = wire_fragility(spans, ice_mm, wind_ms)
     span_frag = add_span_combined(span_frag, pole_frag)
     return pole_frag, span_frag
 
 
-def main():
-    pole_frag, span_frag = run_scenario()
-    tag = scenario_tag()
+def save_and_print(pole_frag, span_frag, tag):
+    """Write the two CSVs to OUTPUT_DIR and print a short summary."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     pole_path = OUTPUT_DIR / f"pole_fragility_{FEEDER_NAME}_{AREA_TYPE}_{tag}.csv"
     span_path = OUTPUT_DIR / f"span_fragility_{FEEDER_NAME}_{AREA_TYPE}_{tag}.csv"
@@ -171,6 +218,13 @@ def main():
     print(f"  spans (wire + 2 poles, maps only): >= {THRESHOLD:g}: {(ps >= THRESHOLD).sum()}")
     print(f"  expected failures: {pp.sum():.1f} poles, {pw.sum():.1f} wires")
     print(f"Saved:\n  {pole_path.name}\n  {span_path.name}")
+
+
+def main():
+    """The wiring: get weather -> run fragility -> save and print."""
+    ice_mm, wind_ms = get_weather()
+    pole_frag, span_frag = run_fragility(ice_mm, wind_ms)
+    save_and_print(pole_frag, span_frag, scenario_tag(ice_mm, wind_ms))
 
 
 if __name__ == "__main__":

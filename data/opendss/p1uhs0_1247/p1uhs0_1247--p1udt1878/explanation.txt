@@ -1,0 +1,1 @@
+the failed_lines_matrix.csv file represents the 10,000 scenarios, with some random chance of a pole failing affecting the entire line.
