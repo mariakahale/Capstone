@@ -1,5 +1,15 @@
 {
+    // Folders VS Code's code checker (Pylance) should search for imports.
+    // The scripts add these to Python's path while running (sys.path.insert),
+    // but the checker reads code without running it, so it needs them listed here.
+    // Without this: brown squiggles under imports, and Ctrl+click can't jump to them.
     "python.analysis.extraPaths": [
+        ".",
+        "./code_weather",
+        "./code_fragilitycurves/figure4_maetall2020",
+        "./code_fragilitycurves/figure7_maetall2020",
+        "./code_fragilitycurves/figure7_maetall2020/differentspanlengths",
+        "./code_fragilitycurves/figure7_maetall2020/concurrentwindspeed",
         "./code_fragilitycurves/figure7_maetall2020/hazardcurves_torontoweatherdata_weibull"
     ]
 }
