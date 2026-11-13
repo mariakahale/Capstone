@@ -57,18 +57,41 @@ FRAG_DIR = REPO_ROOT / "code_fragilitycurves"
 sys.path.insert(0, str(REPO_ROOT))
 sys.path.insert(0, str(FRAG_DIR / "figure4_maetall2020"))
 sys.path.insert(0, str(FRAG_DIR / "figure7_maetall2020" / "differentspanlengths"))
+sys.path.insert(0, str(REPO_ROOT / "code_weather"))
 
 from pipeline.asset_adapter import build_asset_tables, FEEDER_NAME, AREA_TYPE   # noqa: E402
 from figure4_fragility_by_span_lookup import lookup_wind_fragility_pole_span   # noqa: E402
 from pole_fig7_lookup import lookup_pole_ice_fragility                          # noqa: E402
 from wire_fig7d_lookup import lookup_wire_fragility, _site                       # noqa: E402
+import weather_input                                                             # noqa: E402
 
 # =============================================================================
 # SETTINGS  <-- edit this block
 # =============================================================================
-# The WEATHER (ice thickness, wind speed) is chosen in get_weather() below.
-# The settings here are model choices, not weather.
+# --- WEATHER: which storm to model -------------------------------------------
+# Where the weather comes from (see code_weather/weather_input.py):
+#   "user"       : the two numbers below (option 3)
+#   "historical" : a storm from the historical catalogue (option 2) -- not implemented yet
+#   "csv"        : a storm found in a weather CSV (option 1)       -- not implemented yet
+WEATHER_SOURCE = "user"
 
+# "user": ice on the wire (mm; 0 = wind-only storm) and 3-s gust (m/s; for an ice
+# storm, the gust DURING the ice). Storms modelled so far:
+#   Event #1                       : USER_ICE_MM = 14.7, USER_WIND_MS = 12.3
+#   Event #1, Toronto default wind : USER_ICE_MM = 14.7, USER_WIND_MS = 31.92
+#   Test ice storm                 : USER_ICE_MM = 20,   USER_WIND_MS = 31.92
+#   Event #2 (Dec 29, 2025, 1 pm)  : USER_ICE_MM = 0,    USER_WIND_MS = 23.8
+#   Test wind storm                : USER_ICE_MM = 0,    USER_WIND_MS = 50
+USER_ICE_MM = 0
+USER_WIND_MS = 50
+
+# "historical": the storm_id from weather_input.list_historical_storms()
+HISTORICAL_STORM_ID = None
+# "csv": the weather CSV and the storm_id from weather_input.list_storms_from_csv()
+WEATHER_CSV = None
+CSV_STORM_ID = None
+
+# --- MODEL CHOICES (not weather) ---------------------------------------------
 STRINGING = "slack"             # wire stringing rule: "slack" (default) or "tension"
 
 # Summary only: how many assets are at or above this failure probability
@@ -137,26 +160,20 @@ def toronto_concurrent_wind():
 # 2. WEATHER INPUT  <-- choose the storm here
 # =============================================================================
 def get_weather():
-    """Decide WHERE the weather comes from. Returns (ice_mm, wind_ms).
+    """Decide WHERE the weather comes from (WEATHER_SOURCE). Returns (ice_mm, wind_ms).
 
     ice_mm  : radial ice on the wire (mm). 0 = wind-only storm.
     wind_ms : 3-s gust (m/s). For an ice storm, the gust DURING the ice.
-
-    Today the numbers are typed here. Later this is where the other sources plug in:
-      option 1: the user's weather CSV   (code_weather/find_weather_events.py)
-      option 2: a table of historical storms
-      option 3: numbers typed in the GUI (the GUI can also call run_fragility() directly)
+    The sources live in code_weather/weather_input.py; they all return these two numbers.
     """
-    # Event #1:  ice 14.7 mm, measured wind 12.3 m/s
-    # return 14.7, 12.3
-    # Event #1 ice with Toronto's default concurrent wind (31.92 m/s)
-    # return 14.7, toronto_concurrent_wind()
-    # Test ice storm
-    # return 20, toronto_concurrent_wind()
-    # Event #2 (Dec 29, 2025, 1 pm): wind only
-    # return 0, 23.8
-    # Test wind storm
-    return 0, 50
+    if WEATHER_SOURCE == "user":
+        return weather_input.user_storm(USER_ICE_MM, USER_WIND_MS)
+    if WEATHER_SOURCE == "historical":
+        return weather_input.historical_storm(HISTORICAL_STORM_ID)
+    if WEATHER_SOURCE == "csv":
+        return weather_input.storm_from_csv(WEATHER_CSV, CSV_STORM_ID)
+    raise ValueError(f"Unknown WEATHER_SOURCE {WEATHER_SOURCE!r} "
+                     "(use 'user', 'historical' or 'csv').")
 
 
 def scenario_tag(ice_mm, wind_ms):
