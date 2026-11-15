@@ -22,18 +22,26 @@ RUN
     --require         "either" (default): ice >= --ice OR gust >= --gust
                       "both": ice >= --ice AND a gust >= --gust hit the wire
                               WHILE that ice was on it
-    --ice-wind-days N keep counting gusts as "on the iced wire" for N days
-                      after the freezing rain stops (stops early if the ice
-                      melts). Default 3 (Sheng et al. 2023). 0 = only while
-                      the freezing rain lasts.
+    --ice-wind-days N ice stays on the wire (and gusts count as "on the
+                      iced wire") until N days after the freezing rain
+                      stops, or until it melts, whichever is first.
+                      Default inf = until it melts (Jones et al. 2002).
+                      0 = only while the freezing rain lasts.
     --no-rain-below-freezing  count ONLY what ERA5 calls freezing rain
                       (Sheng). Default: ALSO count ERA5 rain / drizzle /
                       rain-snow mix at <= 0 C (Jones). Snow never counts.
     --out FILE.xlsx         output name (default: next to the CSV)
   Advanced (each one is a design decision, see the Settings sheet):
-    --ice-gap-h 72  --melt-temp 1.0  --melt-hours 1  --wind-gap-h 6
+    --ice-gap-h inf  --melt-temp 1.0  --melt-hours 1  --wind-gap-h 6
     --min-precip 0.1  --ptype-hour start_or_end|end
     --wind-for-ice hour_average|end
+
+STORM END (design decision): Jones et al. (2002, p. 9) rule. An ice
+storm ends only at the first hour after the freezing rain when the air
+temperature is above 1 C, and the ice stays on the wire until then.
+There is no time-gap rule, so new freezing rain on still-frozen ice adds
+to the same storm. --ice-gap-h 24 --ice-wind-days 0 gives the older
+CSA C22.3 / Sheng-style behaviour for comparison.
 
 WHICH STORMS ARE KEPT (default --require either)
     storm --> peak ice >= ICE_THR ?  ---yes---+
@@ -76,17 +84,19 @@ FOR EACH location, FOR EACH grid cell of that location:
                        (M = --melt-hours; default 1 = the papers' rule)
        windy         = gust (max 3-s gust in the hour) >= GUST_THR
 
-  2. ICE STORMS (Sheng et al. 2023, p. 130). Walk through the
-     freezing-rain hours in time order. Start a NEW ice storm when
-       (a) more than 72 h have passed since the last freezing-rain hour, or
-       (b) a melt hour happened since the last freezing-rain hour.
+  2. ICE STORMS (Jones et al. 2002, p. 9). Walk through the freezing-rain
+     hours in time order. Start a NEW ice storm only when
+       (a) a melt hour happened since the last freezing-rain hour, or
+       (b) more than G hours have passed since the last freezing-rain
+           hour (G = --ice-gap-h; default inf = no gap rule, as in Jones).
      Ice of the storm = SUM of ice_added over its hours.
 
   3. ICE ON THE WIRE (hour by hour). From the first freezing-rain hour of
-     an ice storm, the ice on the wire grows by ice_added each hour. It is
-     counted as "on the wire" until N days after the last freezing-rain
-     hour (N = --ice-wind-days, default 3), or until the hour before the
-     first melt hour, whichever comes first. Outside that, ice = 0.
+     an ice storm, the ice on the wire grows by ice_added each hour. It
+     stays on the wire until the hour before the first melt hour
+     (Jones et al. 2002, p. 13), or until N days after the last
+     freezing-rain hour if that is earlier (N = --ice-wind-days; default
+     inf = no limit). Outside that, ice = 0.
 
   4. WIND STORMS. Group the windy hours. Start a NEW wind storm when more
      than 6 h pass without a windy hour.
@@ -168,8 +178,8 @@ class Settings:
     wind_for_ice: str = "hour_average"
     melt_temp_c: float = 1.0
     melt_hours: int = 1
-    ice_gap_h: float = 72.0
-    ice_wind_days: float = 3.0
+    ice_gap_h: float = float("inf")      # Jones et al. (2002): no gap rule
+    ice_wind_days: float = float("inf")  # Jones et al. (2002): until melt
     wind_gap_h: float = 6.0
     gust_range_ms: tuple = (12.5, 40.0)
 
@@ -202,9 +212,10 @@ SETTING_NOTES = {
     "min_precip_mm": (
         "An hour needs at least this much precipitation (mm) to count as "
         "freezing rain.",
-        "Our choice. Stops trace amounts from keeping a storm 'alive' "
-        "under the 72 h rule. Small effect on ice: 0.1 mm in an hour adds "
-        "only ~0.04-0.07 mm of radial ice."),
+        "Our choice. Stops trace amounts from being counted as freezing "
+        "rain (and from keeping a storm 'alive' if a gap rule is used). "
+        "Small effect on ice: 0.1 mm in an hour adds only ~0.04-0.07 mm "
+        "of radial ice."),
     "ptype_hour": (
         "'start_or_end': the hour counts as freezing rain if ERA5's "
         "precipitation type is freezing rain at the start OR end of the "
@@ -241,25 +252,29 @@ SETTING_NOTES = {
         "are our own sensitivity option; no paper gives a number."),
     "ice_gap_h": (
         "If this many hours pass with no freezing rain (and no melt), the "
-        "next freezing rain starts a NEW ice storm.",
-        "Sheng et al. (2023, p. 130): 72 consecutive hours (no source "
-        "given for the number). CSA C22.3 uses 24 h (Sheng p. 129); "
-        "McCray et al. (2019) also merge freezing-rain events less than "
-        "24 h apart. Jones et al. (2002, p. 9) use no gap rule; storms "
-        "end only when it warms above 1 deg C."),
+        "next freezing rain starts a NEW ice storm. inf = no gap rule: "
+        "only a melt hour ends the storm.",
+        "inf (default) = DESIGN DECISION, Jones et al. (2002, p. 9): "
+        "'storms are ended at the first hour after freezing rain ends "
+        "when the air temperature rises above 1oC. This choice sometimes "
+        "results in ice accreting on top of previously accreted ice that "
+        "is many days or even weeks old.' For comparison: 24 h = CSA "
+        "C22.3 (as cited by Sheng et al. 2023, p. 129); Sheng et al. "
+        "(p. 130) use 72 h. On Toronto 2021-2025 data, 24 h, 72 h and "
+        "no gap gave the same peak ice."),
     "ice_wind_days": (
         "Days after the last freezing-rain hour that ice is still counted "
         "as on the wire, so gusts in that time count as 'while iced'. "
-        "Stops early at melt.",
-        "3 = the shortest window in Sheng et al. (2023, p. 135), who use "
-        "3, 7 and 21 days and find the result 'not very sensitive' to it; "
-        "it also matches the 72 h storm rule. 0 = only during the storm. "
-        "Jones et al. (2002, p. 13): ice 'may last for days or even weeks "
-        "after the freezing rain ends'; they count wind until it melts. "
-        "Jones & Mulherin (1998, p. 34) found ice on trees three weeks "
-        "after the 1998 storm. Stopping at melt is our addition. If N > 3 "
-        "days, a new ice storm can start while old ice is still counted; "
-        "the event then reports the larger ice amount, not the sum."),
+        "Always stops at melt. inf = until melt.",
+        "inf (default) = DESIGN DECISION, Jones et al. (2002, p. 13): ice "
+        "'may last for days or even weeks after the freezing rain ends, "
+        "as long the weather remains cold', and they take the largest "
+        "wind-on-ice load 'at any time during the storm', i.e. until the "
+        "storm ends at melt (p. 9). Jones & Mulherin (1998, p. 34) found "
+        "ice on trees three weeks after the 1998 storm. Set 0 to combine "
+        "ice and wind only DURING the freezing rain. Sheng et al. (2023, "
+        "p. 135) test 3, 7 and 21 days and find the result 'not very "
+        "sensitive' to it."),
     "wind_gap_h": (
         "Windy hours less than this many hours apart belong to the same "
         "wind storm. Also: events in neighbouring grid cells less than "
@@ -345,7 +360,10 @@ def ice_storms(c, s):
     # (3) how long the ice is counted on the wire
     for g in groups:
         first, last = g[0], g[-1]
-        until = times[last] + np.timedelta64(int(round(s.ice_wind_days * 24)), "h")
+        if np.isfinite(s.ice_wind_days):
+            until = times[last] + np.timedelta64(int(round(s.ice_wind_days * 24)), "h")
+        else:                                        # Jones: until melt
+            until = times[-1]
         k = np.searchsorted(melt_rows, last, side="right")
         if k < len(melt_rows):                       # first melt after storm
             until = min(until, times[melt_rows[k]] - np.timedelta64(1, "h"))
@@ -679,7 +697,8 @@ HEADERS = {
                     "in any cell (ERA5 hour-ending, so 1 h before the first "
                     "timestamp)."),
     "end_local": ("End (local time)", "End of the last flagged hour, "
-                  "including the --ice-wind-days period."),
+                  "including the hours the ice stays on the wire (until "
+                  "melt by default)."),
     "duration_h": ("Duration (h)", "End minus start."),
     "peak_ice_cm": ("Peak ice on wire (cm)", "Most radial ice on the wire "
                     "during the event (sum of Eq. 4 over the ice storm)."),
@@ -693,8 +712,9 @@ HEADERS = {
                             "with the strongest gust."),
     "ice_on_wire_hours": ("Ice on wire (h)", "Hours the wire carried ice in "
                           "this event: from the first freezing-rain hour "
-                          "until --ice-wind-days after the last one, or "
-                          "until melt (--melt-hours), whichever is first."),
+                          "until the hour before melt (--melt-hours; Jones "
+                          "et al. 2002), or --ice-wind-days after the last "
+                          "freezing-rain hour if that is set and earlier."),
     "freezing_rain_hours": ("Freezing-rain hours", "Hours flagged as "
                             "freezing rain in the reported cell."),
     "windy_hours": ("Windy hours", "Hours with gust >= gust threshold in the "
@@ -730,8 +750,11 @@ def save_excel(path, results, run_info, s, include_below=False):
                     for k, v in run_info.items()]
     for f in fields(Settings):
         what, why = SETTING_NOTES[f.name]
+        v = getattr(s, f.name)
+        if isinstance(v, float) and np.isinf(v):
+            v = "inf (no limit: until melt)"
         setting_rows.append({"Setting": f.name,
-                             "Value": str(getattr(s, f.name)),
+                             "Value": str(v),
                              "What it does": what,
                              "Why this value / source": why})
     settings_df = pd.DataFrame(setting_rows)
@@ -809,7 +832,10 @@ def main():
     ap.add_argument("--gust", type=float, default=25.0,
                     help="gust threshold in m/s, 12.5-40 (default 25)")
     ap.add_argument("--require", choices=["either", "both"], default="either")
-    ap.add_argument("--ice-wind-days", type=float, default=s0.ice_wind_days)
+    ap.add_argument("--ice-wind-days", type=float, default=s0.ice_wind_days,
+                    help="days the ice stays on the wire after the freezing "
+                         "rain, cut short by melt (default inf = until melt, "
+                         "Jones et al. 2002; 0 = only during freezing rain)")
     ap.add_argument("--rain-below-freezing", default=s0.rain_below_freezing,
                     action=argparse.BooleanOptionalAction,
                     help="also count rain/drizzle/rain-snow mix at <= 0 C as "
@@ -820,7 +846,10 @@ def main():
     ap.add_argument("--show-below", action="store_true",
                     help="add a 'Below thresholds' sheet with the storms "
                          "that passed neither threshold (not events)")
-    ap.add_argument("--ice-gap-h", type=float, default=s0.ice_gap_h)
+    ap.add_argument("--ice-gap-h", type=float, default=s0.ice_gap_h,
+                    help="hours without freezing rain that start a new ice "
+                         "storm (default inf = no gap rule, storm ends only "
+                         "at melt, Jones et al. 2002; 24 = CSA C22.3)")
     ap.add_argument("--melt-temp", type=float, default=s0.melt_temp_c)
     ap.add_argument("--melt-hours", type=int, default=s0.melt_hours,
                     help="hours in a row above --melt-temp before ice is "
@@ -840,6 +869,8 @@ def main():
         ap.error("--ice must be greater than 0")
     if a.ice_wind_days < 0:
         ap.error("--ice-wind-days can't be negative")
+    if a.ice_gap_h <= 0:
+        ap.error("--ice-gap-h must be greater than 0 (use inf for no gap rule)")
     if a.melt_hours < 1:
         ap.error("--melt-hours must be at least 1")
     if pd.Period(a.start, freq="M") > pd.Period(a.end, freq="M"):
