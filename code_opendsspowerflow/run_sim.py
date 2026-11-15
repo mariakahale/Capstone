@@ -7,6 +7,8 @@ import opendssdirect as dss
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OPENDSS_DATA_DIR = os.path.join(REPO_ROOT, "data", "opendss")
+sys.path.insert(0, os.path.join(REPO_ROOT, "pipeline"))
+from cpdm_analysis import run_cpdm    # CPDM step: pipeline/cpdm_analysis.py
 
 # Registry of available feeders: feeder_id -> path relative to data/opendss/
 AVAILABLE_FEEDERS = {
