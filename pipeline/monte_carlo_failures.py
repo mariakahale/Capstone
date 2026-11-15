@@ -1,298 +1,244 @@
 """
-MONTE CARLO FAILURE SIMULATION  (Subsystem 4, Block A)
-======================================================
-Takes the pole and span fragility CSVs from the Vulnerability Analysis,
-runs N Monte Carlo iterations, and writes the failed lines of every
-iteration in two layouts:
+monte_carlo_failures.py
+=======================
+Step 3 of the pipeline: which OpenDSS lines fail in each of N Monte Carlo runs,
+for ONE storm on ONE feeder.
 
-  1. failed_lines_mc.csv  (same format as Melani's power-flow input file)
-         line_name
-         <line failed in scenario 1>
-         <line failed in scenario 1>
-         ---
-         <line failed in scenario 2>
-         ...
+    run_fragility.py  ->  monte_carlo_failures.py  ->  data/opendss/<substation>/<feeder>/
+    (p_fail per pole       (this file)                     failed_lines_matrix.csv
+     and per wire)                                         (read by code_opendsspowerflow/run_sim.py)
 
-  2. failed_lines_matrix.csv  (one row per line, one column per iteration)
+Run:
+    python pipeline/monte_carlo_failures.py
+The feeder and area type come from pipeline/asset_adapter.py (FEEDER_NAME, AREA_TYPE) and
+the storm from pipeline/run_fragility.py (WEATHER_SOURCE ...), so every step uses the same
+settings. Change them there, not here.
+
+Structure (same pattern as run_fragility.py):
+    load_line_map(feeder, area_type)        -> which OpenDSS lines each span sits on
+    run_monte_carlo(pole_frag, span_frag, span_lines)
+                                            -> matrix, summary   (the work; saves nothing)
+    save_and_print(matrix, summary, ...)    -> writes the files below
+    main()                                  -> get_weather -> run_fragility -> run_monte_carlo -> save
+From other code (e.g. the GUI):
+    from pipeline.monte_carlo_failures import load_line_map, run_monte_carlo
+    span_lines, _ = load_line_map("1878", "suburban")
+    matrix, summary = run_monte_carlo(pole_frag, span_frag, span_lines)
+
+OUTPUTS
+  1. data/opendss/<substation>/<feeder>/failed_lines_matrix.csv   (the power-flow input)
          line_name,1,2,3,...,10000
          l(r:p1udt1226-p1udt2266),1,0,0,...
-         l(r:p1udt1226-p1udt4516),0,0,1,...
-     1 = the line failed in that iteration, 0 = it did not.
-
-Run (Windows / VS Code terminal):
-    python monte_carlo_failures.py --poles pole_fragility.csv --spans span_fragility.csv
-
-OUTPUT FOLDER
--------------
-All files go into a folder called "Monte Carlo Output" next to this script
-(Capstone/pipeline/Monte Carlo Output/), made if it does not exist. They are
-named after the pole fragility file and the threshold, so runs for different
-storms do not overwrite each other. For pole_fragility_1878_suburban_wind50ms.csv
-with --threshold 0.01:
-    failed_lines_1878_suburban_wind50ms_t1.csv         (Melani's --- format)
-    failed_lines_matrix_1878_suburban_wind50ms_t1.csv  (lines x iterations, 1/0)
-    mc_summary_1878_suburban_wind50ms_t1.csv           (one row per iteration)
-
-Options:
-    --threshold 0.05   only assets with p_fail >= threshold are sampled (0.01-1.0; Req. 1 is 5-100%)
-    --n 10000          number of Monte Carlo iterations (Objective 1)
-    --seed 42          fixed random seed, so a run can be repeated exactly
-    --line-map map.csv CSV that links spans to OpenDSS line names (see LINE NAMES)
-    --out-dir FOLDER   save the files somewhere else
-    --out NAME.csv     own name for the Melani-format file
-    --matrix NAME.csv  own name for the line x iteration table of 1s and 0s
-    --summary NAME.csv own name for the one-row-per-iteration check file
-    --lines-dss Lines.dss  also give the matrix a row (all 0s) for every
-                       feeder line that has no poles (underground cables, pad
-                       switches, fuses). Default: only the overhead lines in
-                       the line map (the ones that can fail)
-    --skip-empty       leave out iterations where nothing failed (--out file only;
-                       the matrix always has every iteration)
+     One row per OpenDSS line in the feeder's span-line map, one column per run.
+     1 = the line failed in that run. A column of 0s = nothing failed (unserved load 0).
+     The feeder folder is found automatically (any folder data/opendss/*/*--*<feeder>),
+     so a new feeder only needs its SMART-DS folder there and its polegen2 outputs.
+     Next to it, failed_lines_matrix_info.txt says which storm and settings made it.
+  2. pipeline/outputs/monte_carlo/mc_summary_<feeder>_<area>_<storm>_t<threshold>.csv
+     One row per run: failed poles, spans and lines (input for the CPDM).
 
 HOW IT WORKS
-------------
-1. Flag the assets above the threshold (Requirement 1):
-     poles  with p_fail      >= threshold
-     wires  with p_fail_wire >= threshold
-2. For every iteration k and flagged asset i, draw u(i,k) ~ Uniform(0,1).
-   The asset fails if u(i,k) < p(i)  (Kim et al. [4]).
-3. A span is down if its wire failed OR either of its two poles failed.
-   Poles are sampled ONCE per iteration, so when a pole fails every span
-   attached to it goes down together. (Sampling each span separately with
-   p_fail_span_combined would count the same pole failure twice and lose
-   that link, so the combined column is NOT used here.)
-   Poles are linked to spans through the start_pole / end_pole columns of
-   the span fragility CSV.
-4. The failed spans of each iteration are written out by span_id (default).
-
-LINE NAMES (optional)
----------------------
-To write OpenDSS line names instead of span IDs, give --line-map. For feeder
-1878 this is code_polegen2/outputs/feeder_1878_span_line_map_suburban.csv
-(columns span_id, line_name; a span can appear on several rows when it sits
-on more than one OpenDSS line, and all of them are written). A 'section_id'
-column instead of 'span_id' also works. A line is listed once per iteration
-even if several of its spans failed.
+  1. Only assets with p_fail >= THRESHOLD are sampled (Requirement 1).
+  2. Each run, each sampled pole and wire fails if u < p, u ~ Uniform(0, 1) (Kim et al.).
+  3. A span is down if its wire failed or either end pole failed. Poles are drawn ONCE
+     per run, so a failed pole takes down every span attached to it.
+     (p_fail_span_combined is NOT used: it would count a shared pole twice.)
+  4. Spans -> OpenDSS lines with polegen2's span_line_map (a span can sit on more than
+     one line; each failed line is listed once per run).
 """
 
-import argparse
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-POLE_COLS = {"pole_id", "section_id", "p_fail"}
-SPAN_COLS = {"span_id", "start_pole", "end_pole", "p_fail_wire"}
-DEFAULT_OUT_DIR = Path(__file__).resolve().parent / "Monte Carlo Output"
+HERE = Path(__file__).resolve().parent
+REPO_ROOT = HERE.parent
+sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(HERE))
+
+import run_fragility as rf                                                  # noqa: E402
+from pipeline.asset_adapter import FEEDER_NAME, AREA_TYPE                    # noqa: E402
+
+# =============================================================================
+# SETTINGS  <-- edit this block
+# =============================================================================
+THRESHOLD = 0.01        # sample assets with p_fail >= this. Requirement 1 says 0.05-1.0:
+                        # keep the requirement and this value in step.
+N_ITERATIONS = 10_000   # Monte Carlo runs (Objective 1)
+SEED = 42               # fixed seed: the same settings always give the same runs
+
+POLEGEN_OUTPUT_DIR = REPO_ROOT / "code_polegen2" / "outputs"
+OPENDSS_DIR = REPO_ROOT / "data" / "opendss"
+OUTPUT_DIR = HERE / "outputs" / "monte_carlo"
+POWERFLOW_INPUT_NAME = "failed_lines_matrix.csv"     # the name run_sim.py reads
 
 
-def output_paths(args):
-    """Where the three output files go (folder is made if missing)."""
-    out_dir = Path(args.out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    stem = Path(args.poles).stem
-    if stem.startswith("pole_fragility_"):
-        stem = stem[len("pole_fragility_"):]
-    tag = f"{stem}_t{args.threshold * 100:g}"          # e.g. 1878_suburban_wind50ms_t1
-    paths = {
-        "out": out_dir / (args.out or f"failed_lines_{tag}.csv"),
-        "matrix": out_dir / (args.matrix or f"failed_lines_matrix_{tag}.csv"),
-        "summary": out_dir / (args.summary or f"mc_summary_{tag}.csv"),
-    }
-    for p in paths.values():                 # fail early if Excel has a file open
-        if p.exists():
-            try:
-                with open(p, "a"):
-                    pass
-            except PermissionError:
-                sys.exit(f"Can't write {p}\nIt is probably open in Excel. Close it and run again.")
-    return paths
+# =============================================================================
+# 1. INPUTS
+# =============================================================================
+def load_line_map(feeder=FEEDER_NAME, area_type=AREA_TYPE):
+    """Which OpenDSS lines each span sits on, from polegen2's span_line_map.
+    Returns ({span_id: [line names]}, path of the map)."""
+    path = (POLEGEN_OUTPUT_DIR / f"feeder_{feeder}" / "mapping"
+            / f"feeder_{feeder}_span_line_map_{area_type}.csv")
+    if not path.exists():
+        raise FileNotFoundError(f"No span-line map for feeder {feeder} ({area_type}): {path}\n"
+                                "Run code_polegen2/main.py for this feeder first.")
+    m = pd.read_csv(path)
+    span_lines = m.groupby("span_id")["line_name"].apply(lambda s: sorted(set(s))).to_dict()
+    return span_lines, path
 
 
-def load(path, needed, what):
-    df = pd.read_csv(path)
-    missing = needed - set(df.columns)
-    if missing:
-        sys.exit(f"{what} file {path} is missing columns: {sorted(missing)}")
-    return df
+def feeder_folder(feeder=FEEDER_NAME):
+    """The feeder's SMART-DS folder, data/opendss/<substation>/<substation>--<...><feeder>."""
+    matches = sorted(p for p in OPENDSS_DIR.glob(f"*/*--*{feeder}") if p.is_dir())
+    if len(matches) != 1:
+        raise FileNotFoundError(f"Expected one folder for feeder {feeder} in {OPENDSS_DIR}, "
+                                f"found {[str(p) for p in matches]}")
+    return matches[0]
 
 
-def span_line_names(spans, poles, line_map_path):
-    """Return, for every span (same order as spans), the LIST of names to write
-    when that span fails. One span can sit on more than one OpenDSS line."""
-    if line_map_path is None:
-        print("No --line-map given: writing the failed SPAN IDs (e.g. 1878_S00342).")
-        return [[s] for s in spans["span_id"]]
+# =============================================================================
+# 2. MONTE CARLO
+# =============================================================================
+def run_monte_carlo(pole_frag, span_frag, span_lines,
+                    threshold=THRESHOLD, n=N_ITERATIONS, seed=SEED):
+    """Fragility in -> failed lines per run out. Saves nothing.
 
-    m = pd.read_csv(line_map_path)
-    if "line_name" not in m.columns:
-        sys.exit("--line-map file needs a 'line_name' column")
-    if "span_id" in m.columns:
-        key, ids = "span_id", spans["span_id"]
-    elif "section_id" in m.columns:
-        key = "section_id"
-        ids = spans["end_pole"].map(poles.set_index("pole_id")["section_id"])
-    else:
-        sys.exit("--line-map file needs a 'span_id' or 'section_id' column")
-    lookup = m.groupby(key)["line_name"].apply(lambda s: sorted(set(s))).to_dict()
-    names = [lookup.get(i) for i in ids]
-    missing = [s for s, n in zip(spans["span_id"], names) if not n]
-    if missing:
-        sys.exit(f"{len(missing)} spans have no line name in the map, e.g. {missing[:5]}")
-    n_multi = sum(len(n) > 1 for n in names)
-    print(f"Line map: {len(spans)} spans -> {len({x for n in names for x in n})} OpenDSS lines "
-          f"({n_multi} spans sit on more than one line).")
-    return names
-
-
-def write_matrix(path, iter_lines, line_name, lines_dss=None):
-    """One row per line, one column per iteration: 1 = failed, 0 = not failed.
-    Returns the number of rows written."""
-    rows = {x for names in line_name for x in names}
-    if lines_dss:
-        import re
-        with open(lines_dss) as f:
-            in_dss = re.findall(r"^\s*new\s+line\.(\S+)", f.read(),
-                                flags=re.IGNORECASE | re.MULTILINE)
-        have = {r.lower() for r in rows}
-        rows |= {x for x in in_dss if x.lower() not in have}
-    rows = sorted(rows)
-    row_of = {name: i for i, name in enumerate(rows)}
-
-    n = len(iter_lines)
-    failed = np.zeros((len(rows), n), dtype=bool)
-    for k, names in enumerate(iter_lines):
-        for x in names:
-            failed[row_of[x], k] = True
-
-    cells = np.where(failed, "1", "0")
-    with open(path, "w", newline="") as f:
-        f.write("line_name," + ",".join(str(k) for k in range(1, n + 1)) + "\r\n")
-        for name, row in zip(rows, cells):
-            f.write(name + "," + ",".join(row) + "\r\n")
-    if n + 1 > 16_384:
-        print(f"  NOTE: {n:,} iterations is more columns than Excel can show (16,384); "
-              f"the file is still fine for Python.")
-    return len(rows)
-
-
-def run(args):
-    if not 0.01 <= args.threshold <= 1.0:
-        sys.exit("Threshold must be between 0.01 and 1.0 (1-100%).")
-    if args.threshold < 0.05:
-        print(f"NOTE: threshold {args.threshold:.0%} is below Requirement 1 (5-100%).")
-
-    poles = load(args.poles, POLE_COLS, "Pole")
-    spans = load(args.spans, SPAN_COLS, "Span")
-    paths = output_paths(args)
-    pole_index = {pid: i for i, pid in enumerate(poles["pole_id"])}
+    pole_frag  : run_fragility output (pole_id, p_fail, ...)
+    span_frag  : run_fragility output (span_id, start_pole, end_pole, p_fail_wire, ...)
+    span_lines : {span_id: [OpenDSS line names]} from load_line_map()
+    Returns
+      matrix  : DataFrame, index = line_name (every line in span_lines), columns 1..n,
+                values 1 (failed) / 0
+      summary : DataFrame, one row per run
+    """
+    if not 0.01 <= threshold <= 1.0:
+        raise ValueError("threshold must be between 0.01 and 1.0")
+    pole_ids = pole_frag["pole_id"].to_numpy()
+    pole_index = {pid: i for i, pid in enumerate(pole_ids)}
     for col in ("start_pole", "end_pole"):
-        unknown = set(spans[col]) - set(pole_index)
+        unknown = set(span_frag[col]) - set(pole_index)
         if unknown:
-            sys.exit(f"Span file refers to poles not in the pole file, e.g. {sorted(unknown)[:5]}")
+            raise ValueError(f"spans refer to poles that are not in pole_frag, e.g. {sorted(unknown)[:5]}")
+    span_ids = span_frag["span_id"].to_numpy()
+    no_line = [s for s in span_ids if s not in span_lines]
+    if no_line:
+        raise ValueError(f"{len(no_line)} spans have no OpenDSS line in the map, e.g. {no_line[:5]}")
 
-    line_name = span_line_names(spans, poles, args.line_map)
+    # 1. assets above the threshold
+    p_pole = pole_frag["p_fail"].to_numpy(float)
+    p_wire = span_frag["p_fail_wire"].to_numpy(float)
+    pole_flag = np.flatnonzero(p_pole >= threshold)
+    wire_flag = np.flatnonzero(p_wire >= threshold)
 
-    # 1. flag assets above the threshold ---------------------------------
-    p_pole = poles["p_fail"].to_numpy(float)
-    p_wire = spans["p_fail_wire"].to_numpy(float)
-    pole_flag = np.flatnonzero(p_pole >= args.threshold)
-    wire_flag = np.flatnonzero(p_wire >= args.threshold)
-    print(f"Threshold {args.threshold:.0%}: {len(pole_flag)} of {len(poles)} poles "
-          f"and {len(wire_flag)} of {len(spans)} wires are sampled.")
-    if len(pole_flag) + len(wire_flag) == 0:
-        print("Nothing is above the threshold, so no asset can fail. "
-              "Lower the threshold or check the fragility files.")
+    # 2. draw: fail if u < p
+    rng = np.random.default_rng(seed)
+    pole_failed = rng.random((n, len(pole_flag))) < p_pole[pole_flag]
+    wire_failed = rng.random((n, len(wire_flag))) < p_wire[wire_flag]
 
-    # 2. draw random numbers: fail if u < p ------------------------------
-    rng = np.random.default_rng(args.seed)
-    pole_failed = rng.random((args.n, len(pole_flag))) < p_pole[pole_flag]
-    wire_failed = rng.random((args.n, len(wire_flag))) < p_wire[wire_flag]
-
-    # 3. a span is down if its wire or either end pole failed ------------
-    start_i = spans["start_pole"].map(pole_index).to_numpy()
-    end_i = spans["end_pole"].map(pole_index).to_numpy()
-    # for each flagged pole, the spans attached to it
+    # 3. a span is down if its wire or either end pole failed
+    start_i = span_frag["start_pole"].map(pole_index).to_numpy()
+    end_i = span_frag["end_pole"].map(pole_index).to_numpy()
     spans_of_pole = {i: np.flatnonzero((start_i == i) | (end_i == i)) for i in pole_flag}
 
-    out_lines = ["line_name"]
+    # 4. spans -> lines
+    lines = sorted({x for names in span_lines.values() for x in names})
+    row_of = {name: r for r, name in enumerate(lines)}
+    span_rows = [np.array([row_of[x] for x in span_lines[s]]) for s in span_ids]
+    failed = np.zeros((len(lines), n), dtype=np.uint8)
+
     summary = []
-    iter_lines = []      # failed lines of every iteration, for the matrix
-    written = 0
-    for k in range(args.n):
-        down = np.zeros(len(spans), dtype=bool)
+    for k in range(n):
+        down = np.zeros(len(span_ids), dtype=bool)
         failed_poles = pole_flag[pole_failed[k]]
         for i in failed_poles:
             down[spans_of_pole[i]] = True
         down[wire_flag[wire_failed[k]]] = True
-
-        span_ids = spans["span_id"].to_numpy()[down]
-        # 4. one entry per OpenDSS line, in a fixed order
-        lines = sorted({x for j in np.flatnonzero(down) for x in line_name[j]})
-        iter_lines.append(lines)
-
+        down_idx = np.flatnonzero(down)
+        rows = np.unique(np.concatenate([span_rows[j] for j in down_idx])) if len(down_idx) else []
+        failed[rows, k] = 1
         summary.append({
             "scenario": k + 1,
             "n_failed_poles": len(failed_poles),
-            "n_failed_spans": int(down.sum()),
-            "n_failed_lines": len(lines),
-            "failed_poles": ";".join(poles["pole_id"].to_numpy()[failed_poles]),
-            "failed_spans": ";".join(span_ids),
-            "failed_lines": ";".join(lines),
+            "n_failed_spans": len(down_idx),
+            "n_failed_lines": len(rows),
+            "failed_poles": ";".join(pole_ids[failed_poles]),
+            "failed_spans": ";".join(span_ids[down_idx]),
+            "failed_lines": ";".join(lines[r] for r in rows),
         })
-        if not lines and args.skip_empty:
-            continue
-        if written:
-            out_lines.append("---")
-        out_lines.extend(lines)
-        written += 1
 
-    with open(paths["out"], "w", newline="") as f:
-        f.write("\r\n".join(out_lines) + "\r\n")     # Windows line endings, like Melani's file
-    summ = pd.DataFrame(summary)
-    summ.to_csv(paths["summary"], index=False)
-    n_rows = write_matrix(paths["matrix"], iter_lines, line_name, args.lines_dss)
+    matrix = pd.DataFrame(failed, index=pd.Index(lines, name="line_name"),
+                          columns=range(1, n + 1))
+    summary = pd.DataFrame(summary)
+    summary.attrs.update(n_poles_sampled=len(pole_flag), n_wires_sampled=len(wire_flag),
+                         n_poles=len(p_pole), n_wires=len(p_wire),
+                         rate_error=float(np.abs(pole_failed.mean(axis=0) - p_pole[pole_flag]).max())
+                         if len(pole_flag) else 0.0)
+    return matrix, summary
 
-    # checks ---------------------------------------------------------------
-    empty = int((summ["n_failed_lines"] == 0).sum())
-    print(f"\n{args.n:,} iterations (seed {args.seed}). Files saved in {paths['out'].parent}:")
-    print(f"  {paths['out'].name}: {written:,} scenarios (--- format)")
-    print(f"  {paths['matrix'].name}: {n_rows:,} lines x {args.n:,} iterations (1 = failed)")
-    print(f"  {paths['summary'].name}: one row per iteration")
-    print(f"  iterations with no failures: {empty:,} ({empty / args.n:.1%})"
-          + ("  <- left out (--skip-empty)" if args.skip_empty else ""))
-    print(f"  failed poles per iteration: mean {summ.n_failed_poles.mean():.1f}, "
-          f"max {summ.n_failed_poles.max()}")
-    print(f"  entries written per iteration (spans, or lines with --line-map): "
-          f"mean {summ.n_failed_lines.mean():.1f}, "
-          f"max {summ.n_failed_lines.max()}")
-    if len(pole_flag):
-        rate = pole_failed.mean(axis=0)
-        err = np.abs(rate - p_pole[pole_flag]).max()
-        print(f"  check: each flagged pole failed about as often as its p_fail "
-              f"(largest difference {err:.4f})")
+
+# =============================================================================
+# 3. SAVE
+# =============================================================================
+def write_matrix(matrix, path):
+    """line_name,1,2,...,n then one row of 0/1 per line (fast for 10,000 columns)."""
+    cells = np.where(matrix.to_numpy() == 1, "1", "0")
+    with open(path, "w", newline="") as f:
+        f.write("line_name," + ",".join(str(c) for c in matrix.columns) + "\r\n")
+        for name, row in zip(matrix.index, cells):
+            f.write(name + "," + ",".join(row) + "\r\n")
+
+
+def save_and_print(matrix, summary, feeder, area_type, storm_tag,
+                   threshold=THRESHOLD, n=N_ITERATIONS, seed=SEED):
+    """Write the power-flow input (+ info file) and the summary, and print a short report."""
+    tag = f"{feeder}_{area_type}_{storm_tag}_t{threshold * 100:g}"
+    folder = feeder_folder(feeder)
+    pf_path = folder / POWERFLOW_INPUT_NAME
+    try:
+        write_matrix(matrix, pf_path)
+    except PermissionError:
+        sys.exit(f"Can't write {pf_path}\nIt is probably open in Excel. Close it and run again.")
+    (folder / "failed_lines_matrix_info.txt").write_text(
+        f"{POWERFLOW_INPUT_NAME} was made by pipeline/monte_carlo_failures.py on "
+        f"{datetime.now():%Y-%m-%d %H:%M}\n"
+        f"  feeder {feeder} ({area_type}), storm {storm_tag}\n"
+        f"  threshold {threshold:g}, {n} runs, seed {seed}\n"
+        f"  1 = the line failed in that run (a failed pole takes down every span on it).\n"
+        f"  Summary: pipeline/outputs/monte_carlo/mc_summary_{tag}.csv\n")
+
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    sum_path = OUTPUT_DIR / f"mc_summary_{tag}.csv"
+    summary.to_csv(sum_path, index=False)
+
+    a = summary.attrs
+    empty = int((summary["n_failed_lines"] == 0).sum())
+    print(f"Feeder {feeder} ({area_type}), storm {storm_tag}, threshold {threshold:g}, "
+          f"{n:,} runs (seed {seed})")
+    print(f"  sampled: {a['n_poles_sampled']} of {a['n_poles']} poles, "
+          f"{a['n_wires_sampled']} of {a['n_wires']} wires")
+    print(f"  runs with no failures: {empty:,} ({empty / n:.1%})")
+    print(f"  per run: failed poles mean {summary.n_failed_poles.mean():.1f} "
+          f"(max {summary.n_failed_poles.max()}), failed lines mean "
+          f"{summary.n_failed_lines.mean():.1f} (max {summary.n_failed_lines.max()})")
+    if a["n_poles_sampled"]:
+        print(f"  check: each sampled pole failed about as often as its p_fail "
+              f"(largest difference {a['rate_error']:.4f})")
+    print(f"Saved:\n  {pf_path.relative_to(REPO_ROOT)}   <- power-flow input"
+          f"\n  {sum_path.relative_to(REPO_ROOT)}")
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Monte Carlo failure scenarios in Melani's line_name format")
-    ap.add_argument("--poles", required=True, help="pole fragility CSV")
-    ap.add_argument("--spans", required=True, help="span fragility CSV")
-    ap.add_argument("--threshold", type=float, default=0.05, help="0.01-1.0 (default 0.05)")
-    ap.add_argument("--n", type=int, default=10_000, help="iterations (default 10000)")
-    ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--line-map", default=None, help="CSV: span_id or section_id -> line_name")
-    ap.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR),
-                    help='folder for all outputs (default: "Monte Carlo Output" next to this script)')
-    ap.add_argument("--out", default=None, help="name of the --- format file (default: from the storm)")
-    ap.add_argument("--matrix", default=None,
-                    help="name of the line x iteration table, 1 = failed (default: from the storm)")
-    ap.add_argument("--summary", default=None, help="name of the summary file (default: from the storm)")
-    ap.add_argument("--lines-dss", default=None,
-                    help="feeder Lines.dss: add a row of 0s for every line with no poles")
-    ap.add_argument("--skip-empty", action="store_true",
-                    help="leave out iterations with no failures (they still count in the summary)")
-    run(ap.parse_args())
+    """The wiring: get weather -> run fragility -> run Monte Carlo -> save and print."""
+    ice_mm, wind_ms = rf.get_weather()
+    pole_frag, span_frag = rf.run_fragility(ice_mm, wind_ms)
+    span_lines, _ = load_line_map(FEEDER_NAME, AREA_TYPE)
+    matrix, summary = run_monte_carlo(pole_frag, span_frag, span_lines)
+    save_and_print(matrix, summary, FEEDER_NAME, AREA_TYPE, rf.scenario_tag(ice_mm, wind_ms))
 
 
 if __name__ == "__main__":
