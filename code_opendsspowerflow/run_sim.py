@@ -347,6 +347,7 @@ def main():
 
     print(f"Saved results to {results_csv} and {cpdm_csv}")
     make_outputs(rows, failed_lists, n_scen)
+    run_cpdm(FEEDER_NAME, cpdm_csv, csv_path)    # CPDM for this feeder, from the files just used
 
 
 if __name__ == "__main__":
