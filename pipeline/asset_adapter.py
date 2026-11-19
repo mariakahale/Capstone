@@ -54,7 +54,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 POLEGEN_OUTPUT_DIR = REPO_ROOT / "code_polegen2" / "outputs"
 OUTPUT_DIR = Path(__file__).resolve().parent / "outputs"
 
-FEEDER_NAME = "1878"
+FEEDER_NAME = "3777"
 AREA_TYPE = "suburban"          # one of AREA_TYPES in code_polegen2/config.py ("suburban", "rural")
 
 # AGE SETTINGS -- polegen2 does not give pole ages, so they are assumed here.

@@ -1,0 +1,7 @@
+failed_lines_matrix.csv was made by pipeline/monte_carlo_failures.py on 2026-11-19 16:51
+  feeder 3777 (suburban), storm wind50ms
+  threshold 0.01, 10000 runs, seed 42
+  1 = the line failed in that run (a failed pole takes down every span on it).
+  Summary: pipeline/outputs/monte_carlo/mc_summary_3777_suburban_wind50ms_t1.csv
+  Spans: pipeline/outputs/fragility/span_fragility_3777_suburban_wind50ms.csv
+  Line map: code_polegen2/outputs/feeder_3777/mapping/feeder_3777_span_line_map_suburban.csv

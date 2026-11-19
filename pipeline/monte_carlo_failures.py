@@ -8,18 +8,20 @@ for ONE storm on ONE feeder.
     (p_fail per pole       (this file)                     failed_lines_matrix.csv
      and per wire)                                         (read by code_opendsspowerflow/run_sim.py)
 
-Run:
-    python pipeline/monte_carlo_failures.py
-The feeder and area type come from pipeline/asset_adapter.py (FEEDER_NAME, AREA_TYPE) and
-the storm from pipeline/run_fragility.py (WEATHER_SOURCE ...), so every step uses the same
-settings. Change them there, not here.
+Run (the feeder is picked the same way as in run_sim.py):
+    python pipeline/monte_carlo_failures.py --feeder 1878
+    python pipeline/monte_carlo_failures.py            (lists the feeders and asks)
+This does ONLY the Monte Carlo. It reads the fragility files run_fragility.py already
+saved in pipeline/outputs/fragility/ for that feeder, AREA_TYPE and STORM (settings below),
+so run run_fragility.py for that feeder and storm first.
 
-Structure (same pattern as run_fragility.py):
-    load_line_map(feeder, area_type)        -> which OpenDSS lines each span sits on
+Functions:
+    select_feeder()                          -> the feeder to run (--feeder, or asks)
+    load_fragility(feeder, area_type, storm) -> pole_frag, span_frag (the saved fragility files)
+    load_line_map(feeder, area_type)         -> which OpenDSS lines each span sits on
     run_monte_carlo(pole_frag, span_frag, span_lines)
-                                            -> matrix, summary   (the work; saves nothing)
-    save_and_print(matrix, summary, ...)    -> writes the files below
-    main()                                  -> get_weather -> run_fragility -> run_monte_carlo -> save
+                                             -> matrix, summary   (the work; saves nothing)
+    save_and_print(matrix, summary, ...)     -> writes the files below
 From other code (e.g. the GUI):
     from pipeline.monte_carlo_failures import load_line_map, run_monte_carlo
     span_lines, _ = load_line_map("1878", "suburban")
@@ -35,11 +37,12 @@ OUTPUTS
      so a new feeder only needs its SMART-DS folder there and its polegen2 outputs.
      Next to it, failed_lines_matrix_info.txt says which storm and settings made it.
   2. pipeline/outputs/monte_carlo/mc_summary_<feeder>_<area>_<storm>_t<threshold>.csv
-     One row per run: failed poles, spans and lines (input for the CPDM).
+     One row per run: failed poles, wires, spans and lines (input for the CPDM).
 
 HOW IT WORKS
   1. Only assets with p_fail >= THRESHOLD are sampled (Requirement 1).
-  2. Each run, each sampled pole and wire fails if u < p, u ~ Uniform(0, 1) (Kim et al.).
+  2. Each run, each sampled pole and wire fails if u <= p, u ~ Uniform(0, 1)
+     (Kim et al.: the asset fails if the random number is less than or equal to p).
   3. A span is down if its wire failed or either end pole failed. Poles are drawn ONCE
      per run, so a failed pole takes down every span attached to it.
      (p_fail_span_combined is NOT used: it would count a shared pole twice.)
@@ -47,6 +50,8 @@ HOW IT WORKS
      one line; each failed line is listed once per run).
 """
 
+import argparse
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -56,20 +61,21 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent
-sys.path.insert(0, str(REPO_ROOT))
-sys.path.insert(0, str(HERE))
-
-import run_fragility as rf                                                  # noqa: E402
-from pipeline.asset_adapter import FEEDER_NAME, AREA_TYPE                    # noqa: E402
 
 # =============================================================================
-# SETTINGS  <-- edit this block
+# SETTINGS  <-- edit this block (the feeder is picked when you run the file)
 # =============================================================================
+# Which saved fragility files to use: pipeline/outputs/fragility/
+#   pole_fragility_<feeder>_<AREA_TYPE>_<STORM>.csv  and  span_fragility_..._<STORM>.csv
+AREA_TYPE = "suburban"
+STORM = "wind50ms"      # the storm part of the file names, e.g. "wind50ms", "ice14.7mm_wind31.92ms"
+
 THRESHOLD = 0.01        # sample assets with p_fail >= this. Requirement 1 says 0.05-1.0:
                         # keep the requirement and this value in step.
 N_ITERATIONS = 10_000   # Monte Carlo runs (Objective 1)
 SEED = 42               # fixed seed: the same settings always give the same runs
 
+FRAGILITY_DIR = HERE / "outputs" / "fragility"
 POLEGEN_OUTPUT_DIR = REPO_ROOT / "code_polegen2" / "outputs"
 OPENDSS_DIR = REPO_ROOT / "data" / "opendss"
 OUTPUT_DIR = HERE / "outputs" / "monte_carlo"
@@ -79,7 +85,20 @@ POWERFLOW_INPUT_NAME = "failed_lines_matrix.csv"     # the name run_sim.py reads
 # =============================================================================
 # 1. INPUTS
 # =============================================================================
-def load_line_map(feeder=FEEDER_NAME, area_type=AREA_TYPE):
+def load_fragility(feeder, area_type=AREA_TYPE, storm=STORM):
+    """The pole and span fragility files run_fragility.py saved for this storm.
+    Returns (pole_frag, span_frag)."""
+    paths = [FRAGILITY_DIR / f"{kind}_fragility_{feeder}_{area_type}_{storm}.csv"
+             for kind in ("pole", "span")]
+    missing = [p.name for p in paths if not p.exists()]
+    if missing:
+        raise FileNotFoundError(f"Missing in {FRAGILITY_DIR}: {missing}\n"
+                                f"Run pipeline/run_fragility.py for feeder {feeder} and this "
+                                "storm first.")
+    return pd.read_csv(paths[0]), pd.read_csv(paths[1])
+
+
+def load_line_map(feeder, area_type=AREA_TYPE):
     """Which OpenDSS lines each span sits on, from polegen2's span_line_map.
     Returns ({span_id: [line names]}, path of the map)."""
     path = (POLEGEN_OUTPUT_DIR / f"feeder_{feeder}" / "mapping"
@@ -92,13 +111,45 @@ def load_line_map(feeder=FEEDER_NAME, area_type=AREA_TYPE):
     return span_lines, path
 
 
-def feeder_folder(feeder=FEEDER_NAME):
-    """The feeder's SMART-DS folder, data/opendss/<substation>/<substation>--<...><feeder>."""
+def feeder_folder(feeder):
+    """The feeder's SMART-DS folder, data/opendss/<substation>/<substation>--<...><feeder>.
+    The Monte Carlo writes failed_lines_matrix.csv here, which is where run_sim.py reads it."""
     matches = sorted(p for p in OPENDSS_DIR.glob(f"*/*--*{feeder}") if p.is_dir())
     if len(matches) != 1:
         raise FileNotFoundError(f"Expected one folder for feeder {feeder} in {OPENDSS_DIR}, "
                                 f"found {[str(p) for p in matches]}")
     return matches[0]
+
+
+def available_feeders():
+    """Feeder IDs that have a folder in data/opendss (the same feeders run_sim.py offers):
+    the number at the end of data/opendss/<substation>/<...>--<...><ID>, e.g. ['1878', '3777']."""
+    ids = set()
+    for p in OPENDSS_DIR.glob("*/*--*"):
+        m = re.search(r"(\d+)$", p.name)
+        if p.is_dir() and m:
+            ids.add(m.group(1))
+    return sorted(ids)
+
+
+def select_feeder():
+    """The feeder to run: --feeder on the command line, or asked for (as in run_sim.py)."""
+    feeders = available_feeders()
+    parser = argparse.ArgumentParser(description="Monte Carlo line failures for one feeder.")
+    parser.add_argument("-f", "--feeder", choices=feeders,
+                        help=f"Feeder ID to run ({', '.join(feeders)})")
+    args, _ = parser.parse_known_args()
+    if args.feeder:
+        return args.feeder
+
+    print("\nAvailable feeders:")
+    for f in feeders:
+        print(f"  - {f}  ({feeder_folder(f).relative_to(OPENDSS_DIR)})")
+    while True:
+        choice = input("\nEnter feeder ID to run: ").strip()
+        if choice in feeders:
+            return choice
+        print(f"Invalid selection '{choice}'. Choose from: {', '.join(feeders)}")
 
 
 # =============================================================================
@@ -135,10 +186,10 @@ def run_monte_carlo(pole_frag, span_frag, span_lines,
     pole_flag = np.flatnonzero(p_pole >= threshold)
     wire_flag = np.flatnonzero(p_wire >= threshold)
 
-    # 2. draw: fail if u < p
+    # 2. draw: fail if u <= p (Kim et al.)
     rng = np.random.default_rng(seed)
-    pole_failed = rng.random((n, len(pole_flag))) < p_pole[pole_flag]
-    wire_failed = rng.random((n, len(wire_flag))) < p_wire[wire_flag]
+    pole_failed = rng.random((n, len(pole_flag))) <= p_pole[pole_flag]
+    wire_failed = rng.random((n, len(wire_flag))) <= p_wire[wire_flag]
 
     # 3. a span is down if its wire or either end pole failed
     start_i = span_frag["start_pole"].map(pole_index).to_numpy()
@@ -155,18 +206,21 @@ def run_monte_carlo(pole_frag, span_frag, span_lines,
     for k in range(n):
         down = np.zeros(len(span_ids), dtype=bool)
         failed_poles = pole_flag[pole_failed[k]]
+        failed_wires = wire_flag[wire_failed[k]]
         for i in failed_poles:
             down[spans_of_pole[i]] = True
-        down[wire_flag[wire_failed[k]]] = True
+        down[failed_wires] = True
         down_idx = np.flatnonzero(down)
         rows = np.unique(np.concatenate([span_rows[j] for j in down_idx])) if len(down_idx) else []
         failed[rows, k] = 1
         summary.append({
             "scenario": k + 1,
             "n_failed_poles": len(failed_poles),
+            "n_failed_wires": len(failed_wires),
             "n_failed_spans": len(down_idx),
             "n_failed_lines": len(rows),
             "failed_poles": ";".join(pole_ids[failed_poles]),
+            "failed_wires": ";".join(span_ids[failed_wires]),
             "failed_spans": ";".join(span_ids[down_idx]),
             "failed_lines": ";".join(lines[r] for r in rows),
         })
@@ -209,7 +263,9 @@ def save_and_print(matrix, summary, feeder, area_type, storm_tag,
         f"  feeder {feeder} ({area_type}), storm {storm_tag}\n"
         f"  threshold {threshold:g}, {n} runs, seed {seed}\n"
         f"  1 = the line failed in that run (a failed pole takes down every span on it).\n"
-        f"  Summary: pipeline/outputs/monte_carlo/mc_summary_{tag}.csv\n")
+        f"  Summary: pipeline/outputs/monte_carlo/mc_summary_{tag}.csv\n"
+        f"  Spans: {(FRAGILITY_DIR / f'span_fragility_{feeder}_{area_type}_{storm_tag}.csv').relative_to(REPO_ROOT).as_posix()}\n"
+        f"  Line map: {(POLEGEN_OUTPUT_DIR / f'feeder_{feeder}' / 'mapping' / f'feeder_{feeder}_span_line_map_{area_type}.csv').relative_to(REPO_ROOT).as_posix()}\n")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     sum_path = OUTPUT_DIR / f"mc_summary_{tag}.csv"
@@ -232,14 +288,9 @@ def save_and_print(matrix, summary, feeder, area_type, storm_tag,
           f"\n  {sum_path.relative_to(REPO_ROOT)}")
 
 
-def main():
-    """The wiring: get weather -> run fragility -> run Monte Carlo -> save and print."""
-    ice_mm, wind_ms = rf.get_weather()
-    pole_frag, span_frag = rf.run_fragility(ice_mm, wind_ms)
-    span_lines, _ = load_line_map(FEEDER_NAME, AREA_TYPE)
-    matrix, summary = run_monte_carlo(pole_frag, span_frag, span_lines)
-    save_and_print(matrix, summary, FEEDER_NAME, AREA_TYPE, rf.scenario_tag(ice_mm, wind_ms))
-
-
 if __name__ == "__main__":
-    main()
+    feeder = select_feeder()
+    pole_frag, span_frag = load_fragility(feeder, AREA_TYPE, STORM)
+    span_lines, _ = load_line_map(feeder, AREA_TYPE)
+    matrix, summary = run_monte_carlo(pole_frag, span_frag, span_lines)
+    save_and_print(matrix, summary, feeder, AREA_TYPE, STORM)
