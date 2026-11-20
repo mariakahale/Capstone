@@ -176,3 +176,11 @@ def test_ask_weather_user_mode_enter_keeps_settings(monkeypatch):
     monkeypatch.setattr(rf, "USER_ICE_MM", 14.7)
     monkeypatch.setattr(rf, "USER_WIND_MS", 12.3)
     assert rf.ask_weather(input_fn=_typing("1", "", "")) == (14.7, 12.3)
+
+
+def test_ask_weather_user_mode_goes_through_get_weather(monkeypatch):
+    calls = []
+    real = rf.get_weather
+    monkeypatch.setattr(rf, "get_weather", lambda *a, **k: calls.append((a, k)) or real(*a, **k))
+    rf.ask_weather(input_fn=_typing("user", "17.3", "14.9"))
+    assert calls == [(("user",), {"user_ice_mm": 17.3, "user_wind_ms": 14.9})]

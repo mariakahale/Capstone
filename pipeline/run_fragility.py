@@ -164,10 +164,12 @@ def toronto_concurrent_wind():
 # =============================================================================
 # 2. WEATHER INPUT  <-- choose the storm here
 # =============================================================================
-def get_weather(source=None):
+def get_weather(source=None, user_ice_mm=None, user_wind_ms=None):
     """Decide WHERE the weather comes from. Returns (ice_mm, wind_ms).
 
-    source  : "user", "historical" or "csv". None = use WEATHER_SOURCE from SETTINGS.
+    source       : "user", "historical" or "csv". None = WEATHER_SOURCE from SETTINGS.
+    user_ice_mm, user_wind_ms : for "user" only -- the numbers typed in the terminal.
+                   None = USER_ICE_MM / USER_WIND_MS from SETTINGS.
 
     ice_mm  : radial ice on the wire (mm). 0 = wind-only storm.
     wind_ms : 3-s gust (m/s). For an ice storm, the gust DURING the ice.
@@ -175,7 +177,9 @@ def get_weather(source=None):
     """
     source = WEATHER_SOURCE if source is None else source
     if source == "user":
-        return weather_input.user_storm(USER_ICE_MM, USER_WIND_MS)
+        ice_mm = USER_ICE_MM if user_ice_mm is None else user_ice_mm
+        wind_ms = USER_WIND_MS if user_wind_ms is None else user_wind_ms
+        return weather_input.user_storm(ice_mm, wind_ms)
     if source == "historical":
         return weather_input.historical_storm(HISTORICAL_STORM_ID)
     if source == "csv":
@@ -230,14 +234,14 @@ def ask_number(question, default, input_fn=input):
 
 
 def ask_weather(input_fn=input):
-    """Terminal version of get_weather(): ask for the source (and, for "user", the
-    numbers), then return (ice_mm, wind_ms)."""
+    """Terminal front end: ask for the source (and, for "user", the numbers), then hand
+    them to get_weather() -- the ONE place the weather is fetched. Returns (ice_mm, wind_ms)."""
     source = ask_weather_source(input_fn=input_fn)
     if source == "user":
         ice_mm = ask_number("Ice on the wire, mm (0 = wind-only storm)", USER_ICE_MM, input_fn)
         wind_ms = ask_number("3-s gust, m/s (for ice: the gust DURING the ice)",
                              USER_WIND_MS, input_fn)
-        return weather_input.user_storm(ice_mm, wind_ms)
+        return get_weather("user", user_ice_mm=ice_mm, user_wind_ms=wind_ms)
     # "csv" / "historical": use the storm chosen in the SETTINGS block.
     return get_weather(source)
 
