@@ -17,6 +17,10 @@ import run_fragility as rf
 
 FRAGILITY_OUTPUTS = Path(rf.OUTPUT_DIR)
 
+# The regression tests compare with the saved feeder 1878 SUBURBAN files (the storms with
+# the most saved results). 1878 is rural in pipeline/feeders.py, so the area is set here.
+REG_FEEDER, REG_AREA = "1878", "suburban"
+
 
 # ---------------------------------------------------------------------------
 # Small tests
@@ -75,21 +79,21 @@ def _compare_with_saved(frame, saved_path):
     (14.7, 31.92),    # ice storm (Fig. 7 curves), has pole failures
 ])
 def test_results_match_saved_outputs(ice_mm, wind_ms):
-    pole_frag, span_frag = rf.run_fragility(ice_mm, wind_ms)
+    pole_frag, span_frag = rf.run_fragility(ice_mm, wind_ms, REG_FEEDER, REG_AREA)
     tag = rf.scenario_tag(ice_mm, wind_ms)
-    feeder = f"{rf.FEEDER_NAME}_{rf.AREA_TYPE}"
+    feeder = f"{REG_FEEDER}_{REG_AREA}"
     _compare_with_saved(pole_frag, FRAGILITY_OUTPUTS / f"pole_fragility_{feeder}_{tag}.csv")
     _compare_with_saved(span_frag, FRAGILITY_OUTPUTS / f"span_fragility_{feeder}_{tag}.csv")
 
 
 def test_wind_storm_breaks_no_wires():
     # Ma et al. (2020): wires don't fail from wind alone
-    _, span_frag = rf.run_fragility(0, 50)
+    _, span_frag = rf.run_fragility(0, 50, REG_FEEDER, REG_AREA)
     assert (span_frag["p_fail_wire"] == 0).all()
 
 
 def test_probabilities_are_between_0_and_1():
-    pole_frag, span_frag = rf.run_fragility(20, 31.92)
+    pole_frag, span_frag = rf.run_fragility(20, 31.92, REG_FEEDER, REG_AREA)
     for p in (pole_frag["p_fail"], span_frag["p_fail_wire"], span_frag["p_fail_span_combined"]):
         assert p.between(0, 1).all()
 
@@ -101,11 +105,13 @@ def test_probabilities_are_between_0_and_1():
 # ---------------------------------------------------------------------------
 def _run_main(monkeypatch, tmp_path, ice_mm, wind_ms):
     monkeypatch.setattr(rf, "OUTPUT_DIR", tmp_path)
+    monkeypatch.setattr(rf, "FEEDER", REG_FEEDER)
+    monkeypatch.setattr(rf, "AREA_TYPE", REG_AREA)
     monkeypatch.setattr(rf, "WEATHER_SOURCE", "user")
     monkeypatch.setattr(rf, "USER_ICE_MM", ice_mm)
     monkeypatch.setattr(rf, "USER_WIND_MS", wind_ms)
     rf.main()
-    feeder = f"{rf.FEEDER_NAME}_{rf.AREA_TYPE}"
+    feeder = f"{REG_FEEDER}_{REG_AREA}"
     tag = rf.scenario_tag(ice_mm, wind_ms)
     return (tmp_path / f"pole_fragility_{feeder}_{tag}.csv",
             tmp_path / f"span_fragility_{feeder}_{tag}.csv")
@@ -138,11 +144,14 @@ def test_main_stops_on_bad_weather_and_writes_nothing(monkeypatch, tmp_path):
 
 def test_main_ask_mode_runs_the_typed_storm(monkeypatch, tmp_path, capsys):
     # main(ask=True) is what  python3 pipeline/run_fragility.py  runs; fake the typing
-    answers = iter(["user", "17.3", "14.9"])
+    # answers: feeder 1878, weather "user" 17.3 / 14.9, no Monte Carlo
+    answers = iter(["1878", "user", "17.3", "14.9", "n"])
     monkeypatch.setattr(rf, "OUTPUT_DIR", tmp_path)
     rf.main(ask=True, input_fn=lambda prompt="": next(answers))
-    assert "scenario: ice17.3mm_wind14.9ms" in capsys.readouterr().out
-    assert any(tmp_path.glob("pole_fragility_*_ice17.3mm_wind14.9ms.csv"))
+    out = capsys.readouterr().out
+    assert "Feeder 1878 (rural), scenario: ice17.3mm_wind14.9ms" in out
+    assert (tmp_path / "pole_fragility_1878_rural_ice17.3mm_wind14.9ms.csv").exists()
+    assert "Monte Carlo:" not in out
 
 
 def test_get_weather_user_uses_typed_numbers_over_settings(monkeypatch):
@@ -150,3 +159,46 @@ def test_get_weather_user_uses_typed_numbers_over_settings(monkeypatch):
     monkeypatch.setattr(rf, "USER_WIND_MS", 50)
     assert rf.get_weather("user", user_ice_mm=17.3, user_wind_ms=14.9) == (17.3, 14.9)
     assert rf.get_weather("user") == (0, 50)
+
+
+# ---------------------------------------------------------------------------
+# Feeder choice: the area type (and so the span lengths) comes with the feeder
+# ---------------------------------------------------------------------------
+@pytest.mark.parametrize("feeder, area", [("3777", "suburban"), ("1878", "rural")])
+def test_feeder_picks_its_area_type(monkeypatch, feeder, area):
+    monkeypatch.setattr(rf, "AREA_TYPE", None)
+    assert rf.resolve_feeder(feeder) == (feeder, area)
+
+
+def test_rural_spans_are_longer_than_suburban():
+    _, sub = rf.run_fragility(0, 50, "3777")
+    _, rur = rf.run_fragility(0, 50, "1878")
+    assert rur["span_true_m"].median() > 2 * sub["span_true_m"].median()
+
+
+def test_main_ask_mode_runs_the_monte_carlo(monkeypatch, tmp_path):
+    # feeder 3777, wind 50 m/s, Monte Carlo yes with threshold 0.05.
+    # 50 runs (not 10,000) to keep it fast; saving is recorded, not done, so the real
+    # failed_lines_matrix.csv in data/opendss is not touched.
+    answers = iter(["1", "1", "0", "50", "y", "0.05"])
+    monkeypatch.setattr(rf, "OUTPUT_DIR", tmp_path)
+    monkeypatch.setattr(rf.mc, "N_ITERATIONS", 50)
+    saved = {}
+    monkeypatch.setattr(rf.mc, "save_and_print",
+                        lambda matrix, summary, *a, **k: saved.update(
+                            matrix=matrix, summary=summary, args=a, **k))
+    rf.main(ask=True, input_fn=lambda prompt="": next(answers))
+    assert saved["args"] == ("3777", "suburban", "wind50ms")
+    assert saved["threshold"] == 0.05 and saved["n"] == 50
+    assert saved["matrix"].shape[1] == 50 and len(saved["summary"]) == 50
+
+
+def test_main_ask_mode_rejects_a_bad_threshold_then_accepts(monkeypatch, tmp_path, capsys):
+    answers = iter(["3777", "1", "0", "50", "y", "5", "0.001", "0.5"])
+    monkeypatch.setattr(rf, "OUTPUT_DIR", tmp_path)
+    monkeypatch.setattr(rf.mc, "N_ITERATIONS", 10)
+    saved = {}
+    monkeypatch.setattr(rf.mc, "save_and_print", lambda *a, **k: saved.update(k))
+    rf.main(ask=True, input_fn=lambda prompt="": next(answers))
+    assert saved["threshold"] == 0.5
+    assert capsys.readouterr().out.count("between 0.01 and 1") == 2

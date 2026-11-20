@@ -2,7 +2,7 @@
 asset_adapter.py
 ================
 Translates Laiba's pole/span generator output
-(code_polegen2/outputs/feeder_<F>/assets/*.csv) into the
+(pipeline/input_feedercsvfiles/feeder_<F>/assets/*_<version>.csv) into the
 two standard tables the fragility step reads. This is the ONLY file that knows the
 polegen2 CSV layout; if her output changes, only this file changes.
 
@@ -45,17 +45,20 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "agedistribution_alectra"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from alectra_age_model import assign_alectra_ages   # noqa: E402
+import feeders                                       # noqa: E402  (where polegen2's files are)
 
 # =============================================================================
 # SETTINGS  <-- edit this block
 # =============================================================================
 REPO_ROOT = Path(__file__).resolve().parents[1]
-POLEGEN_OUTPUT_DIR = REPO_ROOT / "code_polegen2" / "outputs"
 OUTPUT_DIR = Path(__file__).resolve().parent / "outputs"
 
+# Default feeder when this file is run by itself (run_fragility.py passes its own).
+# The area type (and so the span lengths) comes with the feeder: see pipeline/feeders.py.
 FEEDER_NAME = "3777"
-AREA_TYPE = "suburban"          # one of AREA_TYPES in code_polegen2/config.py ("suburban", "rural")
+AREA_TYPE = feeders.area_type_of(FEEDER_NAME)
 
 # AGE SETTINGS -- polegen2 does not give pole ages, so they are assumed here.
 #   "alectra" : Alectra 2023 wood pole age distribution, one installation age per line
@@ -118,22 +121,10 @@ POLE_COLUMNS = ["pole_id", "pole_type", "x", "y", "age_years", "age_true_years",
 # =============================================================================
 # 1. LOAD (the only part that knows polegen2 file names)
 # =============================================================================
-def polegen_paths(feeder=FEEDER_NAME, area_type=AREA_TYPE, folder=POLEGEN_OUTPUT_DIR):
-    # polegen2 layout: outputs/feeder_<F>/assets/feeder_<F>_poles_<area>.csv
-    folder = folder / f"feeder_{feeder}" / "assets"
-    return {
-        "poles": folder / f"feeder_{feeder}_poles_{area_type}.csv",
-        "spans": folder / f"feeder_{feeder}_spans_{area_type}.csv",
-    }
-
-
-def load_polegen(feeder=FEEDER_NAME, area_type=AREA_TYPE, folder=POLEGEN_OUTPUT_DIR):
-    paths = polegen_paths(feeder, area_type, folder)
-    missing = [str(p) for p in paths.values() if not p.exists()]
-    if missing:
-        raise FileNotFoundError(
-            "Missing polegen2 output(s):\n  " + "\n  ".join(missing) +
-            "\nRun code_polegen2/main.py first (check FEEDER_NAME / AREA_TYPE match).")
+def load_polegen(feeder=FEEDER_NAME, area_type=AREA_TYPE):
+    """polegen2's raw poles and spans for this feeder. If the files for the current
+    polegen2 version are not there yet, feeders.ensure_feeder_files() runs polegen2 first."""
+    paths = feeders.ensure_feeder_files(feeder, area_type)
     return pd.read_csv(paths["poles"]), pd.read_csv(paths["spans"])
 
 

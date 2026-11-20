@@ -2,7 +2,7 @@
 run_fragility.py
 ================
 Step 2 of the pipeline: failure probability of every pole and every wire span on
-the feeder, for ONE storm scenario.
+ONE feeder, for ONE storm scenario -- and, if asked, the Monte Carlo (step 3) right after.
 
     asset_adapter.py  ->  run_fragility.py  ->  pipeline/outputs/fragility/
     (poles, spans)        (this file)            pole_fragility_<scenario>.csv
@@ -32,18 +32,26 @@ and checks ONLY. Do not feed it into the Monte Carlo: a shared pole would be cou
 
 Run:
     python pipeline/run_fragility.py
-        The terminal asks which weather source to use ("user", "csv" or "historical").
+        The terminal asks, in order:
+          1. the feeder   (3777 Toronto suburban / 1878 Thunder Bay rural -- pipeline/feeders.py)
+          2. the weather  ("user", "csv" or "historical"; for "user", the ice and wind)
+          3. whether to run the Monte Carlo, and its threshold
         Press Enter at any question to keep the value in the SETTINGS block.
+        If the feeder's polegen2 files for the current version are missing, polegen2 is
+        run first (pipeline/feeders.py).
 
 Structure:
     get_weather(source, ...)       -> ice_mm, wind_ms   (WHERE the weather comes from)
-    run_fragility(ice_mm, wind_ms) -> pole_frag, span_frag   (the work; saves nothing)
+    run_fragility(ice_mm, wind_ms, feeder)
+                                   -> pole_frag, span_frag   (the work; saves nothing)
+    run_monte_carlo_step(...)      -> runs pipeline/monte_carlo_failures.py on the result
     main(ask=True)                 -> ask -> get_weather -> run_fragility -> save_and_print
+                                      -> (Monte Carlo)
     main()                         -> same, but uses the SETTINGS block (no prompts; tests)
     The terminal questions live in pipeline/terminal_prompts.py.
 From other code (e.g. the GUI):
     from pipeline.run_fragility import run_fragility
-    pole_frag, span_frag = run_fragility(ice_mm=17.3, wind_ms=14.9)
+    pole_frag, span_frag = run_fragility(ice_mm=17.3, wind_ms=14.9, feeder="3777")
 """
 
 import sys
@@ -63,7 +71,10 @@ sys.path.insert(0, str(FRAG_DIR / "figure4_maetall2020"))
 sys.path.insert(0, str(FRAG_DIR / "figure7_maetall2020" / "differentspanlengths"))
 sys.path.insert(0, str(REPO_ROOT / "code_weather"))
 
-from pipeline.asset_adapter import build_asset_tables, FEEDER_NAME, AREA_TYPE   # noqa: E402
+sys.path.insert(0, str(HERE))
+from pipeline.asset_adapter import build_asset_tables                           # noqa: E402
+import feeders                                                                   # noqa: E402
+from pipeline import monte_carlo_failures as mc                                  # noqa: E402
 from figure4_fragility_by_span_lookup import lookup_wind_fragility_pole_span   # noqa: E402
 from pole_fig7_lookup import lookup_pole_ice_fragility                          # noqa: E402
 from wire_fig7d_lookup import lookup_wire_fragility, _site                       # noqa: E402
@@ -73,6 +84,13 @@ from pipeline import terminal_prompts                                           
 # =============================================================================
 # SETTINGS  <-- edit this block
 # =============================================================================
+# --- FEEDER: which feeder to model --------------------------------------------
+# The feeders and their area types are listed in pipeline/feeders.py:
+#   "3777" : Toronto, suburban (spans 100-150 ft)
+#   "1878" : Thunder Bay, rural (spans 300-400 ft)
+FEEDER = "3777"                 # also the default when the terminal asks
+AREA_TYPE = None                # None = the feeder's own area type. Set only to override.
+
 # --- WEATHER: which storm to model -------------------------------------------
 # Where the weather comes from (see code_weather/weather_input.py):
 #   "user"       : the two numbers below (option 3)
@@ -101,6 +119,11 @@ STRINGING = "slack"             # wire stringing rule: "slack" (default) or "ten
 
 # Summary only: how many assets are at or above this failure probability
 THRESHOLD = 0.10
+
+# --- MONTE CARLO (step 3, pipeline/monte_carlo_failures.py) -------------------
+RUN_MONTE_CARLO = False         # with no prompts (main()): run it after the fragility?
+                                # (The terminal asks, and defaults to yes.)
+MC_THRESHOLD = mc.THRESHOLD     # sample assets with p_fail >= this (0.01-1.0)
 
 OUTPUT_DIR = HERE / "outputs" / "fragility"
 
@@ -198,28 +221,39 @@ def scenario_tag(ice_mm, wind_ms):
 # =============================================================================
 # 3. RUN
 # =============================================================================
-def run_fragility(ice_mm, wind_ms):
+def resolve_feeder(feeder=None, area_type=None):
+    """(feeder, area_type) with the SETTINGS / pipeline/feeders.py defaults filled in."""
+    feeder = FEEDER if feeder is None else feeder
+    if area_type is None:
+        area_type = AREA_TYPE if AREA_TYPE is not None else feeders.area_type_of(feeder)
+    return feeder, area_type
+
+
+def run_fragility(ice_mm, wind_ms, feeder=None, area_type=None):
     """Weather in -> failure probabilities out. Returns (pole_frag, span_frag).
+    feeder None = FEEDER from SETTINGS; area_type None = the feeder's own.
     Saves nothing, so the GUI can call it directly."""
     if ice_mm < 0 or wind_ms < 0:
         raise ValueError(f"ice_mm and wind_ms must be >= 0 (got {ice_mm}, {wind_ms}).")
-    poles, spans = build_asset_tables()
+    feeder, area_type = resolve_feeder(feeder, area_type)
+    poles, spans = build_asset_tables(feeder, area_type)
     pole_frag = pole_fragility(poles, ice_mm, wind_ms)
     span_frag = wire_fragility(spans, ice_mm, wind_ms)
     span_frag = add_span_combined(span_frag, pole_frag)
     return pole_frag, span_frag
 
 
-def save_and_print(pole_frag, span_frag, tag):
+def save_and_print(pole_frag, span_frag, tag, feeder=None, area_type=None):
     """Write the two CSVs to OUTPUT_DIR and print a short summary."""
+    feeder, area_type = resolve_feeder(feeder, area_type)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    pole_path = OUTPUT_DIR / f"pole_fragility_{FEEDER_NAME}_{AREA_TYPE}_{tag}.csv"
-    span_path = OUTPUT_DIR / f"span_fragility_{FEEDER_NAME}_{AREA_TYPE}_{tag}.csv"
+    pole_path = OUTPUT_DIR / f"pole_fragility_{feeder}_{area_type}_{tag}.csv"
+    span_path = OUTPUT_DIR / f"span_fragility_{feeder}_{area_type}_{tag}.csv"
     pole_frag.to_csv(pole_path, index=False)
     span_frag.to_csv(span_path, index=False)
 
     pp, pw, ps = pole_frag["p_fail"], span_frag["p_fail_wire"], span_frag["p_fail_span_combined"]
-    print(f"Feeder {FEEDER_NAME} ({AREA_TYPE}), scenario: {tag}")
+    print(f"Feeder {feeder} ({area_type}), scenario: {tag}")
     print(f"  poles: {len(pp):5d}  mean P_fail {pp.mean():.4f}  max {pp.max():.4f}  "
           f">= {THRESHOLD:g}: {(pp >= THRESHOLD).sum()}")
     for ph, g in pole_frag.groupby("n_phases")["p_fail"]:
@@ -232,18 +266,42 @@ def save_and_print(pole_frag, span_frag, tag):
     print(f"Saved:\n  {pole_path.name}\n  {span_path.name}")
 
 
+def run_monte_carlo_step(pole_frag, span_frag, feeder, area_type, tag, threshold):
+    """Step 3 on the fragility just made: pipeline/monte_carlo_failures.py.
+    Writes failed_lines_matrix.csv (power-flow input) to the feeder's data/opendss folder
+    and mc_summary_<...>.csv to pipeline/outputs/monte_carlo/."""
+    print(f"\nMonte Carlo: {mc.N_ITERATIONS:,} runs, threshold {threshold:g} ...")
+    span_lines, _ = mc.load_line_map(feeder, area_type)
+    settings = dict(threshold=threshold, n=mc.N_ITERATIONS, seed=mc.SEED)
+    matrix, summary = mc.run_monte_carlo(pole_frag, span_frag, span_lines, **settings)
+    mc.save_and_print(matrix, summary, feeder, area_type, tag, **settings)
+
+
 def main(ask=False, input_fn=input):
-    """The wiring: get weather -> run fragility -> save and print.
-    ask=True : ask for the weather in the terminal (what  python run_fragility.py  does).
+    """The wiring: feeder + weather -> run fragility -> save and print -> (Monte Carlo).
+    ask=True : ask in the terminal (what  python run_fragility.py  does).
     ask=False: use the SETTINGS block, no prompts (tests, other scripts)."""
     if ask:
+        feeder = terminal_prompts.ask_feeder(
+            {f: feeders.describe(f) for f in feeders.FEEDERS}, FEEDER, input_fn)
+        feeder, area_type = resolve_feeder(feeder)
         source, ice_mm, wind_ms = terminal_prompts.ask_weather(
             WEATHER_SOURCE, USER_ICE_MM, USER_WIND_MS, input_fn)
+        # get the weather BEFORE the next question, so a source that isn't ready
+        # (csv / historical for now) stops here instead of after more questions
         ice_mm, wind_ms = get_weather(source, user_ice_mm=ice_mm, user_wind_ms=wind_ms)
+        run_mc, mc_threshold = terminal_prompts.ask_monte_carlo(
+            MC_THRESHOLD, mc.THRESHOLD_MIN, mc.THRESHOLD_MAX, input_fn=input_fn)
     else:
+        feeder, area_type = resolve_feeder()
+        run_mc, mc_threshold = RUN_MONTE_CARLO, MC_THRESHOLD
         ice_mm, wind_ms = get_weather()
-    pole_frag, span_frag = run_fragility(ice_mm, wind_ms)
-    save_and_print(pole_frag, span_frag, scenario_tag(ice_mm, wind_ms))
+
+    tag = scenario_tag(ice_mm, wind_ms)
+    pole_frag, span_frag = run_fragility(ice_mm, wind_ms, feeder, area_type)
+    save_and_print(pole_frag, span_frag, tag, feeder, area_type)
+    if run_mc:
+        run_monte_carlo_step(pole_frag, span_frag, feeder, area_type, tag, mc_threshold)
 
 
 if __name__ == "__main__":

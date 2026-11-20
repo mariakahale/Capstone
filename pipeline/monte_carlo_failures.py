@@ -8,12 +8,15 @@ for ONE storm on ONE feeder.
     (p_fail per pole       (this file)                     failed_lines_matrix.csv
      and per wire)                                         (read by code_opendsspowerflow/run_sim.py)
 
-Run (the feeder is picked the same way as in run_sim.py):
+Usually run FROM run_fragility.py: it asks whether to run the Monte Carlo and for the
+threshold, then calls run_monte_carlo() with the fragility it just made.
+
+Run by itself (the feeder is picked the same way as in run_sim.py):
     python pipeline/monte_carlo_failures.py --feeder 1878
     python pipeline/monte_carlo_failures.py            (lists the feeders and asks)
-This does ONLY the Monte Carlo. It reads the fragility files run_fragility.py already
-saved in pipeline/outputs/fragility/ for that feeder, AREA_TYPE and STORM (settings below),
-so run run_fragility.py for that feeder and storm first.
+This reads the fragility files run_fragility.py already saved in pipeline/outputs/fragility/
+for that feeder and STORM (settings below), so run run_fragility.py for them first.
+The area type comes with the feeder (pipeline/feeders.py).
 
 Functions:
     select_feeder()                          -> the feeder to run (--feeder, or asks)
@@ -24,7 +27,7 @@ Functions:
     save_and_print(matrix, summary, ...)     -> writes the files below
 From other code (e.g. the GUI):
     from pipeline.monte_carlo_failures import load_line_map, run_monte_carlo
-    span_lines, _ = load_line_map("1878", "suburban")
+    span_lines, _ = load_line_map("1878")              # area type from pipeline/feeders.py
     matrix, summary = run_monte_carlo(pole_frag, span_frag, span_lines)
 
 OUTPUTS
@@ -61,22 +64,24 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 REPO_ROOT = HERE.parent
+sys.path.insert(0, str(HERE))
+import feeders                                      # noqa: E402  (feeder list, polegen2 files)
 
 # =============================================================================
 # SETTINGS  <-- edit this block (the feeder is picked when you run the file)
 # =============================================================================
-# Which saved fragility files to use: pipeline/outputs/fragility/
-#   pole_fragility_<feeder>_<AREA_TYPE>_<STORM>.csv  and  span_fragility_..._<STORM>.csv
-AREA_TYPE = "suburban"
+# Which saved fragility files to use (only when this file is run by itself):
+#   pipeline/outputs/fragility/pole_fragility_<feeder>_<area>_<STORM>.csv  and  span_...
+# The area type is the feeder's own (pipeline/feeders.py).
 STORM = "wind50ms"      # the storm part of the file names, e.g. "wind50ms", "ice14.7mm_wind31.92ms"
 
 THRESHOLD = 0.01        # sample assets with p_fail >= this. Requirement 1 says 0.05-1.0:
                         # keep the requirement and this value in step.
+THRESHOLD_MIN, THRESHOLD_MAX = 0.01, 1.0   # allowed range (also used by the terminal prompt)
 N_ITERATIONS = 10_000   # Monte Carlo runs (Objective 1)
 SEED = 42               # fixed seed: the same settings always give the same runs
 
 FRAGILITY_DIR = HERE / "outputs" / "fragility"
-POLEGEN_OUTPUT_DIR = REPO_ROOT / "code_polegen2" / "outputs"
 OPENDSS_DIR = REPO_ROOT / "data" / "opendss"
 OUTPUT_DIR = HERE / "outputs" / "monte_carlo"
 POWERFLOW_INPUT_NAME = "failed_lines_matrix.csv"     # the name run_sim.py reads
@@ -85,9 +90,10 @@ POWERFLOW_INPUT_NAME = "failed_lines_matrix.csv"     # the name run_sim.py reads
 # =============================================================================
 # 1. INPUTS
 # =============================================================================
-def load_fragility(feeder, area_type=AREA_TYPE, storm=STORM):
+def load_fragility(feeder, area_type=None, storm=STORM):
     """The pole and span fragility files run_fragility.py saved for this storm.
-    Returns (pole_frag, span_frag)."""
+    area_type None = the feeder's own. Returns (pole_frag, span_frag)."""
+    area_type = feeders.area_type_of(feeder) if area_type is None else area_type
     paths = [FRAGILITY_DIR / f"{kind}_fragility_{feeder}_{area_type}_{storm}.csv"
              for kind in ("pole", "span")]
     missing = [p.name for p in paths if not p.exists()]
@@ -98,14 +104,11 @@ def load_fragility(feeder, area_type=AREA_TYPE, storm=STORM):
     return pd.read_csv(paths[0]), pd.read_csv(paths[1])
 
 
-def load_line_map(feeder, area_type=AREA_TYPE):
+def load_line_map(feeder, area_type=None):
     """Which OpenDSS lines each span sits on, from polegen2's span_line_map.
-    Returns ({span_id: [line names]}, path of the map)."""
-    path = (POLEGEN_OUTPUT_DIR / f"feeder_{feeder}" / "mapping"
-            / f"feeder_{feeder}_span_line_map_{area_type}.csv")
-    if not path.exists():
-        raise FileNotFoundError(f"No span-line map for feeder {feeder} ({area_type}): {path}\n"
-                                "Run code_polegen2/main.py for this feeder first.")
+    area_type None = the feeder's own. Runs polegen2 first if the map for the current
+    polegen2 version is missing. Returns ({span_id: [line names]}, path of the map)."""
+    path = feeders.ensure_feeder_files(feeder, area_type)["span_line_map"]
     m = pd.read_csv(path)
     span_lines = m.groupby("span_id")["line_name"].apply(lambda s: sorted(set(s))).to_dict()
     return span_lines, path
@@ -167,8 +170,8 @@ def run_monte_carlo(pole_frag, span_frag, span_lines,
                 values 1 (failed) / 0
       summary : DataFrame, one row per run
     """
-    if not 0.01 <= threshold <= 1.0:
-        raise ValueError("threshold must be between 0.01 and 1.0")
+    if not THRESHOLD_MIN <= threshold <= THRESHOLD_MAX:
+        raise ValueError(f"threshold must be between {THRESHOLD_MIN} and {THRESHOLD_MAX}")
     pole_ids = pole_frag["pole_id"].to_numpy()
     pole_index = {pid: i for i, pid in enumerate(pole_ids)}
     for col in ("start_pole", "end_pole"):
@@ -265,7 +268,7 @@ def save_and_print(matrix, summary, feeder, area_type, storm_tag,
         f"  1 = the line failed in that run (a failed pole takes down every span on it).\n"
         f"  Summary: pipeline/outputs/monte_carlo/mc_summary_{tag}.csv\n"
         f"  Spans: {(FRAGILITY_DIR / f'span_fragility_{feeder}_{area_type}_{storm_tag}.csv').relative_to(REPO_ROOT).as_posix()}\n"
-        f"  Line map: {(POLEGEN_OUTPUT_DIR / f'feeder_{feeder}' / 'mapping' / f'feeder_{feeder}_span_line_map_{area_type}.csv').relative_to(REPO_ROOT).as_posix()}\n")
+        f"  Line map: {feeders.feeder_file_paths(feeder, area_type)['span_line_map'].relative_to(REPO_ROOT).as_posix()}\n")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     sum_path = OUTPUT_DIR / f"mc_summary_{tag}.csv"
@@ -290,7 +293,8 @@ def save_and_print(matrix, summary, feeder, area_type, storm_tag,
 
 if __name__ == "__main__":
     feeder = select_feeder()
-    pole_frag, span_frag = load_fragility(feeder, AREA_TYPE, STORM)
-    span_lines, _ = load_line_map(feeder, AREA_TYPE)
+    area_type = feeders.area_type_of(feeder)
+    pole_frag, span_frag = load_fragility(feeder, area_type, STORM)
+    span_lines, _ = load_line_map(feeder, area_type)
     matrix, summary = run_monte_carlo(pole_frag, span_frag, span_lines)
-    save_and_print(matrix, summary, feeder, AREA_TYPE, STORM)
+    save_and_print(matrix, summary, feeder, area_type, STORM)

@@ -10,6 +10,11 @@ Usage:
     python main.py --feeders 1878               # one feeder, all area types
     python main.py --areas rural                # all feeders, rural only
     python main.py --feeders 1878 3777 --areas suburban rural
+
+Outputs go to pipeline/input_feedercsvfiles/feeder_<F>/, with
+config.POLEGEN_VERSION (e.g. _v1) at the end of every file name.
+The pipeline also runs this file by itself (pipeline/feeders.py)
+when the files for the current version are missing.
 """
 
 import argparse
@@ -20,7 +25,8 @@ from config import (
     OUTPUT_DIR,
     output_path,
     AREA_TYPES,
-    SPAN_RANGES_FT
+    SPAN_RANGES_FT,
+    POLEGEN_VERSION
 )
 
 from grid.feeder import (
@@ -359,7 +365,7 @@ def main():
             f"exceptions {row['exception_spans']:>4}"
         )
 
-    print(f"\nOutputs saved to:\n{OUTPUT_DIR}")
+    print(f"\nOutputs ({POLEGEN_VERSION}) saved to:\n{OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

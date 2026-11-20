@@ -56,30 +56,41 @@ FALLBACK_BUSCOORDS = {
 # =========================================================
 # Outputs
 #
-# outputs/
+# polegen2 writes straight into the pipeline's input folder,
+# because the pipeline is the only thing that reads these files:
+#
+# pipeline/input_feedercsvfiles/
 #   feeder_1878/
 #     assets/        poles and spans: the pole/span model itself
 #                    (read by pipeline/asset_adapter.py for fragility)
-#       feeder_1878_poles_suburban.csv
-#       feeder_1878_spans_suburban.csv
-#       ... and the same for rural
-#     mapping/       pole/span -> OpenDSS line links (for power flow)
-#       feeder_1878_pole_line_map_suburban.csv
-#       feeder_1878_span_line_map_suburban.csv
-#       ...
+#       feeder_1878_poles_rural_v1.csv
+#       feeder_1878_spans_rural_v1.csv
+#     mapping/       pole/span -> OpenDSS line links
+#                    (read by pipeline/monte_carlo_failures.py)
+#       feeder_1878_pole_line_map_rural_v1.csv
+#       feeder_1878_span_line_map_rural_v1.csv
 #     intermediate/  working tables, useful for checking the model
-#       feeder_1878_overhead.csv
-#       feeder_1878_routes.csv
-#       feeder_1878_span_plan_suburban.csv
-#       ...
+#       feeder_1878_overhead_v1.csv
+#       feeder_1878_routes_v1.csv
+#       feeder_1878_span_plan_rural_v1.csv
 #   feeder_3777/
 #     (same layout)
 #
-# File names keep the feeder and area type, so a file still
-# makes sense if it is copied out of its folder.
+# File names keep the feeder, area type and polegen version,
+# so a file still makes sense if it is copied out of its folder.
 # =========================================================
 
-OUTPUT_DIR = BASE_DIR / "outputs"
+# ---------------------------------------------------------
+# POLEGEN_VERSION  <-- bump this (v1 -> v2 ...) whenever you
+# change polegen2 code in a way that changes its output.
+# The pipeline (pipeline/feeders.py) only uses files whose
+# name ends in the CURRENT version; if they are missing it
+# runs polegen2 again for that feeder, so old files from a
+# previous version are never used by mistake.
+# ---------------------------------------------------------
+POLEGEN_VERSION = "v1"
+
+OUTPUT_DIR = REPO_ROOT / "pipeline" / "input_feedercsvfiles"
 
 # Which subfolder each output table goes in
 OUTPUT_GROUPS = {
@@ -100,11 +111,11 @@ def output_path(feeder_name, table_name, area_type=None):
     Full path for one output CSV, creating its folder if needed.
 
     area_type is left out for tables that don't depend on span
-    length (overhead, routes).
+    length (overhead, routes). Every name ends in POLEGEN_VERSION.
 
     Example:
         output_path("1878", "poles", "rural")
-        -> outputs/feeder_1878/assets/feeder_1878_poles_rural.csv
+        -> pipeline/input_feedercsvfiles/feeder_1878/assets/feeder_1878_poles_rural_v1.csv
     """
     folder = (
         OUTPUT_DIR
@@ -114,9 +125,10 @@ def output_path(feeder_name, table_name, area_type=None):
     folder.mkdir(parents=True, exist_ok=True)
 
     if area_type is None:
-        file_name = f"feeder_{feeder_name}_{table_name}.csv"
+        file_name = f"feeder_{feeder_name}_{table_name}_{POLEGEN_VERSION}.csv"
     else:
-        file_name = f"feeder_{feeder_name}_{table_name}_{area_type}.csv"
+        file_name = (f"feeder_{feeder_name}_{table_name}_{area_type}"
+                     f"_{POLEGEN_VERSION}.csv")
 
     return folder / file_name
 
