@@ -31,12 +31,16 @@ p_fail_span_combined (Eq. 11: wire + its two end poles, assumed independent) is 
 and checks ONLY. Do not feed it into the Monte Carlo: a shared pole would be counted twice.
 
 Run:
-    python pipeline/run_fragility.py           (choose the storm in get_weather() first)
+    python pipeline/run_fragility.py
+        The terminal asks which weather source to use ("user", "csv" or "historical").
+        Press Enter at any question to keep the value in the SETTINGS block.
 
 Structure:
-    get_weather()                  -> ice_mm, wind_ms   (WHERE the weather comes from)
+    ask_weather_source()           -> "user" / "csv" / "historical"   (terminal prompt)
+    get_weather(source)            -> ice_mm, wind_ms   (WHERE the weather comes from)
     run_fragility(ice_mm, wind_ms) -> pole_frag, span_frag   (the work; saves nothing)
-    main()                         -> get_weather -> run_fragility -> save_and_print
+    main(ask=True)                 -> ask -> get_weather -> run_fragility -> save_and_print
+    main()                         -> same, but uses the SETTINGS block (no prompts; tests)
 From other code (e.g. the GUI):
     from pipeline.run_fragility import run_fragility
     pole_frag, span_frag = run_fragility(ice_mm=17.3, wind_ms=14.9)
@@ -73,7 +77,8 @@ import weather_input                                                            
 #   "user"       : the two numbers below (option 3)
 #   "historical" : a storm from the historical catalogue (option 2) -- not implemented yet
 #   "csv"        : a storm found in a weather CSV (option 1)       -- not implemented yet
-WEATHER_SOURCE = "user"
+WEATHER_SOURCE = "user"          # also the default when the terminal asks
+WEATHER_SOURCES = ("user", "csv", "historical")
 
 # "user": ice on the wire (mm; 0 = wind-only storm) and 3-s gust (m/s; for an ice
 # storm, the gust DURING the ice). Storms modelled so far:
@@ -159,21 +164,82 @@ def toronto_concurrent_wind():
 # =============================================================================
 # 2. WEATHER INPUT  <-- choose the storm here
 # =============================================================================
-def get_weather():
-    """Decide WHERE the weather comes from (WEATHER_SOURCE). Returns (ice_mm, wind_ms).
+def get_weather(source=None):
+    """Decide WHERE the weather comes from. Returns (ice_mm, wind_ms).
+
+    source  : "user", "historical" or "csv". None = use WEATHER_SOURCE from SETTINGS.
 
     ice_mm  : radial ice on the wire (mm). 0 = wind-only storm.
     wind_ms : 3-s gust (m/s). For an ice storm, the gust DURING the ice.
     The sources live in code_weather/weather_input.py; they all return these two numbers.
     """
-    if WEATHER_SOURCE == "user":
+    source = WEATHER_SOURCE if source is None else source
+    if source == "user":
         return weather_input.user_storm(USER_ICE_MM, USER_WIND_MS)
-    if WEATHER_SOURCE == "historical":
+    if source == "historical":
         return weather_input.historical_storm(HISTORICAL_STORM_ID)
-    if WEATHER_SOURCE == "csv":
+    if source == "csv":
         return weather_input.storm_from_csv(WEATHER_CSV, CSV_STORM_ID)
-    raise ValueError(f"Unknown WEATHER_SOURCE {WEATHER_SOURCE!r} "
+    raise ValueError(f"Unknown WEATHER_SOURCE {source!r} "
                      "(use 'user', 'historical' or 'csv').")
+
+
+# --- terminal prompts (only used by  python pipeline/run_fragility.py) -------
+# input_fn is the function that reads one line from the user. It is input() normally;
+# tests pass a fake one so they can "type" answers without a keyboard.
+def ask_weather_source(default=None, input_fn=input):
+    """Ask in the terminal which weather source to use. Returns "user", "csv" or
+    "historical". Accepts the number (1-3) or the name; Enter = the default."""
+    default = WEATHER_SOURCE if default is None else default
+    descriptions = {
+        "user":       "type the ice and wind yourself",
+        "csv":        "a storm from a weather CSV",
+        "historical": "a storm from the historical catalogue",
+    }
+    print("\nWhich weather source?")
+    for i, name in enumerate(WEATHER_SOURCES, start=1):
+        mark = "  (default)" if name == default else ""
+        print(f"  {i}. {name:<11s} - {descriptions[name]}{mark}")
+    while True:
+        answer = input_fn(f"Choose 1-{len(WEATHER_SOURCES)} or a name [{default}]: ")
+        answer = answer.strip().lower()
+        if answer == "":
+            return default
+        if answer.isdigit() and 1 <= int(answer) <= len(WEATHER_SOURCES):
+            return WEATHER_SOURCES[int(answer) - 1]
+        if answer in WEATHER_SOURCES:
+            return answer
+        print(f"  '{answer}' is not an option. Try again.")
+
+
+def ask_number(question, default, input_fn=input):
+    """Ask for one number >= 0 in the terminal. Enter = default."""
+    while True:
+        answer = input_fn(f"{question} [{default:g}]: ").strip()
+        if answer == "":
+            return float(default)
+        try:
+            value = float(answer)
+        except ValueError:
+            print(f"  '{answer}' is not a number. Try again.")
+            continue
+        if value < 0 or value != value or value in (float("inf"), float("-inf")):
+            print("  Must be a number >= 0. Try again.")
+            continue
+        return value
+
+
+def ask_weather(input_fn=input):
+    """Terminal version of get_weather(): ask for the source (and, for "user", the
+    numbers), then return (ice_mm, wind_ms)."""
+    source = ask_weather_source(input_fn=input_fn)
+    if source == "user":
+        ice_mm = ask_number("Ice on the wire, mm (0 = wind-only storm)", USER_ICE_MM, input_fn)
+        wind_ms = ask_number("3-s gust, m/s (for ice: the gust DURING the ice)",
+                             USER_WIND_MS, input_fn)
+        return weather_input.user_storm(ice_mm, wind_ms)
+    # "csv" / "historical": use the storm chosen in the SETTINGS block.
+    return get_weather(source)
 
 
 def scenario_tag(ice_mm, wind_ms):
@@ -220,12 +286,19 @@ def save_and_print(pole_frag, span_frag, tag):
     print(f"Saved:\n  {pole_path.name}\n  {span_path.name}")
 
 
-def main():
-    """The wiring: get weather -> run fragility -> save and print."""
-    ice_mm, wind_ms = get_weather()
+def main(ask=False):
+    """The wiring: get weather -> run fragility -> save and print.
+    ask=True : ask for the weather in the terminal (what  python run_fragility.py  does).
+    ask=False: use the SETTINGS block, no prompts (tests, other scripts)."""
+    ice_mm, wind_ms = ask_weather() if ask else get_weather()
     pole_frag, span_frag = run_fragility(ice_mm, wind_ms)
     save_and_print(pole_frag, span_frag, scenario_tag(ice_mm, wind_ms))
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main(ask=True)
+    except NotImplementedError as e:          # csv / historical are not finished yet
+        sys.exit(f"\nThat weather source is not ready yet: {e}")
+    except (KeyboardInterrupt, EOFError):     # Ctrl+C / Ctrl+D at a prompt
+        sys.exit("\nCancelled.")

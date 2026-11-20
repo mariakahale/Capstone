@@ -133,3 +133,46 @@ def test_main_stops_on_bad_weather_and_writes_nothing(monkeypatch, tmp_path):
     with pytest.raises(ValueError):
         _run_main(monkeypatch, tmp_path, -5, 14.9)
     assert list(tmp_path.iterdir()) == []
+
+
+# ---------------------------------------------------------------------------
+# Terminal prompts: a fake input_fn "types" the answers, so no keyboard is needed
+# ---------------------------------------------------------------------------
+def _typing(*answers):
+    """A fake input() that returns these answers one at a time."""
+    it = iter(answers)
+    return lambda prompt="": next(it)
+
+
+@pytest.mark.parametrize("typed, expected", [
+    ("1", "user"), ("2", "csv"), ("3", "historical"),
+    ("csv", "csv"), ("  Historical ", "historical"),
+])
+def test_ask_weather_source_accepts_numbers_and_names(typed, expected):
+    assert rf.ask_weather_source(input_fn=_typing(typed)) == expected
+
+
+def test_ask_weather_source_enter_keeps_the_default():
+    assert rf.ask_weather_source(default="csv", input_fn=_typing("")) == "csv"
+
+
+def test_ask_weather_source_asks_again_after_a_bad_answer(capsys):
+    assert rf.ask_weather_source(input_fn=_typing("7", "forecast", "1")) == "user"
+    assert capsys.readouterr().out.count("not an option") == 2
+
+
+def test_ask_weather_user_mode_reads_ice_and_wind():
+    assert rf.ask_weather(input_fn=_typing("user", "17.3", "14.9")) == (17.3, 14.9)
+
+
+def test_ask_weather_user_mode_rejects_bad_numbers_then_accepts(capsys):
+    out = rf.ask_weather(input_fn=_typing("1", "-2", "abc", "0", "50"))
+    assert out == (0.0, 50.0)
+    printed = capsys.readouterr().out
+    assert ">= 0" in printed and "not a number" in printed
+
+
+def test_ask_weather_user_mode_enter_keeps_settings(monkeypatch):
+    monkeypatch.setattr(rf, "USER_ICE_MM", 14.7)
+    monkeypatch.setattr(rf, "USER_WIND_MS", 12.3)
+    assert rf.ask_weather(input_fn=_typing("1", "", "")) == (14.7, 12.3)
