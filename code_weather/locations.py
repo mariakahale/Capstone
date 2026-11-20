@@ -1,9 +1,13 @@
 """
 LOCATIONS
 =========
-Every place we analyse is defined ONCE here. Both era5_download.py and
-find_weather_events.py read this file, so adding a new location means
-adding one entry below and nothing else.
+Every place we analyse is defined ONCE here. era5_download.py,
+find_weather_events.py and weather_input.py read this file, so adding a
+new location means adding one entry below and nothing else.
+
+"feeder" is the LOOKUP TABLE from location to feeder: the pipeline asks
+the user for a location and runs this feeder (the number at the end of its
+folder in data/opendss). None = no feeder chosen yet for that location.
 
 Each location is a list of ERA5 grid cells. A grid cell is named by its
 centre point (latitude, longitude), always a multiple of 0.25 deg. One
@@ -32,6 +36,9 @@ LOCATIONS = {
         # Folder for the raw monthly downloads. Toronto keeps the
         # original folder name so files you already downloaded are reused.
         "raw_folder": "era5_raw",
+        # The feeder run for Toronto: chosen with Melani's script
+        # (how it was chosen will be added later).
+        "feeder": "3777",
     },
     "thunder_bay": {
         "name": "Thunder Bay",
@@ -42,6 +49,7 @@ LOCATIONS = {
         "cells": [(48.50, -89.25), (48.25, -89.25)],
         "timezone": "America/Toronto",   # Thunder Bay uses Eastern time
         "raw_folder": "era5_raw_thunder_bay",
+        "feeder": None,                  # no feeder chosen yet
     },
 }
 
