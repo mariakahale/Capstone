@@ -133,3 +133,20 @@ def test_main_stops_on_bad_weather_and_writes_nothing(monkeypatch, tmp_path):
     with pytest.raises(ValueError):
         _run_main(monkeypatch, tmp_path, -5, 14.9)
     assert list(tmp_path.iterdir()) == []
+
+
+
+def test_main_ask_mode_runs_the_typed_storm(monkeypatch, tmp_path, capsys):
+    # main(ask=True) is what  python3 pipeline/run_fragility.py  runs; fake the typing
+    answers = iter(["user", "17.3", "14.9"])
+    monkeypatch.setattr(rf, "OUTPUT_DIR", tmp_path)
+    rf.main(ask=True, input_fn=lambda prompt="": next(answers))
+    assert "scenario: ice17.3mm_wind14.9ms" in capsys.readouterr().out
+    assert any(tmp_path.glob("pole_fragility_*_ice17.3mm_wind14.9ms.csv"))
+
+
+def test_get_weather_user_uses_typed_numbers_over_settings(monkeypatch):
+    monkeypatch.setattr(rf, "USER_ICE_MM", 0)
+    monkeypatch.setattr(rf, "USER_WIND_MS", 50)
+    assert rf.get_weather("user", user_ice_mm=17.3, user_wind_ms=14.9) == (17.3, 14.9)
+    assert rf.get_weather("user") == (0, 50)
